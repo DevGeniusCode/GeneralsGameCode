@@ -86,7 +86,7 @@ static void InitDbghelp(void)
 
   // Get function addresses
   unsigned *funcptr=gDbg.funcPtr;
-	unsigned k=0;
+  unsigned k=0;
   for (;DebughelpFunctionNames[k];++k,++funcptr)
   {
     *funcptr=(unsigned)GetProcAddress(g_dbghelp,DebughelpFunctionNames[k]);

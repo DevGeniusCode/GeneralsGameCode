@@ -227,7 +227,7 @@ bool DebugCmdInterfaceDebug::Execute(class Debug& dbg, const char *cmd,
       // regular I/O command
 
       // find I/O class
-			Debug::IOFactoryListEntry *cur=dbg.firstIOFactory;
+      Debug::IOFactoryListEntry *cur=dbg.firstIOFactory;
       for (;cur;cur=cur->next)
         if (!strcmp(argv[0],cur->ioID))
           break;

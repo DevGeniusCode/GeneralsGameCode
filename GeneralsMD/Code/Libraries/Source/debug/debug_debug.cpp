@@ -880,7 +880,7 @@ Debug& Debug::operator<<(const MemDump &dump)
 
     // items
     const unsigned char *curByte=cur;
-		unsigned k=0;
+    unsigned k=0;
     for (;k<itemPerLine;k++,curByte+=dump.m_bytePerItem)
     {
       operator<<(" ");
@@ -974,7 +974,7 @@ void Debug::AddHResultTranslator(unsigned prio, HResultTranslator func, void *us
 
   // now find the right place to insert the translator
   // (slow but this function is not time critical)
-	unsigned k=0;
+  unsigned k=0;
   for (;k<Instance.numHrTranslators;++k)
     if (Instance.hrTranslators[k].prio<prio)
       break;
@@ -1224,7 +1224,7 @@ const char *Debug::AddLogGroup(const char *fileOrGroup, const char *descr)
   }
 
   // is that log group known?
-	KnownLogGroupList *cur=firstLogGroup;
+  KnownLogGroupList *cur=firstLogGroup;
   for (;cur;cur=cur->next)
   {
     if (!strcmp(cur->nameGroup,fileOrGroup))
