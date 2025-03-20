@@ -22,7 +22,7 @@
 // $Revision: #1 $
 // $DateTime: 2003/07/03 11:55:26 $
 //
-// ©2003 Electronic Arts
+// ï¿½2003 Electronic Arts
 //
 // Unhandled exception handler
 //////////////////////////////////////////////////////////////////////////////
@@ -157,8 +157,10 @@ void DebugExceptionhandler::LogFPURegisters(Debug &dbg, struct _EXCEPTION_POINTE
       << "ErrOfs:      " << Debug::Width(8) << flt.ErrorOffset
       << " ErrSel:  "    << Debug::Width(8) << flt.ErrorSelector << "\n"
       << "DataOfs:     " << Debug::Width(8) << flt.DataOffset
-      << " DataSel: "    << Debug::Width(8) << flt.DataSelector << "\n"
-      << "Cr0NpxState: " << Debug::Width(8) << flt.Cr0NpxState << "\n";
+      << " DataSel: "    << Debug::Width(8) << flt.DataSelector << "\n";
+#if !defined(WOW64_SIZE_OF_80387_REGISTERS)
+	dbg << "Cr0NpxState: " << Debug::Width(8) << flt.Cr0NpxState << "\n";
+#endif
 
   for (unsigned k=0;k<SIZE_OF_80387_REGISTERS/10;++k)
   {
@@ -252,7 +254,8 @@ static BOOL CALLBACK ExceptionDlgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARA
   {
     LVCOLUMN c;
     c.mask=LVCF_TEXT|LVCF_WIDTH;
-    c.pszText="";
+		char ch[] = "";
+    c.pszText=ch;
     c.cx=690;
     ListView_InsertColumn(list,0,&c);
 
@@ -260,7 +263,8 @@ static BOOL CALLBACK ExceptionDlgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARA
     item.iItem=0;
     item.iSubItem=0;
     item.mask=LVIF_TEXT;
-    item.pszText="No stack data available - check for dbghelp.dll";
+		char pszTextStr[] = "No stack data available - check for dbghelp.dll";
+    item.pszText=pszTextStr;
 
     item.iItem=ListView_InsertItem(list,&item);
   }
@@ -269,30 +273,36 @@ static BOOL CALLBACK ExceptionDlgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARA
     // add columns first
     LVCOLUMN c;
     c.mask=LVCF_TEXT|LVCF_WIDTH;
-    c.pszText="";
+		char ch[] = "";
+    c.pszText=ch;
     c.cx=0; // first column is empty (can't right-align 1st column)
     ListView_InsertColumn(list,0,&c);
 
     c.mask=LVCF_TEXT|LVCF_WIDTH|LVCF_FMT;
-    c.pszText="Address";
+		char pszTextAddress[] ="Address";
+    c.pszText=pszTextAddress;
     c.cx=60;
     c.fmt=LVCFMT_RIGHT;
     ListView_InsertColumn(list,1,&c);
 
     c.mask=LVCF_TEXT|LVCF_WIDTH;
-    c.pszText="Module";
+		char pszTextModule[] ="Module";
+    c.pszText=pszTextModule;
     c.cx=120;
     ListView_InsertColumn(list,2,&c);
 
-    c.pszText="Symbol";
+		char pszTextSymbol[] ="Symbol";
+    c.pszText=pszTextSymbol;
     c.cx=300;
     ListView_InsertColumn(list,3,&c);
 
-    c.pszText="File";
+		char pszTextFile[] ="File";
+    c.pszText=pszTextFile;
     c.cx=130;
     ListView_InsertColumn(list,4,&c);
 
-    c.pszText="Line";
+		char pszTextLine[] ="Line";
+		c.pszText=pszTextLine;
     c.cx=80;
     ListView_InsertColumn(list,5,&c);
 

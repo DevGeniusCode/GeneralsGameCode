@@ -22,7 +22,7 @@
 // $Revision: #2 $
 // $DateTime: 2003/07/09 10:57:23 $
 //
-// ©2003 Electronic Arts
+// ï¿½2003 Electronic Arts
 //
 // Debug class implementation
 //////////////////////////////////////////////////////////////////////////////
@@ -222,16 +222,18 @@ void Debug::StaticExit(void)
     }
 }
 
-Debug& Debug::operator<<(RepeatChar &c)
+Debug& Debug::operator<<(const RepeatChar &c)
 {
   if (c.m_count>=10)
   {
     char help[10];
     memset(help,c.m_char,10);
-    while ((c.m_count-=10)>=0)
+    int count = c.m_count;
+    while ((count -= 10) >= 0)
       AddOutput(help,10);
   }
-  while (c.m_count-->0)
+  int count = c.m_count % 10;
+  while (count-- > 0)
     AddOutput(&c.m_char,1);
   return *this;
 }
@@ -878,7 +880,8 @@ Debug& Debug::operator<<(const MemDump &dump)
 
     // items
     const unsigned char *curByte=cur;
-    for (unsigned k=0;k<itemPerLine;k++,curByte+=dump.m_bytePerItem)
+		unsigned k=0;
+    for (;k<itemPerLine;k++,curByte+=dump.m_bytePerItem)
     {
       operator<<(" ");
 
@@ -971,7 +974,8 @@ void Debug::AddHResultTranslator(unsigned prio, HResultTranslator func, void *us
 
   // now find the right place to insert the translator
   // (slow but this function is not time critical)
-  for (unsigned k=0;k<Instance.numHrTranslators;++k)
+	unsigned k=0;
+  for (;k<Instance.numHrTranslators;++k)
     if (Instance.hrTranslators[k].prio<prio)
       break;
 
@@ -1220,7 +1224,8 @@ const char *Debug::AddLogGroup(const char *fileOrGroup, const char *descr)
   }
 
   // is that log group known?
-  for (KnownLogGroupList *cur=firstLogGroup;cur;cur=cur->next)
+	KnownLogGroupList *cur=firstLogGroup;
+  for (;cur;cur=cur->next)
   {
     if (!strcmp(cur->nameGroup,fileOrGroup))
     {
