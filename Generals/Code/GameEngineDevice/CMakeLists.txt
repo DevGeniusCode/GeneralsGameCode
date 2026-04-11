@@ -25,47 +25,47 @@ set(GAMEENGINEDEVICE_SRC
 #    Include/W3DDevice/GameClient/TerrainTex.h
 #    Include/W3DDevice/GameClient/TileData.h
     Include/W3DDevice/GameClient/W3DAssetManager.h
-    Include/W3DDevice/GameClient/W3DAssetManagerExposed.h
-    Include/W3DDevice/GameClient/W3DBibBuffer.h
+#    Include/W3DDevice/GameClient/W3DAssetManagerExposed.h
+#    Include/W3DDevice/GameClient/W3DBibBuffer.h
     Include/W3DDevice/GameClient/W3DBridgeBuffer.h
-    Include/W3DDevice/GameClient/W3DBufferManager.h
-    Include/W3DDevice/GameClient/W3DCustomEdging.h
-    Include/W3DDevice/GameClient/W3DCustomScene.h
-    Include/W3DDevice/GameClient/W3DDebugDisplay.h
-    Include/W3DDevice/GameClient/W3DDebugIcons.h
-    Include/W3DDevice/GameClient/W3DDisplay.h
-    Include/W3DDevice/GameClient/W3DDisplayString.h
-    Include/W3DDevice/GameClient/W3DDisplayStringManager.h
+#    Include/W3DDevice/GameClient/W3DBufferManager.h
+#    Include/W3DDevice/GameClient/W3DCustomEdging.h
+#    Include/W3DDevice/GameClient/W3DCustomScene.h
+#    Include/W3DDevice/GameClient/W3DDebugDisplay.h
+#    Include/W3DDevice/GameClient/W3DDebugIcons.h
+#    Include/W3DDevice/GameClient/W3DDisplay.h
+#    Include/W3DDevice/GameClient/W3DDisplayString.h
+#    Include/W3DDevice/GameClient/W3DDisplayStringManager.h
     Include/W3DDevice/GameClient/W3DDynamicLight.h
-    Include/W3DDevice/GameClient/W3DFileSystem.h
-    Include/W3DDevice/GameClient/W3DGadget.h
+#    Include/W3DDevice/GameClient/W3DFileSystem.h
+#    Include/W3DDevice/GameClient/W3DGadget.h
     Include/W3DDevice/GameClient/W3DGameClient.h
-    Include/W3DDevice/GameClient/W3DGameFont.h
-    Include/W3DDevice/GameClient/W3DGameWindow.h
-    Include/W3DDevice/GameClient/W3DGameWindowManager.h
-    Include/W3DDevice/GameClient/W3DGUICallbacks.h
-    Include/W3DDevice/GameClient/W3DInGameUI.h
-    Include/W3DDevice/GameClient/W3DMirror.h
+#    Include/W3DDevice/GameClient/W3DGameFont.h
+#    Include/W3DDevice/GameClient/W3DGameWindow.h
+#    Include/W3DDevice/GameClient/W3DGameWindowManager.h
+#    Include/W3DDevice/GameClient/W3DGUICallbacks.h
+#    Include/W3DDevice/GameClient/W3DInGameUI.h
+#    Include/W3DDevice/GameClient/W3DMirror.h
 #    Include/W3DDevice/GameClient/W3DMouse.h
-    Include/W3DDevice/GameClient/W3DParticleSys.h
-    Include/W3DDevice/GameClient/W3DPoly.h
-    Include/W3DDevice/GameClient/W3DProjectedShadow.h
+#    Include/W3DDevice/GameClient/W3DParticleSys.h
+#    Include/W3DDevice/GameClient/W3DPoly.h
+#    Include/W3DDevice/GameClient/W3DProjectedShadow.h
     Include/W3DDevice/GameClient/W3DRoadBuffer.h
     Include/W3DDevice/GameClient/W3DScene.h
 #    Include/W3DDevice/GameClient/W3DShaderManager.h
-    Include/W3DDevice/GameClient/W3DShadow.h
-    Include/W3DDevice/GameClient/W3DShroud.h
-    Include/W3DDevice/GameClient/W3DStatusCircle.h
+#    Include/W3DDevice/GameClient/W3DShadow.h
+#    Include/W3DDevice/GameClient/W3DShroud.h
+#    Include/W3DDevice/GameClient/W3DStatusCircle.h
 #    Include/W3DDevice/GameClient/W3DTerrainTracks.h
 #    Include/W3DDevice/GameClient/W3DTerrainVisual.h
 #    Include/W3DDevice/GameClient/W3DTreeBuffer.h
 #    Include/W3DDevice/GameClient/W3DVideoBuffer.h
 #    Include/W3DDevice/GameClient/W3DView.h
-    Include/W3DDevice/GameClient/W3DVolumetricShadow.h
+#    Include/W3DDevice/GameClient/W3DVolumetricShadow.h
 #    Include/W3DDevice/GameClient/W3DWater.h
 #    Include/W3DDevice/GameClient/W3DWaterTracks.h
-    Include/W3DDevice/GameClient/W3DWaypointBuffer.h
-    Include/W3DDevice/GameClient/W3DWebBrowser.h
+#    Include/W3DDevice/GameClient/W3DWaypointBuffer.h
+#    Include/W3DDevice/GameClient/W3DWebBrowser.h
 #    Include/W3DDevice/GameClient/WorldHeightMap.h
     Include/W3DDevice/GameLogic/W3DGameLogic.h
     Include/W3DDevice/GameLogic/W3DGhostObject.h
@@ -99,55 +99,55 @@ set(GAMEENGINEDEVICE_SRC
 #    Source/W3DDevice/GameClient/Drawable/Draw/W3DTankTruckDraw.cpp
 #    Source/W3DDevice/GameClient/Drawable/Draw/W3DTracerDraw.cpp
 #    Source/W3DDevice/GameClient/Drawable/Draw/W3DTruckDraw.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DCheckBox.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DComboBox.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DHorizontalSlider.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DListBox.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DProgressBar.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DCheckBox.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DComboBox.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DHorizontalSlider.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DListBox.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DProgressBar.cpp
     Source/W3DDevice/GameClient/GUI/Gadget/W3DPushButton.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DRadioButton.cpp
     Source/W3DDevice/GameClient/GUI/Gadget/W3DStaticText.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DTabControl.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DTextEntry.cpp
-    Source/W3DDevice/GameClient/GUI/Gadget/W3DVerticalSlider.cpp
-    Source/W3DDevice/GameClient/GUI/GUICallbacks/W3DControlBar.cpp
-    Source/W3DDevice/GameClient/GUI/GUICallbacks/W3DMainMenu.cpp
-    Source/W3DDevice/GameClient/GUI/GUICallbacks/W3DMOTD.cpp
-    Source/W3DDevice/GameClient/GUI/W3DGameFont.cpp
-    Source/W3DDevice/GameClient/GUI/W3DGameWindow.cpp
-    Source/W3DDevice/GameClient/GUI/W3DGameWindowManager.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DTabControl.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DTextEntry.cpp
+#    Source/W3DDevice/GameClient/GUI/Gadget/W3DVerticalSlider.cpp
+#    Source/W3DDevice/GameClient/GUI/GUICallbacks/W3DControlBar.cpp
+#    Source/W3DDevice/GameClient/GUI/GUICallbacks/W3DMainMenu.cpp
+#    Source/W3DDevice/GameClient/GUI/GUICallbacks/W3DMOTD.cpp
+#    Source/W3DDevice/GameClient/GUI/W3DGameFont.cpp
+#    Source/W3DDevice/GameClient/GUI/W3DGameWindow.cpp
+#    Source/W3DDevice/GameClient/GUI/W3DGameWindowManager.cpp
 #    Source/W3DDevice/GameClient/HeightMap.cpp
-    Source/W3DDevice/GameClient/Shaders/invmonochrome.nvp
-    Source/W3DDevice/GameClient/Shaders/monochrome.nvp
-    Source/W3DDevice/GameClient/Shaders/motionblur.nvp
-    Source/W3DDevice/GameClient/Shaders/MotionBlur.nvv
-    Source/W3DDevice/GameClient/Shaders/roadnoise2.nvp
-    Source/W3DDevice/GameClient/Shaders/terrain.nvp
-    Source/W3DDevice/GameClient/Shaders/terrainnoise.nvp
-    Source/W3DDevice/GameClient/Shaders/terrainnoise2.nvp
-    Source/W3DDevice/GameClient/Shadow/W3DBufferManager.cpp
+#    Source/W3DDevice/GameClient/Shaders/invmonochrome.nvp
+#    Source/W3DDevice/GameClient/Shaders/monochrome.nvp
+#    Source/W3DDevice/GameClient/Shaders/motionblur.nvp
+#    Source/W3DDevice/GameClient/Shaders/MotionBlur.nvv
+#    Source/W3DDevice/GameClient/Shaders/roadnoise2.nvp
+#    Source/W3DDevice/GameClient/Shaders/terrain.nvp
+#    Source/W3DDevice/GameClient/Shaders/terrainnoise.nvp
+#    Source/W3DDevice/GameClient/Shaders/terrainnoise2.nvp
+#    Source/W3DDevice/GameClient/Shadow/W3DBufferManager.cpp
     Source/W3DDevice/GameClient/Shadow/W3DProjectedShadow.cpp
-    Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
+#    Source/W3DDevice/GameClient/Shadow/W3DShadow.cpp
     Source/W3DDevice/GameClient/Shadow/W3DVolumetricShadow.cpp
 #    Source/W3DDevice/GameClient/TerrainTex.cpp
 #    Source/W3DDevice/GameClient/TileData.cpp
     Source/W3DDevice/GameClient/W3DAssetManager.cpp
-    Source/W3DDevice/GameClient/W3DAssetManagerExposed.cpp
+#    Source/W3DDevice/GameClient/W3DAssetManagerExposed.cpp
     Source/W3DDevice/GameClient/W3DBibBuffer.cpp
     Source/W3DDevice/GameClient/W3DBridgeBuffer.cpp
-    Source/W3DDevice/GameClient/W3DCustomEdging.cpp
-    Source/W3DDevice/GameClient/W3DDebugDisplay.cpp
-    Source/W3DDevice/GameClient/W3DDebugIcons.cpp
+#    Source/W3DDevice/GameClient/W3DCustomEdging.cpp
+#    Source/W3DDevice/GameClient/W3DDebugDisplay.cpp
+#    Source/W3DDevice/GameClient/W3DDebugIcons.cpp
     Source/W3DDevice/GameClient/W3DDisplay.cpp
-    Source/W3DDevice/GameClient/W3DDisplayString.cpp
-    Source/W3DDevice/GameClient/W3DDisplayStringManager.cpp
-    Source/W3DDevice/GameClient/W3DDynamicLight.cpp
+#    Source/W3DDevice/GameClient/W3DDisplayString.cpp
+#    Source/W3DDevice/GameClient/W3DDisplayStringManager.cpp
+#    Source/W3DDevice/GameClient/W3DDynamicLight.cpp
     Source/W3DDevice/GameClient/W3DFileSystem.cpp
     Source/W3DDevice/GameClient/W3DGameClient.cpp
-    Source/W3DDevice/GameClient/W3DInGameUI.cpp
+#    Source/W3DDevice/GameClient/W3DInGameUI.cpp
 #    Source/W3DDevice/GameClient/W3DMouse.cpp
     Source/W3DDevice/GameClient/W3DParticleSys.cpp
-    Source/W3DDevice/GameClient/W3DPoly.cpp
+#    Source/W3DDevice/GameClient/W3DPoly.cpp
     Source/W3DDevice/GameClient/W3DRoadBuffer.cpp
     Source/W3DDevice/GameClient/W3DScene.cpp
 #    Source/W3DDevice/GameClient/W3DShaderManager.cpp
@@ -159,7 +159,7 @@ set(GAMEENGINEDEVICE_SRC
 #    Source/W3DDevice/GameClient/W3DVideoBuffer.cpp
 #    Source/W3DDevice/GameClient/W3DView.cpp
     Source/W3DDevice/GameClient/W3dWaypointBuffer.cpp
-    Source/W3DDevice/GameClient/W3DWebBrowser.cpp
+#    Source/W3DDevice/GameClient/W3DWebBrowser.cpp
 #    Source/W3DDevice/GameClient/Water/W3DWater.cpp
 #    Source/W3DDevice/GameClient/Water/W3DWaterTracks.cpp
 #    Source/W3DDevice/GameClient/Water/wave.nvp
