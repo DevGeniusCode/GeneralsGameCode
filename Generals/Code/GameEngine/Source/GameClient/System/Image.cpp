@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -209,7 +209,7 @@ ImageCollection::~ImageCollection()
 }
 
 //-------------------------------------------------------------------------------------------------
-/** Return the next image in the collection */
+/** adds the given image to the collection, transfers ownership to this object */
 //-------------------------------------------------------------------------------------------------
 void ImageCollection::addImage( Image *image )
 {

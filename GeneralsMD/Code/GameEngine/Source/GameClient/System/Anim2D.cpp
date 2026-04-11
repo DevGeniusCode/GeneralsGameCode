@@ -297,7 +297,6 @@ Anim2D::Anim2D( Anim2DTemplate *animTemplate, Anim2DCollection *collectionSystem
 {
 	// sanity
 	DEBUG_ASSERTCRASH( animTemplate != nullptr, ("Anim2D::Anim2D - null template") );
-
 	m_currentFrame = 0;
 
 	// set the template

@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -257,7 +257,7 @@ static void restartMissionMenu()
 //-------------------------------------------------------------------------------------------------
 void HideQuitMenu()
 {
-	// Note: This is called as a safety a lot, without checking for the prescence of the quit menu.
+	// Note: This is called as a safety a lot, without checking for the presence of the quit menu.
 	// So don't do anything that counts on that menu actually being here.
 	if(!isVisible)
 		return;

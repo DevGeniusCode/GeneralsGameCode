@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 
 // FILE: ControlBarMultiSelect.cpp ////////////////////////////////////////////////////////////////
 // Author: Colin Day, March 2002
-// Desc:   Context sensitive GUI for when you select multiple objects.  What we do is show
+// Desc:   Context-sensitive GUI for when you select multiple objects.  What we do is show
 //				 the commands that you can use between them all
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

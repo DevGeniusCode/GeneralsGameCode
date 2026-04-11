@@ -4062,6 +4062,3 @@ GameWindow *GameWindowManagerDummy::winCreateFromScript(AsciiString filenameStri
 GameWindowDummy::~GameWindowDummy()
 {
 }
-
-
-
