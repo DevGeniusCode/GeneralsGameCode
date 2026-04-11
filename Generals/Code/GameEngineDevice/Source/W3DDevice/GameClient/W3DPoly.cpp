@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -63,7 +63,7 @@ void ClipPolyClass::Clip(const PlaneClass & plane,ClipPolyClass & dest) const
 	prev_point_in_front = !plane.In_Front(Verts[iprev]);		// Note, plane normal is outward so we invert this test
 	for (Int j=0; j<vcount; j++) {
 
-		cur_point_in_front = !plane.In_Front(Verts[i]);			// Note, plane nomral is out so we invert this test
+		cur_point_in_front = !plane.In_Front(Verts[i]);			// Note, plane normal is out so we invert this test
 		if (prev_point_in_front) {
 
 			if (cur_point_in_front) {
