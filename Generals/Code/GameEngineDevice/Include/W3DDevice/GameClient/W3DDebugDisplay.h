@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -86,7 +86,7 @@ class W3DDebugDisplay : public DebugDisplay
 		Int m_fontHeight;
 		DisplayString *m_displayString;
 
-		virtual void drawText( Int x, Int y, Char *text ) override;			///< Render null ternimated string at current cursor position
+		virtual void drawText( Int x, Int y, Char *text ) override;			///< Render null terminated string at current cursor position
 
 };
 

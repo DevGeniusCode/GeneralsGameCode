@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -110,7 +110,7 @@ class W3DProjectedShadow	: public Shadow
 		~W3DProjectedShadow();
 		void setRenderObject( RenderObjClass	*robj) {m_robj=robj;}
 		void setObjPosHistory(const Vector3 &pos)	{m_lastObjPosition=pos;}	///<position of object when projection matrix was updated.
-		void setTexture(Int lightIndex,W3DShadowTexture *texture)	{m_shadowTexture[lightIndex]=texture;}	///<textur with light's shadow
+		void setTexture(Int lightIndex,W3DShadowTexture *texture)	{m_shadowTexture[lightIndex]=texture;}	///<texture with light's shadow
 		void update();	///<updates the texture and/or projection parameters when the object or light moves.
 		void init();		///<allocates local member variables used for projection
 		void updateTexture(Vector3 &lightPos);	///<updates the shadow texture image using render object and given light position.

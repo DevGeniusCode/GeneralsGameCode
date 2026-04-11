@@ -1,5 +1,5 @@
 /*
-**	Command & Conquer Generals(tm)
+**	Command & Conquer Generals Zero Hour(tm)
 **	Copyright 2025 Electronic Arts Inc.
 **
 **	This program is free software: you can redistribute it and/or modify
@@ -142,7 +142,7 @@ public:
 	void freeAllSlots();	///<release all slots to pool.
 	void freeAllBuffers();	///<release all vertex buffers to pool.
 	void ReleaseResources();	///<release D3D/W3D resources.
-	Bool ReAcquireResources();	///<reaquire D3D/W3D resources.
+	Bool ReAcquireResources();	///<reacquire D3D/W3D resources.
 	///allows iterating over vertex buffers used by manager.  Input of nullptr to get first.
 	W3DVertexBuffer *getNextVertexBuffer(W3DVertexBuffer *pVb, VBM_FVF_TYPES type)
 	{	if (pVb == nullptr)
