@@ -128,86 +128,86 @@ set(GAMEENGINE_SRC
 #    Include/Common/XferDeepCRC.h
 #    Include/Common/XferLoad.h
 #    Include/Common/XferSave.h
-    Include/GameClient/Anim2D.h
-    Include/GameClient/AnimateWindowManager.h
+#    Include/GameClient/Anim2D.h
+#    Include/GameClient/AnimateWindowManager.h
 #    Include/GameClient/ChallengeGenerals.h
     Include/GameClient/CampaignManager.h
 #    Include/GameClient/ClientInstance.h
 #    Include/GameClient/ClientRandomValue.h
 #    Include/GameClient/Color.h
-    Include/GameClient/CommandXlat.h
+#    Include/GameClient/CommandXlat.h
     Include/GameClient/ControlBar.h
-    Include/GameClient/ControlBarResizer.h
+#    Include/GameClient/ControlBarResizer.h
     Include/GameClient/ControlBarScheme.h
 #    Include/GameClient/Credits.h
-    Include/GameClient/DebugDisplay.h
-    Include/GameClient/Diplomacy.h
-    Include/GameClient/DisconnectMenu.h
-    Include/GameClient/Display.h
+#    Include/GameClient/DebugDisplay.h
+#    Include/GameClient/Diplomacy.h
+#    Include/GameClient/DisconnectMenu.h
+#    Include/GameClient/Display.h
 #    Include/GameClient/DisplayString.h
 #    Include/GameClient/DisplayStringManager.h
     Include/GameClient/Drawable.h
-    Include/GameClient/DrawableInfo.h
+#    Include/GameClient/DrawableInfo.h
 #    Include/GameClient/DrawGroupInfo.h
-    Include/GameClient/EstablishConnectionsMenu.h
+#    Include/GameClient/EstablishConnectionsMenu.h
     Include/GameClient/Eva.h
-    Include/GameClient/ExtendedMessageBox.h
-    Include/GameClient/FontDesc.h
+#    Include/GameClient/ExtendedMessageBox.h
+#    Include/GameClient/FontDesc.h
 #    Include/GameClient/FXList.h
     Include/GameClient/Gadget.h
-    Include/GameClient/GadgetCheckBox.h
-    Include/GameClient/GadgetComboBox.h
-    Include/GameClient/GadgetListBox.h
-    Include/GameClient/GadgetProgressBar.h
-    Include/GameClient/GadgetPushButton.h
-    Include/GameClient/GadgetRadioButton.h
-    Include/GameClient/GadgetSlider.h
-    Include/GameClient/GadgetStaticText.h
-    Include/GameClient/GadgetTabControl.h
-    Include/GameClient/GadgetTextEntry.h
+#    Include/GameClient/GadgetCheckBox.h
+#    Include/GameClient/GadgetComboBox.h
+#    Include/GameClient/GadgetListBox.h
+#    Include/GameClient/GadgetProgressBar.h
+#    Include/GameClient/GadgetPushButton.h
+#    Include/GameClient/GadgetRadioButton.h
+#    Include/GameClient/GadgetSlider.h
+#    Include/GameClient/GadgetStaticText.h
+#    Include/GameClient/GadgetTabControl.h
+#    Include/GameClient/GadgetTextEntry.h
     Include/GameClient/GameClient.h
 #    Include/GameClient/GameFont.h
-    Include/GameClient/GameInfoWindow.h
+#    Include/GameClient/GameInfoWindow.h
 #    Include/GameClient/GameText.h
 #    Include/GameClient/GameWindow.h
 #    Include/GameClient/GameWindowGlobal.h
-    Include/GameClient/GameWindowID.h
-    Include/GameClient/GameWindowManager.h
+#    Include/GameClient/GameWindowID.h
+#    Include/GameClient/GameWindowManager.h
 #    Include/GameClient/GameWindowTransitions.h
 #    Include/GameClient/GlobalLanguage.h
 #    Include/GameClient/GraphDraw.h
     Include/GameClient/GUICallbacks.h
-    Include/GameClient/GUICommandTranslator.h
+#    Include/GameClient/GUICommandTranslator.h
 #    Include/GameClient/HeaderTemplate.h
-    Include/GameClient/HintSpy.h
-    Include/GameClient/HotKey.h
-    Include/GameClient/Image.h
+#    Include/GameClient/HintSpy.h
+#    Include/GameClient/HotKey.h
+#    Include/GameClient/Image.h
 #    Include/GameClient/IMEManager.h
     Include/GameClient/InGameUI.h
 #    Include/GameClient/Keyboard.h
-    Include/GameClient/KeyDefs.h
+#    Include/GameClient/KeyDefs.h
 #    Include/GameClient/LanguageFilter.h
 #    Include/GameClient/Line2D.h
 #    Include/GameClient/LoadScreen.h
-    Include/GameClient/LookAtXlat.h
+#    Include/GameClient/LookAtXlat.h
 #    Include/GameClient/MapUtil.h
-    Include/GameClient/MessageBox.h
-    Include/GameClient/MetaEvent.h
-    Include/GameClient/Module/AnimatedParticleSysBoneClientUpdate.h
-    Include/GameClient/Module/BeaconClientUpdate.h
-    Include/GameClient/Module/SwayClientUpdate.h
+#    Include/GameClient/MessageBox.h
+#    Include/GameClient/MetaEvent.h
+#    Include/GameClient/Module/AnimatedParticleSysBoneClientUpdate.h
+#    Include/GameClient/Module/BeaconClientUpdate.h
+#    Include/GameClient/Module/SwayClientUpdate.h
 #    Include/GameClient/Mouse.h
 #    Include/GameClient/ParticleSys.h
-    Include/GameClient/PlaceEventTranslator.h
+#    Include/GameClient/PlaceEventTranslator.h
 #    Include/GameClient/ProcessAnimateWindow.h
 #    Include/GameClient/RadiusDecal.h
-    Include/GameClient/RayEffect.h
+#    Include/GameClient/RayEffect.h
 #    Include/GameClient/SelectionInfo.h
     Include/GameClient/SelectionXlat.h
-    Include/GameClient/Shadow.h
-    Include/GameClient/Shell.h
-    Include/GameClient/ShellHooks.h
-    Include/GameClient/ShellMenuScheme.h
+#    Include/GameClient/Shadow.h
+#    Include/GameClient/Shell.h
+#    Include/GameClient/ShellHooks.h
+#    Include/GameClient/ShellMenuScheme.h
 #    Include/GameClient/Statistics.h
 #    Include/GameClient/TerrainRoads.h
 #    Include/GameClient/TerrainVisual.h
@@ -216,7 +216,7 @@ set(GAMEENGINE_SRC
 #    Include/GameClient/Water.h
 #    Include/GameClient/WindowLayout.h
 #    Include/GameClient/WindowVideoManager.h
-    Include/GameClient/WindowXlat.h
+#    Include/GameClient/WindowXlat.h
 #    Include/GameClient/WinInstanceData.h
     Include/GameLogic/AI.h
     Include/GameLogic/AIDock.h
@@ -638,111 +638,111 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/ClientInstance.cpp
 #    Source/GameClient/Color.cpp
 #    Source/GameClient/Credits.cpp
-    Source/GameClient/Display.cpp
+#    Source/GameClient/Display.cpp
 #    Source/GameClient/DisplayString.cpp
 #    Source/GameClient/DisplayStringManager.cpp
     Source/GameClient/Drawable.cpp
-    Source/GameClient/Drawable/Update/AnimatedParticleSysBoneClientUpdate.cpp
-    Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp
-    Source/GameClient/Drawable/Update/SwayClientUpdate.cpp
+#    Source/GameClient/Drawable/Update/AnimatedParticleSysBoneClientUpdate.cpp
+#    Source/GameClient/Drawable/Update/BeaconClientUpdate.cpp
+#    Source/GameClient/Drawable/Update/SwayClientUpdate.cpp
 #    Source/GameClient/DrawGroupInfo.cpp
     Source/GameClient/Eva.cpp
 #    Source/GameClient/FXList.cpp
     Source/GameClient/GameClient.cpp
-    Source/GameClient/GameClientDispatch.cpp
+#    Source/GameClient/GameClientDispatch.cpp
 #    Source/GameClient/GameText.cpp
 #    Source/GameClient/GlobalLanguage.cpp
 #    Source/GameClient/GraphDraw.cpp
-    Source/GameClient/GUI/AnimateWindowManager.cpp
+#    Source/GameClient/GUI/AnimateWindowManager.cpp
 #    Source/GameClient/GUI/ChallengeGenerals.cpp
     Source/GameClient/GUI/ControlBar/ControlBar.cpp
     Source/GameClient/GUI/ControlBar/ControlBarBeacon.cpp
     Source/GameClient/GUI/ControlBar/ControlBarCommand.cpp
     Source/GameClient/GUI/ControlBar/ControlBarCommandProcessing.cpp
-    Source/GameClient/GUI/ControlBar/ControlBarMultiSelect.cpp
-    Source/GameClient/GUI/ControlBar/ControlBarObserver.cpp
+#    Source/GameClient/GUI/ControlBar/ControlBarMultiSelect.cpp
+#    Source/GameClient/GUI/ControlBar/ControlBarObserver.cpp
     Source/GameClient/GUI/ControlBar/ControlBarOCLTimer.cpp
-    Source/GameClient/GUI/ControlBar/ControlBarPrintPositions.cpp
-    Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp
+#    Source/GameClient/GUI/ControlBar/ControlBarPrintPositions.cpp
+#    Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp
     Source/GameClient/GUI/ControlBar/ControlBarScheme.cpp
     Source/GameClient/GUI/ControlBar/ControlBarStructureInventory.cpp
-    Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp
+#    Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp
     Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp
-    Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp
-    Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp
-    Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
-    Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp
-    Source/GameClient/GUI/Gadget/GadgetListBox.cpp
-    Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp
+#    Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp
+#    Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp
+#    Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
+#    Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp
+#    Source/GameClient/GUI/Gadget/GadgetListBox.cpp
+#    Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp
     Source/GameClient/GUI/Gadget/GadgetPushButton.cpp
-    Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp
-    Source/GameClient/GUI/Gadget/GadgetStaticText.cpp
-    Source/GameClient/GUI/Gadget/GadgetTabControl.cpp
-    Source/GameClient/GUI/Gadget/GadgetTextEntry.cpp
-    Source/GameClient/GUI/Gadget/GadgetVerticalSlider.cpp
+#    Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp
+#    Source/GameClient/GUI/Gadget/GadgetStaticText.cpp
+#    Source/GameClient/GUI/Gadget/GadgetTabControl.cpp
+#    Source/GameClient/GUI/Gadget/GadgetTextEntry.cpp
+#    Source/GameClient/GUI/Gadget/GadgetVerticalSlider.cpp
 #    Source/GameClient/GUI/GameFont.cpp
 #    Source/GameClient/GUI/GameWindow.cpp
 #    Source/GameClient/GUI/GameWindowGlobal.cpp
-    Source/GameClient/GUI/GameWindowManager.cpp
+#    Source/GameClient/GUI/GameWindowManager.cpp
     Source/GameClient/GUI/GameWindowManagerScript.cpp
 #    Source/GameClient/GUI/GameWindowTransitions.cpp
     Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
     Source/GameClient/GUI/GUICallbacks/ControlBarCallback.cpp
     Source/GameClient/GUI/GUICallbacks/ControlBarPopupDescription.cpp
-    Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp
-    Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp
-    Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints.cpp
-    Source/GameClient/GUI/GUICallbacks/IMECandidate.cpp
-    Source/GameClient/GUI/GUICallbacks/InGameChat.cpp
-    Source/GameClient/GUI/GUICallbacks/InGamePopupMessage.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/CreditsMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/DifficultySelect.cpp
+#    Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp
+#    Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp
+#    Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints.cpp
+#    Source/GameClient/GUI/GUICallbacks/IMECandidate.cpp
+#    Source/GameClient/GUI/GUICallbacks/InGameChat.cpp
+#    Source/GameClient/GUI/GUICallbacks/InGamePopupMessage.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/CreditsMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/DifficultySelect.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/DisconnectWindow.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/DownloadMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/EstablishConnectionsWindow.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/GameInfoWindow.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/KeyboardOptionsMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/DownloadMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/EstablishConnectionsWindow.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/GameInfoWindow.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/KeyboardOptionsMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/LanLobbyMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/LanMapSelectMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/LanLobbyMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/LanMapSelectMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/MainMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/MapSelectMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/MapSelectMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/OptionsMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/PopupHostGame.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/PopupLadderSelect.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/PopupLadderSelect.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/PopupPlayerInfo.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/PopupReplay.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/PopupReplay.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/PopupSaveLoad.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/QuitMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/ReplayMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/QuitMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/ReplayMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/ScoreScreen.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/SinglePlayerMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/SinglePlayerMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/SkirmishMapSelectMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLCustomScoreScreen.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLCustomScoreScreen.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLLadderScreen.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLLadderScreen.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLLobbyMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLLocaleSelectPopup.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLLoginMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLLocaleSelectPopup.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLLoginMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLMapSelectMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLMessageWindow.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLQMScoreScreen.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLMessageWindow.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLQMScoreScreen.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLQuickMatchMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLWelcomeMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/MessageBox.cpp
-    Source/GameClient/GUI/GUICallbacks/ReplayControls.cpp
+#    Source/GameClient/GUI/GUICallbacks/MessageBox.cpp
+#    Source/GameClient/GUI/GUICallbacks/ReplayControls.cpp
 #    Source/GameClient/GUI/HeaderTemplate.cpp
 #    Source/GameClient/GUI/IMEManager.cpp
 #    Source/GameClient/GUI/LoadScreen.cpp
 #    Source/GameClient/GUI/ProcessAnimateWindow.cpp
     Source/GameClient/GUI/Shell/Shell.cpp
-    Source/GameClient/GUI/Shell/ShellMenuScheme.cpp
+#    Source/GameClient/GUI/Shell/ShellMenuScheme.cpp
 #    Source/GameClient/GUI/WindowLayout.cpp
 #    Source/GameClient/GUI/WindowVideoManager.cpp
 #    Source/GameClient/GUI/WinInstanceData.cpp
@@ -755,7 +755,7 @@ set(GAMEENGINE_SRC
     Source/GameClient/MessageStream/CommandXlat.cpp
     Source/GameClient/MessageStream/GUICommandTranslator.cpp
     Source/GameClient/MessageStream/HintSpy.cpp
-    Source/GameClient/MessageStream/HotKey.cpp
+#    Source/GameClient/MessageStream/HotKey.cpp
     Source/GameClient/MessageStream/LookAtXlat.cpp
     Source/GameClient/MessageStream/MetaEvent.cpp
     Source/GameClient/MessageStream/PlaceEventTranslator.cpp
@@ -764,13 +764,13 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/RadiusDecal.cpp
 #    Source/GameClient/SelectionInfo.cpp
 #    Source/GameClient/Statistics.cpp
-    Source/GameClient/System/Anim2D.cpp
+#    Source/GameClient/System/Anim2D.cpp
     Source/GameClient/System/CampaignManager.cpp
 #    "Source/GameClient/System/Debug Displayers/AudioDebugDisplay.cpp"
-    Source/GameClient/System/DebugDisplay.cpp
-    Source/GameClient/System/Image.cpp
+#    Source/GameClient/System/DebugDisplay.cpp
+#    Source/GameClient/System/Image.cpp
 #    Source/GameClient/System/ParticleSys.cpp
-    Source/GameClient/System/RayEffect.cpp
+#    Source/GameClient/System/RayEffect.cpp
 #    Source/GameClient/Terrain/TerrainRoads.cpp
 #    Source/GameClient/Terrain/TerrainVisual.cpp
 #    Source/GameClient/VideoPlayer.cpp
