@@ -505,6 +505,22 @@ def main():
     #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/HotKey.h", Game.CORE, "GameEngine/Include/GameClient/HotKey.h")
     #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GameWindowID.h", Game.CORE, "GameEngine/Include/GameClient/GameWindowID.h")
 
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarMultiSelect.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarMultiSelect.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarObserver.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarObserver.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarPrintPositions.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarPrintPositions.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/ControlBarResizer.h", Game.CORE, "GameEngine/Include/GameClient/ControlBarResizer.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetCheckBox.h", Game.CORE, "GameEngine/Include/GameClient/GadgetCheckBox.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetComboBox.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetComboBox.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetComboBox.h", Game.CORE, "GameEngine/Include/GameClient/GadgetComboBox.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetListBox.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetListBox.h", Game.CORE, "GameEngine/Include/GameClient/GadgetListBox.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetProgressBar.h", Game.CORE, "GameEngine/Include/GameClient/GadgetProgressBar.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetPushButton.h", Game.CORE, "GameEngine/Include/GameClient/GadgetPushButton.h")
+
     return
 
 

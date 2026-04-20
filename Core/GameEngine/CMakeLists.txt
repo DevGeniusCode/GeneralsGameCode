@@ -150,7 +150,7 @@ set(GAMEENGINE_SRC
     Include/GameClient/Color.h
 #    Include/GameClient/CommandXlat.h
 #    Include/GameClient/ControlBar.h
-#    Include/GameClient/ControlBarResizer.h
+    Include/GameClient/ControlBarResizer.h
 #    Include/GameClient/ControlBarScheme.h
     Include/GameClient/Credits.h
     Include/GameClient/DebugDisplay.h
@@ -168,11 +168,11 @@ set(GAMEENGINE_SRC
 #    Include/GameClient/FontDesc.h
     Include/GameClient/FXList.h
 #    Include/GameClient/Gadget.h
-#    Include/GameClient/GadgetCheckBox.h
-#    Include/GameClient/GadgetComboBox.h
-#    Include/GameClient/GadgetListBox.h
-#    Include/GameClient/GadgetProgressBar.h
-#    Include/GameClient/GadgetPushButton.h
+    Include/GameClient/GadgetCheckBox.h
+    Include/GameClient/GadgetComboBox.h
+    Include/GameClient/GadgetListBox.h
+    Include/GameClient/GadgetProgressBar.h
+    Include/GameClient/GadgetPushButton.h
 #    Include/GameClient/GadgetRadioButton.h
 #    Include/GameClient/GadgetSlider.h
 #    Include/GameClient/GadgetStaticText.h
@@ -715,21 +715,21 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/GUI/ControlBar/ControlBarBeacon.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarCommand.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarCommandProcessing.cpp
-#    Source/GameClient/GUI/ControlBar/ControlBarMultiSelect.cpp
-#    Source/GameClient/GUI/ControlBar/ControlBarObserver.cpp
+    Source/GameClient/GUI/ControlBar/ControlBarMultiSelect.cpp
+    Source/GameClient/GUI/ControlBar/ControlBarObserver.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarOCLTimer.cpp
-#    Source/GameClient/GUI/ControlBar/ControlBarPrintPositions.cpp
-#    Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp
+    Source/GameClient/GUI/ControlBar/ControlBarPrintPositions.cpp
+    Source/GameClient/GUI/ControlBar/ControlBarResizer.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarScheme.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarStructureInventory.cpp
-#    Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp
+    Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp
 #    Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp
 #    Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp
-#    Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp
-#    Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
+    Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp
+    Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
 #    Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp
-#    Source/GameClient/GUI/Gadget/GadgetListBox.cpp
-#    Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp
+    Source/GameClient/GUI/Gadget/GadgetListBox.cpp
+    Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp
 #    Source/GameClient/GUI/Gadget/GadgetPushButton.cpp
 #    Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp
 #    Source/GameClient/GUI/Gadget/GadgetStaticText.cpp
