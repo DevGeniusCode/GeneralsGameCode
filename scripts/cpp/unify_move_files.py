@@ -492,6 +492,19 @@ def main():
     #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/Drawable/Update/SwayClientUpdate.cpp", Game.CORE, "GameEngine/Source/GameClient/Drawable/Update/SwayClientUpdate.cpp")
     #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/Module/SwayClientUpdate.h", Game.CORE, "GameEngine/Include/GameClient/Module/SwayClientUpdate.h")
 
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/AnimateWindowManager.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/AnimateWindowManager.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/AnimateWindowManager.h", Game.CORE, "GameEngine/Include/GameClient/AnimateWindowManager.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GameWindowManager.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GameWindowManager.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GameWindowManager.h", Game.CORE, "GameEngine/Include/GameClient/GameWindowManager.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/MessageBox.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/MessageBox.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/MessageBox.h", Game.CORE, "GameEngine/Include/GameClient/MessageBox.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/ExtendedMessageBox.h", Game.CORE, "GameEngine/Include/GameClient/ExtendedMessageBox.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GameClientDispatch.cpp", Game.CORE, "GameEngine/Source/GameClient/GameClientDispatch.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/MessageStream/HotKey.cpp", Game.CORE, "GameEngine/Source/GameClient/MessageStream/HotKey.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/HotKey.h", Game.CORE, "GameEngine/Include/GameClient/HotKey.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GameWindowID.h", Game.CORE, "GameEngine/Include/GameClient/GameWindowID.h")
+
     return
 
 

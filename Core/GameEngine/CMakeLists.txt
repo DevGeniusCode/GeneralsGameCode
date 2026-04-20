@@ -142,7 +142,7 @@ set(GAMEENGINE_SRC
     Include/Common/XferLoad.h
     Include/Common/XferSave.h
     Include/GameClient/Anim2D.h
-#    Include/GameClient/AnimateWindowManager.h
+    Include/GameClient/AnimateWindowManager.h
 #    Include/GameClient/CampaignManager.h
     Include/GameClient/ChallengeGenerals.h
     Include/GameClient/ClientInstance.h
@@ -164,7 +164,7 @@ set(GAMEENGINE_SRC
     Include/GameClient/DrawGroupInfo.h
 #    Include/GameClient/EstablishConnectionsMenu.h
 #    Include/GameClient/Eva.h
-#    Include/GameClient/ExtendedMessageBox.h
+    Include/GameClient/ExtendedMessageBox.h
 #    Include/GameClient/FontDesc.h
     Include/GameClient/FXList.h
 #    Include/GameClient/Gadget.h
@@ -184,8 +184,8 @@ set(GAMEENGINE_SRC
     Include/GameClient/GameText.h
     Include/GameClient/GameWindow.h
     Include/GameClient/GameWindowGlobal.h
-#    Include/GameClient/GameWindowID.h
-#    Include/GameClient/GameWindowManager.h
+    Include/GameClient/GameWindowID.h
+    Include/GameClient/GameWindowManager.h
     Include/GameClient/GameWindowTransitions.h
     Include/GameClient/GlobalLanguage.h
     Include/GameClient/GraphDraw.h
@@ -193,7 +193,7 @@ set(GAMEENGINE_SRC
 #    Include/GameClient/GUICommandTranslator.h
     Include/GameClient/HeaderTemplate.h
 #    Include/GameClient/HintSpy.h
-#    Include/GameClient/HotKey.h
+    Include/GameClient/HotKey.h
     Include/GameClient/Image.h
     Include/GameClient/IMEManager.h
 #    Include/GameClient/InGameUI.h
@@ -204,7 +204,7 @@ set(GAMEENGINE_SRC
     Include/GameClient/LoadScreen.h
 #    Include/GameClient/LookAtXlat.h
     Include/GameClient/MapUtil.h
-#    Include/GameClient/MessageBox.h
+    Include/GameClient/MessageBox.h
 #    Include/GameClient/MetaEvent.h
     Include/GameClient/Module/AnimatedParticleSysBoneClientUpdate.h
     Include/GameClient/Module/BeaconClientUpdate.h
@@ -705,11 +705,11 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/Eva.cpp
     Source/GameClient/FXList.cpp
 #    Source/GameClient/GameClient.cpp
-#    Source/GameClient/GameClientDispatch.cpp
+    Source/GameClient/GameClientDispatch.cpp
     Source/GameClient/GameText.cpp
     Source/GameClient/GlobalLanguage.cpp
     Source/GameClient/GraphDraw.cpp
-#    Source/GameClient/GUI/AnimateWindowManager.cpp
+    Source/GameClient/GUI/AnimateWindowManager.cpp
     Source/GameClient/GUI/ChallengeGenerals.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBar.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarBeacon.cpp
@@ -739,14 +739,14 @@ set(GAMEENGINE_SRC
     Source/GameClient/GUI/GameFont.cpp
     Source/GameClient/GUI/GameWindow.cpp
     Source/GameClient/GUI/GameWindowGlobal.cpp
-#    Source/GameClient/GUI/GameWindowManager.cpp
+    Source/GameClient/GUI/GameWindowManager.cpp
 #    Source/GameClient/GUI/GameWindowManagerScript.cpp
     Source/GameClient/GUI/GameWindowTransitions.cpp
 #    Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
 #    Source/GameClient/GUI/GUICallbacks/ControlBarCallback.cpp
 #    Source/GameClient/GUI/GUICallbacks/ControlBarPopupDescription.cpp
 #    Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp
-#    Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp
+    Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp
 #    Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints.cpp
 #    Source/GameClient/GUI/GUICallbacks/IMECandidate.cpp
 #    Source/GameClient/GUI/GUICallbacks/InGameChat.cpp
@@ -792,7 +792,7 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/GUI/GUICallbacks/Menus/WOLQuickMatchMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/WOLWelcomeMenu.cpp
-#    Source/GameClient/GUI/GUICallbacks/MessageBox.cpp
+    Source/GameClient/GUI/GUICallbacks/MessageBox.cpp
 #    Source/GameClient/GUI/GUICallbacks/ReplayControls.cpp
     Source/GameClient/GUI/HeaderTemplate.cpp
     Source/GameClient/GUI/IMEManager.cpp
@@ -812,7 +812,7 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/MessageStream/CommandXlat.cpp
 #    Source/GameClient/MessageStream/GUICommandTranslator.cpp
 #    Source/GameClient/MessageStream/HintSpy.cpp
-#    Source/GameClient/MessageStream/HotKey.cpp
+    Source/GameClient/MessageStream/HotKey.cpp
 #    Source/GameClient/MessageStream/LookAtXlat.cpp
 #    Source/GameClient/MessageStream/MetaEvent.cpp
 #    Source/GameClient/MessageStream/PlaceEventTranslator.cpp
