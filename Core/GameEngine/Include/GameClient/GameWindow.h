@@ -69,14 +69,18 @@ struct GameWindowEditData;
 // TYPE DEFINES ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-enum { WIN_COLOR_UNDEFINED = GAME_COLOR_UNDEFINED };
+enum
+{
+	WIN_COLOR_UNDEFINED = GAME_COLOR_UNDEFINED
+};
 
 // WindowMsgData --------------------------------------------------------------
 //-----------------------------------------------------------------------------
 typedef UnsignedInt WindowMsgData;
 
 //-----------------------------------------------------------------------------
-enum WindowMsgHandledType CPP_11(: Int) { MSG_IGNORED, MSG_HANDLED };
+enum WindowMsgHandledType
+CPP_11( : Int) { MSG_IGNORED, MSG_HANDLED };
 
 // callback types -------------------------------------------------------------
 typedef void (*GameWinMsgBoxFunc)(); //used for the Message box callbacks.

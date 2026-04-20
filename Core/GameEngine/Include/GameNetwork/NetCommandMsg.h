@@ -43,7 +43,7 @@ public:
 	typedef SmallNetPacketCommandBaseSelect Select;
 
 	NetCommandMsg();
-	//virtual ~NetCommandMsg();
+	// virtual ~NetCommandMsg();
 	UnsignedInt GetTimestamp() { return m_timestamp; }
 	void SetTimestamp(UnsignedInt timestamp) { m_timestamp = timestamp; }
 	void setExecutionFrame(UnsignedInt frame) { m_executionFrame = frame; }
@@ -74,7 +74,7 @@ protected:
 };
 
 //-----------------------------------------------------------------------------
-template<typename NetPacketType, typename SmallNetPacketType>
+template <typename NetPacketType, typename SmallNetPacketType>
 class NetCommandMsgT : public NetCommandMsg
 {
 	virtual size_t getSizeForNetPacket() const override
@@ -107,10 +107,10 @@ class NetGameCommandMsg : public NetCommandMsgT<NetPacketGameCommand, SmallNetPa
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetGameCommandMsg, "NetGameCommandMsg")
 public:
 	NetGameCommandMsg();
-	NetGameCommandMsg(GameMessage *msg);
-	//virtual ~NetGameCommandMsg();
+	NetGameCommandMsg(GameMessage* msg);
+	// virtual ~NetGameCommandMsg();
 
-	GameMessage *constructGameMessage() const;
+	GameMessage* constructGameMessage() const;
 	void addArgument(const GameMessageArgumentDataType type, GameMessageArgumentType arg);
 	void setGameMessageType(GameMessage::Type type);
 
@@ -130,7 +130,7 @@ protected:
 class NetAckCommandMsg : public NetCommandMsgT<NetPacketAckCommand, SmallNetPacketAckCommand>
 {
 protected:
-	NetAckCommandMsg(NetCommandMsg *msg)
+	NetAckCommandMsg(NetCommandMsg* msg)
 	{
 		m_commandID = msg->getID();
 		m_originalPlayerID = msg->getPlayerID();
@@ -164,9 +164,9 @@ class NetAckBothCommandMsg : public NetAckCommandMsg
 {
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetAckBothCommandMsg, "NetAckBothCommandMsg")
 public:
-	NetAckBothCommandMsg(NetCommandMsg *msg);
+	NetAckBothCommandMsg(NetCommandMsg* msg);
 	NetAckBothCommandMsg();
-	//virtual ~NetAckBothCommandMsg();
+	// virtual ~NetAckBothCommandMsg();
 };
 
 //-----------------------------------------------------------------------------
@@ -178,9 +178,9 @@ class NetAckStage1CommandMsg : public NetAckCommandMsg
 {
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetAckStage1CommandMsg, "NetAckStage1CommandMsg")
 public:
-	NetAckStage1CommandMsg(NetCommandMsg *msg);
+	NetAckStage1CommandMsg(NetCommandMsg* msg);
 	NetAckStage1CommandMsg();
-	//virtual ~NetAckStage1CommandMsg();
+	// virtual ~NetAckStage1CommandMsg();
 };
 
 //-----------------------------------------------------------------------------
@@ -192,9 +192,9 @@ class NetAckStage2CommandMsg : public NetAckCommandMsg
 {
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetAckStage2CommandMsg, "NetAckStage2CommandMsg")
 public:
-	NetAckStage2CommandMsg(NetCommandMsg *msg);
+	NetAckStage2CommandMsg(NetCommandMsg* msg);
 	NetAckStage2CommandMsg();
-	//virtual ~NetAckStage2CommandMsg();
+	// virtual ~NetAckStage2CommandMsg();
 };
 
 //-----------------------------------------------------------------------------
@@ -203,7 +203,7 @@ class NetFrameCommandMsg : public NetCommandMsgT<NetPacketFrameCommand, SmallNet
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetFrameCommandMsg, "NetFrameCommandMsg")
 public:
 	NetFrameCommandMsg();
-	//virtual ~NetFrameCommandMsg();
+	// virtual ~NetFrameCommandMsg();
 
 	void setCommandCount(UnsignedShort commandCount);
 	UnsignedShort getCommandCount() const;
@@ -220,7 +220,7 @@ class NetPlayerLeaveCommandMsg : public NetCommandMsgT<NetPacketPlayerLeaveComma
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetPlayerLeaveCommandMsg, "NetPlayerLeaveCommandMsg")
 public:
 	NetPlayerLeaveCommandMsg();
-	//virtual ~NetPlayerLeaveCommandMsg();
+	// virtual ~NetPlayerLeaveCommandMsg();
 
 	UnsignedByte getLeavingPlayerID() const;
 	void setLeavingPlayerID(UnsignedByte id);
@@ -237,18 +237,18 @@ class NetRunAheadMetricsCommandMsg : public NetCommandMsgT<NetPacketRunAheadMetr
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetRunAheadMetricsCommandMsg, "NetRunAheadMetricsCommandMsg")
 public:
 	NetRunAheadMetricsCommandMsg();
-	//virtual ~NetRunAheadMetricsCommandMsg();
+	// virtual ~NetRunAheadMetricsCommandMsg();
 
 	Real getAverageLatency() const;
 	void setAverageLatency(Real avgLat);
-	Int  getAverageFps() const;
+	Int getAverageFps() const;
 	void setAverageFps(Int fps);
 
 	virtual Select getSmallNetPacketSelect() const override;
 
 protected:
 	Real m_averageLatency;
-	Int  m_averageFps;
+	Int m_averageFps;
 };
 
 //-----------------------------------------------------------------------------
@@ -257,7 +257,7 @@ class NetRunAheadCommandMsg : public NetCommandMsgT<NetPacketRunAheadCommand, Sm
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetRunAheadCommandMsg, "NetRunAheadCommandMsg")
 public:
 	NetRunAheadCommandMsg();
-	//virtual ~NetRunAheadCommandMsg();
+	// virtual ~NetRunAheadCommandMsg();
 
 	UnsignedShort getRunAhead() const;
 	void setRunAhead(UnsignedShort runAhead);
@@ -278,7 +278,7 @@ class NetDestroyPlayerCommandMsg : public NetCommandMsgT<NetPacketDestroyPlayerC
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetDestroyPlayerCommandMsg, "NetDestroyPlayerCommandMsg")
 public:
 	NetDestroyPlayerCommandMsg();
-	//virtual ~NetDestroyPlayerCommandMsg();
+	// virtual ~NetDestroyPlayerCommandMsg();
 
 	UnsignedInt getPlayerIndex() const;
 	void setPlayerIndex(UnsignedInt playerIndex);
@@ -295,7 +295,7 @@ class NetKeepAliveCommandMsg : public NetCommandMsgT<NetPacketKeepAliveCommand, 
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetKeepAliveCommandMsg, "NetKeepAliveCommandMsg")
 public:
 	NetKeepAliveCommandMsg();
-	//virtual ~NetKeepAliveCommandMsg();
+	// virtual ~NetKeepAliveCommandMsg();
 
 	virtual Select getSmallNetPacketSelect() const override;
 };
@@ -306,7 +306,7 @@ class NetDisconnectKeepAliveCommandMsg : public NetCommandMsgT<NetPacketDisconne
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetDisconnectKeepAliveCommandMsg, "NetDisconnectKeepAliveCommandMsg")
 public:
 	NetDisconnectKeepAliveCommandMsg();
-	//virtual ~NetDisconnectKeepAliveCommandMsg();
+	// virtual ~NetDisconnectKeepAliveCommandMsg();
 
 	virtual Select getSmallNetPacketSelect() const override;
 };
@@ -317,7 +317,7 @@ class NetDisconnectPlayerCommandMsg : public NetCommandMsgT<NetPacketDisconnectP
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetDisconnectPlayerCommandMsg, "NetDisconnectPlayerCommandMsg")
 public:
 	NetDisconnectPlayerCommandMsg();
-	//virtual ~NetDisconnectPlayerCommandMsg();
+	// virtual ~NetDisconnectPlayerCommandMsg();
 
 	UnsignedByte getDisconnectSlot() const;
 	void setDisconnectSlot(UnsignedByte slot);
@@ -338,7 +338,7 @@ class NetPacketRouterQueryCommandMsg : public NetCommandMsgT<NetPacketRouterQuer
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetPacketRouterQueryCommandMsg, "NetPacketRouterQueryCommandMsg")
 public:
 	NetPacketRouterQueryCommandMsg();
-	//virtual ~NetPacketRouterQueryCommandMsg();
+	// virtual ~NetPacketRouterQueryCommandMsg();
 
 	virtual Select getSmallNetPacketSelect() const override;
 };
@@ -349,7 +349,7 @@ class NetPacketRouterAckCommandMsg : public NetCommandMsgT<NetPacketRouterAckCom
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetPacketRouterAckCommandMsg, "NetPacketRouterAckCommandMsg")
 public:
 	NetPacketRouterAckCommandMsg();
-	//virtual ~NetPacketRouterAckCommandMsg();
+	// virtual ~NetPacketRouterAckCommandMsg();
 
 	virtual Select getSmallNetPacketSelect() const override;
 };
@@ -360,7 +360,7 @@ class NetDisconnectChatCommandMsg : public NetCommandMsgT<NetPacketDisconnectCha
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetDisconnectChatCommandMsg, "NetDisconnectChatCommandMsg")
 public:
 	NetDisconnectChatCommandMsg();
-	//virtual ~NetDisconnectChatCommandMsg();
+	// virtual ~NetDisconnectChatCommandMsg();
 
 	UnicodeString getText() const;
 	void setText(UnicodeString text);
@@ -377,13 +377,13 @@ class NetChatCommandMsg : public NetCommandMsgT<NetPacketChatCommand, SmallNetPa
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetChatCommandMsg, "NetChatCommandMsg")
 public:
 	NetChatCommandMsg();
-	//virtual ~NetChatCommandMsg();
+	// virtual ~NetChatCommandMsg();
 
 	UnicodeString getText() const;
 	void setText(UnicodeString text);
 
 	Int getPlayerMask() const;
-	void setPlayerMask( Int playerMask );
+	void setPlayerMask(Int playerMask);
 
 	virtual Select getSmallNetPacketSelect() const override;
 
@@ -398,7 +398,7 @@ class NetDisconnectVoteCommandMsg : public NetCommandMsgT<NetPacketDisconnectVot
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetDisconnectVoteCommandMsg, "NetDisconnectVoteCommandMsg")
 public:
 	NetDisconnectVoteCommandMsg();
-	//virtual ~NetDisconnectVoteCommandMsg();
+	// virtual ~NetDisconnectVoteCommandMsg();
 
 	UnsignedByte getSlot() const;
 	void setSlot(UnsignedByte slot);
@@ -414,15 +414,15 @@ protected:
 };
 
 //-----------------------------------------------------------------------------
-class NetProgressCommandMsg: public NetCommandMsgT<NetPacketProgressCommand, SmallNetPacketProgressCommand>
+class NetProgressCommandMsg : public NetCommandMsgT<NetPacketProgressCommand, SmallNetPacketProgressCommand>
 {
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetProgressCommandMsg, "NetProgressCommandMsg")
 public:
 	NetProgressCommandMsg();
-	//virtual ~NetProgressCommandMsg();
+	// virtual ~NetProgressCommandMsg();
 
 	UnsignedByte getPercentage() const;
-	void setPercentage( UnsignedByte percent );
+	void setPercentage(UnsignedByte percent);
 
 	virtual Select getSmallNetPacketSelect() const override;
 
@@ -436,11 +436,11 @@ class NetWrapperCommandMsg : public NetCommandMsgT<NetPacketWrapperCommand, Smal
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetWrapperCommandMsg, "NetWrapperCommandMsg")
 public:
 	NetWrapperCommandMsg();
-	//virtual ~NetWrapperCommandMsg();
+	// virtual ~NetWrapperCommandMsg();
 
-	const UnsignedByte * getData() const;
-	UnsignedByte * getData();
-	void setData(UnsignedByte *data, UnsignedInt dataLength);
+	const UnsignedByte* getData() const;
+	UnsignedByte* getData();
+	void setData(UnsignedByte* data, UnsignedInt dataLength);
 
 	UnsignedInt getChunkNumber() const;
 	void setChunkNumber(UnsignedInt chunkNumber);
@@ -462,7 +462,7 @@ public:
 	virtual Select getSmallNetPacketSelect() const override;
 
 private:
-	UnsignedByte *m_data;
+	UnsignedByte* m_data;
 	// using UnsignedInt's so we can send around files of effectively unlimited size easily
 	UnsignedInt m_dataLength;
 	UnsignedInt m_dataOffset;
@@ -478,7 +478,7 @@ class NetFileCommandMsg : public NetCommandMsgT<NetPacketFileCommand, SmallNetPa
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetFileCommandMsg, "NetFileCommandMsg")
 public:
 	NetFileCommandMsg();
-	//virtual ~NetFileCommandMsg();
+	// virtual ~NetFileCommandMsg();
 
 	AsciiString getRealFilename() const;
 	void setRealFilename(AsciiString filename);
@@ -488,16 +488,16 @@ public:
 
 	UnsignedInt getFileLength() const;
 
-	const UnsignedByte * getFileData() const;
-	UnsignedByte * getFileData();
-	void setFileData(UnsignedByte *data, UnsignedInt dataLength);
+	const UnsignedByte* getFileData() const;
+	UnsignedByte* getFileData();
+	void setFileData(UnsignedByte* data, UnsignedInt dataLength);
 
 	virtual Select getSmallNetPacketSelect() const override;
 
 protected:
 	AsciiString m_portableFilename;
 
-	UnsignedByte *m_data;
+	UnsignedByte* m_data;
 	UnsignedInt m_dataLength;
 };
 
@@ -507,7 +507,7 @@ class NetFileAnnounceCommandMsg : public NetCommandMsgT<NetPacketFileAnnounceCom
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetFileAnnounceCommandMsg, "NetFileAnnounceCommandMsg")
 public:
 	NetFileAnnounceCommandMsg();
-	//virtual ~NetFileAnnounceCommandMsg();
+	// virtual ~NetFileAnnounceCommandMsg();
 
 	AsciiString getRealFilename() const;
 	void setRealFilename(AsciiString filename);
@@ -535,7 +535,7 @@ class NetFileProgressCommandMsg : public NetCommandMsgT<NetPacketFileProgressCom
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetFileProgressCommandMsg, "NetFileProgressCommandMsg")
 public:
 	NetFileProgressCommandMsg();
-	//virtual ~NetFileProgressCommandMsg();
+	// virtual ~NetFileProgressCommandMsg();
 
 	UnsignedShort getFileID() const;
 	void setFileID(UnsignedShort val);
@@ -603,7 +603,7 @@ class NetLoadCompleteCommandMsg : public NetCommandMsgT<NetPacketLoadCompleteCom
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetLoadCompleteCommandMsg, "NetLoadCompleteCommandMsg")
 public:
 	NetLoadCompleteCommandMsg();
-	//virtual ~NetLoadCompleteCommandMsg();
+	// virtual ~NetLoadCompleteCommandMsg();
 
 	virtual Select getSmallNetPacketSelect() const override;
 };
@@ -613,7 +613,7 @@ class NetTimeOutGameStartCommandMsg : public NetCommandMsgT<NetPacketTimeOutGame
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(NetTimeOutGameStartCommandMsg, "NetTimeOutGameStartCommandMsg")
 public:
 	NetTimeOutGameStartCommandMsg();
-	//virtual ~NetTimeOutGameStartCommandMsg();
+	// virtual ~NetTimeOutGameStartCommandMsg();
 
 	virtual Select getSmallNetPacketSelect() const override;
 };

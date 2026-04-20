@@ -36,7 +36,8 @@
 // forward declarations ///////////////////////////////////////////////////////////////////////////
 struct AudioEventInfo;
 
-enum OwnerType CPP_11(: Int)
+enum OwnerType
+CPP_11( : Int)
 {
 	OT_Positional,
 	OT_Drawable,
@@ -45,8 +46,8 @@ enum OwnerType CPP_11(: Int)
 	OT_INVALID
 };
 
-enum PortionToPlay CPP_11(: Int)
-{
+enum PortionToPlay
+CPP_11(: Int){
 	PP_Attack,
 	PP_Sound,
 	PP_Decay,

@@ -36,7 +36,8 @@
 class Transport;
 class GameSlot;
 
-enum NATStateType CPP_11(: Int) {
+enum NATStateType
+CPP_11( : Int) {
 	NATSTATE_IDLE,
 	NATSTATE_DOCONNECTIONPATHS,
 	NATSTATE_WAITFORSTATS,

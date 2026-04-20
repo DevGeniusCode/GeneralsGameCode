@@ -46,7 +46,8 @@
 // FORWARD REFERENCES /////////////////////////////////////////////////////////////////////////////
 class Snapshot;
 typedef Int Color;
-enum ObjectID CPP_11(: Int);
+enum ObjectID
+CPP_11( : Int);
 enum DrawableID CPP_11(: Int);
 enum KindOfType CPP_11(: Int);
 enum ScienceType CPP_11(: Int);

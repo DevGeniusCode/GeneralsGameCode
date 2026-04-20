@@ -46,7 +46,6 @@
 #include "Common/STLTypedefs.h"
 #include "Common/SubsystemInterface.h"
 
-
 // Forward Declarations
 
 class AsciiString;
@@ -57,8 +56,8 @@ class MusicManager;
 class Object;
 class SoundManager;
 
-
-enum AudioAffect CPP_11(: Int);
+enum AudioAffect
+CPP_11( : Int);
 enum AudioType CPP_11(: Int);
 
 struct AudioEventInfo;

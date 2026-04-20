@@ -31,11 +31,12 @@
 #include "Lib/BaseType.h"
 
 // the default size of the world map
-#define DEFAULT_WORLD_WIDTH		64
-#define DEFAULT_WORLD_HEIGHT	64
+#define DEFAULT_WORLD_WIDTH 64
+#define DEFAULT_WORLD_HEIGHT 64
 
 /// A unique, generic "identifier" used to access Objects.
-enum ObjectID CPP_11(: Int)
+enum ObjectID
+CPP_11( : Int)
 {
 	INVALID_ID = 0,
 	FORCE_OBJECTID_TO_LONG_SIZE = 0x7ffffff

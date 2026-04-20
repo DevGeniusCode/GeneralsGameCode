@@ -22,7 +22,6 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-
 // MapObject.h
 // Class to encapsulate height map.
 // Author: John Ahlquist, April 2001
@@ -33,17 +32,13 @@
 #include "Common/GameMemory.h"
 #include "GameClient/TerrainRoads.h"
 
-
-
 class WorldHeightMapInterfaceClass
 {
 public:
-
-  virtual Int getBorderSize() = 0;
-  virtual Real getSeismicZVelocity(Int xIndex, Int yIndex) const = 0;
-  virtual void setSeismicZVelocity(Int xIndex, Int yIndex, Real value) = 0;
-  virtual Real getBilinearSampleSeismicZVelocity( Int x, Int y) = 0;
-
+	virtual Int getBorderSize() = 0;
+	virtual Real getSeismicZVelocity(Int xIndex, Int yIndex) const = 0;
+	virtual void setSeismicZVelocity(Int xIndex, Int yIndex, Real value) = 0;
+	virtual Real getBilinearSampleSeismicZVelocity(Int x, Int y) = 0;
 };
 
 /** MapObject class
@@ -52,7 +47,8 @@ class WorldHeightMap;
 class RenderObjClass;
 class ThingTemplate;
 class Shadow;
-enum WaypointID CPP_11(: Int);
+enum WaypointID
+CPP_11( : Int);
 
 #define MAP_XY_FACTOR			(10.0f)	 //How wide and tall each height map square is in world space.
 #define MAP_HEIGHT_SCALE	(MAP_XY_FACTOR/16.0f)		//divide all map heights by 8.

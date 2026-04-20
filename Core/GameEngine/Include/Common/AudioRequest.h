@@ -33,7 +33,8 @@
 
 class AudioEventRTS;
 
-enum RequestType CPP_11(: Int)
+enum RequestType
+CPP_11( : Int)
 {
 	AR_Play,
 	AR_Pause,

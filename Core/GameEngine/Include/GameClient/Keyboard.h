@@ -65,7 +65,8 @@
 struct KeyboardIO
 {
 
-	enum StatusType CPP_11(: UnsignedByte)
+	enum StatusType
+	CPP_11( : UnsignedByte)
 	{
 		STATUS_UNUSED		= 0x00,					// Key has not been used
 		STATUS_USED			= 0x01					// Key has been eaten

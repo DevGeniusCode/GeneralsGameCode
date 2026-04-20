@@ -22,7 +22,6 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-
 /***********************************************************************************************
  ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
  ***********************************************************************************************
@@ -61,12 +60,14 @@ class UDP;
 **
 */
 
-struct SpareSocketStruct {
-	UDP *udp;
+struct SpareSocketStruct
+{
+	UDP* udp;
 	UnsignedShort port;
 };
 
-enum FirewallDetectionState CPP_11(: Int) {
+enum FirewallDetectionState
+CPP_11( : Int) {
 	DETECTIONSTATE_IDLE,
 	DETECTIONSTATE_BEGIN,
 	DETECTIONSTATE_TEST1,

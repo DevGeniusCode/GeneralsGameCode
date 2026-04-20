@@ -46,8 +46,8 @@
 
 //-----------------------------------------------------------------------------
 // srj sez: this must come first, first, first.
-#define _STLP_USE_NEWALLOC					1
-//#define _STLP_USE_CUSTOM_NEWALLOC		STLSpecialAlloc
+#define _STLP_USE_NEWALLOC 1
+// #define _STLP_USE_CUSTOM_NEWALLOC		STLSpecialAlloc
 class STLSpecialAlloc;
 
 //-----------------------------------------------------------------------------
@@ -58,10 +58,10 @@ class STLSpecialAlloc;
 
 //-----------------------------------------------------------------------------
 
-
 // FORWARD DECLARATIONS
 class Object;
-enum NameKeyType CPP_11(: Int);
+enum NameKeyType
+CPP_11( : Int);
 enum ObjectID CPP_11(: Int);
 enum DrawableID CPP_11(: Int);
 enum ParticleSystemID CPP_11(: Int);

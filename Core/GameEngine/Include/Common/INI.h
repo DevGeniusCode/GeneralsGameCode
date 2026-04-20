@@ -30,7 +30,7 @@
 #pragma once
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include <stddef.h>	// for offsetof, which we don't use but everyone who includes us does
+#include <stddef.h> // for offsetof, which we don't use but everyone who includes us does
 #include "Common/STLTypedefs.h"
 #include "Common/AsciiString.h"
 #include "Common/GameCommon.h"
@@ -39,7 +39,8 @@
 class INI;
 class Xfer;
 class File;
-enum ScienceType CPP_11(: Int);
+enum ScienceType
+CPP_11( : Int);
 
 //-------------------------------------------------------------------------------------------------
 /** These control the behavior of loading the INI data into items */

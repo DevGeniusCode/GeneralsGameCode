@@ -41,7 +41,8 @@ class PSPlayerStats;
 typedef std::set<AsciiString> IgnoreList;
 typedef std::map<Int, AsciiString> SavedIgnoreMap;
 
-enum RCItemType CPP_11(: Int)
+enum RCItemType
+CPP_11( : Int)
 {
 	ITEM_BUDDY,
 	ITEM_REQUEST,

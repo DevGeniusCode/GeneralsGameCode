@@ -47,7 +47,7 @@
 
 #pragma once
 
-//#define _CAMPEA_DEMO
+// #define _CAMPEA_DEMO
 
 // ----------------------------------------------------------------------------------------------
 #include "Lib/BaseType.h"
@@ -106,17 +106,17 @@ inline Real ConvertAngularVelocityInDegreesPerSecToRadsPerFrame(Real degPerSec)
 // ----------------------------------------------------------------------------------------------
 enum
 {
-	MAX_PLAYER_COUNT = 16											///< max number of Players.
+	MAX_PLAYER_COUNT = 16 ///< max number of Players.
 };
 
 // ----------------------------------------------------------------------------------------------
 /**
-	a bitmask that can uniquely represent each player.
+  a bitmask that can uniquely represent each player.
 */
 #if MAX_PLAYER_COUNT <= 16
-	typedef UnsignedShort PlayerMaskType;
-	const PlayerMaskType PLAYERMASK_ALL = 0xffff;
-	const PlayerMaskType PLAYERMASK_NONE = 0x0;
+typedef UnsignedShort PlayerMaskType;
+const PlayerMaskType PLAYERMASK_ALL = 0xffff;
+const PlayerMaskType PLAYERMASK_NONE = 0x0;
 #else
 	#error "this is the wrong size"
 #endif
@@ -124,7 +124,7 @@ enum
 // ----------------------------------------------------------------------------------------------
 enum
 {
-	MAX_GLOBAL_GENERAL_TYPES = 9,		///< number of playable General Types, not including the boss)
+	MAX_GLOBAL_GENERAL_TYPES = 9, ///< number of playable General Types, not including the boss)
 
 	/// The start of the playable global generals playertemplates
 	GLOBAL_GENERAL_BEGIN = 5,
@@ -134,7 +134,8 @@ enum
 };
 
 //-------------------------------------------------------------------------------------------------
-enum GameDifficulty CPP_11(: Int)
+enum GameDifficulty
+CPP_11( : Int)
 {
 	DIFFICULTY_EASY,
 	DIFFICULTY_NORMAL,

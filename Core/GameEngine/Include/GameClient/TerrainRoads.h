@@ -35,7 +35,6 @@
 
 #include "GameLogic/Module/BodyModule.h"
 
-
 // FORWARD DECLARATIONS ///////////////////////////////////////////////////////////////////////////
 struct FieldParse;
 class AsciiString;
@@ -43,7 +42,8 @@ class AsciiString;
 // ------------------------------------------------------------------------------------------------
 /** Bridges have 4 towers around it that the player can attack or use to repair the bridge */
 // ------------------------------------------------------------------------------------------------
-enum BridgeTowerType CPP_11(: Int)
+enum BridgeTowerType
+CPP_11( : Int)
 {
 	BRIDGE_TOWER_FROM_LEFT = 0,
 	BRIDGE_TOWER_FROM_RIGHT,

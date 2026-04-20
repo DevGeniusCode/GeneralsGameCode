@@ -20,16 +20,15 @@
 
 #include "Common/FrameRateLimit.h"
 
-
 // TheSuperHackers @todo Use unsigned integers for fps values
 // TheSuperHackers @todo Consolidate the GlobalData::m_useFpsLimit and FramePacer::m_enableFpsLimit
 // TheSuperHackers @todo Implement new fast forward in here
 class FramePacer
 {
 public:
-
 	typedef UnsignedInt LogicTimeQueryFlags;
-	enum LogicTimeQueryFlags_ CPP_11(: LogicTimeQueryFlags)
+	enum LogicTimeQueryFlags_
+	CPP_11( : LogicTimeQueryFlags)
 	{
 		IgnoreFrozenTime = 1<<0, ///< Ignore frozen time for the query
 		IgnoreHaltedGame = 1<<1, ///< Ignore halted game for the query

@@ -41,18 +41,17 @@ class Object;
 class Drawable;
 class GeometryInfo;
 
-
 class WorldHeightMap;
 struct SeismicSimulationNode;
 class SeismicSimulationFilterBase;
-
 
 #define DEFAULT_SEISMIC_SIMULATION_MAGNITUDE (20.0f)
 struct SeismicSimulationNode; // just a forward declaration folks, no cause for alarm
 class SeismicSimulationFilterBase
 {
 public:
-  enum SeismicSimStatusCode CPP_11(: Int)
+	enum SeismicSimStatusCode
+	CPP_11( : Int)
   {
     SEISMIC_STATUS_INVALID,
     SEISMIC_STATUS_ACTIVE,

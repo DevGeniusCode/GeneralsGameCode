@@ -33,7 +33,7 @@
 #include "Common/GameType.h"
 #include "Common/Snapshot.h"
 #include "Lib/BaseType.h"
-#include "WW3D2/coltype.h"			///< we don't generally do this, but we need the W3D collision types
+#include "WW3D2/coltype.h" ///< we don't generally do this, but we need the W3D collision types
 #include "WWMath/wwmath.h"
 
 #define DEFAULT_VIEW_WIDTH 640
@@ -47,7 +47,8 @@ class ViewLocation;
 class Thing;
 class Waypoint;
 class LookAtTranslator;
-enum FilterTypes CPP_11(: Int);
+enum FilterTypes
+CPP_11( : Int);
 enum FilterModes CPP_11(: Int);
 
 // ------------------------------------------------------------------------------------------------

@@ -34,10 +34,11 @@ void StopAsyncDNSCheck();
 void StartPatchCheck();
 void CancelPatchCheckCallback();
 void StartDownloadingPatches();
-void HandleCanceledDownload( Bool resetDropDown = TRUE );
+void HandleCanceledDownload(Bool resetDropDown = TRUE);
 
 #if RTS_GENERALS
-enum OverallStatsPeriod CPP_11(: Int)
+enum OverallStatsPeriod
+CPP_11( : Int)
 {
 	STATS_TODAY = 0,
 	STATS_YESTERDAY,

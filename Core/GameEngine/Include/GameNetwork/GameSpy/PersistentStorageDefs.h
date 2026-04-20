@@ -28,7 +28,8 @@
 
 #pragma once
 
-enum LocaleType CPP_11(: Int)
+enum LocaleType
+CPP_11( : Int)
 {
     LOC_UNKNOWN = 0,
     LOC_MIN = 1,

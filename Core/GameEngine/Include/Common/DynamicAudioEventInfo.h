@@ -39,51 +39,52 @@ class Xfer;
  *****************************************************************************/
 class DynamicAudioEventInfo : public AudioEventInfo
 {
-    // NOTE: This implementation would be a lot cleaner & safer if AudioEventInfo was better
-    // written. Ideally, AudioEventInfo would be a class, not a struct, and provide only
-    // "get" functions, not "set" functions except for the INI parsing. Then we could
-    // force people to go through our override...() functions.
+	// NOTE: This implementation would be a lot cleaner & safer if AudioEventInfo was better
+	// written. Ideally, AudioEventInfo would be a class, not a struct, and provide only
+	// "get" functions, not "set" functions except for the INI parsing. Then we could
+	// force people to go through our override...() functions.
 
-    MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE( DynamicAudioEventInfo, "DynamicAudioEventInfo" )
+	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(DynamicAudioEventInfo, "DynamicAudioEventInfo")
 
-  public:
-    DynamicAudioEventInfo();
-    explicit DynamicAudioEventInfo( const AudioEventInfo & baseInfo );
+public:
+	DynamicAudioEventInfo();
+	explicit DynamicAudioEventInfo(const AudioEventInfo& baseInfo);
 
-    // DynamicAudioEventInfo interfacing function overrides
-    virtual Bool isLevelSpecific() const override;
-    virtual DynamicAudioEventInfo * getDynamicAudioEventInfo() override;
-    virtual const DynamicAudioEventInfo * getDynamicAudioEventInfo() const override;
+	// DynamicAudioEventInfo interfacing function overrides
+	virtual Bool isLevelSpecific() const override;
+	virtual DynamicAudioEventInfo* getDynamicAudioEventInfo() override;
+	virtual const DynamicAudioEventInfo* getDynamicAudioEventInfo() const override;
 
-    // Change various fields from their default (INI) values
-    void overrideAudioName( const AsciiString & newName );
-    void overrideLoopFlag( Bool newLoopFlag );
-    void overrideLoopCount( Int newLoopCount );
-    void overrideVolume( Real newVolume );
-    void overrideMinVolume( Real newMinVolume );
-    void overrideMinRange( Real newMinRange );
-    void overrideMaxRange( Real newMaxRange );
-    void overridePriority( AudioPriority newPriority );
+	// Change various fields from their default (INI) values
+	void overrideAudioName(const AsciiString& newName);
+	void overrideLoopFlag(Bool newLoopFlag);
+	void overrideLoopCount(Int newLoopCount);
+	void overrideVolume(Real newVolume);
+	void overrideMinVolume(Real newMinVolume);
+	void overrideMinRange(Real newMinRange);
+	void overrideMaxRange(Real newMaxRange);
+	void overridePriority(AudioPriority newPriority);
 
-    // Query fields to see if they have been changed from their INI values
-    Bool wasAudioNameOverriden() const;
-    Bool wasLoopFlagOverriden() const;
-    Bool wasLoopCountOverriden() const;
-    Bool wasVolumeOverriden() const;
-    Bool wasMinVolumeOverriden() const;
-    Bool wasMinRangeOverriden() const;
-    Bool wasMaxRangeOverriden() const;
-    Bool wasPriorityOverriden() const;
+	// Query fields to see if they have been changed from their INI values
+	Bool wasAudioNameOverriden() const;
+	Bool wasLoopFlagOverriden() const;
+	Bool wasLoopCountOverriden() const;
+	Bool wasVolumeOverriden() const;
+	Bool wasMinVolumeOverriden() const;
+	Bool wasMinRangeOverriden() const;
+	Bool wasMaxRangeOverriden() const;
+	Bool wasPriorityOverriden() const;
 
-    // Get the name of the audio event which this was based off of
-    const AsciiString & getOriginalName() const;
+	// Get the name of the audio event which this was based off of
+	const AsciiString& getOriginalName() const;
 
-    // Transfer all overridden fields except the customized name
-    void xferNoName( Xfer * xfer );
+	// Transfer all overridden fields except the customized name
+	void xferNoName(Xfer* xfer);
 
-  private:
-    // List of fields we can override
-    enum OverriddenFields CPP_11(: Int)
+private:
+	// List of fields we can override
+	enum OverriddenFields
+	CPP_11( : Int)
     {
       OVERRIDE_NAME = 0,
       OVERRIDE_LOOP_FLAG,

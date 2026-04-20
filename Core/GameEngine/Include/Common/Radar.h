@@ -33,7 +33,7 @@
 #include "Lib/BaseType.h"
 #include "Common/SubsystemInterface.h"
 #include "Common/GameMemory.h"
-#include "GameClient/Display.h"	// for ShroudLevel
+#include "GameClient/Display.h" // for ShroudLevel
 #include "GameClient/Color.h"
 
 // FORWARD REFERENCES /////////////////////////////////////////////////////////////////////////////
@@ -50,15 +50,16 @@ class TerrainLogic;
 //
 enum
 {
-	RADAR_CELL_WIDTH  = 128,	// radar created at this horz resolution
-	RADAR_CELL_HEIGHT = 128   // radar created at this vert resolution
+	RADAR_CELL_WIDTH = 128, // radar created at this horz resolution
+	RADAR_CELL_HEIGHT = 128 // radar created at this vert resolution
 };
 
 //-------------------------------------------------------------------------------------------------
 /** These event types determine the colors radar events happen in to make it easier for us
-	* to play events with a consistent color scheme */
+ * to play events with a consistent color scheme */
 //-------------------------------------------------------------------------------------------------
-enum RadarEventType CPP_11(: Int)
+enum RadarEventType
+CPP_11( : Int)
 {
 	RADAR_EVENT_INVALID = 0,
 	RADAR_EVENT_CONSTRUCTION,

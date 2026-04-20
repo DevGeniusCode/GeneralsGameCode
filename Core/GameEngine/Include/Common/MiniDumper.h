@@ -19,9 +19,10 @@
 #pragma once
 
 #ifdef RTS_ENABLE_CRASHDUMP
-#include "DbgHelpLoader.h"
+	#include "DbgHelpLoader.h"
 
-enum DumpType CPP_11(: Char)
+enum DumpType
+CPP_11( : Char)
 {
 	// Smallest dump type with call stacks and some supporting variables
 	DumpType_Minimal = 'M',

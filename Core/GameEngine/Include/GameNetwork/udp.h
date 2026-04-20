@@ -25,52 +25,53 @@
 #pragma once
 
 #ifdef _UNIX
-#include <errno.h>
+	#include <errno.h>
 #endif
 
 #ifdef _WIN32
-#include <winsock.h>
-#include <io.h>
-//#define close _close
-//#define read  _read
-//#define write _write
+	#include <winsock.h>
+	#include <io.h>
+// #define close _close
+// #define read  _read
+// #define write _write
 
-#else  //UNIX
-#include <netdb.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <fcntl.h>
-#include <limits.h>
+#else // UNIX
+	#include <netdb.h>
+	#include <sys/types.h>
+	#include <sys/socket.h>
+	#include <netinet/in.h>
+	#include <arpa/inet.h>
+	#include <unistd.h>
+	#include <sys/time.h>
+	#include <fcntl.h>
+	#include <limits.h>
 #endif
 
 #ifdef AIX
-#include <sys/select.h>
+	#include <sys/select.h>
 #endif
 
 #include "Lib/BaseType.h"
 
 #define DEFAULT_PROTOCOL 0
 
-//#include "wlib/wstypes.h"
-//#include "wlib/wtime.h"
+// #include "wlib/wstypes.h"
+// #include "wlib/wtime.h"
 
 class UDP
 {
- // DATA
- private:
-  Int       fd;
-  UnsignedInt       myIP;
-  UnsignedShort       myPort;
-  struct       sockaddr_in  addr;
+	// DATA
+private:
+	Int fd;
+	UnsignedInt myIP;
+	UnsignedShort myPort;
+	struct sockaddr_in addr;
 
- public:
-  // These defines specify a system independent way to
-  //   get error codes for socket services.
-  enum sockStat CPP_11(: Int)
+public:
+	// These defines specify a system independent way to
+	//   get error codes for socket services.
+	enum sockStat
+	CPP_11( : Int)
   {
     OK           =  0,     // Everything's cool
     UNKNOWN      = -1,     // There was an error of unknown type

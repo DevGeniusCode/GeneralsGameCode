@@ -20,7 +20,6 @@
 
 #include "Common/GameCommon.h"
 
-
 class FrameRateLimit
 {
 public:
@@ -33,18 +32,17 @@ private:
 	Int64 m_start;
 };
 
-
 enum FpsValueChange
 {
 	FpsValueChange_Increase,
 	FpsValueChange_Decrease,
 };
 
-
 class RenderFpsPreset
 {
 public:
-	enum CPP_11(: UnsignedInt)
+	enum
+	CPP_11( : UnsignedInt)
 	{
 		UncappedFpsValue = 1000000,
 	};

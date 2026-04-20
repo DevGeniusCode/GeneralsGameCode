@@ -65,8 +65,8 @@ class VideoBuffer;
 // TYPE DEFINES ///////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
 
-
-enum WindowVideoPlayType CPP_11(: Int)
+enum WindowVideoPlayType
+CPP_11( : Int)
 {
 	WINDOW_PLAY_MOVIE_ONCE = 0,
 	WINDOW_PLAY_MOVIE_LOOP,

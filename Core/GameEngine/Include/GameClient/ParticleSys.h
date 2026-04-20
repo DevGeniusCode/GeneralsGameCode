@@ -36,9 +36,8 @@
 #include "Common/SubsystemInterface.h"
 #include "GameClient/ClientRandomValue.h"
 
-#include "WWMath/matrix3d.h"		///< @todo Replace with our own matrix library
+#include "WWMath/matrix3d.h" ///< @todo Replace with our own matrix library
 #include "Common/STLTypedefs.h"
-
 
 /// @todo Once the client framerate is decoupled, the frame counters within will have to become time-based
 
@@ -49,10 +48,11 @@ class Drawable;
 class Object;
 struct FieldParse;
 class INI;
-class DebugWindowDialog;		// really ParticleEditorDialog
-class RenderInfoClass;			// ick
+class DebugWindowDialog; // really ParticleEditorDialog
+class RenderInfoClass;   // ick
 
-enum ParticleSystemID CPP_11(: Int)
+enum ParticleSystemID
+CPP_11( : Int)
 {
 	INVALID_PARTICLE_SYSTEM_ID = 0
 };

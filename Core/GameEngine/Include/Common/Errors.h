@@ -46,12 +46,13 @@
 #pragma once
 
 /**
-	An ErrorCode is the repository for failure modes. In almost all situations,
-	these values will  be THROWN, not returned as error codes. Feel free
-	to add to this list as necessary; however, there should generally be very
-	few codes needed.
+  An ErrorCode is the repository for failure modes. In almost all situations,
+  these values will  be THROWN, not returned as error codes. Feel free
+  to add to this list as necessary; however, there should generally be very
+  few codes needed.
 */
-enum ErrorCode CPP_11(: UnsignedInt)
+enum ErrorCode
+CPP_11( : UnsignedInt)
 {
 	ERROR_BASE									= 0xdead0001,								// a nice, distinctive value
 

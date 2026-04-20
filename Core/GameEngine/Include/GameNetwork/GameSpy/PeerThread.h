@@ -31,7 +31,8 @@
 #include "gamespy/peer/peer.h"
 #include "GameNetwork/NetworkDefs.h"
 
-enum SerialAuthResult CPP_11(: Int)
+enum SerialAuthResult
+CPP_11( : Int)
 {
 	SERIAL_NONEXISTENT,
 	SERIAL_AUTHFAILED,

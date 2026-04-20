@@ -39,7 +39,8 @@
 struct FieldParse;
 
 // USEFUL DECLARATIONS ////////////////////////////////////////////////////////////////////////////
-enum AudioType CPP_11(: Int)
+enum AudioType
+CPP_11( : Int)
 {
 	AT_Music,
 	AT_Streaming,
