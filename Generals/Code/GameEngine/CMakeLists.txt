@@ -141,7 +141,7 @@ set(GAMEENGINE_SRC
     Include/GameClient/ControlBarScheme.h
 #    Include/GameClient/Credits.h
 #    Include/GameClient/DebugDisplay.h
-    Include/GameClient/Diplomacy.h
+#    Include/GameClient/Diplomacy.h
     Include/GameClient/DisconnectMenu.h
 #    Include/GameClient/Display.h
 #    Include/GameClient/DisplayString.h
@@ -149,7 +149,7 @@ set(GAMEENGINE_SRC
     Include/GameClient/Drawable.h
     Include/GameClient/DrawableInfo.h
 #    Include/GameClient/DrawGroupInfo.h
-    Include/GameClient/EstablishConnectionsMenu.h
+#    Include/GameClient/EstablishConnectionsMenu.h
     Include/GameClient/Eva.h
 #    Include/GameClient/ExtendedMessageBox.h
     Include/GameClient/FontDesc.h
@@ -668,7 +668,7 @@ set(GAMEENGINE_SRC
     Source/GameClient/GUI/ControlBar/ControlBarStructureInventory.cpp
 #    Source/GameClient/GUI/ControlBar/ControlBarUnderConstruction.cpp
     Source/GameClient/GUI/DisconnectMenu/DisconnectMenu.cpp
-    Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp
+#    Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp
 #    Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp
 #    Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
 #    Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp
@@ -689,7 +689,7 @@ set(GAMEENGINE_SRC
     Source/GameClient/GUI/GameWindowTransitionsStyles.cpp
     Source/GameClient/GUI/GUICallbacks/ControlBarCallback.cpp
     Source/GameClient/GUI/GUICallbacks/ControlBarPopupDescription.cpp
-    Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp
+#    Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp
 #    Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp
     Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints.cpp
     Source/GameClient/GUI/GUICallbacks/IMECandidate.cpp
@@ -699,15 +699,15 @@ set(GAMEENGINE_SRC
     Source/GameClient/GUI/GUICallbacks/Menus/DifficultySelect.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/DisconnectWindow.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/DownloadMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/EstablishConnectionsWindow.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/EstablishConnectionsWindow.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/GameInfoWindow.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/KeyboardOptionsMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/LanGameOptionsMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/LanLobbyMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/LanMapSelectMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/LanLobbyMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/LanMapSelectMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/MainMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/MapSelectMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/OptionsMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/PopupHostGame.cpp
@@ -722,18 +722,18 @@ set(GAMEENGINE_SRC
     Source/GameClient/GUI/GUICallbacks/Menus/SinglePlayerMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/SkirmishGameOptionsMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/SkirmishMapSelectMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLCustomScoreScreen.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLCustomScoreScreen.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLGameSetupMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLLadderScreen.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLLadderScreen.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLLobbyMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLLocaleSelectPopup.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLLoginMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLLocaleSelectPopup.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLLoginMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLMapSelectMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLMessageWindow.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLQMScoreScreen.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLMessageWindow.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLQMScoreScreen.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLQuickMatchMenu.cpp
-    Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp
+#    Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp
     Source/GameClient/GUI/GUICallbacks/Menus/WOLWelcomeMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/MessageBox.cpp
     Source/GameClient/GUI/GUICallbacks/ReplayControls.cpp

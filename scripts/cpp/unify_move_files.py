@@ -537,6 +537,23 @@ def main():
     #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp")
     #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp")
 
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLLoginMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLLoginMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLMessageWindow.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLMessageWindow.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLStatusMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLBuddyOverlay.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLCustomScoreScreen.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLCustomScoreScreen.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLLadderScreen.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLLadderScreen.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLLocaleSelectPopup.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLLocaleSelectPopup.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLQMScoreScreen.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/WOLQMScoreScreen.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanLobbyMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanLobbyMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanMapSelectMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/LanMapSelectMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/EstablishConnectionsMenu.h", Game.CORE, "GameEngine/Include/GameClient/EstablishConnectionsMenu.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/EstablishConnectionsWindow.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/EstablishConnectionsWindow.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/Diplomacy.h", Game.CORE, "GameEngine/Include/GameClient/Diplomacy.h")
+
     return
 
 
