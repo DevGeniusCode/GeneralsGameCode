@@ -554,6 +554,20 @@ def main():
     #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Diplomacy.cpp")
     #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/Diplomacy.h", Game.CORE, "GameEngine/Include/GameClient/Diplomacy.h")
 
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SinglePlayerMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/SinglePlayerMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/CreditsMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/CreditsMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/DifficultySelect.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/DifficultySelect.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/DownloadMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/DownloadMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/KeyboardOptionsMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/KeyboardOptionsMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/QuitMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/QuitMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/ReplayMenu.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/ReplayMenu.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/ReplayControls.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/ReplayControls.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupReplay.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupReplay.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Shell/ShellMenuScheme.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/ShellMenuScheme.h", Game.CORE, "GameEngine/Include/GameClient/ShellMenuScheme.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/Shell.h", Game.CORE, "GameEngine/Include/GameClient/Shell.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/ShellHooks.h", Game.CORE, "GameEngine/Include/GameClient/ShellHooks.h")
+
     return
 
 
