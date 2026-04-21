@@ -444,7 +444,9 @@ AudioHandle AudioManager::addAudioEvent(const AudioEventRTS* eventToAdd)
 	eventToAdd->setPlayingAudioIndex(audioEvent->getPlayingAudioIndex());
 	audioEvent->generatePlayInfo(); // generate pitch shift and volume shift now as well
 
+	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	std::list<std::pair<AsciiString, Real> >::iterator it;
+	// clang-format on
 	for (it = m_adjustedVolumes.begin(); it != m_adjustedVolumes.end(); ++it)
 	{
 		if (it->first == audioEvent->getEventName())
@@ -619,8 +621,9 @@ void AudioManager::setAudioEventVolumeOverride(AsciiString eventToAffect, Real n
 	{
 		adjustVolumeOfPlayingAudio(eventToAffect, newVolume);
 	}
-
+	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	std::list<std::pair<AsciiString, Real> >::iterator it;
+	// clang-format on
 	for (it = m_adjustedVolumes.begin(); it != m_adjustedVolumes.end(); ++it)
 	{
 		if (it->first == eventToAffect)

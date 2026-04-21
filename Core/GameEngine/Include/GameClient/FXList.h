@@ -197,7 +197,9 @@ public:
 
 private:
 	// use the hashing function for Ints.
+	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	typedef std::hash_map<NameKeyType, FXList, rts::hash<NameKeyType>, rts::equal_to<NameKeyType> > FXListMap;
+	// clang-format on
 
 	FXListMap m_fxmap;
 };

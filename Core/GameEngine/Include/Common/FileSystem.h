@@ -63,7 +63,9 @@
 //           Type Defines
 //----------------------------------------------------------------------------
 
+// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 typedef std::set<AsciiString, rts::less_than_nocase<AsciiString> > FilenameList;
+// clang-format on
 typedef FilenameList::iterator FilenameListIter;
 typedef UnsignedByte FileInstance;
 
@@ -172,7 +174,9 @@ protected:
 	typedef std::hash_map<
 	  rts::string_key<AsciiString>, FileExistData,
 	  rts::string_key_hash<AsciiString>,
+	  // clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	  rts::string_key_equal<AsciiString> >
+	  // clang-format on
 	  FileExistMap;
 
 	mutable FileExistMap m_fileExist;

@@ -737,8 +737,10 @@ class ParticleSystemManager : public SubsystemInterface,
 public:
 	typedef std::list<ParticleSystem*> ParticleSystemList;
 	typedef ParticleSystemList::iterator ParticleSystemListIt;
+	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	typedef std::hash_map<ParticleSystemID, ParticleSystem*, rts::hash<ParticleSystemID>, rts::equal_to<ParticleSystemID> > ParticleSystemIDMap;
 	typedef std::hash_map<AsciiString, ParticleSystemTemplate*, rts::hash<AsciiString>, rts::equal_to<AsciiString> > TemplateMap;
+	// clang-format on
 
 	ParticleSystemManager();
 	virtual ~ParticleSystemManager() override;

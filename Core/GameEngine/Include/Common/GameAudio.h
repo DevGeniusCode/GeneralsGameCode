@@ -64,7 +64,9 @@ struct AudioRequest;
 struct AudioSettings;
 struct MiscAudio;
 
+// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 typedef std::hash_map<AsciiString, AudioEventInfo*, rts::hash<AsciiString>, rts::equal_to<AsciiString> > AudioEventInfoHash;
+// clang-format on
 typedef AudioEventInfoHash::iterator AudioEventInfoHashIt;
 typedef UnsignedInt AudioHandle;
 
@@ -337,7 +339,9 @@ protected:
 
 	AudioEventInfoHash m_allAudioEventInfo;
 	AudioHandle theAudioHandlePool;
+	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	std::list<std::pair<AsciiString, Real> > m_adjustedVolumes;
+	// clang-format on
 
 	Real m_musicVolume;
 	Real m_soundVolume;

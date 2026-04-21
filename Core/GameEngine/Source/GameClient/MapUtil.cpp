@@ -732,7 +732,9 @@ Bool WouldMapTransfer(const AsciiString& mapName)
 }
 
 //-------------------------------------------------------------------------------------------------
+// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 typedef std::set<UnicodeString, rts::less_than_nocase<UnicodeString> > MapNameList;
+// clang-format on
 typedef std::map<UnicodeString, AsciiString> MapDisplayToFileNameList;
 
 static void buildMapListForNumPlayers(MapNameList& outMapNames, MapDisplayToFileNameList& outFileNames, Int numPlayers)

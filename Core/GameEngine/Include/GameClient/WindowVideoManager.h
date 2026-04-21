@@ -148,7 +148,9 @@ private:
 		}
 	};
 
+	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	typedef std::hash_map<ConstGameWindowPtr, WindowVideo*, hashConstGameWindowPtr, std::equal_to<ConstGameWindowPtr> > WindowVideoMap;
+	// clang-format on
 
 	WindowVideoMap m_playingVideos; ///< List of currently playin Videos
 	// WindowVideoMap m_pausedVideos;									///< List of currently paused Videos

@@ -187,7 +187,10 @@ struct UsedNPeak
 	  , peakwaste(0)
 	{}
 };
+
+// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 typedef std::map<const char*, UsedNPeak, std::less<const char*> > UsedNPeakMap;
+// clang-format on
 static UsedNPeakMap TheUsedNPeakMap;
 static Int doingIntenseDMA = 0;
 	#endif
