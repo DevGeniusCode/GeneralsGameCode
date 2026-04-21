@@ -49,12 +49,11 @@ BreakConstructorInitializers: BeforeComma
 # Prevent expanding/collapsing short blocks and functions to minimize diffs
 AllowShortFunctionsOnASingleLine: All
 AllowShortBlocksOnASingleLine: Always
+AlignEscapedNewlines: Left
 
 # Handle custom legacy macros so the parser doesn't break
 Macros:
-  - CPP_11(x)=
-  - CPP_11(:x)=
-  - CPP_11(x=y)=
+  - CPP_11(x)=x
 
 IndentPPDirectives: BeforeHash
 ConstructorInitializerIndentWidth: 2

@@ -41,8 +41,7 @@ enum FpsValueChange
 class RenderFpsPreset
 {
 public:
-	enum
-	CPP_11( : UnsignedInt)
+	enum CPP_11( : UnsignedInt)
 	{
 		UncappedFpsValue = 1000000,
 	};
@@ -55,11 +54,10 @@ private:
 	static const UnsignedInt s_fpsValues[];
 };
 
-
 class LogicTimeScaleFpsPreset
 {
 public:
-	enum CPP_11(: UnsignedInt)
+	enum CPP_11( : UnsignedInt)
 	{
 #if RTS_DEBUG
 		MinFpsValue = 5,
@@ -73,4 +71,3 @@ public:
 	static UnsignedInt getPrevFpsValue(UnsignedInt value);
 	static UnsignedInt changeFpsValue(UnsignedInt value, FpsValueChange change);
 };
-

@@ -125,7 +125,7 @@ public:
 	{
 		m_xPos = x;
 		m_yPos = y;
-	};                                                       ///< Set the x and y buffer offset
+	}; ///< Set the x and y buffer offset
 	UnsignedInt width() { return m_width; };                 ///< Returns pixel width of visible texture
 	UnsignedInt height() { return m_height; };               ///< Returns pixel height of visible texture
 	UnsignedInt textureWidth() { return m_textureWidth; };   ///< Returns pixel width of texture

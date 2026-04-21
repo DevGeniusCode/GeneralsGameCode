@@ -83,72 +83,71 @@ public:
 
 private:
 	// List of fields we can override
-	enum OverriddenFields
-	CPP_11( : Int)
-    {
-      OVERRIDE_NAME = 0,
-      OVERRIDE_LOOP_FLAG,
-      OVERRIDE_LOOP_COUNT,
-      OVERRIDE_VOLUME,
-      OVERRIDE_MIN_VOLUME,
-      OVERRIDE_MIN_RANGE,
-      OVERRIDE_MAX_RANGE,
-      OVERRIDE_PRIORITY,
+	enum OverriddenFields CPP_11( : Int)
+	{
+		OVERRIDE_NAME = 0,
+		OVERRIDE_LOOP_FLAG,
+		OVERRIDE_LOOP_COUNT,
+		OVERRIDE_VOLUME,
+		OVERRIDE_MIN_VOLUME,
+		OVERRIDE_MIN_RANGE,
+		OVERRIDE_MAX_RANGE,
+		OVERRIDE_PRIORITY,
 
-      OVERRIDE_COUNT  // Keep list
-    };
-    // Warning: update xferNoName if you modify the enum list!
+		OVERRIDE_COUNT // Keep list
+	};
+	// Warning: update xferNoName if you modify the enum list!
 
-    BitFlags< OVERRIDE_COUNT > m_overriddenFields;
+	BitFlags<OVERRIDE_COUNT> m_overriddenFields;
 
-    // Retain the original name so we can look it up later
-    AsciiString m_originalName;
+	// Retain the original name so we can look it up later
+	AsciiString m_originalName;
 };
 
 /** Query: was overrideAudioName called? */
 inline Bool DynamicAudioEventInfo::wasAudioNameOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_NAME );
+	return m_overriddenFields.test(OVERRIDE_NAME);
 }
 
 /** Query: was overrideLoopFlag called? */
 inline Bool DynamicAudioEventInfo::wasLoopFlagOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_LOOP_FLAG );
+	return m_overriddenFields.test(OVERRIDE_LOOP_FLAG);
 }
 
 /** Query: was overrideLoopCount called? */
 inline Bool DynamicAudioEventInfo::wasLoopCountOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_LOOP_COUNT );
+	return m_overriddenFields.test(OVERRIDE_LOOP_COUNT);
 }
 
 /** Query: was overrideVolume called? */
 inline Bool DynamicAudioEventInfo::wasVolumeOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_VOLUME );
+	return m_overriddenFields.test(OVERRIDE_VOLUME);
 }
 
 /** Query: was overrideMinVolume called? */
 inline Bool DynamicAudioEventInfo::wasMinVolumeOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_MIN_VOLUME );
+	return m_overriddenFields.test(OVERRIDE_MIN_VOLUME);
 }
 
 /** Query: was overrideMinRange called? */
 inline Bool DynamicAudioEventInfo::wasMinRangeOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_MIN_RANGE );
+	return m_overriddenFields.test(OVERRIDE_MIN_RANGE);
 }
 
 /** Query: was overrideMaxRange called? */
 inline Bool DynamicAudioEventInfo::wasMaxRangeOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_MAX_RANGE );
+	return m_overriddenFields.test(OVERRIDE_MAX_RANGE);
 }
 
 /** Query: was overridePriority called? */
 inline Bool DynamicAudioEventInfo::wasPriorityOverriden() const
 {
-  return m_overriddenFields.test( OVERRIDE_PRIORITY );
+	return m_overriddenFields.test(OVERRIDE_PRIORITY);
 }

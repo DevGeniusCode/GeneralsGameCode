@@ -73,9 +73,11 @@ void setLANPlayerTooltip(LANPlayer* player);
 
 // Enum is used for the utility function so other windows do not need
 // to know about controls on LanGameOptions window.
-enum PostToLanGameType
-CPP_11( : Int){ SEND_GAME_OPTS = 0,
-												MAP_BACK,
-												POST_TO_LAN_GAME_TYPE_COUNT };
-//the utility function mentioned above
+enum PostToLanGameType CPP_11( : Int)
+{
+	SEND_GAME_OPTS = 0,
+	MAP_BACK,
+	POST_TO_LAN_GAME_TYPE_COUNT
+};
+// the utility function mentioned above
 void PostToLanGameOptions(PostToLanGameType post);

@@ -41,8 +41,7 @@ void GSMessageBoxOkCancel(UnicodeString title, UnicodeString message, GameWinMsg
 void GSMessageBoxYesNo(UnicodeString title, UnicodeString message, GameWinMsgBoxFunc yesFunc, GameWinMsgBoxFunc noFunc);       ///< Display a Message box with Yes/No buttons and track it
 void RaiseGSMessageBox();                                                                                                      ///< Bring GS message box to the foreground (if we transition screens while a message box is up)
 
-enum GSOverlayType
-CPP_11( : Int)
+enum GSOverlayType CPP_11( : Int)
 {
 	GSOVERLAY_PLAYERINFO,
 	GSOVERLAY_MAPSELECT,
@@ -56,11 +55,11 @@ CPP_11( : Int)
 	GSOVERLAY_MAX
 };
 
-void GameSpyOpenOverlay( GSOverlayType );
-void GameSpyCloseOverlay( GSOverlayType );
+void GameSpyOpenOverlay(GSOverlayType);
+void GameSpyCloseOverlay(GSOverlayType);
 void GameSpyCloseAllOverlays();
-Bool GameSpyIsOverlayOpen( GSOverlayType );
-void GameSpyToggleOverlay( GSOverlayType );
+Bool GameSpyIsOverlayOpen(GSOverlayType);
+void GameSpyToggleOverlay(GSOverlayType);
 void GameSpyUpdateOverlays();
 void ReOpenPlayerInfo();
 void CheckReOpenPlayerInfo();

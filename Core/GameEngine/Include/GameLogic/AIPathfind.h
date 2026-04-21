@@ -183,7 +183,7 @@ protected:
 	enum
 	{
 		MAX_CPOP = 20
-	};                                                         ///< Max times we will return the cached cpop.
+	}; ///< Max times we will return the cached cpop.
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(Path, "PathPool"); ///< @todo Set real numbers for mem alloc
 
 	PathNode* m_path; ///< The list of PathNode objects that define the path
