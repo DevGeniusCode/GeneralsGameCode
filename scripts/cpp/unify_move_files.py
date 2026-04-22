@@ -521,6 +521,22 @@ def main():
     #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetProgressBar.h", Game.CORE, "GameEngine/Include/GameClient/GadgetProgressBar.h")
     #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetPushButton.h", Game.CORE, "GameEngine/Include/GameClient/GadgetPushButton.h")
 
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetRadioButton.h", Game.CORE, "GameEngine/Include/GameClient/GadgetRadioButton.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetStaticText.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetStaticText.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetStaticText.h", Game.CORE, "GameEngine/Include/GameClient/GadgetStaticText.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetTabControl.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetTabControl.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetTabControl.h", Game.CORE, "GameEngine/Include/GameClient/GadgetTabControl.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetTextEntry.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetTextEntry.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetTextEntry.h", Game.CORE, "GameEngine/Include/GameClient/GadgetTextEntry.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/Gadget/GadgetVerticalSlider.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/Gadget/GadgetVerticalSlider.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Include/GameClient/GadgetSlider.h", Game.CORE, "GameEngine/Include/GameClient/GadgetSlider.h")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/InGameChat.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/InGameChat.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/InGamePopupMessage.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/InGamePopupMessage.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp")
+    #unify_file(Game.ZEROHOUR, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp", Game.CORE, "GameEngine/Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp")
+
     return
 
 

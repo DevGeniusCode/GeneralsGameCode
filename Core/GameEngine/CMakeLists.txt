@@ -173,11 +173,11 @@ set(GAMEENGINE_SRC
     Include/GameClient/GadgetListBox.h
     Include/GameClient/GadgetProgressBar.h
     Include/GameClient/GadgetPushButton.h
-#    Include/GameClient/GadgetRadioButton.h
-#    Include/GameClient/GadgetSlider.h
-#    Include/GameClient/GadgetStaticText.h
-#    Include/GameClient/GadgetTabControl.h
-#    Include/GameClient/GadgetTextEntry.h
+    Include/GameClient/GadgetRadioButton.h
+    Include/GameClient/GadgetSlider.h
+    Include/GameClient/GadgetStaticText.h
+    Include/GameClient/GadgetTabControl.h
+    Include/GameClient/GadgetTextEntry.h
 #    Include/GameClient/GameClient.h
     Include/GameClient/GameFont.h
 #    Include/GameClient/GameInfoWindow.h
@@ -727,15 +727,15 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/GUI/EstablishConnectionsMenu/EstablishConnectionsMenu.cpp
     Source/GameClient/GUI/Gadget/GadgetCheckBox.cpp
     Source/GameClient/GUI/Gadget/GadgetComboBox.cpp
-#    Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp
+    Source/GameClient/GUI/Gadget/GadgetHorizontalSlider.cpp
     Source/GameClient/GUI/Gadget/GadgetListBox.cpp
     Source/GameClient/GUI/Gadget/GadgetProgressBar.cpp
 #    Source/GameClient/GUI/Gadget/GadgetPushButton.cpp
-#    Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp
-#    Source/GameClient/GUI/Gadget/GadgetStaticText.cpp
-#    Source/GameClient/GUI/Gadget/GadgetTabControl.cpp
-#    Source/GameClient/GUI/Gadget/GadgetTextEntry.cpp
-#    Source/GameClient/GUI/Gadget/GadgetVerticalSlider.cpp
+    Source/GameClient/GUI/Gadget/GadgetRadioButton.cpp
+    Source/GameClient/GUI/Gadget/GadgetStaticText.cpp
+    Source/GameClient/GUI/Gadget/GadgetTabControl.cpp
+    Source/GameClient/GUI/Gadget/GadgetTextEntry.cpp
+    Source/GameClient/GUI/Gadget/GadgetVerticalSlider.cpp
     Source/GameClient/GUI/GameFont.cpp
     Source/GameClient/GUI/GameWindow.cpp
     Source/GameClient/GUI/GameWindowGlobal.cpp
@@ -749,8 +749,8 @@ set(GAMEENGINE_SRC
     Source/GameClient/GUI/GUICallbacks/ExtendedMessageBox.cpp
 #    Source/GameClient/GUI/GUICallbacks/GeneralsExpPoints.cpp
 #    Source/GameClient/GUI/GUICallbacks/IMECandidate.cpp
-#    Source/GameClient/GUI/GUICallbacks/InGameChat.cpp
-#    Source/GameClient/GUI/GUICallbacks/InGamePopupMessage.cpp
+    Source/GameClient/GUI/GUICallbacks/InGameChat.cpp
+    Source/GameClient/GUI/GUICallbacks/InGamePopupMessage.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/ChallengeMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/CreditsMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/DifficultySelect.cpp
@@ -766,9 +766,9 @@ set(GAMEENGINE_SRC
 #    Source/GameClient/GUI/GUICallbacks/Menus/MapSelectMenu.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/NetworkDirectConnect.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/OptionsMenu.cpp
-#    Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp
+    Source/GameClient/GUI/GUICallbacks/Menus/PopupCommunicator.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/PopupHostGame.cpp
-#    Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp
+    Source/GameClient/GUI/GUICallbacks/Menus/PopupJoinGame.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/PopupLadderSelect.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/PopupPlayerInfo.cpp
 #    Source/GameClient/GUI/GUICallbacks/Menus/PopupReplay.cpp
