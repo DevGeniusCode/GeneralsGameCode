@@ -29,7 +29,7 @@ ColumnLimit: 0
 
 # 2. Indentation & Tabs
 # ------------------------------------------------------------------------------
-UseTab: ForIndentation
+UseTab: AlignWithSpaces
 IndentWidth: 2
 TabWidth: 2
 ContinuationIndentWidth: 2

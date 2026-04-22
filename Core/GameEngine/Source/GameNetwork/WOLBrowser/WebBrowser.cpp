@@ -85,7 +85,7 @@ CComObject<WebBrowser>* TheWebBrowser = nullptr;
  ******************************************************************************/
 
 WebBrowser::WebBrowser()
-  : mRefCount(1)
+	: mRefCount(1)
 {
 	DEBUG_LOG(("Instantiating embedded WebBrowser"));
 	m_urlList = nullptr;
@@ -129,10 +129,10 @@ WebBrowser::~WebBrowser()
 /** The INI data fields for Webpage URL's */
 //-------------------------------------------------------------------------------------------------
 const FieldParse WebBrowserURL::m_URLFieldParseTable[] =
-  {
+	{
 
-    {"URL", INI::parseAsciiString, nullptr, offsetof(WebBrowserURL, m_url)},
-    {nullptr, nullptr, nullptr, 0},
+		{"URL", INI::parseAsciiString, nullptr, offsetof(WebBrowserURL, m_url)},
+		{nullptr, nullptr, nullptr, 0},
 
 };
 

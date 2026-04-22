@@ -89,7 +89,7 @@ class BuddyThreadClass : public ThreadClass
 
 public:
 	BuddyThreadClass()
-	  : ThreadClass()
+		: ThreadClass()
 	{
 		m_isNewAccount = m_isdeleting = m_isConnecting = m_isConnected = false;
 		m_profileID = 0;

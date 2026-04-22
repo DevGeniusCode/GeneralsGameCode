@@ -71,7 +71,7 @@ public:
 };
 
 class WebBrowser : public FEBDispatch<WebBrowser, IBrowserDispatch, &IID_IBrowserDispatch>,
-                   public SubsystemInterface
+									 public SubsystemInterface
 {
 public:
 	virtual void init() override;

@@ -91,7 +91,7 @@ class GameResultsThreadClass : public ThreadClass
 
 public:
 	GameResultsThreadClass()
-	  : ThreadClass()
+		: ThreadClass()
 	{}
 
 	virtual void Thread_Function() override;
@@ -103,8 +103,8 @@ private:
 //-------------------------------------------------------------------------
 
 GameResultsQueue::GameResultsQueue()
-  : m_requestCount(0)
-  , m_responseCount(0)
+	: m_requestCount(0)
+	, m_responseCount(0)
 {
 	for (Int i = 0; i < NumWorkerThreads; ++i)
 	{

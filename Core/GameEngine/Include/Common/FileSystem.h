@@ -98,7 +98,7 @@ typedef UnsignedByte FileInstance;
 #ifdef LOAD_TEST_ASSETS
 	#define ROAD_DIRECTORY "../TestArt/TestRoad/"
 	#define TEST_STRING "***TESTING"
-  // the following directories will be used to look for test art
+	// the following directories will be used to look for test art
 	#define LOOK_FOR_TEST_ART
 	#define TEST_W3D_DIR_PATH "../TestArt/" ///< .w3d files live here
 	#define TEST_TGA_DIR_PATH "../TestArt/" ///< .tga texture files live here
@@ -165,19 +165,19 @@ protected:
 	struct FileExistData
 	{
 		FileExistData()
-		  : instanceExists(0)
-		  , instanceDoesNotExist(~FileInstance(0))
+			: instanceExists(0)
+			, instanceDoesNotExist(~FileInstance(0))
 		{}
 		FileInstance instanceExists;
 		FileInstance instanceDoesNotExist;
 	};
 	typedef std::hash_map<
-	  rts::string_key<AsciiString>, FileExistData,
-	  rts::string_key_hash<AsciiString>,
-	  // clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
+		rts::string_key<AsciiString>, FileExistData,
+		rts::string_key_hash<AsciiString>,
+		// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	  rts::string_key_equal<AsciiString> >
-	  // clang-format on
-	  FileExistMap;
+		// clang-format on
+		FileExistMap;
 
 	mutable FileExistMap m_fileExist;
 	mutable FastCriticalSectionClass m_fileExistMutex;

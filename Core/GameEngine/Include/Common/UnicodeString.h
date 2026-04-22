@@ -361,7 +361,7 @@ inline WideChar* UnicodeString::peek() const
 
 // -----------------------------------------------------
 inline UnicodeString::UnicodeString()
-  : m_data(0)
+	: m_data(0)
 {
 	validate();
 }

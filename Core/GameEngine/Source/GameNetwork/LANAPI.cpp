@@ -62,7 +62,7 @@ LANGame::LANGame()
 */
 
 LANAPI::LANAPI()
-  : m_transport(nullptr)
+	: m_transport(nullptr)
 {
 	DEBUG_LOG(("LANAPI::LANAPI() - max game option size is %d, sizeof(LANMessage)=%d, MAX_LANAPI_PACKET_SIZE=%d",
 	           m_lanMaxOptionsLength, sizeof(LANMessage), MAX_LANAPI_PACKET_SIZE));

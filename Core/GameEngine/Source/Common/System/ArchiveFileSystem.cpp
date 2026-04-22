@@ -220,7 +220,7 @@ void ArchiveFileSystem::loadMods()
 #ifdef DEBUG_LOGGING
 		Bool ret =
 #endif
-		  loadBigFilesFromDirectory(TheGlobalData->m_modDir, "*.big", TRUE);
+			loadBigFilesFromDirectory(TheGlobalData->m_modDir, "*.big", TRUE);
 		DEBUG_ASSERTLOG(ret, ("loadBigFilesFromDirectory(%s) returned FALSE!", TheGlobalData->m_modDir.str()));
 	}
 }

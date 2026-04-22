@@ -93,7 +93,7 @@ class PingThreadClass : public ThreadClass
 
 public:
 	PingThreadClass()
-	  : ThreadClass()
+		: ThreadClass()
 	{}
 
 	virtual void Thread_Function() override;
@@ -105,8 +105,8 @@ private:
 //-------------------------------------------------------------------------
 
 Pinger::Pinger()
-  : m_requestCount(0)
-  , m_responseCount(0)
+	: m_requestCount(0)
+	, m_responseCount(0)
 {
 	for (Int i = 0; i < NumWorkerThreads; ++i)
 	{
@@ -371,14 +371,14 @@ typedef struct icmp_echo_reply
 } ICMPECHO, *PICMPECHO, FAR* LPICMPECHO;
 
 DWORD WINAPI IcmpSendEcho(
-  HANDLE IcmpHandle,       /* handle returned from IcmpCreateFile() */
-  UnsignedInt DestAddress, /* destination IP address (in network order) */
-  LPVOID RequestData,      /* pointer to buffer to send */
-  WORD RequestSize,        /* length of data in buffer */
-  LPIPINFO RequestOptns,   /* see Note 2 */
-  LPVOID ReplyBuffer,      /* see Note 1 */
-  DWORD ReplySize,         /* length of reply (must allow at least 1 reply) */
-  DWORD Timeout            /* time in milliseconds to wait for reply */
+	HANDLE IcmpHandle,       /* handle returned from IcmpCreateFile() */
+	UnsignedInt DestAddress, /* destination IP address (in network order) */
+	LPVOID RequestData,      /* pointer to buffer to send */
+	WORD RequestSize,        /* length of data in buffer */
+	LPIPINFO RequestOptns,   /* see Note 2 */
+	LPVOID ReplyBuffer,      /* see Note 1 */
+	DWORD ReplySize,         /* length of reply (must allow at least 1 reply) */
+	DWORD Timeout            /* time in milliseconds to wait for reply */
 );
 
 #define IP_STATUS_BASE 11000
@@ -508,14 +508,14 @@ Int PingThreadClass::doPing(UnsignedInt IP, Int timeout)
 	 *                   and read the Reply
 	 */
 	dwReplyCount = lpfnIcmpSendEcho(
-	  hICMP,
-	  IP,
-	  achReqData,
-	  nDataLen,
-	  lpstIPInfo,
-	  achRepData,
-	  sizeof(achRepData),
-	  nTimeOut);
+		hICMP,
+		IP,
+		achReqData,
+		nDataLen,
+		lpstIPInfo,
+		achRepData,
+		sizeof(achRepData),
+		nTimeOut);
 	if (dwReplyCount != 0)
 	{
 		//////////IN_ADDR stDestAddr;

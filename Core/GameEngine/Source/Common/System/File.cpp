@@ -85,9 +85,9 @@
 //=================================================================
 
 File::File()
-  : m_open(FALSE)
-  , m_deleteOnClose(FALSE)
-  , m_access(NONE)
+	: m_open(FALSE)
+	, m_deleteOnClose(FALSE)
+	, m_access(NONE)
 {
 
 	setName("<no file>");

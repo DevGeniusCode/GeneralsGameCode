@@ -98,8 +98,8 @@ CSimplePlayer::~CSimplePlayer()
 
 ///////////////////////////////////////////////////////////////////////////////
 HRESULT STDMETHODCALLTYPE CSimplePlayer::QueryInterface(
-  REFIID riid,
-  void** ppvObject)
+	REFIID riid,
+	void** ppvObject)
 {
 	return (E_NOINTERFACE);
 }
@@ -125,12 +125,12 @@ ULONG STDMETHODCALLTYPE CSimplePlayer::Release()
 
 ///////////////////////////////////////////////////////////////////////////////
 HRESULT STDMETHODCALLTYPE CSimplePlayer::OnSample(
-  /* [in] */ DWORD dwOutputNum,
-  /* [in] */ QWORD cnsSampleTime,
-  /* [in] */ QWORD cnsSampleDuration,
-  /* [in] */ DWORD dwFlags,
-  /* [in] */ INSSBuffer __RPC_FAR* pSample,
-  /* [in] */ VOID* pvContext)
+	/* [in] */ DWORD dwOutputNum,
+	/* [in] */ QWORD cnsSampleTime,
+	/* [in] */ QWORD cnsSampleDuration,
+	/* [in] */ DWORD dwFlags,
+	/* [in] */ INSSBuffer __RPC_FAR* pSample,
+	/* [in] */ VOID* pvContext)
 {
 	if (0 != dwOutputNum)
 	{
@@ -488,11 +488,11 @@ HRESULT CSimplePlayer::Play(LPCWSTR pszUrl, DWORD dwSecDuration, HANDLE hComplet
 
 ///////////////////////////////////////////////////////////////////////////////
 HRESULT STDMETHODCALLTYPE CSimplePlayer::OnStatus(
-  /* [in] */ WMT_STATUS Status,
-  /* [in] */ HRESULT hr,
-  /* [in] */ WMT_ATTR_DATATYPE dwType,
-  /* [in] */ BYTE __RPC_FAR* pValue,
-  /* [in] */ void __RPC_FAR* pvContext)
+	/* [in] */ WMT_STATUS Status,
+	/* [in] */ HRESULT hr,
+	/* [in] */ WMT_ATTR_DATATYPE dwType,
+	/* [in] */ BYTE __RPC_FAR* pValue,
+	/* [in] */ void __RPC_FAR* pvContext)
 {
 	switch (Status)
 	{
@@ -647,11 +647,11 @@ void CSimplePlayer::OnWaveOutMsg(UINT uMsg, DWORD dwParam1, DWORD dwParam2)
 
 ///////////////////////////////////////////////////////////////////////////////
 void CALLBACK CSimplePlayer::WaveProc(
-  HWAVEOUT hwo,
-  UINT uMsg,
-  DWORD dwInstance,
-  DWORD dwParam1,
-  DWORD dwParam2)
+	HWAVEOUT hwo,
+	UINT uMsg,
+	DWORD dwInstance,
+	DWORD dwParam1,
+	DWORD dwParam2)
 {
 	CSimplePlayer* pThis = (CSimplePlayer*)dwInstance;
 

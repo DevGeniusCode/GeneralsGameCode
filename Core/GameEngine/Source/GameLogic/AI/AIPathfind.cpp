@@ -128,12 +128,12 @@ constexpr const UnsignedInt CELL_INFOS_TO_ALLOCATE = 30000;
 
 //-----------------------------------------------------------------------------------
 PathNode::PathNode()
-  : m_nextOpti(nullptr)
-  , m_next(nullptr)
-  , m_prev(nullptr)
-  , m_nextOptiDist2D(0)
-  , m_canOptimize(false)
-  , m_id(-1)
+	: m_nextOpti(nullptr)
+	, m_next(nullptr)
+	, m_prev(nullptr)
+	, m_nextOptiDist2D(0)
+	, m_canOptimize(false)
+	, m_id(-1)
 {
 	m_nextOptiDirNorm2D.x = 0;
 	m_nextOptiDirNorm2D.y = 0;
@@ -251,13 +251,13 @@ const Coord3D* PathNode::computeDirectionVector()
 
 //-----------------------------------------------------------------------------------
 Path::Path()
-  : m_path(nullptr)
-  , m_pathTail(nullptr)
-  , m_isOptimized(FALSE)
-  , m_blockedByAlly(FALSE)
-  , m_cpopRecentStart(nullptr)
-  , m_cpopCountdown(MAX_CPOP)
-  , m_cpopValid(FALSE)
+	: m_path(nullptr)
+	, m_pathTail(nullptr)
+	, m_isOptimized(FALSE)
+	, m_blockedByAlly(FALSE)
+	, m_cpopRecentStart(nullptr)
+	, m_cpopCountdown(MAX_CPOP)
+	, m_cpopValid(FALSE)
 {
 	m_cpopIn.zero();
 	m_cpopOut.distAlongPath = 0;
@@ -827,10 +827,10 @@ inline Bool isReallyClose(const Coord3D& a, const Coord3D& b)
  * return along-path distance to the end will be returned as function result
  */
 void Path::computePointOnPath(
-  const Object* obj,
-  const LocomotorSet& locomotorSet,
-  const Coord3D& pos,
-  ClosestPointOnPathInfo& out)
+	const Object* obj,
+	const LocomotorSet& locomotorSet,
+	const Coord3D& pos,
+	ClosestPointOnPathInfo& out)
 {
 	CRCDEBUG_LOG(("Path::computePointOnPath() for %s", DebugDescribeObject(obj).str()));
 
@@ -1334,7 +1334,7 @@ Bool PathfindCellList::canReverseSort(PathfindCell& currentCell) const
  * Constructor
  */
 PathfindCell::PathfindCell()
-  : m_info(nullptr)
+	: m_info(nullptr)
 {
 	reset();
 }
@@ -2561,14 +2561,14 @@ inline void applyBlockZone(PathfindCell& targetCell, const PathfindCell& sourceC
 
 //------------------------  ZoneBlock  -------------------------------
 ZoneBlock::ZoneBlock()
-  : m_firstZone(0)
-  , m_numZones(0)
-  , m_groundCliffZones(nullptr)
-  , m_groundWaterZones(nullptr)
-  , m_groundRubbleZones(nullptr)
-  , m_crusherZones(nullptr)
-  , m_zonesAllocated(0)
-  , m_interactsWithBridge(FALSE)
+	: m_firstZone(0)
+	, m_numZones(0)
+	, m_groundCliffZones(nullptr)
+	, m_groundWaterZones(nullptr)
+	, m_groundRubbleZones(nullptr)
+	, m_crusherZones(nullptr)
+	, m_zonesAllocated(0)
+	, m_interactsWithBridge(FALSE)
 {
 	m_cellOrigin.x = 0;
 	m_cellOrigin.y = 0;
@@ -2790,17 +2790,17 @@ void ZoneBlock::allocateZones()
 
 //------------------------  PathfindZoneManager  -------------------------------
 PathfindZoneManager::PathfindZoneManager()
-  : m_maxZone(0)
-  , m_nextFrameToCalculateZones(0)
-  , m_groundCliffZones(nullptr)
-  , m_groundWaterZones(nullptr)
-  , m_groundRubbleZones(nullptr)
-  , m_terrainZones(nullptr)
-  , m_crusherZones(nullptr)
-  , m_hierarchicalZones(nullptr)
-  , m_blockOfZoneBlocks(nullptr)
-  , m_zoneBlocks(nullptr)
-  , m_zonesAllocated(0)
+	: m_maxZone(0)
+	, m_nextFrameToCalculateZones(0)
+	, m_groundCliffZones(nullptr)
+	, m_groundWaterZones(nullptr)
+	, m_groundRubbleZones(nullptr)
+	, m_terrainZones(nullptr)
+	, m_crusherZones(nullptr)
+	, m_hierarchicalZones(nullptr)
+	, m_blockOfZoneBlocks(nullptr)
+	, m_zoneBlocks(nullptr)
+	, m_zonesAllocated(0)
 {
 	m_zoneBlockExtent.x = 0;
 	m_zoneBlockExtent.y = 0;
@@ -3734,15 +3734,15 @@ zoneStorageType PathfindZoneManager::getEffectiveZone(LocomotorSurfaceTypeMask a
 }
 //-------------------- PathfindLayer ----------------------------------------
 PathfindLayer::PathfindLayer()
-  : m_blockOfMapCells(nullptr)
-  , m_layerCells(nullptr)
-  , m_bridge(nullptr)
-  , m_destroyed(FALSE)
-  , m_height(0)
-  , m_width(0)
-  , m_xOrigin(0)
-  , m_yOrigin(0)
-  , m_zone(0)
+	: m_blockOfMapCells(nullptr)
+	, m_layerCells(nullptr)
+	, m_bridge(nullptr)
+	, m_destroyed(FALSE)
+	, m_height(0)
+	, m_width(0)
+	, m_xOrigin(0)
+	, m_yOrigin(0)
+	, m_zone(0)
 {
 	m_startCell.x = -1;
 	m_startCell.y = -1;
@@ -4510,7 +4510,7 @@ void PathfindLayer::classifyWallMapCell(Int i, Int j, PathfindCell* cell, Object
 //----------------------- Pathfinder ---------------------------------------
 
 Pathfinder::Pathfinder()
-  : m_map(nullptr)
+	: m_map(nullptr)
 {
 	debugPath = nullptr;
 	PathfindCellInfo::allocateCellInfos();
@@ -7074,8 +7074,8 @@ Int Pathfinder::examineNeighboringCells(PathfindCell* parentCell, PathfindCell* 
 	Int cellCount = 0;
 	// expand search to neighboring orthogonal cells
 	static ICoord2D delta[] =
-	  {
-	    {1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}};
+		{
+			{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}};
 	const Int numNeighbors = 8;
 	const Int firstDiagonal = 4;
 	ICoord2D newCellCoord;
@@ -8214,8 +8214,8 @@ Path* Pathfinder::findGroundPath(const Coord3D* from,
 
 		// expand search to neighboring orthogonal cells
 		static ICoord2D delta[] =
-		  {
-		    {1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}};
+			{
+				{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}};
 		const Int numNeighbors = 8;
 		const Int firstDiagonal = 4;
 		ICoord2D newCellCoord;
@@ -9609,8 +9609,8 @@ Int Pathfinder::checkPathCost(Object* obj, const LocomotorSet& locomotorSet, con
 
 		// expand search to neighboring orthogonal cells
 		static ICoord2D delta[] =
-		  {
-		    {1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}};
+			{
+				{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}};
 		const Int numNeighbors = 8;
 		const Int firstDiagonal = 4;
 		ICoord2D newCellCoord;

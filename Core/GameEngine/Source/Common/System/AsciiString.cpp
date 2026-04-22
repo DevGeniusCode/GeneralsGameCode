@@ -84,7 +84,7 @@ inline char* skipNonWhitespace(char* p)
 
 // -----------------------------------------------------
 AsciiString::AsciiString(const AsciiString& stringSrc)
-  : m_data(stringSrc.m_data)
+	: m_data(stringSrc.m_data)
 {
 	ScopedCriticalSection scopedCriticalSection(TheAsciiStringCriticalSection);
 	if (m_data)
@@ -197,7 +197,7 @@ void AsciiString::releaseBuffer()
 
 // -----------------------------------------------------
 AsciiString::AsciiString(const char* s)
-  : m_data(nullptr)
+	: m_data(nullptr)
 {
 	// DEBUG_ASSERTCRASH(isMemoryManagerOfficiallyInited(), ("Initializing AsciiStrings prior to main (ie, as static vars) can cause memory leak reporting problems. Are you sure you want to do this?"));
 	int len = s ? (int)strlen(s) : 0;
@@ -210,7 +210,7 @@ AsciiString::AsciiString(const char* s)
 
 // -----------------------------------------------------
 AsciiString::AsciiString(const char* s, int len)
-  : m_data(nullptr)
+	: m_data(nullptr)
 {
 	if (len > 0)
 	{

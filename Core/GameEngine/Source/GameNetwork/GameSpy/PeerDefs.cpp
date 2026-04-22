@@ -563,7 +563,7 @@ void GameSpyInfo::markAsStagingRoomJoiner(Int game)
 #ifdef DEBUG_CRASHING
 		Bool res =
 #endif
-		  ParseAsciiStringToGameInfo(&m_localStagingRoom, options);
+			ParseAsciiStringToGameInfo(&m_localStagingRoom, options);
 		DEBUG_ASSERTCRASH(res, ("Could not parse game info \"%s\"", options.str()));
 		m_localStagingRoom.setInGame();
 		m_localStagingRoom.setLocalName(m_localName);

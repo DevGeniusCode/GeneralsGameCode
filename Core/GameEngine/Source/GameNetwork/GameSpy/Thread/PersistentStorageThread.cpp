@@ -424,7 +424,7 @@ class PSThreadClass : public ThreadClass
 
 public:
 	PSThreadClass()
-	  : ThreadClass()
+		: ThreadClass()
 	{
 		m_loginOK = m_sawLocalData = m_doneTryingToLogin = false;
 		m_opCount = 0;
@@ -890,7 +890,7 @@ void PSThreadClass::Thread_Function()
 #ifdef DEBUG_LOGGING
 							Int res =
 #endif // DEBUG_LOGGING
-							  SendGameSnapShot(nullptr, req.results.c_str(), SNAP_FINAL);
+								SendGameSnapShot(nullptr, req.results.c_str(), SNAP_FINAL);
 							DEBUG_LOG(("Just sent game results - res was %d", res));
 							FreeGame(nullptr);
 						}

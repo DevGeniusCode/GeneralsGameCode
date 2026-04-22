@@ -36,7 +36,7 @@ class GameSpyThreadClass : public ThreadClass
 
 public:
 	GameSpyThreadClass::GameSpyThreadClass()
-	  : ThreadClass()
+		: ThreadClass()
 	{
 		m_doLogin = false;
 		m_readStats = false;

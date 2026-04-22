@@ -51,7 +51,7 @@
 // GameSpyGameSlot -------------------------------------------
 
 GameSpyGameSlot::GameSpyGameSlot()
-  : GameSlot()
+	: GameSlot()
 {
 	m_gameSpyLogin.clear();
 	m_gameSpyLocale.clear();
@@ -149,19 +149,19 @@ Bool GetLocalChatConnectionAddress(AsciiString serverName, UnsignedShort serverP
 	** Statics.
 	*/
 	static char _conn_state[][32] = {
-	  "?",
-	  "CLOSED",
-	  "LISTENING",
-	  "SYN_SENT",
-	  "SEN_RECEIVED",
-	  "ESTABLISHED",
-	  "FIN_WAIT",
-	  "FIN_WAIT2",
-	  "CLOSE_WAIT",
-	  "LAST_ACK",
-	  "CLOSING",
-	  "TIME_WAIT",
-	  "DELETE_TCB"};
+		"?",
+		"CLOSED",
+		"LISTENING",
+		"SYN_SENT",
+		"SEN_RECEIVED",
+		"ESTABLISHED",
+		"FIN_WAIT",
+		"FIN_WAIT2",
+		"CLOSE_WAIT",
+		"LAST_ACK",
+		"CLOSING",
+		"TIME_WAIT",
+		"DELETE_TCB"};
 
 	DEBUG_LOG(("Finding local address used to talk to the chat server"));
 	DEBUG_LOG(("Current chat server name is %s", serverName.str()));

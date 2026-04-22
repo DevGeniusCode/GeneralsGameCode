@@ -77,12 +77,12 @@
 
 #ifdef MEMORYPOOL_DEBUG
 
-  // by default, enable free-block-retention for checkpointing in debug mode
+	// by default, enable free-block-retention for checkpointing in debug mode
 	#if !defined(DISABLE_MEMORYPOOL_CHECKPOINTING) || DISABLE_MEMORYPOOL_CHECKPOINTING == 0
 		#define MEMORYPOOL_CHECKPOINTING
 	#endif
 
-  // by default, enable bounding walls in debug mode (unless we have specifically disabled them)
+	// by default, enable bounding walls in debug mode (unless we have specifically disabled them)
 	#ifndef DISABLE_MEMORYPOOL_BOUNDINGWALL
 		#define MEMORYPOOL_BOUNDINGWALL
 	#endif
@@ -264,9 +264,9 @@ protected:
 
 	/// create a new checkpoint info and add it to the list.
 	BlockCheckpointInfo* debugAddCheckpointInfo(
-	  const char* debugLiteralTagString,
-	  Int allocCheckpoint,
-	  Int blockSize);
+		const char* debugLiteralTagString,
+		Int allocCheckpoint,
+		Int blockSize);
 
 public:
 	/// dump a checkpoint report to logfile
@@ -286,7 +286,7 @@ public:
 */
 class MemoryPool
 	#ifdef MEMORYPOOL_CHECKPOINTING
-  : public Checkpointable
+	: public Checkpointable
 	#endif
 {
 private:
@@ -390,7 +390,7 @@ public:
 */
 class DynamicMemoryAllocator
 	#ifdef MEMORYPOOL_CHECKPOINTING
-  : public Checkpointable
+	: public Checkpointable
 	#endif
 {
 private:
@@ -468,7 +468,7 @@ public:
 	#endif // MEMORYPOOL_DEBUG
 };
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#ifdef MEMORYPOOL_DEBUG
 enum
 {
@@ -568,10 +568,10 @@ public:
 	#endif
 };
 
-  // how many bytes are we allowed to 'waste' per pool allocation before the debug code starts yelling at us...
+	// how many bytes are we allowed to 'waste' per pool allocation before the debug code starts yelling at us...
 	#define MEMORY_POOL_OBJECT_ALLOCATION_SLOP 16
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#define GCMP_FIND(ARGCLASS, ARGPOOLNAME)                                                                                                                                                                                                                                \
 	private:                                                                                                                                                                                                                                                                \
 		static MemoryPool* getClassMemoryPool()                                                                                                                                                                                                                               \
@@ -590,7 +590,7 @@ public:
 			return The##ARGCLASS##Pool;                                                                                                                                                                                                                                         \
 		}
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#define GCMP_CREATE(ARGCLASS, ARGPOOLNAME, ARGINITIAL, ARGOVERFLOW)                                                                                                                                                                                                     \
 	private:                                                                                                                                                                                                                                                                \
 		static MemoryPool* getClassMemoryPool()                                                                                                                                                                                                                               \
@@ -609,7 +609,7 @@ public:
 			return The##ARGCLASS##Pool;                                                                                                                                                                                                                                         \
 		}
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#define MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS)                                                                                                                     \
 	protected:                                                                                                                                                          \
 		virtual ~ARGCLASS();                                                                                                                                              \
@@ -670,22 +670,22 @@ public:
                                                                                                                                                                       \
 	public: /* include this line at the end to reset visibility to 'public' */
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#define MEMORY_POOL_GLUE(ARGCLASS, ARGPOOLNAME) \
 		MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS)       \
 		GCMP_FIND(ARGCLASS, ARGPOOLNAME)
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#define MEMORY_POOL_GLUE_WITH_EXPLICIT_CREATE(ARGCLASS, ARGPOOLNAME, ARGINITIAL, ARGOVERFLOW) \
 		MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS)                                                     \
 		GCMP_CREATE(ARGCLASS, ARGPOOLNAME, ARGINITIAL, ARGOVERFLOW)
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 	#define MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(ARGCLASS, ARGPOOLNAME) \
 		MEMORY_POOL_GLUE_WITHOUT_GCMP(ARGCLASS)                              \
 		GCMP_CREATE(ARGCLASS, ARGPOOLNAME, -1, -1)
 
-  // ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
   // this is the version for an Abstract Base Class, which will never be instantiated...
 	#define MEMORY_POOL_GLUE_ABC(ARGCLASS)                                                                                                                              \
 	protected:                                                                                                                                                          \
@@ -907,7 +907,7 @@ private:
 
 public:
 	MemoryPoolObjectHolder(MemoryPoolObject* mpo = nullptr)
-	  : m_mpo(mpo)
+		: m_mpo(mpo)
 	{}
 	void hold(MemoryPoolObject* mpo)
 	{

@@ -228,25 +228,25 @@ GameTextInterface* CreateGameTextInterface()
 //============================================================================
 
 GameTextManager::GameTextManager()
-  : m_textCount(0)
-  , m_maxLabelLen(0)
-  , m_stringInfo(nullptr)
-  , m_stringLUT(nullptr)
-  , m_initialized(FALSE)
-  , m_noStringList(nullptr)
-  ,
+	: m_textCount(0)
+	, m_maxLabelLen(0)
+	, m_stringInfo(nullptr)
+	, m_stringLUT(nullptr)
+	, m_initialized(FALSE)
+	, m_noStringList(nullptr)
+	,
 #if defined(RTS_DEBUG)
-  m_jabberWockie(FALSE)
-  , m_munkee(FALSE)
-  , m_useStringFile(g_useStringFile)
-  ,
+	m_jabberWockie(FALSE)
+	, m_munkee(FALSE)
+	, m_useStringFile(g_useStringFile)
+	,
 #else
-  m_useStringFile(TRUE)
-  ,
+	m_useStringFile(TRUE)
+	,
 #endif
-  m_mapStringInfo(nullptr)
-  , m_mapStringLUT(nullptr)
-  , m_failed(L"***FATAL*** String Manager failed to initialize properly")
+	m_mapStringInfo(nullptr)
+	, m_mapStringLUT(nullptr)
+	, m_failed(L"***FATAL*** String Manager failed to initialize properly")
 {
 	for (Int i = 0; i < MAX_UITEXT_LENGTH; i++)
 	{

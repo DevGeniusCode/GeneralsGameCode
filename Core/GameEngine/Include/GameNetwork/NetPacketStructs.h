@@ -125,7 +125,7 @@ constexpr const NetPacketFieldType Repeat = 'Z';
 struct NetPacketCommandTypeField
 {
 	NetPacketCommandTypeField()
-	  : fieldType(NetPacketFieldTypes::CommandType)
+		: fieldType(NetPacketFieldTypes::CommandType)
 	{}
 	char fieldType;
 	UnsignedByte commandType;
@@ -134,7 +134,7 @@ struct NetPacketCommandTypeField
 struct NetPacketRelayField
 {
 	NetPacketRelayField()
-	  : fieldType(NetPacketFieldTypes::Relay)
+		: fieldType(NetPacketFieldTypes::Relay)
 	{}
 	char fieldType;
 	UnsignedByte relay;
@@ -143,7 +143,7 @@ struct NetPacketRelayField
 struct NetPacketFrameField
 {
 	NetPacketFrameField()
-	  : fieldType(NetPacketFieldTypes::Frame)
+		: fieldType(NetPacketFieldTypes::Frame)
 	{}
 	char fieldType;
 	UnsignedInt frame;
@@ -152,7 +152,7 @@ struct NetPacketFrameField
 struct NetPacketPlayerIdField
 {
 	NetPacketPlayerIdField()
-	  : fieldType(NetPacketFieldTypes::PlayerId)
+		: fieldType(NetPacketFieldTypes::PlayerId)
 	{}
 	char fieldType;
 	UnsignedByte playerId;
@@ -161,7 +161,7 @@ struct NetPacketPlayerIdField
 struct NetPacketCommandIdField
 {
 	NetPacketCommandIdField()
-	  : fieldType(NetPacketFieldTypes::CommandId)
+		: fieldType(NetPacketFieldTypes::CommandId)
 	{}
 	char fieldType;
 	UnsignedShort commandId;
@@ -170,7 +170,7 @@ struct NetPacketCommandIdField
 struct NetPacketDataField
 {
 	NetPacketDataField()
-	  : fieldType(NetPacketFieldTypes::Data)
+		: fieldType(NetPacketFieldTypes::Data)
 	{}
 	char fieldType;
 };
@@ -178,7 +178,7 @@ struct NetPacketDataField
 struct NetPacketRepeatField
 {
 	NetPacketRepeatField()
-	  : fieldType(NetPacketFieldTypes::Repeat)
+		: fieldType(NetPacketFieldTypes::Repeat)
 	{}
 	char fieldType;
 };

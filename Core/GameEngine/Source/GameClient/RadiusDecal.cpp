@@ -38,13 +38,13 @@
 
 // ------------------------------------------------------------------------------------------------
 RadiusDecalTemplate::RadiusDecalTemplate()
-  : m_shadowType(SHADOW_ALPHA_DECAL)
-  , m_minOpacity(1.0f)
-  , m_maxOpacity(1.0f)
-  , m_opacityThrobTime(LOGICFRAMES_PER_SECOND)
-  , m_color(0)
-  , m_onlyVisibleToOwningPlayer(true)
-  , m_name(AsciiString::TheEmptyString)
+	: m_shadowType(SHADOW_ALPHA_DECAL)
+	, m_minOpacity(1.0f)
+	, m_maxOpacity(1.0f)
+	, m_opacityThrobTime(LOGICFRAMES_PER_SECOND)
+	, m_color(0)
+	, m_onlyVisibleToOwningPlayer(true)
+	, m_name(AsciiString::TheEmptyString)
 {
 }
 
@@ -112,32 +112,32 @@ void RadiusDecalTemplate::xferRadiusDecalTemplate(Xfer* xfer)
 /*static*/ void RadiusDecalTemplate::parseRadiusDecalTemplate(INI* ini, void* instance, void* store, const void* /*userData*/)
 {
 	static const FieldParse dataFieldParse[] =
-	  {
-	    {"Texture", INI::parseAsciiString, nullptr, offsetof(RadiusDecalTemplate, m_name)},
-	    {"Style", INI::parseBitString32, TheShadowNames, offsetof(RadiusDecalTemplate, m_shadowType)},
-	    {"OpacityMin", INI::parsePercentToReal, nullptr, offsetof(RadiusDecalTemplate, m_minOpacity)},
-	    {"OpacityMax", INI::parsePercentToReal, nullptr, offsetof(RadiusDecalTemplate, m_maxOpacity)},
-	    {"OpacityThrobTime", INI::parseDurationUnsignedInt, nullptr, offsetof(RadiusDecalTemplate, m_opacityThrobTime)},
-	    {"Color", INI::parseColorInt, nullptr, offsetof(RadiusDecalTemplate, m_color)},
-	    {"OnlyVisibleToOwningPlayer", INI::parseBool, nullptr, offsetof(RadiusDecalTemplate, m_onlyVisibleToOwningPlayer)},
-	    {nullptr, nullptr, nullptr, 0}};
+		{
+			{"Texture", INI::parseAsciiString, nullptr, offsetof(RadiusDecalTemplate, m_name)},
+			{"Style", INI::parseBitString32, TheShadowNames, offsetof(RadiusDecalTemplate, m_shadowType)},
+			{"OpacityMin", INI::parsePercentToReal, nullptr, offsetof(RadiusDecalTemplate, m_minOpacity)},
+			{"OpacityMax", INI::parsePercentToReal, nullptr, offsetof(RadiusDecalTemplate, m_maxOpacity)},
+			{"OpacityThrobTime", INI::parseDurationUnsignedInt, nullptr, offsetof(RadiusDecalTemplate, m_opacityThrobTime)},
+			{"Color", INI::parseColorInt, nullptr, offsetof(RadiusDecalTemplate, m_color)},
+			{"OnlyVisibleToOwningPlayer", INI::parseBool, nullptr, offsetof(RadiusDecalTemplate, m_onlyVisibleToOwningPlayer)},
+			{nullptr, nullptr, nullptr, 0}};
 
 	ini->initFromINI(store, dataFieldParse);
 }
 
 // ------------------------------------------------------------------------------------------------
 RadiusDecal::RadiusDecal()
-  : m_template(nullptr)
-  , m_decal(nullptr)
-  , m_empty(true)
+	: m_template(nullptr)
+	, m_decal(nullptr)
+	, m_empty(true)
 {
 }
 
 // ------------------------------------------------------------------------------------------------
 RadiusDecal::RadiusDecal(const RadiusDecal& that)
-  : m_template(nullptr)
-  , m_decal(nullptr)
-  , m_empty(true)
+	: m_template(nullptr)
+	, m_decal(nullptr)
+	, m_empty(true)
 {
 	DEBUG_CRASH(("not fully implemented"));
 }

@@ -94,9 +94,9 @@ static Int s_totalOpen = 0;
 
 LocalFile::LocalFile()
 #if USE_BUFFERED_IO
-  : m_file(nullptr)
+	: m_file(nullptr)
 #else
-  : m_handle(-1)
+	: m_handle(-1)
 #endif
 {
 }

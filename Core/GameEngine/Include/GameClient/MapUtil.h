@@ -101,9 +101,9 @@ class MapCache : public std::map<AsciiString, MapMetaData>
 
 public:
 	MapCache()
-	  : m_doCreateStandardMapCacheINI(TRUE)
-	  , m_doLoadStandardMapCacheINI(TRUE)
-	  , m_doLoadUserMapCacheINI(TRUE)
+		: m_doCreateStandardMapCacheINI(TRUE)
+		, m_doLoadStandardMapCacheINI(TRUE)
+		, m_doLoadUserMapCacheINI(TRUE)
 	{}
 
 	void updateCache();

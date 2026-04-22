@@ -367,7 +367,7 @@ private:                                                                        
 	public:                                                                                             \
 		OBJCLASS* m_head;                                                                                 \
 		inline DLINKHEAD_##LISTNAME()                                                                     \
-		  : m_head(0)                                                                                     \
+			: m_head(0)                                                                                     \
 		{}                                                                                                \
 		inline ~DLINKHEAD_##LISTNAME()                                                                    \
 		{ DEBUG_ASSERTCRASH(!m_head, ("destroying dlinkhead still in a list " #LISTNAME)); }              \
@@ -423,8 +423,8 @@ private:                                                                        
 		OBJCLASS* m_prev;                                                                                                                         \
 		OBJCLASS* m_next;                                                                                                                         \
 		inline DLINK_##LISTNAME()                                                                                                                 \
-		  : m_prev(0)                                                                                                                             \
-		  , m_next(0)                                                                                                                             \
+			: m_prev(0)                                                                                                                             \
+			, m_next(0)                                                                                                                             \
 		{}                                                                                                                                        \
 		inline ~DLINK_##LISTNAME()                                                                                                                \
 		{ DEBUG_ASSERTCRASH(!m_prev && !m_next, ("destroying dlink still in a list " #LISTNAME)); }                                               \
@@ -448,8 +448,8 @@ private:
 	GetNextFunc m_getNextFunc; // this is the weird C++ syntax for "pointer-to-member-function"
 public:
 	DLINK_ITERATOR(OBJCLASS* cur, GetNextFunc getNextFunc)
-	  : m_cur(cur)
-	  , m_getNextFunc(getNextFunc)
+		: m_cur(cur)
+		, m_getNextFunc(getNextFunc)
 	{}
 
 	void advance()

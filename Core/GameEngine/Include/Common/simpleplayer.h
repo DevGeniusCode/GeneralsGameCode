@@ -47,8 +47,8 @@ public:
 	//
 public:
 	virtual HRESULT STDMETHODCALLTYPE QueryInterface(
-	  REFIID riid,
-	  void** ppvObject);
+		REFIID riid,
+		void** ppvObject);
 
 	virtual ULONG STDMETHODCALLTYPE AddRef();
 	virtual ULONG STDMETHODCALLTYPE Release();
@@ -58,19 +58,19 @@ public:
 	//
 public:
 	virtual HRESULT STDMETHODCALLTYPE OnSample(
-	  /* [in] */ DWORD dwOutputNum,
-	  /* [in] */ QWORD cnsSampleTime,
-	  /* [in] */ QWORD cnsSampleDuration,
-	  /* [in] */ DWORD dwFlags,
-	  /* [in] */ INSSBuffer __RPC_FAR* pSample,
-	  /* [in] */ void __RPC_FAR* pvContext);
+		/* [in] */ DWORD dwOutputNum,
+		/* [in] */ QWORD cnsSampleTime,
+		/* [in] */ QWORD cnsSampleDuration,
+		/* [in] */ DWORD dwFlags,
+		/* [in] */ INSSBuffer __RPC_FAR* pSample,
+		/* [in] */ void __RPC_FAR* pvContext);
 
 	virtual HRESULT STDMETHODCALLTYPE OnStatus(
-	  /* [in] */ WMT_STATUS Status,
-	  /* [in] */ HRESULT hr,
-	  /* [in] */ WMT_ATTR_DATATYPE dwType,
-	  /* [in] */ BYTE __RPC_FAR* pValue,
-	  /* [in] */ void __RPC_FAR* pvContext);
+		/* [in] */ WMT_STATUS Status,
+		/* [in] */ HRESULT hr,
+		/* [in] */ WMT_ATTR_DATATYPE dwType,
+		/* [in] */ BYTE __RPC_FAR* pValue,
+		/* [in] */ void __RPC_FAR* pvContext);
 
 	//
 	// Helper Methods
@@ -81,11 +81,11 @@ protected:
 	void OnWaveOutMsg(UINT uMsg, DWORD dwParam1, DWORD dwParam2);
 
 	static void CALLBACK WaveProc(
-	  HWAVEOUT hwo,
-	  UINT uMsg,
-	  DWORD dwInstance,
-	  DWORD dwParam1,
-	  DWORD dwParam2);
+		HWAVEOUT hwo,
+		UINT uMsg,
+		DWORD dwInstance,
+		DWORD dwParam1,
+		DWORD dwParam2);
 
 	HRESULT AddWaveHeader(LPWAVEHDR pwh);
 	void RemoveWaveHeaders();

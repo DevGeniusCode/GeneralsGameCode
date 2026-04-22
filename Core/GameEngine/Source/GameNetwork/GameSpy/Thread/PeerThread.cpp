@@ -178,7 +178,7 @@ class PeerThreadClass : public ThreadClass
 
 public:
 	PeerThreadClass()
-	  : ThreadClass()
+		: ThreadClass()
 	{
 		m_roomJoined = m_allowObservers = m_hasPassword = FALSE;
 		m_useStats = TRUE;
@@ -748,10 +748,10 @@ static const char* ErrorTypeToString(qr2_error_t error)
 }
 
 static void QRServerKeyCallback(
-  PEER peer,
-  int key,
-  qr2_buffer_t buffer,
-  void* param)
+	PEER peer,
+	int key,
+	qr2_buffer_t buffer,
+	void* param)
 {
 	// DEBUG_LOG(("QR_SERVER_KEY | %d (%s)", key, qr2_registered_key_list[key]));
 	PeerThreadClass* t = (PeerThreadClass*)param;
@@ -851,11 +851,11 @@ static void QRServerKeyCallback(
 }
 
 static void QRPlayerKeyCallback(
-  PEER peer,
-  int key,
-  int index,
-  qr2_buffer_t buffer,
-  void* param)
+	PEER peer,
+	int key,
+	int index,
+	qr2_buffer_t buffer,
+	void* param)
 {
 	// DEBUG_LOG(("QR_PLAYER_KEY | %d | %d (%s)", key, index, qr2_registered_key_list[key]));
 	PeerThreadClass* t = (PeerThreadClass*)param;
@@ -923,11 +923,11 @@ static void QRPlayerKeyCallback(
 }
 
 static void QRTeamKeyCallback(
-  PEER peer,
-  int key,
-  int index,
-  qr2_buffer_t buffer,
-  void* param)
+	PEER peer,
+	int key,
+	int index,
+	qr2_buffer_t buffer,
+	void* param)
 {
 	// DEBUG_LOG(("QR_TEAM_KEY | %d | %d", key, index));
 
@@ -945,10 +945,10 @@ static void QRTeamKeyCallback(
 }
 
 static void QRKeyListCallback(
-  PEER peer,
-  qr2_key_type type,
-  qr2_keybuffer_t keyBuffer,
-  void* param)
+	PEER peer,
+	qr2_key_type type,
+	qr2_keybuffer_t keyBuffer,
+	void* param)
 {
 	DEBUG_LOG(("QR_KEY_LIST | %s", KeyTypeToString(type)));
 
@@ -1000,9 +1000,9 @@ static void QRKeyListCallback(
 }
 
 static int QRCountCallback(
-  PEER peer,
-  qr2_key_type type,
-  void* param)
+	PEER peer,
+	qr2_key_type type,
+	void* param)
 {
 	PeerThreadClass* t = (PeerThreadClass*)param;
 	if (!t)
@@ -1042,10 +1042,10 @@ void PeerThreadClass::stopHostingAlready(PEER peer)
 }
 
 static void QRAddErrorCallback(
-  PEER peer,
-  qr2_error_t error,
-  char* errorString,
-  void* param)
+	PEER peer,
+	qr2_error_t error,
+	char* errorString,
+	void* param)
 {
 	DEBUG_LOG(("QR_ADD_ERROR | %s | %s", ErrorTypeToString(error), errorString));
 	PeerResponse resp;
@@ -1054,36 +1054,36 @@ static void QRAddErrorCallback(
 }
 
 static void QRNatNegotiateCallback(
-  PEER peer,
-  int cookie,
-  void* param)
+	PEER peer,
+	int cookie,
+	void* param)
 {
 	DEBUG_LOG(("QR_NAT_NEGOTIATE | 0x%08X", cookie));
 }
 
 static void KickedCallback(
-  PEER peer,
-  RoomType roomType,
-  const char* nick,
-  const char* reason,
-  void* param)
+	PEER peer,
+	RoomType roomType,
+	const char* nick,
+	const char* reason,
+	void* param)
 {
 	DEBUG_LOG(("Kicked from %d by %s: \"%s\"", roomType, nick, reason));
 }
 
 static void NewPlayerListCallback(
-  PEER peer,
-  RoomType roomType,
-  void* param)
+	PEER peer,
+	RoomType roomType,
+	void* param)
 {
 	DEBUG_LOG(("NewPlayerListCallback"));
 }
 
 static void AuthenticateCDKeyCallback(
-  PEER peer,
-  int result,
-  const char* message,
-  void* param)
+	PEER peer,
+	int result,
+	const char* message,
+	void* param)
 {
 	DEBUG_LOG(("CD Key Result: %s (%d) %X", message, result, param));
 #ifdef SERVER_DEBUGGING
@@ -1237,7 +1237,7 @@ void PeerThreadClass::Thread_Function()
 		const Int NumKeys = 15;
 #endif
 		unsigned char allKeysArray[NumKeys] = {
-		  /*
+			/*
 		  PID__KEY,
 		  NAME__KEY,
 		  WINS__KEY,
@@ -1245,23 +1245,23 @@ void PeerThreadClass::Thread_Function()
 		  FACTION__KEY,
 		  COLOR__KEY,
 		  */
-		  MAPNAME_KEY,
-		  GAMEVER_KEY,
-		  GAMENAME_KEY,
-		  EXECRC_KEY,
-		  INICRC_KEY,
-		  PW_KEY,
-		  OBS_KEY,
+			MAPNAME_KEY,
+			GAMEVER_KEY,
+			GAMENAME_KEY,
+			EXECRC_KEY,
+			INICRC_KEY,
+			PW_KEY,
+			OBS_KEY,
 #if !RTS_GENERALS
-		  USE_STATS_KEY,
+			USE_STATS_KEY,
 #endif
-		  LADIP_KEY,
-		  LADPORT_KEY,
-		  PINGSTR_KEY,
-		  NUMOBS_KEY,
-		  NUMPLAYER_KEY,
-		  MAXPLAYER_KEY,
-		  HOSTNAME_KEY};
+			LADIP_KEY,
+			LADPORT_KEY,
+			PINGSTR_KEY,
+			NUMOBS_KEY,
+			NUMPLAYER_KEY,
+			MAXPLAYER_KEY,
+			HOSTNAME_KEY};
 
 		/*
 		const char *allKeys = "\\pid_\\mapname\\gamever\\gamename" \

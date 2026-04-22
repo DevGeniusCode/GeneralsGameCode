@@ -140,7 +140,7 @@ private:
 
 public:
 	MultiIniFieldParse()
-	  : m_count(0)
+		: m_count(0)
 	{
 		for (Int i = 0; i < MAX_MULTI_FIELDS; i++)
 			m_extraOffset[i] = 0;

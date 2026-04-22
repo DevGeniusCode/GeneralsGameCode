@@ -387,7 +387,7 @@ inline char* AsciiString::peek() const
 
 // -----------------------------------------------------
 inline AsciiString::AsciiString()
-  : m_data(0)
+	: m_data(0)
 {
 	validate();
 }

@@ -112,8 +112,8 @@ public:
 	UnsignedInt m_size;
 
 	ArchivedFileInfo()
-	  : m_offset(0)
-	  , m_size(0)
+		: m_offset(0)
+		, m_size(0)
 	{
 	}
 };
@@ -155,7 +155,7 @@ protected:
 	struct ArchivedDirectoryInfoResult
 	{
 		ArchivedDirectoryInfoResult()
-		  : dirInfo(nullptr)
+			: dirInfo(nullptr)
 		{}
 		Bool valid() const { return dirInfo != nullptr; }
 

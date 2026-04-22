@@ -280,13 +280,13 @@ struct string_key
 	}
 
 	string_key(const_pointer s)
-	  : storage(s)
-	  , cstr(storage.str())
+		: storage(s)
+		, cstr(storage.str())
 	{}
 
 	string_key(const String& s)
-	  : storage(s)
-	  , cstr(storage.str())
+		: storage(s)
+		, cstr(storage.str())
 	{}
 
 	const_pointer c_str() const

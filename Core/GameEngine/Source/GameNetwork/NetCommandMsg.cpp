@@ -307,7 +307,7 @@ NetCommandMsg::Select NetAckCommandMsg::getSmallNetPacketSelect() const
  * Constructor.  Sets the member variables according to the given message.
  */
 NetAckBothCommandMsg::NetAckBothCommandMsg(NetCommandMsg* msg)
-  : NetAckCommandMsg(msg)
+	: NetAckCommandMsg(msg)
 {
 	m_commandType = NETCOMMANDTYPE_ACKBOTH;
 }
@@ -334,7 +334,7 @@ NetAckBothCommandMsg::~NetAckBothCommandMsg()
  * Constructor.  Sets the member variables according to the given message.
  */
 NetAckStage1CommandMsg::NetAckStage1CommandMsg(NetCommandMsg* msg)
-  : NetAckCommandMsg(msg)
+	: NetAckCommandMsg(msg)
 {
 	m_commandType = NETCOMMANDTYPE_ACKSTAGE1;
 }
@@ -361,7 +361,7 @@ NetAckStage1CommandMsg::~NetAckStage1CommandMsg()
  * Constructor.  Sets the member variables according to the given message.
  */
 NetAckStage2CommandMsg::NetAckStage2CommandMsg(NetCommandMsg* msg)
-  : NetAckCommandMsg(msg)
+	: NetAckCommandMsg(msg)
 {
 	m_commandType = NETCOMMANDTYPE_ACKSTAGE2;
 }

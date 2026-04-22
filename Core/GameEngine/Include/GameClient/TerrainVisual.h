@@ -166,19 +166,19 @@ typedef enum _TerrainLOD CPP_11( : Int)
 } TerrainLOD;
 #ifdef DEFINE_TERRAIN_LOD_NAMES
 static const char* const TerrainLODNames[] =
-  {
-    "NONE",
-    "MIN",
-    "STRETCH_NO_CLOUDS",
-    "HALF_CLOUDS",
-    "NO_CLOUDS",
-    "STRETCH_CLOUDS",
-    "NO_WATER",
-    "MAX",
-    "AUTOMATIC",
-    "DISABLE",
+	{
+		"NONE",
+		"MIN",
+		"STRETCH_NO_CLOUDS",
+		"HALF_CLOUDS",
+		"NO_CLOUDS",
+		"STRETCH_CLOUDS",
+		"NO_WATER",
+		"MAX",
+		"AUTOMATIC",
+		"DISABLE",
 
-    nullptr};
+		nullptr};
 static_assert(ARRAY_SIZE(TerrainLODNames) == TERRAIN_LOD_NUM_TYPES + 1, "Incorrect array size");
 #endif // end DEFINE_TERRAIN_LOD_NAMES
 
@@ -186,7 +186,7 @@ static_assert(ARRAY_SIZE(TerrainLODNames) == TERRAIN_LOD_NUM_TYPES + 1, "Incorre
 /** Device independent implementation for visual terrain */
 //-------------------------------------------------------------------------------------------------
 class TerrainVisual : public Snapshot,
-                      public SubsystemInterface
+											public SubsystemInterface
 {
 
 public:
@@ -257,9 +257,9 @@ public:
 	virtual void removeBibHighlighting() = 0;
 
 	virtual void removeTreesAndPropsForConstruction(
-	  const Coord3D* pos,
-	  const GeometryInfo& geom,
-	  Real angle) = 0;
+		const Coord3D* pos,
+		const GeometryInfo& geom,
+		Real angle) = 0;
 
 	virtual void addProp(const ThingTemplate* tt, const Coord3D* pos, Real angle) = 0;
 

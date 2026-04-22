@@ -31,20 +31,20 @@
 #include "Common/GameCommon.h"
 
 const char* const TheVeterancyNames[] =
-  {
-    "REGULAR",
-    "VETERAN",
-    "ELITE",
-    "HEROIC",
-    nullptr};
+	{
+		"REGULAR",
+		"VETERAN",
+		"ELITE",
+		"HEROIC",
+		nullptr};
 static_assert(ARRAY_SIZE(TheVeterancyNames) == LEVEL_COUNT + 1, "Incorrect array size");
 
 const char* const TheRelationshipNames[] =
-  {
-    "ENEMIES",
-    "NEUTRAL",
-    "ALLIES",
-    nullptr};
+	{
+		"ENEMIES",
+		"NEUTRAL",
+		"ALLIES",
+		nullptr};
 static_assert(ARRAY_SIZE(TheRelationshipNames) == RELATIONSHIP_COUNT + 1, "Incorrect array size");
 
 //-------------------------------------------------------------------------------------------------

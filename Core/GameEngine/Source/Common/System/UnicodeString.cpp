@@ -64,7 +64,7 @@ void UnicodeString::validate() const
 
 // -----------------------------------------------------
 UnicodeString::UnicodeString(const UnicodeString& stringSrc)
-  : m_data(stringSrc.m_data)
+	: m_data(stringSrc.m_data)
 {
 	ScopedCriticalSection scopedCriticalSection(TheUnicodeStringCriticalSection);
 	if (m_data)
@@ -147,7 +147,7 @@ void UnicodeString::releaseBuffer()
 
 // -----------------------------------------------------
 UnicodeString::UnicodeString(const WideChar* s)
-  : m_data(nullptr)
+	: m_data(nullptr)
 {
 	int len = s ? (int)wcslen(s) : 0;
 	if (len > 0)
@@ -159,7 +159,7 @@ UnicodeString::UnicodeString(const WideChar* s)
 
 // -----------------------------------------------------
 UnicodeString::UnicodeString(const WideChar* s, int len)
-  : m_data(nullptr)
+	: m_data(nullptr)
 {
 	if (len > 0)
 	{

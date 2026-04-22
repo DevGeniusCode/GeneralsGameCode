@@ -205,7 +205,7 @@ class DynamicAudioEventRTS : public MemoryPoolObject
 public:
 	DynamicAudioEventRTS() {}
 	DynamicAudioEventRTS(const AudioEventRTS& a)
-	  : m_event(a)
+		: m_event(a)
 	{}
 
 	AudioEventRTS m_event;

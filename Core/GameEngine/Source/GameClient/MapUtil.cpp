@@ -583,11 +583,11 @@ Bool MapCache::loadMapsFromDisk(const AsciiString& mapDir, Bool isOfficial, Bool
 }
 
 Bool MapCache::addMap(
-  const AsciiString& mapDir,
-  const AsciiString& fname,
-  const AsciiString& lowerFname,
-  FileInfo& fileInfo,
-  Bool isOfficial)
+	const AsciiString& mapDir,
+	const AsciiString& fname,
+	const AsciiString& lowerFname,
+	FileInfo& fileInfo,
+	Bool isOfficial)
 {
 	MapCache::iterator it = find(lowerFname);
 	if (it != end())
@@ -756,20 +756,20 @@ static void buildMapListForNumPlayers(MapNameList& outMapNames, MapDisplayToFile
 struct MapListBoxData
 {
 	MapListBoxData()
-	  : listbox(nullptr)
-	  , numLength(0)
-	  , numColumns(0)
-	  , w(10)
-	  , h(10)
-	  , color(GameMakeColor(255, 255, 255, 255))
-	  , battleHonors(nullptr)
-	  , easyImage(nullptr)
-	  , mediumImage(nullptr)
-	  , brutalImage(nullptr)
-	  , maxBrutalImage(nullptr)
-	  , mapToSelect()
-	  , selectionIndex(0) // always select *something*
-	  , isMultiplayer(false)
+		: listbox(nullptr)
+		, numLength(0)
+		, numColumns(0)
+		, w(10)
+		, h(10)
+		, color(GameMakeColor(255, 255, 255, 255))
+		, battleHonors(nullptr)
+		, easyImage(nullptr)
+		, mediumImage(nullptr)
+		, brutalImage(nullptr)
+		, maxBrutalImage(nullptr)
+		, mapToSelect()
+		, selectionIndex(0) // always select *something*
+		, isMultiplayer(false)
 	{
 	}
 
@@ -791,10 +791,10 @@ struct MapListBoxData
 
 //-------------------------------------------------------------------------------------------------
 static Bool addMapToMapListbox(
-  MapListBoxData& lbData,
-  const AsciiString& mapDir,
-  const AsciiString& mapName,
-  const MapMetaData& mapMetaData)
+	MapListBoxData& lbData,
+	const AsciiString& mapDir,
+	const AsciiString& mapName,
+	const MapMetaData& mapMetaData)
 {
 	const Bool mapOk = mapName.startsWithNoCase(mapDir.str()) && lbData.isMultiplayer == mapMetaData.m_isMultiplayer && !mapMetaData.m_displayName.isEmpty();
 
@@ -871,10 +871,10 @@ static Bool addMapToMapListbox(
 
 //-------------------------------------------------------------------------------------------------
 static Bool addMapCollectionToMapListbox(
-  MapListBoxData& lbData,
-  const AsciiString& mapDir,
-  const MapNameList& mapNames,
-  const MapDisplayToFileNameList& fileNames)
+	MapListBoxData& lbData,
+	const AsciiString& mapDir,
+	const MapNameList& mapNames,
+	const MapDisplayToFileNameList& fileNames)
 {
 	MapNameList::const_iterator mapNameIt = mapNames.begin();
 

@@ -103,7 +103,7 @@ ArchiveFile::~ArchiveFile()
 }
 
 ArchiveFile::ArchiveFile()
-  : m_file(nullptr)
+	: m_file(nullptr)
 {
 }
 

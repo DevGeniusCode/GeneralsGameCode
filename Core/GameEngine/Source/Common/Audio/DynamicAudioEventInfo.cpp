@@ -38,7 +38,7 @@ DynamicAudioEventInfo::DynamicAudioEventInfo()
 
 /** Initialize AudioEventInfo portion of DynamicAudioEventInfo as copy; leave remainder uninitialized */
 DynamicAudioEventInfo::DynamicAudioEventInfo(const AudioEventInfo& baseInfo)
-  : AudioEventInfo(baseInfo)
+	: AudioEventInfo(baseInfo)
 {
 }
 

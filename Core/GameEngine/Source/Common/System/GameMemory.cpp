@@ -79,7 +79,7 @@ DECLARE_PERF_TIMER(MemoryPoolInitFilling)
 
 #ifdef MEMORYPOOL_DEBUG
 
-  /**
+	/**
     if you define MEMORYPOOL_INTENSE_VERIFY, we do intensive verifications after
     nearly every memory operation. this is OFF by default, since it slows down
     things a lot, but is worth turning on for really obscure memory corruption issues.
@@ -88,7 +88,7 @@ DECLARE_PERF_TIMER(MemoryPoolInitFilling)
 		#define NO_MEMORYPOOL_INTENSE_VERIFY
 	#endif
 
-  /**
+	/**
     if you define MEMORYPOOL_CHECK_BLOCK_OWNERSHIP, we do lots of calls to verify
     that a block actually belongs to the pool it is called with. this is great
     for debugging, but can be realllly slow, so is off by default.
@@ -107,7 +107,7 @@ enum
 	IGNORE_LEAKS = 0x0001
 };
 
-  // in debug mode (but not internal), save stacktraces too
+	// in debug mode (but not internal), save stacktraces too
 	#if !defined(MEMORYPOOL_CHECKPOINTING) && defined(MEMORYPOOL_STACKTRACE) && defined(RTS_DEBUG)
 		#define MEMORYPOOL_SINGLEBLOCK_GETS_STACKTRACE
 	#endif
@@ -181,10 +181,10 @@ struct UsedNPeak
 {
 	Int used, peak, waste, peakwaste;
 	UsedNPeak()
-	  : used(0)
-	  , peak(0)
-	  , waste(0)
-	  , peakwaste(0)
+		: used(0)
+		, peak(0)
+		, waste(0)
+		, peakwaste(0)
 	{}
 };
 
@@ -371,10 +371,10 @@ public:
 	#endif
 
 	static BlockCheckpointInfo* addToList(
-	  BlockCheckpointInfo** pHead,
-	  const char* debugLiteralTagString,
-	  Int allocCheckpoint,
-	  Int blockSize);
+		BlockCheckpointInfo** pHead,
+		const char* debugLiteralTagString,
+		Int allocCheckpoint,
+		Int blockSize);
 
 	static void freeList(BlockCheckpointInfo** pHead);
 
@@ -809,10 +809,10 @@ Bool BlockCheckpointInfo::shouldBeInReport(Int flags, Int startCheckpoint, Int e
   if there is not enough memory to allocate a new checkpointinfo, it will quietly return null.)
 */
 /*static*/ BlockCheckpointInfo* BlockCheckpointInfo::addToList(
-  BlockCheckpointInfo** pHead,
-  const char* debugLiteralTagString,
-  Int allocCheckpoint,
-  Int blockSize)
+	BlockCheckpointInfo** pHead,
+	const char* debugLiteralTagString,
+	Int allocCheckpoint,
+	Int blockSize)
 {
 	DEBUG_ASSERTCRASH(debugLiteralTagString != FREE_SINGLEBLOCK_TAG_STRING, ("bad tag string"));
 
@@ -925,10 +925,10 @@ void MemoryPoolSingleBlock::initBlock(Int logicalSize, MemoryPoolBlob* owningBlo
   when allocating an extraordinarily large block.
 */
 /*static*/ MemoryPoolSingleBlock* MemoryPoolSingleBlock::rawAllocateSingleBlock(
-  MemoryPoolSingleBlock** pRawListHead,
-  Int logicalSize,
-  MemoryPoolFactory* owningFactory
-    DECLARE_LITERALSTRING_ARG2)
+	MemoryPoolSingleBlock** pRawListHead,
+	Int logicalSize,
+	MemoryPoolFactory* owningFactory
+		DECLARE_LITERALSTRING_ARG2)
 {
 	MemoryPoolSingleBlock* block = (MemoryPoolSingleBlock*)::sysAllocateDoNotZero(calcRawBlockSize(logicalSize));
 	block->initBlock(logicalSize, nullptr, owningFactory PASS_LITERALSTRING_ARG2);
@@ -1151,13 +1151,13 @@ void MemoryPoolSingleBlock::debugFillInWalls()
   fill in safe default values.
 */
 MemoryPoolBlob::MemoryPoolBlob()
-  : m_owningPool(nullptr)
-  , m_nextBlob(nullptr)
-  , m_prevBlob(nullptr)
-  , m_firstFreeBlock(nullptr)
-  , m_usedBlocksInBlob(0)
-  , m_totalBlocksInBlob(0)
-  , m_blockData(nullptr)
+	: m_owningPool(nullptr)
+	, m_nextBlob(nullptr)
+	, m_prevBlob(nullptr)
+	, m_firstFreeBlock(nullptr)
+	, m_usedBlocksInBlob(0)
+	, m_totalBlocksInBlob(0)
+	, m_blockData(nullptr)
 {
 }
 
@@ -1390,8 +1390,8 @@ void MemoryPoolBlob::debugResetCheckpoints()
   init fields of Checkpointable to safe values.
 */
 Checkpointable::Checkpointable()
-  : m_firstCheckpointInfo(nullptr)
-  , m_cpiEverFailed(false)
+	: m_firstCheckpointInfo(nullptr)
+	, m_cpiEverFailed(false)
 {
 }
 #endif
@@ -1417,9 +1417,9 @@ Checkpointable::~Checkpointable()
   enough memory, and sets a flag to indicate our checkpointinfo is not complete.
 */
 BlockCheckpointInfo* Checkpointable::debugAddCheckpointInfo(
-  const char* debugLiteralTagString,
-  Int allocCheckpoint,
-  Int blockSize)
+	const char* debugLiteralTagString,
+	Int allocCheckpoint,
+	Int blockSize)
 {
 
 	BlockCheckpointInfo* bi = BlockCheckpointInfo::addToList(&m_firstCheckpointInfo, debugLiteralTagString,
@@ -1493,18 +1493,18 @@ void Checkpointable::debugResetCheckpoints()
   init to safe values.
 */
 MemoryPool::MemoryPool()
-  : m_factory(nullptr)
-  , m_nextPoolInFactory(nullptr)
-  , m_poolName("")
-  , m_allocationSize(0)
-  , m_initialAllocationCount(0)
-  , m_overflowAllocationCount(0)
-  , m_usedBlocksInPool(0)
-  , m_totalBlocksInPool(0)
-  , m_peakUsedBlocksInPool(0)
-  , m_firstBlob(nullptr)
-  , m_lastBlob(nullptr)
-  , m_firstBlobWithFreeBlocks(nullptr)
+	: m_factory(nullptr)
+	, m_nextPoolInFactory(nullptr)
+	, m_poolName("")
+	, m_allocationSize(0)
+	, m_initialAllocationCount(0)
+	, m_overflowAllocationCount(0)
+	, m_usedBlocksInPool(0)
+	, m_totalBlocksInPool(0)
+	, m_peakUsedBlocksInPool(0)
+	, m_firstBlob(nullptr)
+	, m_lastBlob(nullptr)
+	, m_firstBlobWithFreeBlocks(nullptr)
 {
 }
 
@@ -1997,11 +1997,11 @@ void MemoryPool::debugResetCheckpoints()
   init the DMA to safe values.
 */
 DynamicMemoryAllocator::DynamicMemoryAllocator()
-  : m_factory(nullptr)
-  , m_nextDmaInFactory(nullptr)
-  , m_numPools(0)
-  , m_usedBlocksInDma(0)
-  , m_rawBlocks(nullptr)
+	: m_factory(nullptr)
+	, m_nextDmaInFactory(nullptr)
+	, m_numPools(0)
+	, m_usedBlocksInDma(0)
+	, m_rawBlocks(nullptr)
 {
 	for (Int i = 0; i < MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS; i++)
 		m_pools[i] = nullptr;
@@ -2014,14 +2014,14 @@ DynamicMemoryAllocator::DynamicMemoryAllocator()
 void DynamicMemoryAllocator::init(MemoryPoolFactory* factory, Int numSubPools, const PoolInitRec pParms[])
 {
 	const PoolInitRec defaultDMA[7] =
-	  {
-	    {"dmaPool_16", 16, 64, 64},
-	    {"dmaPool_32", 32, 64, 64},
-	    {"dmaPool_64", 64, 64, 64},
-	    {"dmaPool_128", 128, 64, 64},
-	    {"dmaPool_256", 256, 64, 64},
-	    {"dmaPool_512", 512, 64, 64},
-	    {"dmaPool_1024", 1024, 64, 64}};
+		{
+			{"dmaPool_16", 16, 64, 64},
+			{"dmaPool_32", 32, 64, 64},
+			{"dmaPool_64", 64, 64, 64},
+			{"dmaPool_128", 128, 64, 64},
+			{"dmaPool_256", 256, 64, 64},
+			{"dmaPool_512", 512, 64, 64},
+			{"dmaPool_1024", 1024, 64, 64}};
 
 	if (numSubPools == 0 || pParms == nullptr)
 	{
@@ -2572,16 +2572,16 @@ void DynamicMemoryAllocator::debugDmaInfoReport(FILE* fp)
   init the factory to safe values.
 */
 MemoryPoolFactory::MemoryPoolFactory()
-  : m_firstPoolInFactory(nullptr)
-  , m_firstDmaInFactory(nullptr)
+	: m_firstPoolInFactory(nullptr)
+	, m_firstDmaInFactory(nullptr)
 #ifdef MEMORYPOOL_CHECKPOINTING
-  , m_curCheckpoint(0)
+	, m_curCheckpoint(0)
 #endif
 #ifdef MEMORYPOOL_DEBUG
-  , m_usedBytes(0)
-  , m_physBytes(0)
-  , m_peakUsedBytes(0)
-  , m_peakPhysBytes(0)
+	, m_usedBytes(0)
+	, m_physBytes(0)
+	, m_peakUsedBytes(0)
+	, m_peakPhysBytes(0)
 #endif
 {
 #ifdef MEMORYPOOL_DEBUG
@@ -2775,13 +2775,13 @@ void MemoryPoolFactory::reset()
 //-----------------------------------------------------------------------------
 #ifdef MEMORYPOOL_DEBUG
 static const char* s_specialPrefixes[MAX_SPECIAL_USED] =
-  {
-    "Misc", // the catchall for stuff that doesn't match others
-    "W3D_",
-    "W3A_",
-    "STL_",
-    "STR_",
-    nullptr};
+	{
+		"Misc", // the catchall for stuff that doesn't match others
+		"W3D_",
+		"W3A_",
+		"STL_",
+		"STR_",
+		nullptr};
 
 #endif
 

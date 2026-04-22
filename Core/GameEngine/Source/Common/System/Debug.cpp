@@ -120,7 +120,7 @@ char* TheCurrentIgnoreCrashPtr = nullptr;
 #ifdef DEBUG_LOGGING
 UnsignedInt DebugLevelMask = 0;
 const char* TheDebugLevels[DEBUG_LEVEL_MAX] = {
-  "NET"};
+	"NET"};
 #endif
 
 // ----------------------------------------------------------------------------

@@ -43,8 +43,8 @@ extern CComModule _Module;
 
 template <class T, class C, const IID* I>
 class FEBDispatch : public CComObjectRootEx<CComSingleThreadModel>,
-                    public CComCoClass<T>,
-                    public C
+										public CComCoClass<T>,
+										public C
 {
 public:
 	BEGIN_COM_MAP(T)

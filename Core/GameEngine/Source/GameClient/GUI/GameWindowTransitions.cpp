@@ -60,12 +60,12 @@
 //-----------------------------------------------------------------------------
 GameWindowTransitionsHandler* TheTransitionHandler = nullptr;
 const FieldParse GameWindowTransitionsHandler::m_gameWindowTransitionsFieldParseTable[] =
-  {
+	{
 
-    {"Window", GameWindowTransitionsHandler::parseWindow, nullptr, 0},
-    {"FireOnce", INI::parseBool, nullptr, offsetof(TransitionGroup, m_fireOnce)},
+		{"Window", GameWindowTransitionsHandler::parseWindow, nullptr, 0},
+		{"FireOnce", INI::parseBool, nullptr, offsetof(TransitionGroup, m_fireOnce)},
 
-    {nullptr, nullptr, nullptr, 0}
+		{nullptr, nullptr, nullptr, 0}
 
 };
 
@@ -561,11 +561,11 @@ TransitionGroup* GameWindowTransitionsHandler::findGroup(AsciiString groupName)
 void GameWindowTransitionsHandler::parseWindow(INI* ini, void* instance, void* store, const void* userData)
 {
 	static const FieldParse myFieldParse[] =
-	  {
-	    {"WinName", INI::parseAsciiString, nullptr, offsetof(TransitionWindow, m_winName)},
-	    {"Style", INI::parseLookupList, TransitionStyleNames, offsetof(TransitionWindow, m_style)},
-	    {"FrameDelay", INI::parseInt, nullptr, offsetof(TransitionWindow, m_frameDelay)},
-	    {nullptr, nullptr, nullptr, 0}};
+		{
+			{"WinName", INI::parseAsciiString, nullptr, offsetof(TransitionWindow, m_winName)},
+			{"Style", INI::parseLookupList, TransitionStyleNames, offsetof(TransitionWindow, m_style)},
+			{"FrameDelay", INI::parseInt, nullptr, offsetof(TransitionWindow, m_frameDelay)},
+			{nullptr, nullptr, nullptr, 0}};
 	TransitionWindow* transWin = NEW TransitionWindow;
 	ini->initFromINI(transWin, myFieldParse);
 	((TransitionGroup*)instance)->addWindow(transWin);

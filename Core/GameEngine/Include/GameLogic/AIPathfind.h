@@ -259,8 +259,8 @@ class PathfindCellList
 
 public:
 	PathfindCellList()
-	  : m_head(nullptr)
-	  , m_tail(nullptr)
+		: m_head(nullptr)
+		, m_tail(nullptr)
 	{}
 
 #if RETAIL_COMPATIBLE_PATHFINDING
