@@ -30,7 +30,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // USER INCLUDES //////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/Upgrade.h"
 #include "Common/GameState.h"
 #include "Common/Xfer.h"
@@ -742,9 +742,9 @@ void Xfer::xferUpgradeMask(UpgradeMaskType* upgradeMaskData)
 		// just xfer implementation the data itself
 #if RETAIL_COMPATIBLE_CRC
 	#if RTS_GENERALS
-		xferImplementation(upgradeMaskData, 8); // The original upgrade mask was 8 bytes in Generals.
+		xferImplementation(upgradeMaskData, 8);    // The original upgrade mask was 8 bytes in Generals.
 	#else
-		xferImplementation(upgradeMaskData, 16); // The original upgrade mask was 16 bytes in Zero Hour.
+		xferImplementation(upgradeMaskData, 16);    // The original upgrade mask was 16 bytes in Zero Hour.
 	#endif
 #else
 		xferImplementation(upgradeMaskData, sizeof(UpgradeMaskType));

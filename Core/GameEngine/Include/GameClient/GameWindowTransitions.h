@@ -130,10 +130,10 @@ public:
 	Int getFrameLength() { return m_frameLength; }
 
 protected:
-	Int m_frameLength; // how many frames does this thing take.
-	Bool m_isFinished; // when we finish we set this
+	Int m_frameLength;    // how many frames does this thing take.
+	Bool m_isFinished;    // when we finish we set this
 	Bool m_isForward;
-	Bool m_isReversed; // when we reverse we set this
+	Bool m_isReversed;    // when we reverse we set this
 	GameWindow* m_win;
 };
 
@@ -155,7 +155,7 @@ protected:
 	enum
 	{
 		TEXTONFRAMETRANSITION_START = 0,
-		TEXTONFRAMETRANSITION_END = 1 // Max text type we'll allow.
+		TEXTONFRAMETRANSITION_END = 1    // Max text type we'll allow.
 	};
 };
 
@@ -178,7 +178,7 @@ protected:
 	{
 		REVERSESOUNDTRANSITION_START = 0,
 		REVERSESOUNDTRANSITION_FIRESOUND = 1,
-		REVERSESOUNDTRANSITION_END = 2 // Max text type we'll allow.
+		REVERSESOUNDTRANSITION_END = 2    // Max text type we'll allow.
 	};
 };
 
@@ -200,7 +200,7 @@ protected:
 	enum
 	{
 		FULLFADETRANSITION_START = 0,
-		FULLFADETRANSITION_END = 10 // Max text type we'll allow.
+		FULLFADETRANSITION_END = 10    // Max text type we'll allow.
 	};
 	ICoord2D m_pos;
 	ICoord2D m_size;
@@ -226,7 +226,7 @@ protected:
 	{
 		CONTROLBARARROWTRANSITION_START = 0,
 		CONTROLBARARROWTRANSITION_BEGIN_FADE = 16,
-		CONTROLBARARROWTRANSITION_END = 22 // Max text type we'll allow.
+		CONTROLBARARROWTRANSITION_END = 22    // Max text type we'll allow.
 	};
 	ICoord2D m_pos;
 	ICoord2D m_incrementPos;
@@ -254,7 +254,7 @@ protected:
 	enum
 	{
 		SCREENFADETRANSITION_START = 0,
-		SCREENFADETRANSITION_END = 30 // Max text type we'll allow.
+		SCREENFADETRANSITION_END = 30    // Max text type we'll allow.
 	};
 	ICoord2D m_pos;
 	ICoord2D m_size;
@@ -279,7 +279,7 @@ protected:
 	enum
 	{
 		COUNTUPTRANSITION_START = 0,
-		COUNTUPTRANSITION_END = 30 // Max text type we'll allow.
+		COUNTUPTRANSITION_END = 30    // Max text type we'll allow.
 	};
 	ICoord2D m_pos;
 	ICoord2D m_size;
@@ -315,7 +315,7 @@ protected:
 	enum
 	{
 		TEXTTYPETRANSITION_START = 0,
-		TEXTTYPETRANSITION_END = 30 // Max text type we'll allow.
+		TEXTTYPETRANSITION_END = 30    // Max text type we'll allow.
 	};
 	ICoord2D m_pos;
 	ICoord2D m_size;
@@ -596,7 +596,7 @@ protected:
 		BUTTONFLASHTRANSITION_FADE_TO_GRADE_OUT_2 = BUTTONFLASHTRANSITION_FADE_TO_GRADE_OUT_1 + 1,
 		BUTTONFLASHTRANSITION_FADE_TO_GRADE_OUT_3 = BUTTONFLASHTRANSITION_FADE_TO_GRADE_OUT_2 + 1,
 		BUTTONFLASHTRANSITION_FADE_TO_GRADE_OUT_4 = BUTTONFLASHTRANSITION_FADE_TO_GRADE_OUT_3 + 1,
-		BUTTONFLASHTRANSITION_END, // this is the end of the sequence, we need some special defines... well put them below here
+		BUTTONFLASHTRANSITION_END,    // this is the end of the sequence, we need some special defines... well put them below here
 		BUTTONFLASHTRANSITION_SHOW_BACKGROUND
 	};
 	ICoord2D m_pos;
@@ -624,14 +624,14 @@ public:
 
 	// INI parsed vars
 	AsciiString m_winName;
-	Int m_frameDelay; // what frame number we start on
-	Int m_style;      // the style we'll be using
+	Int m_frameDelay;    // what frame number we start on
+	Int m_style;    // the style we'll be using
 
 	// standard vars
 	NameKeyType m_winID;
 	GameWindow* m_win;
-	Transition* m_transition; // each window is allowed one transition
-	Int m_currentFrameDelay;  // this will change based on if we're going forward or backwards
+	Transition* m_transition;    // each window is allowed one transition
+	Int m_currentFrameDelay;    // this will change based on if we're going forward or backwards
 };
 
 //-----------------------------------------------------------------------------
@@ -659,7 +659,7 @@ private:
 	typedef std::list<TransitionWindow*> TransitionWindowList;
 	TransitionWindowList m_transitionWindowList;
 	Int m_directionMultiplier;
-	Int m_currentFrame; ///< maintain how long we've spent on this transition;
+	Int m_currentFrame;    ///< maintain how long we've spent on this transition;
 	AsciiString m_name;
 };
 
@@ -676,13 +676,13 @@ public:
 	virtual void update() override;
 	virtual void draw() override;
 	Bool isFinished();
-	const FieldParse* getFieldParse() const { return m_gameWindowTransitionsFieldParseTable; } ///< returns the parsing fields
-	static const FieldParse m_gameWindowTransitionsFieldParseTable[];                          ///< the parse table
+	const FieldParse* getFieldParse() const { return m_gameWindowTransitionsFieldParseTable; }    ///< returns the parsing fields
+	static const FieldParse m_gameWindowTransitionsFieldParseTable[];    ///< the parse table
 	static void parseWindow(INI* ini, void* instance, void* store, const void* userData);
 
-	void setGroup(AsciiString groupName, Bool immediate = FALSE); // THis will be the next group to fire off.
-	void reverse(AsciiString groupName);                          // reverse the animations for the current group.
-	void remove(AsciiString groupName, Bool skipPending = FALSE); // remove the animation from the current or pending groups.
+	void setGroup(AsciiString groupName, Bool immediate = FALSE);    // THis will be the next group to fire off.
+	void reverse(AsciiString groupName);    // reverse the animations for the current group.
+	void remove(AsciiString groupName, Bool skipPending = FALSE);    // remove the animation from the current or pending groups.
 	TransitionGroup* getNewGroup(AsciiString name);
 
 private:
@@ -692,7 +692,7 @@ private:
 	TransitionGroup* m_currentGroup;
 	TransitionGroup* m_pendingGroup;
 	TransitionGroup* m_drawGroup;
-	TransitionGroup* m_secondaryDrawGroup; // needed to draw the last frame of the previous draw group once more.
+	TransitionGroup* m_secondaryDrawGroup;    // needed to draw the last frame of the previous draw group once more.
 };
 
 void PushButtonImageDrawThree(GameWindow* window, Int alpha);

@@ -487,8 +487,8 @@ size_t NetPacketGameCommandData::getSize(const NetCommandMsg& msg)
 	GameMessageParserArgumentType* arg = parser->getFirstArgumentType();
 	while (arg != nullptr)
 	{
-		size += sizeof(UnsignedByte); // argument type
-		size += sizeof(UnsignedByte); // argument count
+		size += sizeof(UnsignedByte);    // argument type
+		size += sizeof(UnsignedByte);    // argument count
 
 		const GameMessageArgumentDataType type = arg->getType();
 		switch (type)

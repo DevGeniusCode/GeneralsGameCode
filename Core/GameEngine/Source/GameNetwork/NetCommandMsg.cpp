@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/NetCommandMsg.h"
 #include "GameNetwork/NetPacketStructs.h"
@@ -40,7 +40,7 @@ NetCommandMsg::NetCommandMsg()
 	m_id = 0;
 	m_playerID = 0;
 	m_timestamp = 0;
-	m_referenceCount = 1; // start this off as 1.  This means that an "attach" is implied by creating a NetCommandMsg object.
+	m_referenceCount = 1;    // start this off as 1.  This means that an "attach" is implied by creating a NetCommandMsg object.
 	m_commandType = NETCOMMANDTYPE_UNKNOWN;
 }
 
@@ -70,7 +70,7 @@ void NetCommandMsg::detach()
 		deleteInstance(this);
 		return;
 	}
-	DEBUG_ASSERTCRASH(m_referenceCount > 0, ("Invalid reference count for NetCommandMsg")); // Just to make sure...
+	DEBUG_ASSERTCRASH(m_referenceCount > 0, ("Invalid reference count for NetCommandMsg"));    // Just to make sure...
 	if (m_referenceCount < 0)
 	{
 		deleteInstance(this);
@@ -1034,7 +1034,7 @@ UnsignedByte* NetWrapperCommandMsg::getData()
 void NetWrapperCommandMsg::setData(UnsignedByte* data, UnsignedInt dataLength)
 {
 	delete[] m_data;
-	m_data = NEW UnsignedByte[dataLength]; // pool[]ify
+	m_data = NEW UnsignedByte[dataLength];    // pool[]ify
 	memcpy(m_data, data, dataLength);
 	m_dataLength = dataLength;
 }
@@ -1150,7 +1150,7 @@ UnsignedByte* NetFileCommandMsg::getFileData()
 void NetFileCommandMsg::setFileData(UnsignedByte* data, UnsignedInt dataLength)
 {
 	m_dataLength = dataLength;
-	m_data = NEW UnsignedByte[dataLength]; // pool[]ify
+	m_data = NEW UnsignedByte[dataLength];    // pool[]ify
 	memcpy(m_data, data, dataLength);
 }
 

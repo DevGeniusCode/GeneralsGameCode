@@ -133,14 +133,14 @@ public:
 	const FieldParse* getBridgeFieldParse() { return m_terrainBridgeFieldParseTable; }
 
 protected:
-	AsciiString m_name;      ///< entry name
-	Bool m_isBridge;         ///< true if entry is for a bridge
-	UnsignedInt m_id;        ///< unique id
-	TerrainRoadType* m_next; ///< next in road list
+	AsciiString m_name;    ///< entry name
+	Bool m_isBridge;    ///< true if entry is for a bridge
+	UnsignedInt m_id;    ///< unique id
+	TerrainRoadType* m_next;    ///< next in road list
 
 	// for parsing from INI
-	static const FieldParse m_terrainRoadFieldParseTable[];   ///< the parse table for INI definition
-	static const FieldParse m_terrainBridgeFieldParseTable[]; ///< the parse table for INI definition
+	static const FieldParse m_terrainRoadFieldParseTable[];    ///< the parse table for INI definition
+	static const FieldParse m_terrainBridgeFieldParseTable[];    ///< the parse table for INI definition
 	static void parseTransitionToOCL(INI* ini, void* instance, void* store, const void* userData);
 	static void parseTransitionToFX(INI* ini, void* instance, void* store, const void* userData);
 
@@ -150,30 +150,30 @@ protected:
 	//
 
 	// road data
-	Real m_roadWidth;          ///< width of road
-	Real m_roadWidthInTexture; ///< width of road in the texture
+	Real m_roadWidth;    ///< width of road
+	Real m_roadWidthInTexture;    ///< width of road in the texture
 
 	// bridge data
-	Real m_bridgeScale; ///< scale for bridge
+	Real m_bridgeScale;    ///< scale for bridge
 
-	AsciiString m_scaffoldObjectName;        ///< scaffold object name
-	AsciiString m_scaffoldSupportObjectName; ///< scaffold support object name
+	AsciiString m_scaffoldObjectName;    ///< scaffold object name
+	AsciiString m_scaffoldSupportObjectName;    ///< scaffold support object name
 
-	RGBColor m_radarColor; ///< color for this bridge on the radar
+	RGBColor m_radarColor;    ///< color for this bridge on the radar
 
-	AsciiString m_bridgeModelName; ///< model name for bridge
-	AsciiString m_texture;         ///< texture filename
+	AsciiString m_bridgeModelName;    ///< model name for bridge
+	AsciiString m_texture;    ///< texture filename
 
-	AsciiString m_bridgeModelNameDamaged; ///< model name for bridge
-	AsciiString m_textureDamaged;         ///< model name for bridge
+	AsciiString m_bridgeModelNameDamaged;    ///< model name for bridge
+	AsciiString m_textureDamaged;    ///< model name for bridge
 
-	AsciiString m_bridgeModelNameReallyDamaged; ///< model name for bridge
-	AsciiString m_textureReallyDamaged;         ///< model name for bridge
+	AsciiString m_bridgeModelNameReallyDamaged;    ///< model name for bridge
+	AsciiString m_textureReallyDamaged;    ///< model name for bridge
 
-	AsciiString m_bridgeModelNameBroken; ///< model name for bridge
-	AsciiString m_textureBroken;         ///< model name for bridge
+	AsciiString m_bridgeModelNameBroken;    ///< model name for bridge
+	AsciiString m_textureBroken;    ///< model name for bridge
 
-	AsciiString m_towerObjectName[BRIDGE_MAX_TOWERS]; ///< object names for the targetable towers on the bridge
+	AsciiString m_towerObjectName[BRIDGE_MAX_TOWERS];    ///< object names for the targetable towers on the bridge
 
 	//
 	// the following strings are for repair/damage transition events, what sounds to
@@ -186,7 +186,7 @@ protected:
 	AsciiString m_repairedToOCLString[BODYDAMAGETYPE_COUNT][MAX_BRIDGE_BODY_FX];
 	AsciiString m_repairedToFXString[BODYDAMAGETYPE_COUNT][MAX_BRIDGE_BODY_FX];
 	Real m_transitionEffectsHeight;
-	Int m_numFXPerType; ///< for *each* fx/ocl we will make this many of them on the bridge area
+	Int m_numFXPerType;    ///< for *each* fx/ocl we will make this many of them on the bridge area
 };
 
 //-------------------------------------------------------------------------------------------------
@@ -203,22 +203,22 @@ public:
 	virtual void reset() override {}
 	virtual void update() override {}
 
-	TerrainRoadType* findRoad(AsciiString name);        ///< find road with matching name
-	TerrainRoadType* newRoad(AsciiString name);         ///< allocate new road, assign name, and link to list
-	TerrainRoadType* firstRoad() { return m_roadList; } ///< return first road
-	TerrainRoadType* nextRoad(TerrainRoadType* road);   ///< get next road
+	TerrainRoadType* findRoad(AsciiString name);    ///< find road with matching name
+	TerrainRoadType* newRoad(AsciiString name);    ///< allocate new road, assign name, and link to list
+	TerrainRoadType* firstRoad() { return m_roadList; }    ///< return first road
+	TerrainRoadType* nextRoad(TerrainRoadType* road);    ///< get next road
 
-	TerrainRoadType* findBridge(AsciiString name);          ///< find bridge with matching name
-	TerrainRoadType* newBridge(AsciiString name);           ///< allocate new bridge, assign name, and link
-	TerrainRoadType* firstBridge() { return m_bridgeList; } ///< return first bridge
-	TerrainRoadType* nextBridge(TerrainRoadType* bridge);   ///< get next bridge
+	TerrainRoadType* findBridge(AsciiString name);    ///< find bridge with matching name
+	TerrainRoadType* newBridge(AsciiString name);    ///< allocate new bridge, assign name, and link
+	TerrainRoadType* firstBridge() { return m_bridgeList; }    ///< return first bridge
+	TerrainRoadType* nextBridge(TerrainRoadType* bridge);    ///< get next bridge
 
-	TerrainRoadType* findRoadOrBridge(AsciiString name); ///< search roads and bridges
+	TerrainRoadType* findRoadOrBridge(AsciiString name);    ///< search roads and bridges
 
 protected:
 	TerrainRoadType* m_roadList;    ///< list of available roads
-	TerrainRoadType* m_bridgeList;  ///< list of available bridges
-	static UnsignedInt m_idCounter; ///< unique id counter when allocating roads/bridges
+	TerrainRoadType* m_bridgeList;    ///< list of available bridges
+	static UnsignedInt m_idCounter;    ///< unique id counter when allocating roads/bridges
 };
 
 // EXTERNAL ////////////////////////////////////////////////////////////////////////////////////////

@@ -29,7 +29,7 @@
 // the game.
 // Author: Matthew D. Campbell, June 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/GameSpy/BuddyThread.h"
 #include "GameNetwork/GameSpy/PeerThread.h"
@@ -334,9 +334,9 @@ void BuddyThreadClass::Thread_Function()
 						m_isConnected = (gpConnectNewUser(con, incomingRequest.arg.login.nick, incomingRequest.arg.login.nick, incomingRequest.arg.login.email,
 						                                  incomingRequest.arg.login.password, "", (incomingRequest.arg.login.hasFirewall) ? GP_FIREWALL : GP_NO_FIREWALL,
 						                                  GP_BLOCKING, callbackWrapper, (void*)CALLBACK_CONNECT) == GP_NO_ERROR);
-						if (m_isNewAccount) // if we didn't re-login
+						if (m_isNewAccount)    // if we didn't re-login
 						{
-							gpSetInfoMask(con, GP_MASK_NONE); // don't share info
+							gpSetInfoMask(con, GP_MASK_NONE);    // don't share info
 						}
 						m_isConnecting = false;
 					}

@@ -26,7 +26,7 @@
 // Generals GameSpy GameInfo-related code
 // Author: Matthew D. Campbell, July 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/GameState.h"
 #include "Common/Player.h"
@@ -568,7 +568,7 @@ void GameSpyStagingRoom::startGame(Int gameID)
 			if (m_isQM)
 			{
 				if (getLocalSlotNum() == i)
-					m_GameSpySlot[i].setProfileID(TheGameSpyInfo->getLocalProfileID()); // hehe - we know our own.  the rest, they'll tell us.
+					m_GameSpySlot[i].setProfileID(TheGameSpyInfo->getLocalProfileID());    // hehe - we know our own.  the rest, they'll tell us.
 			}
 			else
 			{
@@ -684,7 +684,7 @@ AsciiString GameSpyStagingRoom::generateGameSpyGameResultsPacket()
 
 			AsciiString side = p->getPlayerTemplate()->getSide();
 			if (side == "America")
-				side = "USA"; // conform to GameSpy
+				side = "USA";    // conform to GameSpy
 
 			AsciiString playerStr;
 			playerStr.format("\\player_%d\\%s\\pid_%d\\%d\\team_%d\\%d\\result_%d\\%s\\side_%d\\%s",

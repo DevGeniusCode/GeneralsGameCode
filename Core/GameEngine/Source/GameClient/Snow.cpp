@@ -27,7 +27,7 @@
 // Author: Mark Wilczynski, July 2003
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the Game
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the Game
 #include "GameClient/Snow.h"
 #include "GameClient/View.h"
 
@@ -37,7 +37,7 @@ SnowManager::SnowManager()
 {
 	m_time = 0;
 	m_velocity = 1;
-	m_isVisible = TRUE; // default to showing if it's enabled via INI.
+	m_isVisible = TRUE;    // default to showing if it's enabled via INI.
 }
 
 void SnowManager::init()
@@ -86,7 +86,7 @@ void SnowManager::setVisible(Bool showWeather)
 
 void SnowManager::reset()
 {
-	m_isVisible = TRUE; // default to showing if it's enabled via INI.
+	m_isVisible = TRUE;    // default to showing if it's enabled via INI.
 }
 
 SnowManager::~SnowManager()

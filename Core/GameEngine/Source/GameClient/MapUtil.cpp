@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/crc.h"
 #include "Common/FileSystem.h"
@@ -65,12 +65,12 @@
 // PRIVATE DATA ///////////////////////////////////////////////////////////////////////////////////
 static const char* mapExtension = ".map";
 
-static Int m_width = 0;                    ///< Height map width.
-static Int m_height = 0;                   ///< Height map height (y size of array).
-static Int m_borderSize = 0;               ///< Non-playable border area.
-static std::vector<ICoord2D> m_boundaries; ///< All the boundaries we use for the map
-static Int m_dataSize = 0;                 ///< size of m_data.
-static UnsignedByte* m_data = nullptr;     ///< array of z(height) values in the height map.
+static Int m_width = 0;    ///< Height map width.
+static Int m_height = 0;    ///< Height map height (y size of array).
+static Int m_borderSize = 0;    ///< Non-playable border area.
+static std::vector<ICoord2D> m_boundaries;    ///< All the boundaries we use for the map
+static Int m_dataSize = 0;    ///< size of m_data.
+static UnsignedByte* m_data = nullptr;    ///< array of z(height) values in the height map.
 static Dict worldDict = 0;
 
 static WaypointMap* m_waypoints = nullptr;
@@ -193,7 +193,7 @@ static Bool ParseSizeOnly(DataChunkInput& file, DataChunkInfo* info, void* userD
 	return true;
 
 	m_dataSize = file.readInt();
-	m_data = NEW UnsignedByte[m_dataSize]; // pool[]ify
+	m_data = NEW UnsignedByte[m_dataSize];    // pool[]ify
 	if (m_dataSize <= 0 || (m_dataSize != (m_width * m_height)))
 	{
 		throw ERROR_CORRUPT_FILE_FORMAT;
@@ -303,7 +303,7 @@ void WaypointMap::update()
 	m_numStartSpots = 0;
 	for (Int i = 0; i < MAX_SLOTS; ++i)
 	{
-		startingCamName.format("Player_%d_Start", i + 1); // start pos waypoints are 1-based
+		startingCamName.format("Player_%d_Start", i + 1);    // start pos waypoints are 1-based
 		it = m_waypoints->find(startingCamName);
 		if (it != m_waypoints->end())
 		{
@@ -626,7 +626,7 @@ Bool MapCache::addMap(
 			it->second.m_doesExist = TRUE;
 
 			//			DEBUG_LOG(("MapCache::addMap - found match for map %s", lowerFname.str()));
-			return FALSE; // OK, it checks out.
+			return FALSE;    // OK, it checks out.
 		}
 		DEBUG_LOG(("%s didn't match file in MapCache", fname.str()));
 		DEBUG_LOG(("size: %d / %d", fileInfo.sizeLow, md.m_filesize));
@@ -639,7 +639,7 @@ Bool MapCache::addMap(
 
 	DEBUG_LOG(("MapCache::addMap(): caching '%s' because '%s' was not found", fname.str(), lowerFname.str()));
 
-	loadMap(fname); // Just load for querying the data, since we aren't playing this map.
+	loadMap(fname);    // Just load for querying the data, since we aren't playing this map.
 
 	// The map is now loaded.  Pick out what we need.
 	MapMetaData md;
@@ -768,7 +768,7 @@ struct MapListBoxData
 		, brutalImage(nullptr)
 		, maxBrutalImage(nullptr)
 		, mapToSelect()
-		, selectionIndex(0) // always select *something*
+		, selectionIndex(0)    // always select *something*
 		, isMultiplayer(false)
 	{
 	}
@@ -1153,7 +1153,7 @@ Image* getMapPreviewImage(AsciiString mapName)
 	AsciiString tgaName = mapName;
 	AsciiString name;
 	AsciiString tempName;
-	tgaName.truncateBy(4); // ".map"
+	tgaName.truncateBy(4);    // ".map"
 	name = tgaName;
 	tgaName.concat(".tga");
 
@@ -1194,7 +1194,7 @@ Image* getMapPreviewImage(AsciiString mapName)
 		}
 		catch (...)
 		{
-			success = false; // no rethrow
+			success = false;    // no rethrow
 		}
 
 		if (success)

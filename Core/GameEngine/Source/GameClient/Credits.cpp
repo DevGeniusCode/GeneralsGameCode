@@ -46,7 +46,7 @@
 //-----------------------------------------------------------------------------
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 //-----------------------------------------------------------------------------
 // USER INCLUDES //////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
@@ -116,9 +116,9 @@ CreditsLine::~CreditsLine()
 
 CreditsManager::CreditsManager()
 {
-	m_scrollRate = 1; // in pixels
+	m_scrollRate = 1;    // in pixels
 	m_scrollRatePerFrames = 1;
-	m_scrollDown = TRUE; // if TRUE text will come from the top to the bottom if False, it will go from the bottom up
+	m_scrollDown = TRUE;    // if TRUE text will come from the top to the bottom if False, it will go from the bottom up
 	m_framesSinceStarted = 0;
 	m_titleColor = m_positionColor = m_normalColor = GameMakeColor(255, 255, 255, 255);
 
@@ -187,7 +187,7 @@ void CreditsManager::update()
 	Int lastHeight = 0;
 	Int start = m_scrollDown ? 0 : TheDisplay->getHeight();
 	Int end = m_scrollDown ? TheDisplay->getHeight() : 0;
-	Int offsetStartMultiplier = m_scrollDown ? -1 : 0; // if we're scrolling from the top, we need to subtract the height
+	Int offsetStartMultiplier = m_scrollDown ? -1 : 0;    // if we're scrolling from the top, we need to subtract the height
 	Int offsetEndMultiplier = m_scrollDown ? 0 : 1;
 	Int directionMultiplier = m_scrollDown ? 1 : -1;
 	CreditsLineList::iterator drawIt = m_displayedCreditLineList.begin();

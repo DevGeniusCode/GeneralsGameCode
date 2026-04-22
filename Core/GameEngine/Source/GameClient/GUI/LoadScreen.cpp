@@ -47,7 +47,7 @@
 //-----------------------------------------------------------------------------
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 //-----------------------------------------------------------------------------
 // USER INCLUDES //////////////////////////////////////////////////////////////
@@ -135,7 +135,7 @@ enum
 	FRAME_RIGHT_VOICE = 140,
 };
 
-static const Int TELETYPE_UPDATE_FREQ = 2; // how many frames between teletype updates
+static const Int TELETYPE_UPDATE_FREQ = 2;    // how many frames between teletype updates
 
 //-----------------------------------------------------------------------------
 // LoadScreen Class
@@ -156,7 +156,7 @@ void LoadScreen::update(Int percent)
 {
 	TheGameEngine->serviceWindowsOS();
 	if (TheGameEngine->getQuitting())
-		return; // don't bother with any of this if the player is exiting game.
+		return;    // don't bother with any of this if the player is exiting game.
 
 	TheWindowManager->update();
 	TheDisplay->update();
@@ -591,7 +591,7 @@ void SinglePlayerLoadScreen::init(GameInfo* game)
 	{
 #if RTS_GENERALS
 		// if we're min speced
-		m_videoStream->frameGoto(m_videoStream->frameCount()); // zero based
+		m_videoStream->frameGoto(m_videoStream->frameCount());    // zero based
 		while (!m_videoStream->isFrameReady())
 			Sleep(1);
 		m_videoStream->frameDecompress();
@@ -1091,7 +1091,7 @@ void ChallengeLoadScreen::init(GameInfo* game)
 	else
 	{
 		// if we're min speced
-		m_videoStream->frameGoto(m_videoStream->frameCount()); // zero based
+		m_videoStream->frameGoto(m_videoStream->frameCount());    // zero based
 		while (!m_videoStream->isFrameReady())
 			Sleep(1);
 		m_videoStream->frameDecompress();
@@ -1297,7 +1297,7 @@ void MultiPlayerLoadScreen::init(GameInfo* game)
 		event.setShouldFade(TRUE);
 
 		TheAudio->addAudioEvent(&event);
-		TheAudio->update(); // Since GameEngine::update() is suspended until after I am gone...
+		TheAudio->update();    // Since GameEngine::update() is suspended until after I am gone...
 	}
 
 	// DEBUG_ASSERTCRASH(TheNetwork, ("Where the Heck is the Network!!!!"));
@@ -1376,7 +1376,7 @@ void MultiPlayerLoadScreen::init(GameInfo* game)
 			teamWin[netSlot]->winSetEnabledTextColors(houseColor, m_playerNames[netSlot]->winGetEnabledTextBorderColor());
 		}
 
-		m_playerLookup[i] = netSlot; // save our mapping so we can update progress correctly
+		m_playerLookup[i] = netSlot;    // save our mapping so we can update progress correctly
 
 		netSlot++;
 	}
@@ -1743,7 +1743,7 @@ void GameSpyLoadScreen::init(GameInfo* game)
 			teamWin[netSlot]->winSetEnabledTextColors(houseColor, m_playerNames[netSlot]->winGetEnabledTextBorderColor());
 		}
 
-		m_playerLookup[i] = netSlot; // save our mapping so we can update progress correctly
+		m_playerLookup[i] = netSlot;    // save our mapping so we can update progress correctly
 
 		netSlot++;
 	}
@@ -1900,7 +1900,7 @@ void MapTransferLoadScreen::init(GameInfo* game)
 		if ((i == 0 || (TheGameInfo->getConstSlot(i)->isHuman() && TheGameInfo->getConstSlot(i)->hasMap())) && m_progressBars[netSlot])
 			m_progressBars[netSlot]->winHide(TRUE);
 
-		m_playerLookup[i] = netSlot; // save our mapping so we can update progress correctly
+		m_playerLookup[i] = netSlot;    // save our mapping so we can update progress correctly
 
 		netSlot++;
 	}

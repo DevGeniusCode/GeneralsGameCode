@@ -27,7 +27,7 @@
 // Author: Michael S. Booth, November 2001
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #define DEFINE_PARTICLE_SYSTEM_NAMES
 
@@ -132,7 +132,7 @@ void ParticleInfo::xfer(Xfer* xfer)
 	xfer->xferReal(&m_angleX);
 	xfer->xferReal(&m_angleY);
 #else
-	Real tempAngle = 0; // temporary value to save out for backwards compatibility when we supported x,y
+	Real tempAngle = 0;    // temporary value to save out for backwards compatibility when we supported x,y
 	xfer->xferReal(&tempAngle);
 	xfer->xferReal(&tempAngle);
 #endif
@@ -686,7 +686,7 @@ void Particle::xfer(Xfer* xfer)
 
 	// drawable
 	DrawableID drawableID = INVALID_DRAWABLE_ID;
-	xfer->xferDrawableID(&drawableID); // saving for backwards compatibility when we supported drawables.
+	xfer->xferDrawableID(&drawableID);    // saving for backwards compatibility when we supported drawables.
 
 	// system under control as an id
 	ParticleSystemID systemUnderControlID = m_systemUnderControl ? m_systemUnderControl->getSystemID() : INVALID_PARTICLE_SYSTEM_ID;
@@ -746,7 +746,7 @@ ParticleSystemInfo::ParticleSystemInfo()
 	// some default values for the wind motion values
 	m_windMotion = WIND_MOTION_NOT_USED;
 	m_windAngle = 0.0f;
-	m_windAngleChange = 0.15f; // higher is ping pong faster
+	m_windAngleChange = 0.15f;    // higher is ping pong faster
 	m_windAngleChangeMin = 0.15f;
 	m_windAngleChangeMax = 0.45f;
 	m_windMotionStartAngleMin = 0.0f;
@@ -811,7 +811,7 @@ void ParticleSystemInfo::xfer(Xfer* xfer)
 	xfer->xferUser(&m_angleX, sizeof(GameClientRandomVariable));
 	xfer->xferUser(&m_angleY, sizeof(GameClientRandomVariable));
 #else
-	GameClientRandomVariable tempRandom; // for backwards compatibility when we supported x,y
+	GameClientRandomVariable tempRandom;    // for backwards compatibility when we supported x,y
 	xfer->xferUser(&tempRandom, sizeof(GameClientRandomVariable));
 	xfer->xferUser(&tempRandom, sizeof(GameClientRandomVariable));
 #endif
@@ -1284,7 +1284,7 @@ void ParticleSystem::destroy()
 	m_isDestroyed = true;
 	if (m_slaveSystem)
 	{
-		m_slaveSystem->destroy(); // If we don't it will leak forever.  We are solely responsible for it.
+		m_slaveSystem->destroy();    // If we don't it will leak forever.  We are solely responsible for it.
 	}
 }
 
@@ -1450,7 +1450,7 @@ const Coord3D* ParticleSystem::computeParticleVelocity(const Coord3D* pos)
 					newVel.z = otherSpeed;
 					break;
 
-				case BOX: ///< @todo Implement BOX OUTWARD velocity
+				case BOX:    ///< @todo Implement BOX OUTWARD velocity
 				case SPHERE:
 				{
 					newVel.x = pos->x - sysPos.x;
@@ -1466,15 +1466,15 @@ const Coord3D* ParticleSystem::computeParticleVelocity(const Coord3D* pos)
 
 				case LINE:
 				{
-					Coord3D along; // unit vector along line direction
+					Coord3D along;    // unit vector along line direction
 
 					along.x = m_emissionVolume.line.end.x - m_emissionVolume.line.start.x;
 					along.y = m_emissionVolume.line.end.y - m_emissionVolume.line.start.y;
 					along.z = m_emissionVolume.line.end.z - m_emissionVolume.line.start.z;
 					along.normalize();
 
-					Coord3D perp; // unit vector perpendicular to the along/up plane
-					Coord3D up;   // unit vector in the up direction (Z)
+					Coord3D perp;    // unit vector perpendicular to the along/up plane
+					Coord3D up;    // unit vector in the up direction (Z)
 					up.x = 0.0;
 					up.y = 0.0;
 					up.z = 1.0;
@@ -1733,7 +1733,7 @@ Particle* ParticleSystem::createParticle(const ParticleInfo* info,
 			if (numInExcess > 0)
 			{
 				if (TheParticleSystemManager->removeOldestParticles((UnsignedInt)numInExcess, priority) != numInExcess)
-					return nullptr; // could not remove enough particles, don't create new stuff
+					return nullptr;    // could not remove enough particles, don't create new stuff
 			}
 
 			if (TheGlobalData->m_maxParticleCount == 0)
@@ -1771,7 +1771,7 @@ const ParticleInfo* ParticleSystem::generateParticleInfo(Int particleNum, Int pa
 		// transform particle position to world coordinates
 		Vector3 p, pr;
 
-		Coord3D emissionAdjustment; // this is the adjustment for inter-frame emission
+		Coord3D emissionAdjustment;    // this is the adjustment for inter-frame emission
 		// @todo : This should work, if m_lastPos = m_pos is removed from here but it doesn't.
 		// @todo : Investigate why. jkmcd
 		if (m_isFirstPos)
@@ -2153,7 +2153,7 @@ void ParticleSystem::updateWindMotion()
 			Real change = (1.0f - (diffFromCenter / halfSpan)) * m_windAngleChange;
 
 // we will always change a little bit
-#define MINIMUM_CHANGE 0.005f // lower #'s have softer swings at the edge angles
+#define MINIMUM_CHANGE 0.005f    // lower #'s have softer swings at the edge angles
 			if (change < MINIMUM_CHANGE)
 				change = MINIMUM_CHANGE;
 
@@ -2957,7 +2957,7 @@ void ParticleSystemManager::update()
 		// This clears all prior smudges and recreates them for all current smudge particles.
 
 		TheSmudgeManager->reset();
-		SmudgeSet* set = TheSmudgeManager->addSmudgeSet(); // global smudge set through which all smudges are rendered.
+		SmudgeSet* set = TheSmudgeManager->addSmudgeSet();    // global smudge set through which all smudges are rendered.
 
 		for (ParticleSystemManager::ParticleSystemListIt it = m_allParticleSystemList.begin(); it != m_allParticleSystemList.end(); ++it)
 		{
@@ -3242,7 +3242,7 @@ Int ParticleSystemManager::removeOldestParticles(UnsignedInt count,
 			if (m_allParticlesHead[i])
 			{
 				deleteInstance(m_allParticlesHead[i]);
-				break; // exit for
+				break;    // exit for
 			}
 		}
 	}
@@ -3315,7 +3315,7 @@ void ParticleSystemManager::xfer(Xfer* xfer)
 			if (system->isDestroyed() == TRUE || system->isSaveable() == FALSE)
 			{
 				AsciiString mtString;
-				xfer->xferAsciiString(&mtString); // write null string as key for destroyed system.
+				xfer->xferAsciiString(&mtString);    // write null string as key for destroyed system.
 				continue;
 			}
 
@@ -3342,7 +3342,7 @@ void ParticleSystemManager::xfer(Xfer* xfer)
 			xfer->xferAsciiString(&systemName);
 			if (systemName.isEmpty())
 			{
-				continue; // destroyed particle system.
+				continue;    // destroyed particle system.
 			}
 			systemTemplate = findTemplate(systemName);
 

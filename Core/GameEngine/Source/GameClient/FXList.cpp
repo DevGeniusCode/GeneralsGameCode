@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/FXList.h"
 
@@ -55,7 +55,7 @@
 // PUBLIC DATA ////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-FXListStore* TheFXListStore = nullptr; ///< the FXList store definition
+FXListStore* TheFXListStore = nullptr;    ///< the FXList store definition
 
 //-------------------------------------------------------------------------------------------------
 static void adjustVector(Coord3D* vec, const Matrix3D* mtx)
@@ -82,7 +82,7 @@ void FXNugget::doFXObj(const Object* primary, const Object* secondary) const
 {
 	const Coord3D* p = primary ? primary->getPosition() : nullptr;
 	const Matrix3D* mtx = primary ? primary->getTransformMatrix() : nullptr;
-	const Real speed = 0.0f; // yes, that's right -- NOT the object's speed.
+	const Real speed = 0.0f;    // yes, that's right -- NOT the object's speed.
 	const Coord3D* s = secondary ? secondary->getPosition() : nullptr;
 	doFXPos(p, mtx, speed, s);
 }
@@ -152,7 +152,7 @@ public:
 	{
 		m_tracerName.set("GenericTracer");
 		m_boneName.clear();
-		m_speed = 0.0f; // means "use passed-in speed"
+		m_speed = 0.0f;    // means "use passed-in speed"
 		m_decayAt = 1.0f;
 		m_length = 10.0f;
 		m_width = 1.0f;
@@ -181,7 +181,7 @@ public:
 			Matrix3D tracerMtx;
 			Vector3 pos(primary->x, primary->y, primary->z);
 			Vector3 dir(secondary->x - primary->x, secondary->y - primary->y, secondary->z - primary->z);
-			dir.Normalize(); // This is fantastically crucial for calling buildTransformMatrix!!!!!
+			dir.Normalize();    // This is fantastically crucial for calling buildTransformMatrix!!!!!
 			tracerMtx.buildTransformMatrix(pos, dir);
 			tracer->setTransformMatrix(&tracerMtx);
 			tracer->setPosition(primary);
@@ -803,7 +803,7 @@ void FXList::doFXObj(const Object* primary, const Object* secondary) const
 	const Int playerIndex = rts::getObservedOrLocalPlayer()->getPlayerIndex();
 
 	if (primary && primary->getShroudedStatus(playerIndex) > OBJECTSHROUD_PARTIAL_CLEAR)
-		return; // the primary object is fogged or shrouded so don't bother with the effect.
+		return;    // the primary object is fogged or shrouded so don't bother with the effect.
 
 	for (FXNuggetList::const_iterator it = m_nuggets.begin(); it != m_nuggets.end(); ++it)
 	{

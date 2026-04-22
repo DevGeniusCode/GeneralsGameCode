@@ -42,12 +42,12 @@ class LANGameSlot : public GameSlot
 public:
 	LANGameSlot();
 
-	LANPlayer* getUser(); ///< Get the User structure associated with the slot (null for non-humans)
+	LANPlayer* getUser();    ///< Get the User structure associated with the slot (null for non-humans)
 
 	// Various tests
-	Bool isUser(LANPlayer* user);        ///< Does this slot contain the given user?  Based off user->name
-	Bool isUser(UnicodeString userName); ///< Does this slot contain the given user?
-	Bool isLocalPlayer() const;          ///< Is this slot me?
+	Bool isUser(LANPlayer* user);    ///< Does this slot contain the given user?  Based off user->name
+	Bool isUser(UnicodeString userName);    ///< Does this slot contain the given user?
+	Bool isLocalPlayer() const;    ///< Is this slot me?
 	void setLogin(UnicodeString name) { m_user.setLogin(name); }
 	void setLogin(AsciiString name) { m_user.setLogin(name); }
 	void setHost(UnicodeString name) { m_user.setHost(name); }
@@ -61,7 +61,7 @@ public:
 	// LANGameSlot& operator=(const LANGameSlot& src);
 
 private:
-	LANPlayer m_user; ///< filled in for each getUser() call
+	LANPlayer m_user;    ///< filled in for each getUser() call
 	AsciiString m_serial;
 
 	UnsignedInt m_lastHeard;
@@ -74,15 +74,15 @@ private:
 class LANGameInfo : public GameInfo
 {
 private:
-	LANGameSlot m_LANSlot[MAX_SLOTS]; ///< The Lan Games Slot List
+	LANGameSlot m_LANSlot[MAX_SLOTS];    ///< The Lan Games Slot List
 
 public:
 	LANGameInfo();
-	void setSlot(Int slotNum, LANGameSlot slotInfo);       ///< Set the slot state (human, open, AI, etc)
-	LANGameSlot* getLANSlot(Int slotNum);                  ///< Get the slot
-	const LANGameSlot* getConstLANSlot(Int slotNum) const; ///< Get the slot
-	virtual Int getLocalSlotNum() const override;          ///< Get the local slot number, or -1 if we're not present
-	Int getSlotNum(UnicodeString userName);                ///< Get the slot number corresponding to a specific user, or -1 if he's not present
+	void setSlot(Int slotNum, LANGameSlot slotInfo);    ///< Set the slot state (human, open, AI, etc)
+	LANGameSlot* getLANSlot(Int slotNum);    ///< Get the slot
+	const LANGameSlot* getConstLANSlot(Int slotNum) const;    ///< Get the slot
+	virtual Int getLocalSlotNum() const override;    ///< Get the local slot number, or -1 if we're not present
+	Int getSlotNum(UnicodeString userName);    ///< Get the slot number corresponding to a specific user, or -1 if he's not present
 
 	UnsignedInt getLastHeard() { return m_lastHeard; }
 	void setLastHeard(UnsignedInt lastHeard) { m_lastHeard = lastHeard; }
@@ -90,15 +90,15 @@ public:
 	void setNext(LANGameInfo* next) { m_next = next; }
 
 	// Game options
-	void setMap(AsciiString mapName); ///< Set the map to play on
-	void setSeed(Int seed);           ///< Set the random seed for the game
+	void setMap(AsciiString mapName);    ///< Set the map to play on
+	void setSeed(Int seed);    ///< Set the random seed for the game
 
-	void setName(UnicodeString name) { m_gameName = name; } ///< Set the Name of the Game
-	UnicodeString getName() { return m_gameName; }          ///< Get the Name of the Game
+	void setName(UnicodeString name) { m_gameName = name; }    ///< Set the Name of the Game
+	UnicodeString getName() { return m_gameName; }    ///< Get the Name of the Game
 
 	// Convenience functions that interface with the LANPlayer held in the slot list
-	virtual void resetAccepted() override; ///< Reset the accepted flag on all players
-	Bool amIHost();                        ///< Convenience function - is the local player the game host?
+	virtual void resetAccepted() override;    ///< Reset the accepted flag on all players
+	Bool amIHost();    ///< Convenience function - is the local player the game host?
 
 	/// Get the IP of selected player or return 0
 	UnsignedInt getIP(int who)
@@ -161,17 +161,17 @@ public:
 	}
 
 private:
-	LANGameInfo* m_next;      ///< Pointer for linked list
-	UnsignedInt m_lastHeard;  ///< The last time we heard from this game (for timeout purposes)
-	UnicodeString m_gameName; ///< Game name.  @todo: are game names based off of host player names?
-	Bool m_isDirectConnect;   ///< Is this game a direct connect game, or a LAN game?
+	LANGameInfo* m_next;    ///< Pointer for linked list
+	UnsignedInt m_lastHeard;    ///< The last time we heard from this game (for timeout purposes)
+	UnicodeString m_gameName;    ///< Game name.  @todo: are game names based off of host player names?
+	Bool m_isDirectConnect;    ///< Is this game a direct connect game, or a LAN game?
 };
 
-void LANDisplayGameList(GameWindow* gameListbox, LANGameInfo* gameList); ///< Displays the list of games in a listbox, preserving selections
+void LANDisplayGameList(GameWindow* gameListbox, LANGameInfo* gameList);    ///< Displays the list of games in a listbox, preserving selections
 void LANEnableStartButton(Bool enabled);
 
 void LANDisplaySlotList();    ///< Displays the slot list according to TheLANGameInfo
-void LANDisplayGameOptions(); ///< Displays the game options according to TheLANGameInfo
+void LANDisplayGameOptions();    ///< Displays the game options according to TheLANGameInfo
 
 AsciiString GenerateGameOptionsString();
 Bool ParseGameOptionsString(LANGameInfo* game, AsciiString options);

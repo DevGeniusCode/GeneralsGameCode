@@ -64,7 +64,7 @@ public:
 	AudioEventRTS();
 	AudioEventRTS(const AsciiString& eventName);
 	AudioEventRTS(const AsciiString& eventName, ObjectID ownerID);
-	AudioEventRTS(const AsciiString& eventName, DrawableID drawableID); // Pass 0 for unused if attaching to drawable
+	AudioEventRTS(const AsciiString& eventName, DrawableID drawableID);    // Pass 0 for unused if attaching to drawable
 	AudioEventRTS(const AsciiString& eventName, const Coord3D* positionOfAudio);
 
 	virtual ~AudioEventRTS();
@@ -99,11 +99,11 @@ public:
 	void decreaseLoopCount();
 	Bool hasMoreLoops() const;
 
-	void setAudioEventInfo(const AudioEventInfo* eventInfo) const; // is mutable
+	void setAudioEventInfo(const AudioEventInfo* eventInfo) const;    // is mutable
 	const AudioEventInfo* getAudioEventInfo() const;
 
-	void setPlayingHandle(AudioHandle handle); // for ID of this audio piece.
-	AudioHandle getPlayingHandle();            // for ID of this audio piece
+	void setPlayingHandle(AudioHandle handle);    // for ID of this audio piece.
+	AudioHandle getPlayingHandle();    // for ID of this audio piece
 
 	void setPosition(const Coord3D* pos);
 	const Coord3D* getPosition();
@@ -142,7 +142,7 @@ public:
 	void setPlayerIndex(Int playerNdx);
 
 	Int getPlayingAudioIndex() const { return m_playingAudioIndex; }
-	void setPlayingAudioIndex(Int pai) const { m_playingAudioIndex = pai; } // is mutable
+	void setPlayingAudioIndex(Int pai) const { m_playingAudioIndex = pai; }    // is mutable
 
 	Bool getUninterruptible() const { return m_uninterruptible; }
 	void setUninterruptible(Bool uninterruptible) { m_uninterruptible = uninterruptible; }
@@ -160,43 +160,43 @@ protected:
 
 protected:
 	AsciiString m_filenameToLoad;
-	mutable const AudioEventInfo* m_eventInfo; // Mutable so that it can be modified even on const objects
+	mutable const AudioEventInfo* m_eventInfo;    // Mutable so that it can be modified even on const objects
 	AudioHandle m_playingHandle;
 
-	AudioHandle m_killThisHandle; ///< Sometimes sounds will canabilize other sounds in order to take their handle away.
-	                              ///< This is one of those instances.
+	AudioHandle m_killThisHandle;    ///< Sometimes sounds will canabilize other sounds in order to take their handle away.
+	                                 ///< This is one of those instances.
 
-	AsciiString m_eventName;  ///< This should correspond with an entry in Dialog.ini, Speech.ini, or Audio.ini
-	AsciiString m_attackName; ///< This is the filename that should be used during the attack.
-	AsciiString m_decayName;  ///< This is the filename that should be used during the decay.
+	AsciiString m_eventName;    ///< This should correspond with an entry in Dialog.ini, Speech.ini, or Audio.ini
+	AsciiString m_attackName;    ///< This is the filename that should be used during the attack.
+	AsciiString m_decayName;    ///< This is the filename that should be used during the decay.
 
-	AudioPriority m_priority; ///< This should be the priority as given by the event info, or the overridden priority.
-	Real m_volume;            ///< This is the override for the volume. It will either be the normal volume or an overridden value.
+	AudioPriority m_priority;    ///< This should be the priority as given by the event info, or the overridden priority.
+	Real m_volume;    ///< This is the override for the volume. It will either be the normal volume or an overridden value.
 	TimeOfDay m_timeOfDay;    ///< This should be the current Time Of Day.
 
-	Coord3D m_positionOfAudio; ///< Position of the sound if no further positional updates are necessary
-	union                      // These are now unioned.
+	Coord3D m_positionOfAudio;    ///< Position of the sound if no further positional updates are necessary
+	union    // These are now unioned.
 	{
-		ObjectID m_objectID;     ///< ObjectID of the object that this sound is tied to. Position can be automatically updated from this.
-		DrawableID m_drawableID; ///< DrawableID of the drawable that owns this sound
+		ObjectID m_objectID;    ///< ObjectID of the object that this sound is tied to. Position can be automatically updated from this.
+		DrawableID m_drawableID;    ///< DrawableID of the drawable that owns this sound
 	};
 	OwnerType m_ownerType;
 
-	Bool m_shouldFade;     ///< This should fade in or out (if it is starting or stopping)
-	Bool m_isLogicalAudio; ///< Should probably only be true for scripted sounds
+	Bool m_shouldFade;    ///< This should fade in or out (if it is starting or stopping)
+	Bool m_isLogicalAudio;    ///< Should probably only be true for scripted sounds
 	Bool m_uninterruptible;
 
 	// Playing attributes
-	Real m_pitchShift;               ///< Pitch shift that should occur on this piece of audio
-	Real m_volumeShift;              ///< Volume shift that should occur on this piece of audio
-	Real m_delay;                    ///< Amount to delay before playing this sound
-	Int m_loopCount;                 ///< The current loop count value. Only valid if this is a looping type event or the override has been set.
-	mutable Int m_playingAudioIndex; ///< The sound index we are currently playing. In the case of non-random, we increment this to move to the next sound
-	Int m_allCount;                  ///< If this sound is an ALL type, then this is how many sounds we have played so far.
+	Real m_pitchShift;    ///< Pitch shift that should occur on this piece of audio
+	Real m_volumeShift;    ///< Volume shift that should occur on this piece of audio
+	Real m_delay;    ///< Amount to delay before playing this sound
+	Int m_loopCount;    ///< The current loop count value. Only valid if this is a looping type event or the override has been set.
+	mutable Int m_playingAudioIndex;    ///< The sound index we are currently playing. In the case of non-random, we increment this to move to the next sound
+	Int m_allCount;    ///< If this sound is an ALL type, then this is how many sounds we have played so far.
 
-	Int m_playerIndex; ///< The index of the player who owns this sound. Used for sounds that should have an owner, but don't have an object, etc.
+	Int m_playerIndex;    ///< The index of the player who owns this sound. Used for sounds that should have an owner, but don't have an object, etc.
 
-	PortionToPlay m_portionToPlayNext; ///< Which portion (attack, sound, decay) should be played next?
+	PortionToPlay m_portionToPlayNext;    ///< Which portion (attack, sound, decay) should be played next?
 };
 
 class DynamicAudioEventRTS : public MemoryPoolObject

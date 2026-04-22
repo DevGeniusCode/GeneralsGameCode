@@ -54,7 +54,7 @@ public:
 	AsciiString address;
 	UnsignedShort port;
 	AsciiString homepageURL;
-	Bool submitReplay; // with game results
+	Bool submitReplay;    // with game results
 	Int index;
 };
 
@@ -67,7 +67,7 @@ public:
 	~LadderList();
 
 	const LadderInfo* findLadder(const AsciiString& addr, UnsignedShort port);
-	const LadderInfo* findLadderByIndex(Int index); // doesn't look in local ladders
+	const LadderInfo* findLadderByIndex(Int index);    // doesn't look in local ladders
 	const LadderInfoList* getLocalLadders();
 	const LadderInfoList* getSpecialLadders();
 	const LadderInfoList* getStandardLadders();

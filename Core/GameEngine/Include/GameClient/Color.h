@@ -56,7 +56,7 @@
 enum
 {
 	GAME_COLOR_UNDEFINED = 0x00FFFFFF
-}; // this is white with zero alpha... safe to use!
+};    // this is white with zero alpha... safe to use!
 
 /** @todo we need real color representation, this is just placeholder so we
 can more easily identify sections of the code that need it */

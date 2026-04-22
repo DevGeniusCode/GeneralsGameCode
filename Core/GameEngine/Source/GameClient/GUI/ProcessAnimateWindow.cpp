@@ -50,7 +50,7 @@
 //-----------------------------------------------------------------------------
 // USER INCLUDES //////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/ProcessAnimateWindow.h"
 #include "GameClient/AnimateWindowManager.h"
@@ -84,12 +84,12 @@ static Real getDisplayHeightScaler()
 
 ProcessAnimateWindowSlideFromRight::ProcessAnimateWindowSlideFromRight()
 {
-	m_maxVel.x = 0.0f; // top speed windows travel in x and y
+	m_maxVel.x = 0.0f;    // top speed windows travel in x and y
 	m_maxVel.y = 0.0f;
-	m_slowDownThreshold = 0; // when windows get this close to their resting positions they start to slow down
+	m_slowDownThreshold = 0;    // when windows get this close to their resting positions they start to slow down
 
-	m_slowDownRatio = 0.67f;                 // how fast the windows slow down (smaller slows quicker)
-	m_speedUpRatio = 2.0f - m_slowDownRatio; // how fast the windows speed up
+	m_slowDownRatio = 0.67f;    // how fast the windows slow down (smaller slows quicker)
+	m_speedUpRatio = 2.0f - m_slowDownRatio;    // how fast the windows speed up
 }
 
 //-----------------------------------------------------------------------------
@@ -141,7 +141,7 @@ void ProcessAnimateWindowSlideFromRight::initAnimateWindow(wnd::AnimateWindow* a
 	endPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Right of the screen
-	Int travelDistance = TheDisplay->getWidth(); // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth();    // / 4 * 3;
 	startPos.x = curPos.x = restPos.x + travelDistance;
 	startPos.y = curPos.y = restPos.y;
 
@@ -272,12 +272,12 @@ Bool ProcessAnimateWindowSlideFromRight::reverseAnimateWindow(wnd::AnimateWindow
 
 ProcessAnimateWindowSlideFromLeft::ProcessAnimateWindowSlideFromLeft()
 {
-	m_maxVel.x = 0.0f; // top speed windows travel in x and y
+	m_maxVel.x = 0.0f;    // top speed windows travel in x and y
 	m_maxVel.y = 0.0f;
-	m_slowDownThreshold = 0; // when windows get this close to their resting positions they start to slow down
+	m_slowDownThreshold = 0;    // when windows get this close to their resting positions they start to slow down
 
-	m_slowDownRatio = 0.67f;                 // how fast the windows slow down (smaller slows quicker)
-	m_speedUpRatio = 2.0f - m_slowDownRatio; // how fast the windows speed up
+	m_slowDownRatio = 0.67f;    // how fast the windows slow down (smaller slows quicker)
+	m_speedUpRatio = 2.0f - m_slowDownRatio;    // how fast the windows speed up
 }
 
 ProcessAnimateWindowSlideFromLeft::~ProcessAnimateWindowSlideFromLeft() {}
@@ -324,7 +324,7 @@ void ProcessAnimateWindowSlideFromLeft::initAnimateWindow(wnd::AnimateWindow* an
 	endPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Left of the screen
-	Int travelDistance = TheDisplay->getWidth(); // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth();    // / 4 * 3;
 	startPos.x = curPos.x = restPos.x - travelDistance;
 	startPos.y = curPos.y = restPos.y;
 
@@ -454,12 +454,12 @@ Bool ProcessAnimateWindowSlideFromLeft::reverseAnimateWindow(wnd::AnimateWindow*
 
 ProcessAnimateWindowSlideFromTop::ProcessAnimateWindowSlideFromTop()
 {
-	m_maxVel.x = 0.0f; // top speed windows travel in x and y
+	m_maxVel.x = 0.0f;    // top speed windows travel in x and y
 	m_maxVel.y = 0.0f;
-	m_slowDownThreshold = 0; // when windows get this close to their resting positions they start to slow down
+	m_slowDownThreshold = 0;    // when windows get this close to their resting positions they start to slow down
 
-	m_slowDownRatio = 0.67f;                 // how fast the windows slow down (smaller slows quicker)
-	m_speedUpRatio = 2.0f - m_slowDownRatio; // how fast the windows speed up
+	m_slowDownRatio = 0.67f;    // how fast the windows slow down (smaller slows quicker)
+	m_speedUpRatio = 2.0f - m_slowDownRatio;    // how fast the windows speed up
 }
 
 ProcessAnimateWindowSlideFromTop::~ProcessAnimateWindowSlideFromTop() {}
@@ -506,7 +506,7 @@ void ProcessAnimateWindowSlideFromTop::initAnimateWindow(wnd::AnimateWindow* ani
 	endPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Top of the screen
-	Int travelDistance = TheDisplay->getWidth(); // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth();    // / 4 * 3;
 	startPos.x = curPos.x = restPos.x;
 	startPos.y = curPos.y = restPos.y - travelDistance;
 
@@ -637,12 +637,12 @@ Bool ProcessAnimateWindowSlideFromTop::reverseAnimateWindow(wnd::AnimateWindow* 
 
 ProcessAnimateWindowSlideFromBottom::ProcessAnimateWindowSlideFromBottom()
 {
-	m_maxVel.x = 0.0f; // top speed windows travel in x and y
+	m_maxVel.x = 0.0f;    // top speed windows travel in x and y
 	m_maxVel.y = 0.0f;
-	m_slowDownThreshold = 0; // when windows get this close to their resting positions they start to slow down
+	m_slowDownThreshold = 0;    // when windows get this close to their resting positions they start to slow down
 
-	m_slowDownRatio = 0.67f;                 // how fast the windows slow down (smaller slows quicker)
-	m_speedUpRatio = 2.0f - m_slowDownRatio; // how fast the windows speed up
+	m_slowDownRatio = 0.67f;    // how fast the windows slow down (smaller slows quicker)
+	m_speedUpRatio = 2.0f - m_slowDownRatio;    // how fast the windows speed up
 }
 
 ProcessAnimateWindowSlideFromBottom::~ProcessAnimateWindowSlideFromBottom() {}
@@ -689,7 +689,7 @@ void ProcessAnimateWindowSlideFromBottom::initAnimateWindow(wnd::AnimateWindow* 
 	endPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Bottom of the screen
-	Int travelDistance = TheDisplay->getWidth(); // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth();    // / 4 * 3;
 	startPos.x = curPos.x = restPos.x;
 	startPos.y = curPos.y = restPos.y + travelDistance;
 
@@ -852,7 +852,7 @@ void ProcessAnimateWindowSlideFromBottomTimed::initReverseAnimateWindow(wnd::Ani
 	curPos.y = startPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Bottom of the screen
-	Int travelDistance = TheDisplay->getWidth(); // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth();    // / 4 * 3;
 	endPos.x = curPos.x = restPos.x;
 	endPos.y = restPos.y + travelDistance;
 
@@ -892,7 +892,7 @@ void ProcessAnimateWindowSlideFromBottomTimed::initAnimateWindow(wnd::AnimateWin
 	endPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Bottom of the screen
-	Int travelDistance = TheDisplay->getWidth(); // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth();    // / 4 * 3;
 	startPos.x = curPos.x = restPos.x;
 	startPos.y = curPos.y = restPos.y + travelDistance;
 
@@ -1146,12 +1146,12 @@ Bool ProcessAnimateWindowSpiral::reverseAnimateWindow(wnd::AnimateWindow* animWi
 
 ProcessAnimateWindowSlideFromTopFast::ProcessAnimateWindowSlideFromTopFast()
 {
-	m_maxVel.y = 60.0f; // top speed windows travel in x and y
+	m_maxVel.y = 60.0f;    // top speed windows travel in x and y
 	m_maxVel.x = 0.0f;
-	m_slowDownThreshold = 40;                // when windows get this close to their resting
-	                                         // positions they start to slow down
-	m_slowDownRatio = 0.67f;                 // how fast the windows slow down (smaller slows quicker)
-	m_speedUpRatio = 4.0f - m_slowDownRatio; // how fast the windows speed up
+	m_slowDownThreshold = 40;    // when windows get this close to their resting
+	                             // positions they start to slow down
+	m_slowDownRatio = 0.67f;    // how fast the windows slow down (smaller slows quicker)
+	m_speedUpRatio = 4.0f - m_slowDownRatio;    // how fast the windows speed up
 }
 
 ProcessAnimateWindowSlideFromTopFast::~ProcessAnimateWindowSlideFromTopFast() {}
@@ -1203,7 +1203,7 @@ void ProcessAnimateWindowSlideFromTopFast::initAnimateWindow(wnd::AnimateWindow*
 	// set the initial positions for the window. In this case, off the Top of the screen
 	// Int travelDistance = TheDisplay->getWidth();// / 4 * 3;
 	startPos.x = curPos.x = restPos.x;
-	startPos.y = curPos.y = -size.y; // restPos.y - travelDistance;
+	startPos.y = curPos.y = -size.y;    // restPos.y - travelDistance;
 
 	// set the window's position to the new start positions.
 	win->winSetPosition(startPos.x, startPos.y);
@@ -1326,12 +1326,12 @@ Bool ProcessAnimateWindowSlideFromTopFast::reverseAnimateWindow(wnd::AnimateWind
 
 ProcessAnimateWindowSlideFromRightFast::ProcessAnimateWindowSlideFromRightFast()
 {
-	m_maxVel.x = -80.0f; // top speed windows travel in x and y
+	m_maxVel.x = -80.0f;    // top speed windows travel in x and y
 	m_maxVel.y = 0.0f;
-	m_slowDownThreshold = 60;                // when windows get this close to their resting
-	                                         // positions they start to slow down
-	m_slowDownRatio = 0.77f;                 // how fast the windows slow down (smaller slows quicker)
-	m_speedUpRatio = 3.0f - m_slowDownRatio; // how fast the windows speed up
+	m_slowDownThreshold = 60;    // when windows get this close to their resting
+	                             // positions they start to slow down
+	m_slowDownRatio = 0.77f;    // how fast the windows slow down (smaller slows quicker)
+	m_speedUpRatio = 3.0f - m_slowDownRatio;    // how fast the windows speed up
 }
 
 //-----------------------------------------------------------------------------
@@ -1399,7 +1399,7 @@ void ProcessAnimateWindowSlideFromRightFast::initAnimateWindow(wnd::AnimateWindo
 	endPos.y = restPos.y;
 
 	// set the initial positions for the window. In this case, off the Right of the screen
-	Int travelDistance = TheDisplay->getWidth() - restPos.x + size.x; // / 4 * 3;
+	Int travelDistance = TheDisplay->getWidth() - restPos.x + size.x;    // / 4 * 3;
 	startPos.x = curPos.x = restPos.x + travelDistance;
 	startPos.y = curPos.y = restPos.y;
 

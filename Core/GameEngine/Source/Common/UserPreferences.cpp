@@ -31,7 +31,7 @@
 //-----------------------------------------------------------------------------
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 //-----------------------------------------------------------------------------
 // USER INCLUDES //////////////////////////////////////////////////////////////
@@ -376,7 +376,7 @@ Int QuickMatchPreferences::getNumPlayers()
 	QuickMatchPreferences::const_iterator it = find("NumPlayers");
 	if (it == end())
 	{
-		return 0; // first in list, 1v1
+		return 0;    // first in list, 1v1
 	}
 	return atoi(it->second.str());
 }
@@ -666,7 +666,7 @@ AsciiString CustomMatchPreferences::getPreferredMap()
 	AsciiString ret;
 	CustomMatchPreferences::const_iterator it = find("Map");
 	if (it == end())
-	{ // map not found, use default instead
+	{    // map not found, use default instead
 		ret = getDefaultOfficialMap();
 		return ret;
 	}
@@ -674,7 +674,7 @@ AsciiString CustomMatchPreferences::getPreferredMap()
 	ret = QuotedPrintableToAsciiString(it->second);
 	ret.trim();
 	if (ret.isEmpty() || !isValidMap(ret, TRUE))
-	{ // map is invalid, use default instead
+	{    // map is invalid, use default instead
 		ret = getDefaultOfficialMap();
 		return ret;
 	}
@@ -740,7 +740,7 @@ Bool CustomMatchPreferences::getFactionsLimited() const
 	const_iterator it = find(limitFactionsKey);
 	if (it == end())
 	{
-		return false; // The default
+		return false;    // The default
 	}
 
 	return (it->second.compareNoCase("yes") == 0);
@@ -758,7 +758,7 @@ Bool CustomMatchPreferences::getUseStats() const
 	const_iterator it = find(useStatsKey);
 	if (it == end())
 	{
-		return true; // The default
+		return true;    // The default
 	}
 
 	return (it->second.compareNoCase("yes") == 0);

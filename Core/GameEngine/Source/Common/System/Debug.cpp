@@ -43,7 +43,7 @@
 // ----------------------------------------------------------------------------
 
 // SYSTEM INCLUDES
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 // USER INCLUDES
 
@@ -76,7 +76,7 @@
 extern bool DX8Wrapper_IsWindowed;
 extern HWND ApplicationHWnd;
 
-extern const char* gAppPrefix; /// So WB can have a different log file name.
+extern const char* gAppPrefix;    /// So WB can have a different log file name.
 
 // ----------------------------------------------------------------------------
 // DEFINES
@@ -109,7 +109,7 @@ static char theLogFileName[_MAX_PATH];
 static char theLogFileNamePrev[_MAX_PATH];
 #endif
 #define LARGE_BUFFER 8192
-static char theBuffer[LARGE_BUFFER]; // make it big to avoid weird overflow bugs in debug mode
+static char theBuffer[LARGE_BUFFER];    // make it big to avoid weird overflow bugs in debug mode
 static int theDebugFlags = 0;
 static DWORD theMainThreadID = 0;
 // ----------------------------------------------------------------------------
@@ -256,7 +256,7 @@ static void doLogOutput(const char* buffer, const char* endline)
 	addCRCDebugLineNoCounter("%s%s", buffer, endline);
 	#endif
 }
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 
 // ----------------------------------------------------------------------------
 // doCrashBox
@@ -620,7 +620,7 @@ void DebugSetFlags(int flags)
 	theDebugFlags = flags;
 }
 
-#endif // ALLOW_DEBUG_UTILS
+#endif    // ALLOW_DEBUG_UTILS
 
 #ifdef DEBUG_PROFILE
 // ----------------------------------------------------------------------------
@@ -702,7 +702,7 @@ double SimpleProfiler::getAverageTime()
 	return (double)m_totalAllSessions * 1000.0 / ((double)m_freq * (double)m_numSessions);
 }
 
-#endif // DEBUG_PROFILE
+#endif    // DEBUG_PROFILE
 
 // ----------------------------------------------------------------------------
 // ReleaseCrash
@@ -760,7 +760,7 @@ void ReleaseCrash(const char* reason)
 
 	if (TheGlobalData == nullptr)
 	{
-		return; // We are shutting down, and TheGlobalData has been freed.  jba. [4/15/2003]
+		return;    // We are shutting down, and TheGlobalData has been freed.  jba. [4/15/2003]
 	}
 
 	strlcpy(prevbuf, TheGlobalData->getPath_UserData().str(), ARRAY_SIZE(prevbuf));
@@ -807,7 +807,7 @@ void ReleaseCrash(const char* reason)
 	}
 
 #if defined(RTS_DEBUG)
-	/* static */ char buff[8192]; // not so static so we can be threadsafe
+	/* static */ char buff[8192];    // not so static so we can be threadsafe
 	snprintf(buff, 8192, "Sorry, a serious error occurred. (%s)", reason);
 	::MessageBox(nullptr, buff, "Technical Difficulties...", MB_OK | MB_SYSTEMMODAL | MB_ICONERROR);
 #else

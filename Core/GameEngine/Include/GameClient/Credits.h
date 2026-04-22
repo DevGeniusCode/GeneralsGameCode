@@ -67,7 +67,7 @@ enum
 	CREDIT_STYLE_POSITION,
 	CREDIT_STYLE_NORMAL,
 	CREDIT_STYLE_COLUMN,
-	CREDIT_STYLE_BLANK, ///< Keep this second to last
+	CREDIT_STYLE_BLANK,    ///< Keep this second to last
 
 	MAX_CREDIT_STYLES
 };
@@ -120,10 +120,10 @@ public:
 	virtual void update() override;
 	virtual void draw() override;
 
-	const FieldParse* getFieldParse() const { return m_creditsFieldParseTable; }         ///< returns the parsing fields
-	static const FieldParse m_creditsFieldParseTable[];                                  ///< the parse table
-	static void parseBlank(INI* ini, void* instance, void* store, const void* userData); ///< Parse the image part of the INI file
-	static void parseText(INI* ini, void* instance, void* store, const void* userData);  ///< Parse the image part of the INI file
+	const FieldParse* getFieldParse() const { return m_creditsFieldParseTable; }    ///< returns the parsing fields
+	static const FieldParse m_creditsFieldParseTable[];    ///< the parse table
+	static void parseBlank(INI* ini, void* instance, void* store, const void* userData);    ///< Parse the image part of the INI file
+	static void parseText(INI* ini, void* instance, void* store, const void* userData);    ///< Parse the image part of the INI file
 
 	Bool isFinished() { return m_isFinished; }
 	void addBlank();
@@ -138,9 +138,9 @@ private:
 
 	CreditsLineList m_displayedCreditLineList;
 
-	Int m_scrollRate; // in pixels
+	Int m_scrollRate;    // in pixels
 	Int m_scrollRatePerFrames;
-	Bool m_scrollDown; // if TRUE text will come from the top to the bottom if False, it will go from the bottom up
+	Bool m_scrollDown;    // if TRUE text will come from the top to the bottom if False, it will go from the bottom up
 
 	Color m_titleColor;
 	Color m_positionColor;

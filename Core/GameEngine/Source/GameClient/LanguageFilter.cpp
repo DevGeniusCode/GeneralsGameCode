@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/LanguageFilter.h"
 #include "Common/FileSystem.h"
@@ -100,7 +100,7 @@ void LanguageFilter::filterLine(UnicodeString& line)
 			continue;
 		}
 
-		Int len = token.getLength(); // need to get the length of the original word, not the unhaxor'd word.
+		Int len = token.getLength();    // need to get the length of the original word, not the unhaxor'd word.
 
 		unHaxor(token);
 		LangMapIter iter = m_wordList.find(token);
@@ -131,7 +131,7 @@ void LanguageFilter::unHaxor(UnicodeString& word)
 			if (((i + 1) < len) && ((word.getCharAt(i + 1) == L'h') || (word.getCharAt(i + 1) == L'H')))
 			{
 				newWord.concat(L'f');
-				++i; // skip the h
+				++i;    // skip the h
 			}
 			else
 			{

@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/crc.h"
 #include "GameNetwork/Transport.h"
@@ -45,7 +45,7 @@ static inline void encryptBuf(unsigned char* buf, Int len)
 		*uintPtr = (*uintPtr) ^ mask;
 		*uintPtr = htonl(*uintPtr);
 		uintPtr++;
-		mask += 0x00000321; // just for fun
+		mask += 0x00000321;    // just for fun
 	}
 }
 
@@ -61,7 +61,7 @@ static inline void decryptBuf(unsigned char* buf, Int len)
 		*uintPtr = htonl(*uintPtr);
 		*uintPtr = (*uintPtr) ^ mask;
 		uintPtr++;
-		mask += 0x00000321; // just for fun
+		mask += 0x00000321;    // just for fun
 	}
 }
 
@@ -233,7 +233,7 @@ Bool Transport::doSend()
 				// DEBUG_LOG(("Sending %d bytes to %d.%d.%d.%d:%d", bytesToSend, PRINTF_IP_AS_4_INTS(m_outBuffer[i].addr), m_outBuffer[i].port));
 				m_outgoingPackets[m_statisticsSlot]++;
 				m_outgoingBytes[m_statisticsSlot] += m_outBuffer[i].length + sizeof(TransportMessageHeader);
-				m_outBuffer[i].length = 0; // Remove from queue
+				m_outBuffer[i].length = 0;    // Remove from queue
 				if (bytesSent != bytesToSend)
 				{
 					DEBUG_LOG(("Transport::doSend - wanted to send %d bytes, only sent %d bytes to %d.%d.%d.%d:%d",

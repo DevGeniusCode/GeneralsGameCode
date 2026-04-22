@@ -35,7 +35,8 @@ TabWidth: 2
 ContinuationIndentWidth: 2
 AccessModifierOffset: -2
 IndentCaseLabels: true
-AlignTrailingComments: true
+AlignTrailingComments: false
+SpacesBeforeTrailingComments: 4
 
 # 3. Braces Style: Allman
 # ------------------------------------------------------------------------------

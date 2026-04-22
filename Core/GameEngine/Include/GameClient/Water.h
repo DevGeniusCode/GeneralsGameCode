@@ -50,11 +50,11 @@ public:
 	/// Get the INI parsing table for loading
 	const FieldParse* getFieldParse() { return m_waterSettingFieldParseTable; }
 
-	static const FieldParse m_waterSettingFieldParseTable[]; ///< the parse table for INI definition
+	static const FieldParse m_waterSettingFieldParseTable[];    ///< the parse table for INI definition
 	AsciiString m_skyTextureFile;
 	AsciiString m_waterTextureFile;
 	Int m_waterRepeatCount;
-	Real m_skyTexelsPerUnit; // texel density of sky plane (higher value repeats texture more).
+	Real m_skyTexelsPerUnit;    // texel density of sky plane (higher value repeats texture more).
 	RGBAColorInt m_vertex00Diffuse;
 	RGBAColorInt m_vertex10Diffuse;
 	RGBAColorInt m_vertex11Diffuse;
@@ -108,7 +108,7 @@ public:
 		m_skyboxTextureT = "TSMorningT.tga";
 	}
 
-	static const FieldParse m_waterTransparencySettingFieldParseTable[]; ///< the parse table for INI definition
+	static const FieldParse m_waterTransparencySettingFieldParseTable[];    ///< the parse table for INI definition
 
 	/// Get the INI parsing table for loading
 	const FieldParse* getFieldParse() const { return m_waterTransparencySettingFieldParseTable; }

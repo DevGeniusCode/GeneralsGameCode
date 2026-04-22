@@ -28,7 +28,7 @@
 // Description: File Transfer wrapper using TheNetwork
 ///////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/LoadScreen.h"
 #include "GameClient/Shell.h"
@@ -110,7 +110,7 @@ static Bool doFileTransfer(AsciiString filename, MapTransferLoadScreen* ls, Int 
 			}
 
 			Int now = timeGetTime();
-			if (now > startTime + timeoutPeriod) // bail if we don't finish in a reasonable amount of time
+			if (now > startTime + timeoutPeriod)    // bail if we don't finish in a reasonable amount of time
 			{
 				DEBUG_LOG(("Timing out file transfer"));
 				break;

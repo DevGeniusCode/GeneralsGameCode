@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 // USER INCLUDES //////////////////////////////////////////////////////////////
 #include "Common/GameEngine.h"
@@ -106,12 +106,12 @@ AsciiString GetWSAErrorString(Int error)
 			return ret;
 		}
 	}
-	return AsciiString::TheEmptyString; // will not be hit, ever.
+	return AsciiString::TheEmptyString;    // will not be hit, ever.
 }
 
 	#undef CASE
 
-#endif // defined(RTS_DEBUG)
+#endif    // defined(RTS_DEBUG)
 
 //-------------------------------------------------------------------------
 
@@ -211,11 +211,11 @@ Int UDP::SetBlocking(Int block)
 		return (UNKNOWN);
 	else
 		return (OK);
-#else // UNIX
+#else    // UNIX
 	int flags = fcntl(fd, F_GETFL, 0);
-	if (block == FALSE) // set nonblocking
+	if (block == FALSE)    // set nonblocking
 		flags |= O_NONBLOCK;
-	else // set blocking
+	else    // set blocking
 		flags &= ~(O_NONBLOCK);
 
 	if (fcntl(fd, F_SETFL, flags) < 0)

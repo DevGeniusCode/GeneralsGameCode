@@ -171,7 +171,7 @@ Bool LocalFile::open(const Char* filename, Int access, size_t bufferSize)
 		else
 			mode = binary ? "wb" : "w";
 	}
-	else // implicitly read-only
+	else    // implicitly read-only
 	{
 		mode = binary ? "rb" : "r";
 	}
@@ -187,13 +187,13 @@ Bool LocalFile::open(const Char* filename, Int access, size_t bufferSize)
 
 		if (bufferSize == 0)
 		{
-			result = setvbuf(m_file, nullptr, _IONBF, 0); // Uses no buffering
+			result = setvbuf(m_file, nullptr, _IONBF, 0);    // Uses no buffering
 		}
 		else
 		{
 			const Int bufferMode = (m_access & LINEBUF)
-			                         ? _IOLBF  // Uses line buffering
-			                         : _IOFBF; // Uses full buffering
+			                         ? _IOLBF    // Uses line buffering
+			                         : _IOFBF;    // Uses full buffering
 
 			// Buffer is expected to lazy allocate on first read or write later
 			result = setvbuf(m_file, nullptr, bufferMode, bufferSize);
@@ -236,7 +236,7 @@ Bool LocalFile::open(const Char* filename, Int access, size_t bufferSize)
 		flags |= _O_WRONLY;
 		flags |= _O_CREAT;
 	}
-	else // implicitly read-only
+	else    // implicitly read-only
 	{
 		flags |= _O_RDONLY;
 	}

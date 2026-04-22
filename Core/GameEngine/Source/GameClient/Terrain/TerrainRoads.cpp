@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLDUES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #define DEFINE_BODYDAMAGETYPE_NAMES
 #include "Common/INI.h"
@@ -231,7 +231,7 @@ TerrainRoadCollection::TerrainRoadCollection()
 	m_roadList = nullptr;
 	m_bridgeList = nullptr;
 
-	m_idCounter = 1; ///< MUST start this at 1.
+	m_idCounter = 1;    ///< MUST start this at 1.
 }
 
 //-------------------------------------------------------------------------------------------------

@@ -36,7 +36,7 @@
 /* Revision History:                                                         */
 /*		3/21/2002 : Initial creation                                           */
 /*---------------------------------------------------------------------------*/
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/AudioEventRTS.h"
 
@@ -50,12 +50,12 @@
 #include "Common/Player.h"
 #include "Common/Registry.h"
 
-#include "GameLogic/GameLogic.h" // For getObjectByID
+#include "GameLogic/GameLogic.h"    // For getObjectByID
 #include "GameLogic/LogicRandomValue.h"
 #include "GameLogic/Object.h"
 
-#include "GameClient/Drawable.h"   // For getPosition
-#include "GameClient/GameClient.h" // For getDrawableByID
+#include "GameClient/Drawable.h"    // For getPosition
+#include "GameClient/GameClient.h"    // For getDrawableByID
 
 //-------------------------------------------------------------------------------------------------
 AudioEventRTS::AudioEventRTS()
@@ -351,7 +351,7 @@ void AudioEventRTS::generateFilename()
 			if (which == m_playingAudioIndex && m_eventInfo->m_sounds.size() > 2)
 				which = (which + 1) % m_eventInfo->m_sounds.size();
 
-			m_playingAudioIndex = which; // caching random choice to compare next call
+			m_playingAudioIndex = which;    // caching random choice to compare next call
 		}
 		else
 			which = (++m_playingAudioIndex) % m_eventInfo->m_sounds.size();
@@ -376,7 +376,7 @@ AsciiString AudioEventRTS::getFilename()
 void AudioEventRTS::generatePlayInfo()
 {
 	m_pitchShift = GameAudioRandomValueReal(m_eventInfo->m_pitchShiftMin, m_eventInfo->m_pitchShiftMax);
-	m_volumeShift = GameAudioRandomValueReal(1.0f + m_eventInfo->m_volumeShift, 1.0f); // volume shifts are between 0 and 1
+	m_volumeShift = GameAudioRandomValueReal(1.0f + m_eventInfo->m_volumeShift, 1.0f);    // volume shifts are between 0 and 1
 	m_loopCount = m_eventInfo->m_loopCount;
 
 	m_portionToPlayNext = PP_Attack;

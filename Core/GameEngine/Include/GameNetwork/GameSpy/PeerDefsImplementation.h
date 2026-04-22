@@ -179,9 +179,9 @@ private:
 	UnsignedInt m_internalIP, m_externalIP;
 	Int m_maxMessagesPerUpdate;
 
-	Int m_joinedStagingRoom;               // if we join a staging room, this holds its ID (0 otherwise)
-	Bool m_isHosting;                      // if we host, this is true, and
-	GameSpyStagingRoom m_localStagingRoom; // this holds the GameInfo for it.
+	Int m_joinedStagingRoom;    // if we join a staging room, this holds its ID (0 otherwise)
+	Bool m_isHosting;    // if we host, this is true, and
+	GameSpyStagingRoom m_localStagingRoom;    // this holds the GameInfo for it.
 	Int m_localStagingRoomID;
 
 	IgnoreList m_ignoreList;

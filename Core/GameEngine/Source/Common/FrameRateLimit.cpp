@@ -35,7 +35,7 @@ Real FrameRateLimit::wait(UnsignedInt maxFps)
 	QueryPerformanceCounter(&tick);
 	double elapsedSeconds = static_cast<double>(tick.QuadPart - m_start) / m_freq;
 	const double targetSeconds = 1.0 / maxFps;
-	const double sleepSeconds = targetSeconds - elapsedSeconds - 0.002; // leave ~2ms for spin wait
+	const double sleepSeconds = targetSeconds - elapsedSeconds - 0.002;    // leave ~2ms for spin wait
 
 	if (sleepSeconds > 0.0)
 	{

@@ -29,7 +29,7 @@
 // the game.
 // Author: Matthew D. Campbell, July 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/UserPreferences.h"
 #include "Common/PlayerTemplate.h"
@@ -622,7 +622,7 @@ Bool PSThreadClass::tryLogin(Int id, std::string nick, std::string password, std
 	client will create the validation token using GenerateAuth, and send it
 	back to the server for use in PreAuthenticatePlayerPM
 	***********/
-	char* munkeeHack = strdup(password.c_str()); // GenerateAuth takes a char*, not a const char* :P
+	char* munkeeHack = strdup(password.c_str());    // GenerateAuth takes a char*, not a const char* :P
 	GenerateAuth(GetChallenge(nullptr), munkeeHack, validate);
 	free(munkeeHack);
 
@@ -889,7 +889,7 @@ void PSThreadClass::Thread_Function()
 							NewGame(0);
 #ifdef DEBUG_LOGGING
 							Int res =
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 								SendGameSnapShot(nullptr, req.results.c_str(), SNAP_FINAL);
 							DEBUG_LOG(("Just sent game results - res was %d", res));
 							FreeGame(nullptr);
@@ -900,7 +900,7 @@ void PSThreadClass::Thread_Function()
 					{
 						if (!MESSAGE_QUEUE->getLocalPlayerID())
 						{
-							MESSAGE_QUEUE->setLocalPlayerID(req.player.id); // first request is for ourselves
+							MESSAGE_QUEUE->setLocalPlayerID(req.player.id);    // first request is for ourselves
 							MESSAGE_QUEUE->setEmail(req.email);
 							MESSAGE_QUEUE->setNick(req.nick);
 							MESSAGE_QUEUE->setPassword(req.password);
@@ -1028,7 +1028,7 @@ void PSThreadClass::Thread_Function()
 							if (TheGameSpyPSMessageQueue)
 								TheGameSpyPSMessageQueue->trackPlayerStats(req.player);
 
-							char* munkeeHack = strdup(GameSpyPSMessageQueueInterface::formatPlayerKVPairs(req.player).c_str()); // GS takes a char* for some reason
+							char* munkeeHack = strdup(GameSpyPSMessageQueueInterface::formatPlayerKVPairs(req.player).c_str());    // GS takes a char* for some reason
 							incrOpCount();
 							DEBUG_LOG(("Setting values %s", munkeeHack));
 							SetPersistDataValues(0, req.player.id, pd_public_rw, 0, munkeeHack, setPersistentDataCallback, this);
@@ -1054,10 +1054,10 @@ void PSThreadClass::Thread_Function()
 							cdAuthInfo.id = 0;
 							char cdkeyHash[33] = "";
 							char validationToken[33] = "";
-							char* munkeeHack = strdup(req.cdkey.c_str()); // GenerateAuth takes a char*, not a const char* :P
+							char* munkeeHack = strdup(req.cdkey.c_str());    // GenerateAuth takes a char*, not a const char* :P
 
-							GenerateAuth(GetChallenge(nullptr), munkeeHack, validationToken); // validation token
-							GenerateAuth("", munkeeHack, cdkeyHash);                          // cdkey hash
+							GenerateAuth(GetChallenge(nullptr), munkeeHack, validationToken);    // validation token
+							GenerateAuth("", munkeeHack, cdkeyHash);    // cdkey hash
 
 							free(munkeeHack);
 

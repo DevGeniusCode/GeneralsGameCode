@@ -26,9 +26,9 @@
 // Ping thread
 // Author: Matthew D. Campbell, August 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
-#include <winsock.h> // This one has to be here. Prevents collisions with windsock2.h
+#include <winsock.h>    // This one has to be here. Prevents collisions with windsock2.h
 
 #include "GameNetwork/GameSpy/PingThread.h"
 #include "mutex.h"
@@ -282,7 +282,7 @@ void PingThreadClass::Thread_Function()
 
 						// Even though this failed to resolve IP, still need to send a
 						//   callback.
-						IP = 0xFFFFFFFF; // flag for IP resolve failed
+						IP = 0xFFFFFFFF;    // flag for IP resolve failed
 					}
 					else
 					{
@@ -339,7 +339,7 @@ void PingThreadClass::Thread_Function()
 //-------------------------------------------------------------------------
 //-------------------------------------------------------------------------
 
-HANDLE WINAPI IcmpCreateFile();                 /* INVALID_HANDLE_VALUE on error */
+HANDLE WINAPI IcmpCreateFile(); /* INVALID_HANDLE_VALUE on error */
 BOOL WINAPI IcmpCloseHandle(HANDLE IcmpHandle); /* FALSE on error */
 
 /* Note 2: For the most part, you can refer to RFC 791 for detials
@@ -347,10 +347,10 @@ BOOL WINAPI IcmpCloseHandle(HANDLE IcmpHandle); /* FALSE on error */
  */
 typedef struct ip_option_information
 {
-	UnsignedByte Ttl;              /* Time To Live (used for traceroute) */
-	UnsignedByte Tos;              /* Type Of Service (usually 0) */
-	UnsignedByte Flags;            /* IP header flags (usually 0) */
-	UnsignedByte OptionsSize;      /* Size of options data (usually 0, max 40) */
+	UnsignedByte Ttl; /* Time To Live (used for traceroute) */
+	UnsignedByte Tos; /* Type Of Service (usually 0) */
+	UnsignedByte Flags; /* IP header flags (usually 0) */
+	UnsignedByte OptionsSize; /* Size of options data (usually 0, max 40) */
 	UnsignedByte FAR* OptionsData; /* Options data buffer */
 } IPINFO, *PIPINFO, FAR* LPIPINFO;
 
@@ -363,22 +363,22 @@ typedef struct icmp_echo_reply
 {
 	UnsignedInt Address; /* source address */
 	////////UnsignedInt Status;      /* IP status value (see below) */
-	UnsignedInt RTTime;                   /* Round Trip Time in milliseconds */
-	UnsignedShort DataSize;               /* reply data size */
-	UnsignedShort Reserved;               /* */
-	void FAR* Data;                       /* reply data buffer */
+	UnsignedInt RTTime; /* Round Trip Time in milliseconds */
+	UnsignedShort DataSize; /* reply data size */
+	UnsignedShort Reserved; /* */
+	void FAR* Data; /* reply data buffer */
 	struct ip_option_information Options; /* reply options */
 } ICMPECHO, *PICMPECHO, FAR* LPICMPECHO;
 
 DWORD WINAPI IcmpSendEcho(
-	HANDLE IcmpHandle,       /* handle returned from IcmpCreateFile() */
+	HANDLE IcmpHandle, /* handle returned from IcmpCreateFile() */
 	UnsignedInt DestAddress, /* destination IP address (in network order) */
-	LPVOID RequestData,      /* pointer to buffer to send */
-	WORD RequestSize,        /* length of data in buffer */
-	LPIPINFO RequestOptns,   /* see Note 2 */
-	LPVOID ReplyBuffer,      /* see Note 1 */
-	DWORD ReplySize,         /* length of reply (must allow at least 1 reply) */
-	DWORD Timeout            /* time in milliseconds to wait for reply */
+	LPVOID RequestData, /* pointer to buffer to send */
+	WORD RequestSize, /* length of data in buffer */
+	LPIPINFO RequestOptns, /* see Note 2 */
+	LPVOID ReplyBuffer, /* see Note 1 */
+	DWORD ReplySize, /* length of reply (must allow at least 1 reply) */
+	DWORD Timeout /* time in milliseconds to wait for reply */
 );
 
 #define IP_STATUS_BASE 11000
@@ -436,7 +436,7 @@ Int PingThreadClass::doPing(UnsignedInt IP, Int timeout)
 	nTTL = DEFAULT_TTL;
 	nTOS = 0;
 
-	Int pingTime = -1; // in case of error
+	Int pingTime = -1;    // in case of error
 
 	char achReqData[BUFSIZE];
 	char achRepData[sizeof(ICMPECHO) + BUFSIZE];

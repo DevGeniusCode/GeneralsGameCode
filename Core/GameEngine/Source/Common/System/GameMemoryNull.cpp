@@ -57,7 +57,7 @@ void* DynamicMemoryAllocator::allocateBytesDoNotZeroImplementation(Int numBytes)
 */
 void* DynamicMemoryAllocator::allocateBytesImplementation(Int numBytes)
 {
-	void* p = allocateBytesDoNotZeroImplementation(numBytes); // throws on failure
+	void* p = allocateBytesDoNotZeroImplementation(numBytes);    // throws on failure
 	memset(p, 0, numBytes);
 	return p;
 }

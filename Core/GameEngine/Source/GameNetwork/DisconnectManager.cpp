@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/Recorder.h"
 #include "GameClient/DisconnectMenu.h"
@@ -71,7 +71,7 @@ DisconnectManager::~DisconnectManager()
 
 void DisconnectManager::init()
 {
-	TheDisconnectMenu->hideScreen(); // make sure the screen starts out hidden.
+	TheDisconnectMenu->hideScreen();    // make sure the screen starts out hidden.
 	m_lastFrame = 0;
 	m_lastFrameTime = -1;
 	m_lastKeepAliveSendTime = -1;
@@ -135,7 +135,7 @@ void DisconnectManager::update(ConnectionManager* conMgr)
 		if (m_pingFrame < TheGameLogic->getFrame())
 		{
 			time_t curTime = timeGetTime();
-			if ((curTime - m_lastFrameTime) > 10000) /// @todo: plug in some better measure here
+			if ((curTime - m_lastFrameTime) > 10000)    /// @todo: plug in some better measure here
 			{
 				m_pingFrame = TheGameLogic->getFrame();
 				m_pingsSent = 0;
@@ -151,7 +151,7 @@ void DisconnectManager::update(ConnectionManager* conMgr)
 					AsciiStringList pingServers = TheGameSpyConfig->getPingServers();
 
 					if (serverIndex >= pingServers.size())
-						serverIndex = 0; // wrap back to first ping server
+						serverIndex = 0;    // wrap back to first ping server
 
 					std::list<AsciiString>::iterator it = pingServers.begin();
 					for (size_t i = 0; i < serverIndex; i++)
@@ -395,7 +395,7 @@ void DisconnectManager::processPacketRouterAck(NetCommandMsg* msg, ConnectionMan
 		conMgr->resendPendingCommands();
 		m_currentPacketRouterIndex = currentPacketRouterIndex;
 		DEBUG_LOG(("DisconnectManager::processPacketRouterAck - Setting disconnect state to screen on."));
-		m_disconnectState = DISCONNECTSTATETYPE_SCREENON; ///< set it to screen on so that the next call to AllCommandsReady can set up everything for the next frame properly.
+		m_disconnectState = DISCONNECTSTATETYPE_SCREENON;    ///< set it to screen on so that the next call to AllCommandsReady can set up everything for the next frame properly.
 	}
 }
 
@@ -486,7 +486,7 @@ void DisconnectManager::processDisconnectScreenOff(NetCommandMsg* msg, Connectio
 	{
 		DEBUG_LOG(("DisconnectManager::processDisconnectScreenOff - resetting the disconnect screen status for player %d", playerID));
 		m_disconnectFramesReceived[playerID] = FALSE;
-		m_disconnectFrames[playerID] = newFrame; // just in case we get packets out of order and the disconnect screen off message gets here before the disconnect frame message.
+		m_disconnectFrames[playerID] = newFrame;    // just in case we get packets out of order and the disconnect screen off message gets here before the disconnect frame message.
 
 		DEBUG_LOG(("DisconnectManager::processDisconnectScreenOff - about to call resetPlayersVotes for player %d", playerID));
 		resetPlayersVotes(playerID, cmdMsg->getNewFrame(), conMgr);
@@ -911,7 +911,7 @@ void DisconnectManager::playerHasAdvancedAFrame(Int slot, UnsignedInt frame)
 	// if they have advanced beyond the frame they had been previously disconnecting on.
 	if (frame >= m_disconnectFrames[slot])
 	{
-		m_disconnectFrames[slot] = frame; // just in case we get a disconnect frame command after this is called.
+		m_disconnectFrames[slot] = frame;    // just in case we get a disconnect frame command after this is called.
 		m_disconnectFramesReceived[slot] = FALSE;
 	}
 }

@@ -28,7 +28,7 @@
 // Description: LAN callback handlers
 ///////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/crc.h"
 #include "Common/GameState.h"
@@ -100,11 +100,11 @@ void LANAPI::handleGameAnnounce(LANMessage* msg, UnsignedInt senderIP)
 {
 	if (senderIP == m_localIP)
 	{
-		return; // Don't try to update own info
+		return;    // Don't try to update own info
 	}
 	else if (m_currentGame && m_currentGame->isGameInProgress())
 	{
-		return; // Don't care about games if we're playing
+		return;    // Don't care about games if we're playing
 	}
 	else if (senderIP == m_directConnectRemoteIP)
 	{
@@ -186,7 +186,7 @@ void LANAPI::handleRequestGameInfo(LANMessage* msg, UnsignedInt senderIP)
 	// In game - are we a game host?
 	if (m_currentGame)
 	{
-		if (m_currentGame->getIP(0) == m_localIP || (m_currentGame->isGameInProgress() && TheNetwork && TheNetwork->isPacketRouter())) // if we're in game we should reply if we're the packet router
+		if (m_currentGame->getIP(0) == m_localIP || (m_currentGame->isGameInProgress() && TheNetwork && TheNetwork->isPacketRouter()))    // if we're in game we should reply if we're the packet router
 		{
 			LANMessage reply;
 			fillInLANMessage(&reply);
@@ -205,23 +205,23 @@ void LANAPI::handleRequestGameInfo(LANMessage* msg, UnsignedInt senderIP)
 
 static Bool IsInvalidCharForPlayerName(const WideChar c)
 {
-	return c < L' '                               // C0 control chars
-	       || c == L',' || c == L':' || c == L';' // chars used for strtok in ParseAsciiStringToGameInfo
-	       || (c >= L'\x007f' && c <= L'\x009f')  // DEL + C1 control chars
+	return c < L' '    // C0 control chars
+	       || c == L',' || c == L':' || c == L';'    // chars used for strtok in ParseAsciiStringToGameInfo
+	       || (c >= L'\x007f' && c <= L'\x009f')    // DEL + C1 control chars
 	       || c == L'\x2028' || c == L'\x2029'    // line and paragraph separators
-	       || (c >= L'\xdc00' && c <= L'\xdfff')  // low surrogate, for chars beyond the Unicode Basic Multilingual Plane
-	       || (c >= L'\xd800' && c <= L'\xdbff'); // high surrogate, for chars beyond the BMP
+	       || (c >= L'\xdc00' && c <= L'\xdfff')    // low surrogate, for chars beyond the Unicode Basic Multilingual Plane
+	       || (c >= L'\xd800' && c <= L'\xdbff');    // high surrogate, for chars beyond the BMP
 }
 
 static Bool IsSpaceCharacter(const WideChar c)
 {
-	return c == L' '                             // space
-	       || c == L'\xA0'                       // no-break space
-	       || c == L'\x1680'                     // ogham space mark
-	       || (c >= L'\x2000' && c <= L'\x200A') // en/em spaces, figure, punctuation, thin, hair
-	       || c == L'\x202F'                     // narrow no-break space
-	       || c == L'\x205F'                     // medium mathematical space
-	       || c == L'\x3000';                    // ideographic space
+	return c == L' '    // space
+	       || c == L'\xA0'    // no-break space
+	       || c == L'\x1680'    // ogham space mark
+	       || (c >= L'\x2000' && c <= L'\x200A')    // en/em spaces, figure, punctuation, thin, hair
+	       || c == L'\x202F'    // narrow no-break space
+	       || c == L'\x205F'    // medium mathematical space
+	       || c == L'\x3000';    // ideographic space
 }
 
 static Bool ContainsInvalidChars(const WideChar* playerName)
@@ -250,12 +250,12 @@ static Bool ContainsAnyReadableChars(const WideChar* playerName)
 
 void LANAPI::handleRequestJoin(LANMessage* msg, UnsignedInt senderIP)
 {
-	UnsignedInt responseIP = senderIP; // need this cause the player may or may not be
-	                                   // in the player list at the sendMessage.
+	UnsignedInt responseIP = senderIP;    // need this cause the player may or may not be
+	                                      // in the player list at the sendMessage.
 
 	if (msg->GameToJoin.gameIP != m_localIP)
 	{
-		return; // Not us.  Ignore it.
+		return;    // Not us.  Ignore it.
 	}
 	LANMessage reply;
 	fillInLANMessage(&reply);
@@ -425,9 +425,9 @@ void LANAPI::handleRequestJoin(LANMessage* msg, UnsignedInt senderIP)
 
 void LANAPI::handleJoinAccept(LANMessage* msg, UnsignedInt senderIP)
 {
-	if (msg->GameJoined.playerIP == m_localIP) // Is it for us?
+	if (msg->GameJoined.playerIP == m_localIP)    // Is it for us?
 	{
-		if (m_pendingAction == ACT_JOIN) // Are we trying to join?
+		if (m_pendingAction == ACT_JOIN)    // Are we trying to join?
 		{
 			m_currentGame = LookupGame(UnicodeString(msg->GameJoined.gameName));
 
@@ -475,9 +475,9 @@ void LANAPI::handleJoinAccept(LANMessage* msg, UnsignedInt senderIP)
 
 void LANAPI::handleJoinDeny(LANMessage* msg, UnsignedInt senderIP)
 {
-	if (msg->GameJoined.playerIP == m_localIP) // Is it for us?
+	if (msg->GameJoined.playerIP == m_localIP)    // Is it for us?
 	{
-		if (m_pendingAction == ACT_JOIN) // Are we trying to join?
+		if (m_pendingAction == ACT_JOIN)    // Are we trying to join?
 		{
 			OnGameJoin(msg->GameNotJoined.reason, LookupGame(UnicodeString(msg->GameNotJoined.gameName)));
 			m_pendingAction = ACT_NONE;

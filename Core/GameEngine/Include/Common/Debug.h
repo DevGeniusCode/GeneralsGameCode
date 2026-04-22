@@ -49,7 +49,7 @@ class AsciiString;
 
 #define NO_RELEASE_DEBUG_LOGGING
 
-#ifdef RELEASE_DEBUG_LOGGING ///< Creates a DebugLogFile.txt (No I or D) with all the debug log goodness.  Good for startup problems.
+#ifdef RELEASE_DEBUG_LOGGING    ///< Creates a DebugLogFile.txt (No I or D) with all the debug log goodness.  Good for startup problems.
 	#define ALLOW_DEBUG_UTILS 1
 	#define DEBUG_LOGGING 1
 	#define DISABLE_DEBUG_CRASHING 1
@@ -81,7 +81,7 @@ class AsciiString;
 #if defined(ALLOW_DEBUG_UTILS) && !defined(DEBUG_STACKTRACE) && !defined(DISABLE_DEBUG_STACKTRACE)
 	#define DEBUG_STACKTRACE 1
 	#ifndef DEBUG_LOGGING
-		#define DEBUG_LOGGING 1 // TheSuperHackers @build Stack trace requires logging.
+		#define DEBUG_LOGGING 1    // TheSuperHackers @build Stack trace requires logging.
 	#endif
 #endif
 #if defined(ALLOW_DEBUG_UTILS) && !defined(DEBUG_PROFILE) && !defined(DISABLE_DEBUG_PROFILE)
@@ -158,7 +158,7 @@ DEBUG_EXTERN_C const char* DebugGetLogFileNamePrev();
 extern unsigned int DebugLevelMask;
 enum
 {
-	DEBUG_LEVEL_NET = 0, // in-game network
+	DEBUG_LEVEL_NET = 0,    // in-game network
 	DEBUG_LEVEL_MAX
 };
 extern const char* TheDebugLevels[DEBUG_LEVEL_MAX];
@@ -169,14 +169,14 @@ extern const char* TheDebugLevels[DEBUG_LEVEL_MAX];
 			{                \
 				DebugLog m;    \
 			}                \
-		} while (0) // Log message with trailing new line character (LF)
+		} while (0)    // Log message with trailing new line character (LF)
 	#define DEBUG_LOG_RAW(m) \
 		do                     \
 		{                      \
 			{                    \
 				DebugLogRaw m;     \
 			}                    \
-		} while (0) // Log message without trailing new line character (LF)
+		} while (0)    // Log message without trailing new line character (LF)
 	#define DEBUG_LOG_LEVEL(l, m) \
 		do                          \
 		{                           \
@@ -290,10 +290,10 @@ public:
 	void start();
 	void stop();
 	void stopAndLog(const char* msg, int howOftenToLog, int howOftenToResetAvg);
-	double getTime(); // of most recent session, in milliseconds
+	double getTime();    // of most recent session, in milliseconds
 	int getNumSessions();
-	double getTotalTime();   // total over all sessions, in milliseconds
-	double getAverageTime(); // averaged over all sessions, in milliseconds
+	double getTotalTime();    // total over all sessions, in milliseconds
+	double getAverageTime();    // averaged over all sessions, in milliseconds
 };
 
 	#define BEGIN_PROFILE(uniqueid)          \

@@ -58,39 +58,39 @@ public:
 	// ~WindowLayout();												///< defined by memory pool glue
 
 	// manipulating screen properties ---------------------------------------------------------------
-	AsciiString getFilename() const; ///< return source window filename
-	Bool load(AsciiString filename); ///< create windows and load from .wnd file
-	void hide(Bool hide);            ///< hide/show all windows on this screen
-	Bool isHidden() const;           ///< return visible state of screen
-	void bringForward();             ///< bring all windows in this screen forward
+	AsciiString getFilename() const;    ///< return source window filename
+	Bool load(AsciiString filename);    ///< create windows and load from .wnd file
+	void hide(Bool hide);    ///< hide/show all windows on this screen
+	Bool isHidden() const;    ///< return visible state of screen
+	void bringForward();    ///< bring all windows in this screen forward
 
 	// manipulating window lists --------------------------------------------------------------------
 	void addWindow(GameWindow* window);    ///< add window to screen
-	void removeWindow(GameWindow* window); ///< remove window from screen
-	void destroyWindows();                 ///< destroy all windows in this screen
+	void removeWindow(GameWindow* window);    ///< remove window from screen
+	void destroyWindows();    ///< destroy all windows in this screen
 	GameWindow* getFirstWindow() const;    ///< get first window in list for screen
 
 	// accessing layout callbacks  ------------------------------------------------------------------
-	void runInit(void* userData = nullptr);              ///< run the init method if available
-	void runUpdate(void* userData = nullptr);            ///< run the update method if available
-	void runShutdown(void* userData = nullptr);          ///< run the shutdown method if available
-	void setInit(WindowLayoutInitFunc init);             ///< set the init callback
-	void setUpdate(WindowLayoutUpdateFunc update);       ///< set the update callback
-	void setShutdown(WindowLayoutShutdownFunc shutdown); ///< set the shutdown callback
+	void runInit(void* userData = nullptr);    ///< run the init method if available
+	void runUpdate(void* userData = nullptr);    ///< run the update method if available
+	void runShutdown(void* userData = nullptr);    ///< run the shutdown method if available
+	void setInit(WindowLayoutInitFunc init);    ///< set the init callback
+	void setUpdate(WindowLayoutUpdateFunc update);    ///< set the update callback
+	void setShutdown(WindowLayoutShutdownFunc shutdown);    ///< set the shutdown callback
 
 protected:
 	// internal helpers -----------------------------------------------------------------------------
-	GameWindow* findWindow(GameWindow* window); ///< find window in this layout
+	GameWindow* findWindow(GameWindow* window);    ///< find window in this layout
 
 	//===============================================================================================
 	// protected data ===============================================================================
 	//===============================================================================================
 
-	AsciiString m_filenameString; ///< layout filename
-	GameWindow* m_windowList;     ///< list of windows in this layout
-	GameWindow* m_windowTail;     ///< end of m_windowList
-	Int m_windowCount;            ///< how man windows are in the list
-	Bool m_hidden;                ///< visible state of this screen
+	AsciiString m_filenameString;    ///< layout filename
+	GameWindow* m_windowList;    ///< list of windows in this layout
+	GameWindow* m_windowTail;    ///< end of m_windowList
+	Int m_windowCount;    ///< how man windows are in the list
+	Bool m_hidden;    ///< visible state of this screen
 
 	//
 	// These are callbacks you can attach to a "layout file" ... they are not
@@ -98,9 +98,9 @@ protected:
 	// the layout.  You can incorporate when and where init, shutdown and update should
 	// be called for any system or code that is uses these window layouts
 	//
-	WindowLayoutInitFunc m_init;         ///< init callback
-	WindowLayoutUpdateFunc m_update;     ///< update callback
-	WindowLayoutShutdownFunc m_shutdown; ///< shutdown callback
+	WindowLayoutInitFunc m_init;    ///< init callback
+	WindowLayoutUpdateFunc m_update;    ///< update callback
+	WindowLayoutShutdownFunc m_shutdown;    ///< shutdown callback
 };
 
 // INLINING ///////////////////////////////////////////////////////////////////////////////////////

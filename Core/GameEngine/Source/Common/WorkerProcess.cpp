@@ -16,7 +16,7 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/WorkerProcess.h"
 
 // We need Job-related functions, but these aren't defined in the Windows-headers that VC6 uses.
@@ -88,7 +88,7 @@ bool WorkerProcess::startProcess(UnicodeString command)
 	SetHandleInformation(m_readHandle, HANDLE_FLAG_INHERIT, 0);
 
 	STARTUPINFOW si = {sizeof(STARTUPINFOW)};
-	si.dwFlags = STARTF_FORCEOFFFEEDBACK; // Prevent cursor wait animation
+	si.dwFlags = STARTF_FORCEOFFFEEDBACK;    // Prevent cursor wait animation
 	si.dwFlags |= STARTF_USESTDHANDLES;
 	si.hStdError = writeHandle;
 	si.hStdOutput = writeHandle;

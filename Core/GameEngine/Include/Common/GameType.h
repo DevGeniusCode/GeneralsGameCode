@@ -51,7 +51,7 @@ enum DrawableID CPP_11( : Int)
 /// A unique, generic "identifier" used to identify player specified formations.
 enum FormationID CPP_11( : Int)
 {
-	NO_FORMATION_ID = 0, // Unit is not a member of any formation
+	NO_FORMATION_ID = 0,    // Unit is not a member of any formation
 	FORCE_FORMATIONID_TO_LONG_SIZE = 0x7ffffff
 };
 

@@ -29,7 +29,7 @@
 #pragma once
 
 #include "Common/SubsystemInterface.h"
-#include "FileSystem.h" // for typedefs, etc.
+#include "FileSystem.h"    // for typedefs, etc.
 
 class LocalFileSystem : public SubsystemInterface
 {
@@ -42,10 +42,10 @@ public:
 
 	virtual File* openFile(const Char* filename, Int access = File::NONE, size_t bufferSize = File::BUFFERSIZE) = 0;
 	virtual Bool doesFileExist(const Char* filename) const = 0;
-	virtual void getFileListInDirectory(const AsciiString& currentDirectory, const AsciiString& originalDirectory, const AsciiString& searchName, FilenameList& filenameList, Bool searchSubdirectories) const = 0; ///< search the given directory for files matching the searchName (egs. *.ini, *.rep).  Possibly search subdirectories.
-	virtual Bool getFileInfo(const AsciiString& filename, FileInfo* fileInfo) const = 0;                                                                                                                            ///< see FileSystem.h
-	virtual Bool createDirectory(AsciiString directory) = 0;                                                                                                                                                        ///< see FileSystem.h
-	virtual AsciiString normalizePath(const AsciiString& filePath) const = 0;                                                                                                                                       ///< see FileSystem.h
+	virtual void getFileListInDirectory(const AsciiString& currentDirectory, const AsciiString& originalDirectory, const AsciiString& searchName, FilenameList& filenameList, Bool searchSubdirectories) const = 0;    ///< search the given directory for files matching the searchName (egs. *.ini, *.rep).  Possibly search subdirectories.
+	virtual Bool getFileInfo(const AsciiString& filename, FileInfo* fileInfo) const = 0;    ///< see FileSystem.h
+	virtual Bool createDirectory(AsciiString directory) = 0;    ///< see FileSystem.h
+	virtual AsciiString normalizePath(const AsciiString& filePath) const = 0;    ///< see FileSystem.h
 
 protected:
 };

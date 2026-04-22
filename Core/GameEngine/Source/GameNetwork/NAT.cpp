@@ -29,7 +29,7 @@
 // Desc:   Resolves NAT'd IPs and port numbers for the other players in a game.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/NAT.h"
 #include "GameNetwork/Transport.h"
@@ -63,86 +63,86 @@
 		{
 			// 2 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{1, 0, -1, -1, -1, -1, -1, -1},   // round 0
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 1
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 2
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 3
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 4
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 5
-			{-1, -1, -1, -1, -1, -1, -1, -1}  // round 6
+			{1, 0, -1, -1, -1, -1, -1, -1},    // round 0
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 1
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 2
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 3
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 4
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 5
+			{-1, -1, -1, -1, -1, -1, -1, -1}    // round 6
 		},
 		{
 			// 3 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{1, 0, -1, -1, -1, -1, -1, -1},   // round 0
-			{2, -1, 0, -1, -1, -1, -1, -1},   // round 1
-			{-1, 2, 1, -1, -1, -1, -1, -1},   // round 2
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 3
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 4
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 5
-			{-1, -1, -1, -1, -1, -1, -1, -1}  // round 6
+			{1, 0, -1, -1, -1, -1, -1, -1},    // round 0
+			{2, -1, 0, -1, -1, -1, -1, -1},    // round 1
+			{-1, 2, 1, -1, -1, -1, -1, -1},    // round 2
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 3
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 4
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 5
+			{-1, -1, -1, -1, -1, -1, -1, -1}    // round 6
 		},
 		{
 			// 4 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{1, 0, 3, 2, -1, -1, -1, -1},     // round 0
-			{2, 3, 0, 1, -1, -1, -1, -1},     // round 1
-			{3, 2, 1, 0, -1, -1, -1, -1},     // round 2
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 3
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 4
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 5
-			{-1, -1, -1, -1, -1, -1, -1, -1}  // round 6
+			{1, 0, 3, 2, -1, -1, -1, -1},    // round 0
+			{2, 3, 0, 1, -1, -1, -1, -1},    // round 1
+			{3, 2, 1, 0, -1, -1, -1, -1},    // round 2
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 3
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 4
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 5
+			{-1, -1, -1, -1, -1, -1, -1, -1}    // round 6
 		},
 		{
 			// 5 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{2, 4, 0, -1, 1, -1, -1, -1},     // round 0
-			{-1, 3, 4, 1, 2, -1, -1, -1},     // round 1
-			{3, 2, 1, 0, -1, -1, -1, -1},     // round 2
-			{4, -1, 3, 2, 0, -1, -1, -1},     // round 3
-			{1, 0, -1, 4, 3, -1, -1, -1},     // round 4
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 5
-			{-1, -1, -1, -1, -1, -1, -1, -1}  // round 6
+			{2, 4, 0, -1, 1, -1, -1, -1},    // round 0
+			{-1, 3, 4, 1, 2, -1, -1, -1},    // round 1
+			{3, 2, 1, 0, -1, -1, -1, -1},    // round 2
+			{4, -1, 3, 2, 0, -1, -1, -1},    // round 3
+			{1, 0, -1, 4, 3, -1, -1, -1},    // round 4
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 5
+			{-1, -1, -1, -1, -1, -1, -1, -1}    // round 6
 		},
 		{
 			// 6 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{3, 5, 4, 0, 2, 1, -1, -1},       // round 0
-			{2, 4, 0, 5, 1, 3, -1, -1},       // round 1
-			{4, 3, 5, 1, 0, 2, -1, -1},       // round 2
-			{1, 0, 3, 2, 5, 4, -1, -1},       // round 3
-			{5, 2, 1, 4, 3, 0, -1, -1},       // round 4
-			{-1, -1, -1, -1, -1, -1, -1, -1}, // round 5
-			{-1, -1, -1, -1, -1, -1, -1, -1}  // round 6
+			{3, 5, 4, 0, 2, 1, -1, -1},    // round 0
+			{2, 4, 0, 5, 1, 3, -1, -1},    // round 1
+			{4, 3, 5, 1, 0, 2, -1, -1},    // round 2
+			{1, 0, 3, 2, 5, 4, -1, -1},    // round 3
+			{5, 2, 1, 4, 3, 0, -1, -1},    // round 4
+			{-1, -1, -1, -1, -1, -1, -1, -1},    // round 5
+			{-1, -1, -1, -1, -1, -1, -1, -1}    // round 6
 		},
 		{
 			// 7 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{-1, 6, 5, 4, 3, 2, 1, -1}, // round 0
-			{2, -1, 0, 6, 5, 4, 3, -1}, // round 1
-			{4, 3, -1, 1, 0, 6, 5, -1}, // round 2
-			{6, 5, 4, -1, 2, 1, 0, -1}, // round 3
-			{1, 0, 6, 5, -1, 3, 2, -1}, // round 4
-			{3, 2, 1, 0, 6, -1, 4, -1}, // round 5
-			{5, 4, 3, 2, 1, 0, -1, -1}  // round 6
+			{-1, 6, 5, 4, 3, 2, 1, -1},    // round 0
+			{2, -1, 0, 6, 5, 4, 3, -1},    // round 1
+			{4, 3, -1, 1, 0, 6, 5, -1},    // round 2
+			{6, 5, 4, -1, 2, 1, 0, -1},    // round 3
+			{1, 0, 6, 5, -1, 3, 2, -1},    // round 4
+			{3, 2, 1, 0, 6, -1, 4, -1},    // round 5
+			{5, 4, 3, 2, 1, 0, -1, -1}    // round 6
 		},
 		{
 			// 8 nodes
       //	node 0	node 1	node 2	node 3	node 4	node 5	node 6	node 7
-			{4, 5, 6, 7, 0, 1, 2, 3}, // round 0
-			{5, 4, 7, 6, 1, 0, 3, 2}, // round 1
-			{3, 6, 5, 0, 7, 2, 1, 4}, // round 2
-			{2, 7, 0, 5, 6, 3, 4, 1}, // round 3
-			{6, 3, 4, 1, 2, 7, 0, 5}, // round 4
-			{1, 0, 3, 2, 5, 4, 7, 6}, // round 5
-			{7, 2, 1, 4, 3, 6, 5, 0}  // round 6
+			{4, 5, 6, 7, 0, 1, 2, 3},    // round 0
+			{5, 4, 7, 6, 1, 0, 3, 2},    // round 1
+			{3, 6, 5, 0, 7, 2, 1, 4},    // round 2
+			{2, 7, 0, 5, 6, 3, 4, 1},    // round 3
+			{6, 3, 4, 1, 2, 7, 0, 5},    // round 4
+			{1, 0, 3, 2, 5, 4, 7, 6},    // round 5
+			{7, 2, 1, 4, 3, 6, 5, 0}    // round 6
 		}};
 
-/* static */ Int NAT::m_timeBetweenRetries = 500;          // .5 seconds between retries sounds good to me.
-/* static */ time_t NAT::m_manglerRetryTimeInterval = 300; // sounds good to me.
-/* static */ Int NAT::m_maxAllowedManglerRetries = 25;     // works for me.
-/* static */ time_t NAT::m_keepaliveInterval = 15000;      // 15 seconds between keepalive packets seems good.
-/* static */ time_t NAT::m_timeToWaitForPort = 15000;      // wait for 15 seconds for the other player's port number.
+/* static */ Int NAT::m_timeBetweenRetries = 500;    // .5 seconds between retries sounds good to me.
+/* static */ time_t NAT::m_manglerRetryTimeInterval = 300;    // sounds good to me.
+/* static */ Int NAT::m_maxAllowedManglerRetries = 25;    // works for me.
+/* static */ time_t NAT::m_keepaliveInterval = 15000;    // 15 seconds between keepalive packets seems good.
+/* static */ time_t NAT::m_timeToWaitForPort = 15000;    // wait for 15 seconds for the other player's port number.
 /* static */ time_t NAT::m_timeForRoundTimeout = 15000;    // wait for at most 15 seconds for each connection round to finish.
 
 NAT* TheNAT = nullptr;
@@ -1191,7 +1191,7 @@ void NAT::gotInternalAddress(Int nodeNumber, UnsignedInt address)
 		// we have the same IP address, i.e. we are behind the same NAT.
 		// I need to talk directly to his internal address.
 		DEBUG_LOG(("NAT::gotInternalAddress - target and local players have same external address, using internal address."));
-		targetSlot->setIP(address); // use the slot's internal address from now on
+		targetSlot->setIP(address);    // use the slot's internal address from now on
 	}
 }
 

@@ -35,7 +35,7 @@
 // #define read  _read
 // #define write _write
 
-#else // UNIX
+#else    // UNIX
 	#include <netdb.h>
 	#include <sys/types.h>
 	#include <sys/socket.h>
@@ -72,24 +72,24 @@ public:
 	//   get error codes for socket services.
 	enum sockStat CPP_11( : Int)
 	{
-		OK = 0,            // Everything's cool
-		UNKNOWN = -1,      // There was an error of unknown type
-		ISCONN = -2,       // The socket is already connected
-		INPROGRESS = -3,   // The socket is non-blocking and the operation
-		                   //   isn't done yet
-		ALREADY = -4,      // The socket is already attempting a connection
-		                   //   but isn't done yet
-		AGAIN = -5,        // Try again.
+		OK = 0,    // Everything's cool
+		UNKNOWN = -1,    // There was an error of unknown type
+		ISCONN = -2,    // The socket is already connected
+		INPROGRESS = -3,    // The socket is non-blocking and the operation
+		                    //   isn't done yet
+		ALREADY = -4,    // The socket is already attempting a connection
+		                 //   but isn't done yet
+		AGAIN = -5,    // Try again.
 		ADDRINUSE = -6,    // Address already in use
-		ADDRNOTAVAIL = -7, // That address is not available on the remote host
-		BADF = -8,         // Not a valid FD
-		CONNREFUSED = -9,  // Connection was refused
-		INTR = -10,        // Operation was interrupted
-		NOTSOCK = -11,     // FD wasn't a socket
-		PIPE = -12,        // That operation just made a SIGPIPE
-		WOULDBLOCK = -13,  // That operation would block
-		INVAL = -14,       // Invalid
-		TIMEDOUT = -15     // Timeout
+		ADDRNOTAVAIL = -7,    // That address is not available on the remote host
+		BADF = -8,    // Not a valid FD
+		CONNREFUSED = -9,    // Connection was refused
+		INTR = -10,    // Operation was interrupted
+		NOTSOCK = -11,    // FD wasn't a socket
+		PIPE = -12,    // That operation just made a SIGPIPE
+		WOULDBLOCK = -13,    // That operation would block
+		INVAL = -14,    // Invalid
+		TIMEDOUT = -15    // Timeout
 	};
 
 	// CODE

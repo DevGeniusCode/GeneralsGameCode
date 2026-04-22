@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Lib/BaseType.h"
 #include "GameClient/Line2D.h"
@@ -348,7 +348,7 @@ Bool Coord3DInsideRect2D(const Coord3D* inputPoint, const Coord2D* tl, const Coo
 ///< Scales a rect by a factor either growing or shrinking it.
 void ScaleRect2D(Coord2D* tl, Coord2D* br, Real scaleFactor)
 {
-	scaleFactor = scaleFactor - 1.0f; // We are starting with tl,br, so scaling it by 1 means adding 0 to it.
+	scaleFactor = scaleFactor - 1.0f;    // We are starting with tl,br, so scaling it by 1 means adding 0 to it.
 
 	Real deltaWidth = (br->x - tl->x) * scaleFactor * 0.5f;
 	Real deltaHeight = (br->y - tl->y) * scaleFactor * 0.5f;

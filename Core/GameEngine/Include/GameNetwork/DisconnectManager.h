@@ -55,8 +55,8 @@ public:
 	void processDisconnectCommand(NetCommandRef* ref, ConnectionManager* conMgr);
 	void allCommandsReady(UnsignedInt frame, ConnectionManager* conMgr, Bool waitForPacketRouter = TRUE);
 	void nextFrame(UnsignedInt frame, ConnectionManager* conMgr);
-	Bool allowedToContinue();                                  ///< Allow the next frame to go through?
-	void playerHasAdvancedAFrame(Int slot, UnsignedInt frame); ///< this player has advanced to that frame.
+	Bool allowedToContinue();    ///< Allow the next frame to go through?
+	void playerHasAdvancedAFrame(Int slot, UnsignedInt frame);    ///< this player has advanced to that frame.
 
 	void voteForPlayerDisconnect(Int slot, ConnectionManager* conMgr);
 
@@ -79,17 +79,17 @@ protected:
 	void sendVoteCommand(Int slot, ConnectionManager* conMgr);
 	void updateWaitForPacketRouter(ConnectionManager* conMgr);
 	void recalculatePacketRouterIndex(ConnectionManager* conMgr);
-	Bool allOnSameFrame(ConnectionManager* conMgr);                                     ///< returns true if all players are stuck on the same frame.
-	Bool isLocalPlayerNextPacketRouter(ConnectionManager* conMgr);                      ///< returns true if the local player is next in line to be the packet router with all the players that have timed out being taken out of the picture.
-	Bool hasPlayerTimedOut(Int slot);                                                   ///< returns true if this player has timed out.
-	void sendPlayerDestruct(Int slot, ConnectionManager* conMgr);                       ///< send a destruct player network message.
-	Bool isPlayerVotedOut(Int slot, ConnectionManager* conMgr);                         ///< returns true if this player has been voted out.
-	Bool isPlayerInGame(Int slot, ConnectionManager* conMgr);                           ///< returns true if the player has neither timed out or been voted out.
-	UnsignedInt getMaxDisconnectFrame();                                                ///< returns the highest frame that people have got to.
-	Int countVotesForPlayer(Int slot);                                                  ///< return the number of disconnect votes a player has.
-	void resetPlayersVotes(Int playerID, UnsignedInt frame, ConnectionManager* conMgr); ///< reset the votes for this player.
+	Bool allOnSameFrame(ConnectionManager* conMgr);    ///< returns true if all players are stuck on the same frame.
+	Bool isLocalPlayerNextPacketRouter(ConnectionManager* conMgr);    ///< returns true if the local player is next in line to be the packet router with all the players that have timed out being taken out of the picture.
+	Bool hasPlayerTimedOut(Int slot);    ///< returns true if this player has timed out.
+	void sendPlayerDestruct(Int slot, ConnectionManager* conMgr);    ///< send a destruct player network message.
+	Bool isPlayerVotedOut(Int slot, ConnectionManager* conMgr);    ///< returns true if this player has been voted out.
+	Bool isPlayerInGame(Int slot, ConnectionManager* conMgr);    ///< returns true if the player has neither timed out or been voted out.
+	UnsignedInt getMaxDisconnectFrame();    ///< returns the highest frame that people have got to.
+	Int countVotesForPlayer(Int slot);    ///< return the number of disconnect votes a player has.
+	void resetPlayersVotes(Int playerID, UnsignedInt frame, ConnectionManager* conMgr);    ///< reset the votes for this player.
 
-	void turnOnScreen(ConnectionManager* conMgr); ///< This gets called when the disconnect screen is first turned on.
+	void turnOnScreen(ConnectionManager* conMgr);    ///< This gets called when the disconnect screen is first turned on.
 
 	void processDisconnectKeepAlive(NetCommandMsg* msg, ConnectionManager* conMgr);
 	void processDisconnectPlayer(NetCommandMsg* msg, ConnectionManager* conMgr);

@@ -29,7 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/GameEngine.h"
 #include "Common/MultiplayerSettings.h"
@@ -215,7 +215,7 @@ static void gameTooltip(GameWindow* window,
 
 	if (row == -1 || col == -1)
 	{
-		TheMouse->setCursorTooltip(UnicodeString::TheEmptyString); // TheGameText->fetch("TOOLTIP:GamesBeingFormed") );
+		TheMouse->setCursorTooltip(UnicodeString::TheEmptyString);    // TheGameText->fetch("TOOLTIP:GamesBeingFormed") );
 		return;
 	}
 
@@ -229,7 +229,7 @@ static void gameTooltip(GameWindow* window,
 
 	if (col == COLUMN_PING)
 	{
-#if 0 // def DEBUG_LOGGING
+#if 0    // def DEBUG_LOGGING
 		UnicodeString s;
 		s.format(L"Ping is %d ms (cutoffs are %d ms and %d ms\n%hs local pings\n%hs remote pings",
 			room->getPingAsInt(), TheGameSpyConfig->getPingCutoffGood(), TheGameSpyConfig->getPingCutoffBad(),
@@ -237,13 +237,13 @@ static void gameTooltip(GameWindow* window,
 		);
 		TheMouse->setCursorTooltip( s, 10, nullptr, 2.0f ); // the text and width are the only params used.  the others are the default values.
 #else
-		TheMouse->setCursorTooltip(TheGameText->fetch("TOOLTIP:PingInfo"), 10, nullptr, 2.0f); // the text and width are the only params used.  the others are the default values.
+		TheMouse->setCursorTooltip(TheGameText->fetch("TOOLTIP:PingInfo"), 10, nullptr, 2.0f);    // the text and width are the only params used.  the others are the default values.
 #endif
 		return;
 	}
 	if (col == COLUMN_NUMPLAYERS)
 	{
-		TheMouse->setCursorTooltip(TheGameText->fetch("TOOLTIP:NumberOfPlayers"), 10, nullptr, 2.0f); // the text and width are the only params used.  the others are the default values.
+		TheMouse->setCursorTooltip(TheGameText->fetch("TOOLTIP:NumberOfPlayers"), 10, nullptr, 2.0f);    // the text and width are the only params used.  the others are the default values.
 		return;
 	}
 	if (col == COLUMN_PASSWORD)
@@ -253,7 +253,7 @@ static void gameTooltip(GameWindow* window,
 			UnicodeString checkTooltip = TheGameText->fetch("TOOTIP:Password");
 			if (!checkTooltip.compare(L"Password required to joing game"))
 				checkTooltip.set(L"Password required to join game");
-			TheMouse->setCursorTooltip(checkTooltip, 10, nullptr, 2.0f); // the text and width are the only params used.  the others are the default values.
+			TheMouse->setCursorTooltip(checkTooltip, 10, nullptr, 2.0f);    // the text and width are the only params used.  the others are the default values.
 		}
 		else
 			TheMouse->setCursorTooltip(UnicodeString::TheEmptyString);
@@ -352,7 +352,7 @@ static void gameTooltip(GameWindow* window,
 	}
 	DEBUG_ASSERTCRASH(numPlayers, ("Tooltipping a 0-player game!"));
 
-	TheMouse->setCursorTooltip(tooltip, 10, nullptr, 2.0f); // the text and width are the only params used.  the others are the default values.
+	TheMouse->setCursorTooltip(tooltip, 10, nullptr, 2.0f);    // the text and width are the only params used.  the others are the default values.
 }
 
 static Bool isSmall = TRUE;
@@ -738,9 +738,9 @@ void RefreshGameListBox(GameWindow* win, Bool showMap)
 	clearBuddyGames();
 
 	// restore selection
-	GadgetListBoxSetSelected(win, indexToSelect);  // even for -1, so we can disable the 'Join Game' button
-	                                               //	if(prevPos > 10)
-	GadgetListBoxSetTopVisibleEntry(win, prevPos); //+ 1
+	GadgetListBoxSetSelected(win, indexToSelect);    // even for -1, so we can disable the 'Join Game' button
+	                                                 //	if(prevPos > 10)
+	GadgetListBoxSetTopVisibleEntry(win, prevPos);    //+ 1
 
 	if (indexToSelect < 0 && selectedID)
 	{

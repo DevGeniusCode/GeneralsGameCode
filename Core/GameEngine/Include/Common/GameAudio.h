@@ -163,12 +163,12 @@ public:
 	void unmuteAudio(MuteAudioReason reason);
 
 	// control for AudioEventsRTS
-	virtual AudioHandle addAudioEvent(const AudioEventRTS* eventToAdd); ///< Add an audio event (event must be declared in an INI file)
-	virtual void removeAudioEvent(AudioHandle audioEvent);              ///< Remove an audio event, stop for instance.
+	virtual AudioHandle addAudioEvent(const AudioEventRTS* eventToAdd);    ///< Add an audio event (event must be declared in an INI file)
+	virtual void removeAudioEvent(AudioHandle audioEvent);    ///< Remove an audio event, stop for instance.
 	virtual void killAudioEventImmediately(AudioHandle audioEvent) = 0;
 
-	virtual Bool isValidAudioEvent(const AudioEventRTS* eventToCheck) const; ///< validate that this piece of audio exists
-	virtual Bool isValidAudioEvent(AudioEventRTS* eventToCheck) const;       ///< validate that this piece of audio exists
+	virtual Bool isValidAudioEvent(const AudioEventRTS* eventToCheck) const;    ///< validate that this piece of audio exists
+	virtual Bool isValidAudioEvent(AudioEventRTS* eventToCheck) const;    ///< validate that this piece of audio exists
 
 	// add tracks during INIification
 	void addTrackName(const AsciiString& trackName);
@@ -188,7 +188,7 @@ public:
 	virtual void removeDisabledEvents();
 
 	// Really meant for internal purposes only, but cannot be protected.
-	virtual void getInfoForAudioEvent(const AudioEventRTS* eventToFindAndFill) const; // Note: m_eventInfo is Mutable, and so this function will overwrite it if found
+	virtual void getInfoForAudioEvent(const AudioEventRTS* eventToFindAndFill) const;    // Note: m_eventInfo is Mutable, and so this function will overwrite it if found
 
 	///< Return whether the current audio is playing or not.
 	///< NOTE NOTE NOTE !!DO NOT USE THIS IN FOR GAMELOGIC PURPOSES!! NOTE NOTE NOTE

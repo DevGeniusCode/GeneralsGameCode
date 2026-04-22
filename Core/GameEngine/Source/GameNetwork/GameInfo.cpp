@@ -26,7 +26,7 @@
 // game setup state info
 // Author: Matthew D. Campbell, December 2001
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/CRCDebug.h"
 #include "Common/file.h"
@@ -41,8 +41,8 @@
 #include "GameNetwork/GameInfo.h"
 #include "GameNetwork/GameSpy/ThreadUtils.h"
 #include "GameNetwork/GameSpy/StagingRoomGameInfo.h"
-#include "GameNetwork/LANAPI.h"          // for testing packet size
-#include "GameNetwork/LANAPICallbacks.h" // for testing packet size
+#include "GameNetwork/LANAPI.h"    // for testing packet size
+#include "GameNetwork/LANAPICallbacks.h"    // for testing packet size
 #include "strtok_r.h"
 
 GameInfo* TheGameInfo = nullptr;
@@ -56,7 +56,7 @@ GameSlot::GameSlot()
 
 void GameSlot::reset()
 {
-	m_state = SLOT_CLOSED; // decent default
+	m_state = SLOT_CLOSED;    // decent default
 	m_isAccepted = false;
 	m_hasMap = true;
 	m_color = -1;
@@ -303,7 +303,7 @@ void GameInfo::reset()
 	m_gameID = 0;
 	m_mapName = "NOMAP";
 	m_mapMask = 0;
-	m_seed = GetTickCount(); // GameClientRandomValue(0, INT_MAX - 1);
+	m_seed = GetTickCount();    // GameClientRandomValue(0, INT_MAX - 1);
 	m_useStats = TRUE;
 	m_surrendered = FALSE;
 	m_oldFactionsOnly = FALSE;
@@ -936,7 +936,7 @@ AsciiString GameInfoToAsciiString(const GameInfo* game)
 		AsciiString str;
 		if (slot && slot->isHuman())
 		{
-			AsciiString tmp; // all this data goes after name
+			AsciiString tmp;    // all this data goes after name
 			tmp.format(",%X,%d,%c%c,%d,%d,%d,%d,%d:",
 			           slot->getIP(), slot->getPort(),
 			           (slot->isAccepted() ? 'T' : 'F'),
@@ -945,12 +945,12 @@ AsciiString GameInfoToAsciiString(const GameInfo* game)
 			           slot->getStartPos(), slot->getTeamNumber(),
 			           slot->getNATBehavior());
 			// make sure name doesn't cause overflow of m_lanMaxOptionsLength
-			int lenCur = tmp.getLength() + optionsString.getLength() + 2; //+2 for H and trailing ;
-			int lenRem = m_lanMaxOptionsLength - lenCur;                  // length remaining before overflowing
-			int lenMax = lenRem / (MAX_SLOTS - i);                        // share lenRem with all remaining slots
+			int lenCur = tmp.getLength() + optionsString.getLength() + 2;    //+2 for H and trailing ;
+			int lenRem = m_lanMaxOptionsLength - lenCur;    // length remaining before overflowing
+			int lenMax = lenRem / (MAX_SLOTS - i);    // share lenRem with all remaining slots
 			AsciiString name = WideCharStringToMultiByte(slot->getName().str()).c_str();
 			while (name.getLength() > lenMax)
-				name.removeLastChar(); // what a horrible way to truncate.  I hate AsciiString.
+				name.removeLastChar();    // what a horrible way to truncate.  I hate AsciiString.
 
 			str.format("H%s%s", name.str(), tmp.str());
 		}
@@ -1016,7 +1016,7 @@ Bool ParseAsciiStringToGameInfo(GameInfo* game, AsciiString options)
 	Bool oldFactionsOnly = FALSE;
 	Int useStats = TRUE;
 	Money startingCash = TheGlobalData->m_defaultStartingCash;
-	UnsignedShort restriction = 0; // Always the default
+	UnsignedShort restriction = 0;    // Always the default
 
 	Bool sawMap = FALSE;
 	Bool sawMapCRC = FALSE;
@@ -1033,7 +1033,7 @@ Bool ParseAsciiStringToGameInfo(GameInfo* game, AsciiString options)
 
 	while ((keyValPair = strtok_r(bufPtr, ";", &strPos)) != nullptr)
 	{
-		bufPtr = nullptr; // strtok within the same string
+		bufPtr = nullptr;    // strtok within the same string
 
 		AsciiString key, val;
 		char* pos = nullptr;
@@ -1415,7 +1415,7 @@ Bool ParseAsciiStringToGameInfo(GameInfo* game, AsciiString options)
 						{
 							if (startPos >= 0 && startPos == newSlot[i].getStartPos())
 							{
-								isStartPosBad = TRUE; // can't have multiple people using the same start pos
+								isStartPosBad = TRUE;    // can't have multiple people using the same start pos
 							}
 						}
 						if (isStartPosBad)

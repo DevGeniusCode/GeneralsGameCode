@@ -44,7 +44,7 @@ void dumpBufferToLog(const void* vBuf, Int len, const char* fname, Int line);
 #else
 	#define LOGBUFFER(buf, len) \
 		{}
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 
 inline UnsignedInt AssembleIp(UnsignedByte a, UnsignedByte b, UnsignedByte c, UnsignedByte d)
 {

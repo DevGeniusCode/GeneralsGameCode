@@ -30,7 +30,7 @@
 #pragma once
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include <stddef.h> // for offsetof, which we don't use but everyone who includes us does
+#include <stddef.h>    // for offsetof, which we don't use but everyone who includes us does
 #include "Common/STLTypedefs.h"
 #include "Common/AsciiString.h"
 #include "Common/GameCommon.h"
@@ -46,10 +46,10 @@ enum ScienceType CPP_11( : Int);
 //-------------------------------------------------------------------------------------------------
 enum INILoadType CPP_11( : Int)
 {
-	INI_LOAD_INVALID,          ///< invalid load type
-	INI_LOAD_OVERWRITE,        ///< create new or load *over* existing data instance
-	INI_LOAD_CREATE_OVERRIDES, ///< create new or load into *new* override data instance
-	INI_LOAD_MULTIFILE         ///< create new or continue loading into existing data instance.
+	INI_LOAD_INVALID,    ///< invalid load type
+	INI_LOAD_OVERWRITE,    ///< create new or load *over* existing data instance
+	INI_LOAD_CREATE_OVERRIDES,    ///< create new or load into *new* override data instance
+	INI_LOAD_MULTIFILE    ///< create new or continue loading into existing data instance.
 };
 
 //-------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ enum INILoadType CPP_11( : Int)
 //-------------------------------------------------------------------------------------------------
 enum
 {
-	INI_MAX_CHARS_PER_LINE = 1028, ///< max characters per line entry in any ini file
+	INI_MAX_CHARS_PER_LINE = 1028,    ///< max characters per line entry in any ini file
 };
 
 //-------------------------------------------------------------------------------------------------
@@ -111,10 +111,10 @@ typedef const LookupListRec* ConstLookupListRecArray;
 //-------------------------------------------------------------------------------------------------
 struct FieldParse
 {
-	const char* token;       ///< token of the field
-	INIFieldParseProc parse; ///< the parse function
+	const char* token;    ///< token of the field
+	INIFieldParseProc parse;    ///< the parse function
 	const void* userData;    ///< field-specific data
-	Int offset;              ///< offset to data field
+	Int offset;    ///< offset to data field
 
 	void set(const char* t, INIFieldParseProc p, const void* u, Int o)
 	{
@@ -255,11 +255,11 @@ public:
 	INILoadType getLoadType() const { return m_loadType; }
 	UnsignedInt getLineNum() const { return m_lineNum; }
 	Bool isEOF() const { return m_endOfFile; }
-	static const char* getSeps() { return " \n\r\t="; }          ///< default delimiters for strtok parsing
-	static const char* getSepsPercent() { return " \n\r\t=%%"; } ///< default delimiters & percent delimiter
+	static const char* getSeps() { return " \n\r\t="; }    ///< default delimiters for strtok parsing
+	static const char* getSepsPercent() { return " \n\r\t=%%"; }    ///< default delimiters & percent delimiter
 	static const char* getSepsColon() { return " \n\r\t=:"; }    ///< default delimiters & colon delimiter
-	static const char* getSepsQuote() { return "\"\n="; }        ///< delimiters to represent a quoted ascii string
-	static const char* getEndToken() { return "End"; }           ///< token to represent an end of data block
+	static const char* getSepsQuote() { return "\"\n="; }    ///< delimiters to represent a quoted ascii string
+	static const char* getEndToken() { return "End"; }    ///< token to represent an end of data block
 
 	void initFromINI(void* what, const FieldParse* parseTable);
 	void initFromINIMulti(void* what, const MultiIniFieldParse& parseTableList);
@@ -357,7 +357,7 @@ public:
 	  get strings with spaces, and/or empty strings.
 	*/
 	AsciiString getNextAsciiString();
-	AsciiString getNextQuotedAsciiString(); // fixed version of above.  We can't fix the regular one for fear of breaking existing code. :-(
+	AsciiString getNextQuotedAsciiString();    // fixed version of above.  We can't fix the regular one for fear of breaking existing code. :-(
 
 	/**
 	  utility routine that does a sscanf() on the string to get the Science, and throws
@@ -390,23 +390,23 @@ public:
 	static Bool scanBool(const char* token);
 
 protected:
-	static Bool isValidINIFilename(const char* filename); ///< is this a valid .ini filename
+	static Bool isValidINIFilename(const char* filename);    ///< is this a valid .ini filename
 
 	void prepFile(AsciiString filename, INILoadType loadType);
 	void unPrepFile();
 
 	void readLine();
 
-	char* m_readBuffer;        ///< internal read buffer
-	unsigned m_readBufferNext; ///< next char in read buffer
-	unsigned m_readBufferUsed; ///< number of bytes in read buffer
+	char* m_readBuffer;    ///< internal read buffer
+	unsigned m_readBufferNext;    ///< next char in read buffer
+	unsigned m_readBufferUsed;    ///< number of bytes in read buffer
 
-	AsciiString m_filename;                    ///< filename of file currently loading
-	INILoadType m_loadType;                    ///< load type for current file
-	UnsignedInt m_lineNum;                     ///< current line number that's been read
-	char m_buffer[INI_MAX_CHARS_PER_LINE + 1]; ///< buffer to read file contents into
-	Bool m_endOfFile;                          ///< TRUE when we've hit EOF
+	AsciiString m_filename;    ///< filename of file currently loading
+	INILoadType m_loadType;    ///< load type for current file
+	UnsignedInt m_lineNum;    ///< current line number that's been read
+	char m_buffer[INI_MAX_CHARS_PER_LINE + 1];    ///< buffer to read file contents into
+	Bool m_endOfFile;    ///< TRUE when we've hit EOF
 #ifdef DEBUG_CRASHING
-	char m_curBlockStart[INI_MAX_CHARS_PER_LINE + 1]; ///< first line of cur block
+	char m_curBlockStart[INI_MAX_CHARS_PER_LINE + 1];    ///< first line of cur block
 #endif
 };

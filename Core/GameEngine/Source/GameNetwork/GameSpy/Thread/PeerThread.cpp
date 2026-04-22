@@ -29,7 +29,7 @@
 // the game.
 // Author: Matthew D. Campbell, June 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/Registry.h"
 #include "Common/OptionPreferences.h"
@@ -51,28 +51,28 @@
 #undef SERVER_DEBUGGING
 #ifdef SERVER_DEBUGGING
 void CheckServers(PEER peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 
 #ifdef DEBUG_LOGGING
 // #define PING_TEST
 static LogClass s_pingLog("Ping.txt");
 	#define PING_LOG(x) s_pingLog.log x
-#else // DEBUG_LOGGING
+#else    // DEBUG_LOGGING
 	#define PING_LOG(x) \
 		{}
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 
 #ifdef DEBUG_LOGGING
 static LogClass s_stateChangedLog("StateChanged.txt");
 
 	#define STATECHANGED_LOG(x) s_stateChangedLog.log x
 
-#else // DEBUG_LOGGING
+#else    // DEBUG_LOGGING
 
 	#define STATECHANGED_LOG(x) \
 		{}
 
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 
 // we should always be using broadcast keys from now on.  Remove the old code sometime when
 // we're not in a rush, ok?
@@ -270,7 +270,7 @@ public:
 	void trackStatsForPlayer(RoomType roomType, const char* nick, const char* key, const char* val);
 	int lookupStatForPlayer(RoomType roomType, const char* nick, const char* key);
 	void clearPlayerStats(RoomType roomType);
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 
 	void setSawCompleteGameList(Bool val) { m_sawCompleteGameList = val; }
 	Bool getSawCompleteGameList() { return m_sawCompleteGameList; }
@@ -297,7 +297,7 @@ private:
 	PlayerStatMap m_groupRoomStats;
 	PlayerStatMap m_stagingRoomStats;
 	std::string packStatKey(const char* nick, const char* key);
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 
 	// game-hosting info for GOA callbacks
 	Bool m_isHosting;
@@ -413,7 +413,7 @@ void PeerThreadClass::getStatsFromRoom(PEER peer, RoomType roomType)
 {
 	peerGetRoomKeys(peer, GroupRoom, "*", NumKeys, s_keys, getRoomKeysCallback, this, PEERFalse);
 }
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 
 Int PeerThreadClass::addServerToMap(SBServer server)
 {
@@ -519,7 +519,7 @@ void connectCallbackWrapper(PEER peer, PEERBool success, int failureReason, void
 #ifdef SERVER_DEBUGGING
 	DEBUG_LOG(("In connectCallbackWrapper()"));
 	CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 	if (param != nullptr)
 	{
 		((PeerThreadClass*)param)->connectCallback(peer, success);
@@ -1030,7 +1030,7 @@ static int QRCountCallback(
 
 void PeerThreadClass::stopHostingAlready(PEER peer)
 {
-	isThreadHosting = 0; // debugging
+	isThreadHosting = 0;    // debugging
 	s_lastStateChangedHeartbeat = 0;
 	s_wantStateChangedHeartbeat = FALSE;
 	peerStopGame(peer);
@@ -1088,7 +1088,7 @@ static void AuthenticateCDKeyCallback(
 	DEBUG_LOG(("CD Key Result: %s (%d) %X", message, result, param));
 #ifdef SERVER_DEBUGGING
 	CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 	SerialAuthResult* val = (SerialAuthResult*)param;
 	if (val)
 	{
@@ -1103,7 +1103,7 @@ static void AuthenticateCDKeyCallback(
 	}
 #ifdef SERVER_DEBUGGING
 	CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 }
 
 static SerialAuthResult doCDKeyAuthentication(PEER peer)
@@ -1118,12 +1118,12 @@ static SerialAuthResult doCDKeyAuthentication(PEER peer)
 #ifdef SERVER_DEBUGGING
 		DEBUG_LOG(("Before peerAuthenticateCDKey()"));
 		CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 		peerAuthenticateCDKey(peer, s.str(), AuthenticateCDKeyCallback, &retval, PEERTrue);
 #ifdef SERVER_DEBUGGING
 		DEBUG_LOG(("After peerAuthenticateCDKey()"));
 		CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 	}
 
 	if (retval == SERIAL_OK)
@@ -1414,7 +1414,7 @@ void PeerThreadClass::Thread_Function()
 #ifdef SERVER_DEBUGGING
 						DEBUG_LOG(("After peerConnect()"));
 						CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 						if (m_isConnected)
 						{
 							SerialAuthResult ret = doCDKeyAuthentication(peer);
@@ -1443,7 +1443,7 @@ void PeerThreadClass::Thread_Function()
 
 					case PeerRequest::PEERREQUEST_JOINGROUPROOM:
 						m_groupRoomID = incomingRequest.groupRoom.id;
-						isThreadHosting = 0; // debugging
+						isThreadHosting = 0;    // debugging
 						s_lastStateChangedHeartbeat = 0;
 						s_wantStateChangedHeartbeat = FALSE;
 						peerStopGame(peer);
@@ -1501,7 +1501,7 @@ void PeerThreadClass::Thread_Function()
 						updateBuddyStatus(BUDDY_ONLINE);
 						peerLeaveRoom(peer, GroupRoom, nullptr);
 						peerLeaveRoom(peer, StagingRoom, nullptr);
-						isThreadHosting = 0; // debugging
+						isThreadHosting = 0;    // debugging
 						s_lastStateChangedHeartbeat = 0;
 						s_wantStateChangedHeartbeat = FALSE;
 						if (m_isHosting)
@@ -1595,7 +1595,7 @@ void PeerThreadClass::Thread_Function()
 						STATECHANGED_LOG(("peerStateChanged() at time %d (difference of %d ms)", now, diff));
 						*/
 
-						peerUTMRoom(peer, StagingRoom, "SL/", incomingRequest.options.c_str(), PEERFalse); // send the full string to people in the room
+						peerUTMRoom(peer, StagingRoom, "SL/", incomingRequest.options.c_str(), PEERFalse);    // send the full string to people in the room
 					}
 					break;
 
@@ -1690,8 +1690,8 @@ void PeerThreadClass::Thread_Function()
 							{
 								peerLeaveRoom(peer, GroupRoom, nullptr);
 							}
-							isThreadHosting = 1;                         // debugging
-							s_lastStateChangedHeartbeat = timeGetTime(); // wait the full interval before updating state
+							isThreadHosting = 1;    // debugging
+							s_lastStateChangedHeartbeat = timeGetTime();    // wait the full interval before updating state
 							s_wantStateChangedHeartbeat = FALSE;
 							m_isHosting = TRUE;
 							m_allowObservers = incomingRequest.stagingRoomCreation.allowObservers;
@@ -1721,7 +1721,7 @@ void PeerThreadClass::Thread_Function()
 
 #ifdef USE_BROADCAST_KEYS
 							pushStatsToRoom(peer);
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 
 							DEBUG_LOG(("Setting m_localStagingServerName to [%ls]", m_localStagingServerName.c_str()));
 							updateBuddyStatus(BUDDY_STAGING, 0, WideCharStringToMultiByte(m_localStagingServerName.c_str()));
@@ -2058,7 +2058,7 @@ void PeerThreadClass::doQuickMatch(PEER peer)
 								msg.append(buf);
 								snprintf(buf, 64, "\\Pings\\%s", m_qmInfo.QM.pings);
 								msg.append(buf);
-								snprintf(buf, 64, "\\IP\\%d", ntohl(peerGetLocalIP(peer))); // not ntohl(localIP), as we need EXTERNAL address for proper NAT negotiation!
+								snprintf(buf, 64, "\\IP\\%d", ntohl(peerGetLocalIP(peer)));    // not ntohl(localIP), as we need EXTERNAL address for proper NAT negotiation!
 								msg.append(buf);
 								snprintf(buf, 64, "\\Side\\%d", m_qmInfo.QM.side);
 								msg.append(buf);
@@ -2198,7 +2198,7 @@ static void joinRoomCallback(PEER peer, PEERBool success, PEERJoinResult result,
 		t->pushStatsToRoom(peer);
 		t->getStatsFromRoom(peer, roomType);
 	}
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 
 	switch (roomType)
 	{
@@ -2206,7 +2206,7 @@ static void joinRoomCallback(PEER peer, PEERBool success, PEERJoinResult result,
 		{
 #ifdef USE_BROADCAST_KEYS
 			t->clearPlayerStats(GroupRoom);
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 			PeerResponse resp;
 			resp.peerResponseType = PeerResponse::PEERRESPONSE_JOINGROUPROOM;
 			resp.joinGroupRoom.id = t->getLocalRoomID();
@@ -2225,7 +2225,7 @@ static void joinRoomCallback(PEER peer, PEERBool success, PEERJoinResult result,
 		{
 #ifdef USE_BROADCAST_KEYS
 			t->clearPlayerStats(StagingRoom);
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 			PeerResponse resp;
 			resp.peerResponseType = PeerResponse::PEERRESPONSE_JOINSTAGINGROOM;
 			resp.joinStagingRoom.id = t->getLocalRoomID();
@@ -2261,7 +2261,7 @@ static void listGroupRoomsCallback(PEER peer, PEERBool success,
 	DEBUG_LOG(("listGroupRoomsCallback, success=%d, server=%X, groupID=%d", success, server, groupID));
 #ifdef SERVER_DEBUGGING
 	CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 	PeerThreadClass* t = (PeerThreadClass*)param;
 	if (!t)
 	{
@@ -2288,7 +2288,7 @@ static void listGroupRoomsCallback(PEER peer, PEERBool success,
 #ifdef SERVER_DEBUGGING
 		CheckServers(peer);
 		DEBUG_LOG((""));
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 	}
 	else
 	{
@@ -2332,12 +2332,12 @@ void PeerThreadClass::connectCallback(PEER peer, PEERBool success)
 #ifdef SERVER_DEBUGGING
 	DEBUG_LOG(("Before peerListGroupRooms()"));
 	CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 	peerListGroupRooms(peer, nullptr, listGroupRoomsCallback, this, PEERTrue);
 #ifdef SERVER_DEBUGGING
 	DEBUG_LOG(("After peerListGroupRooms()"));
 	CheckServers(peer);
-#endif // SERVER_DEBUGGING
+#endif    // SERVER_DEBUGGING
 }
 
 void PeerThreadClass::nickErrorCallback(PEER peer, Int type, const char* nick)
@@ -2602,7 +2602,7 @@ static void getPlayerInfo(PeerThreadClass* t, PEER peer, const char* nick, Int& 
 	rankPoints = t->lookupStatForPlayer(roomType, nick, "b_points");
 	side = t->lookupStatForPlayer(roomType, nick, "b_side");
 	preorder = t->lookupStatForPlayer(roomType, nick, "b_pre");
-#else  // USE_BROADCAST_KEYS
+#else    // USE_BROADCAST_KEYS
 	const char* s;
 	s = peerGetGlobalWatchKey(peer, nick, "locale");
 	locale = (s) ? s : "";
@@ -2616,7 +2616,7 @@ static void getPlayerInfo(PeerThreadClass* t, PEER peer, const char* nick, Int& 
 	side = atoi((s) ? s : "");
 	s = peerGetGlobalWatchKey(peer, nick, "pre");
 	preorder = atoi((s) ? s : "");
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 	flags = 0;
 	peerGetPlayerFlags(peer, nick, roomType, &flags);
 	DEBUG_LOG(("getPlayerInfo(%d) - %s has locale %s, wins:%d, losses:%d, rankPoints:%d, side:%d, preorder:%d",
@@ -2653,7 +2653,7 @@ static void roomKeyChangedCallback(PEER peer, RoomType roomType, const char* nic
 	              resp.player.rankPoints, resp.player.side, resp.player.preorder,
 	              resp.player.roomType, resp.player.flags);
 	TheGameSpyPeerMessageQueue->addResponse(resp);
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 }
 
 #ifdef USE_BROADCAST_KEYS
@@ -2683,7 +2683,7 @@ void getRoomKeysCallback(PEER peer, PEERBool success, RoomType roomType, const c
 	              resp.player.roomType, resp.player.flags);
 	TheGameSpyPeerMessageQueue->addResponse(resp);
 }
-#endif // USE_BROADCAST_KEYS
+#endif    // USE_BROADCAST_KEYS
 
 static void globalKeyChangedCallback(PEER peer, const char* nick, const char* key, const char* val, void* param)
 {
@@ -2864,7 +2864,7 @@ static void listingGamesCallback(PEER peer, PEERBool success, const char* name, 
 			break;
 	}
 	DEBUG_LOG(("listingGamesCallback() - doing command %s on server %X", cmdStr.str(), server));
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 
 	//	PeerThreadClass *t = (PeerThreadClass *)param;
 	DEBUG_ASSERTCRASH(name || msg == PEER_CLEAR || msg == PEER_COMPLETE, ("Game has no name!"));
@@ -3004,7 +3004,7 @@ static void listingGamesCallback(PEER peer, PEERBool success, const char* name, 
 				           server, resp.stagingRoom.id, gameName.str()));
 				TheGameSpyPeerMessageQueue->addRequest(req);
 			}
-			return; // don't actually try to list it.
+			return;    // don't actually try to list it.
 		}
 	}
 

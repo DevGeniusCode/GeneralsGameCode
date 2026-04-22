@@ -42,7 +42,7 @@
 //
 //-----------------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/CriticalSection.h"
 
@@ -153,7 +153,7 @@ void AsciiString::ensureUniqueBufferOfSize(int numCharsNeeded, Bool preserveData
 	newData->m_refCount = 1;
 	newData->m_numCharsAllocated = (actualBytes - sizeof(AsciiStringData)) / sizeof(char);
 #if defined(RTS_DEBUG)
-	newData->m_debugptr = newData->peek(); // just makes it easier to read in the debugger
+	newData->m_debugptr = newData->peek();    // just makes it easier to read in the debugger
 #endif
 
 	if (m_data && preserveData)
@@ -288,7 +288,7 @@ void AsciiString::concat(const char* s)
 	validate();
 	int addlen = strlen(s);
 	if (addlen == 0)
-		return; // my, that was easy
+		return;    // my, that was easy
 
 	if (m_data)
 	{

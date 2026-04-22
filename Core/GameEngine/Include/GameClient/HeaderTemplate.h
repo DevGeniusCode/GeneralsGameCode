@@ -83,7 +83,7 @@ public:
 
 	void init();
 
-	const FieldParse* getFieldParse() const { return m_headerFieldParseTable; } ///< Return the field parse info
+	const FieldParse* getFieldParse() const { return m_headerFieldParseTable; }    ///< Return the field parse info
 	static const FieldParse m_headerFieldParseTable[];
 
 	HeaderTemplate* findHeaderTemplate(AsciiString name);

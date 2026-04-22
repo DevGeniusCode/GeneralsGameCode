@@ -86,7 +86,7 @@ enum WindowMsgHandledType CPP_11( : Int)
 };
 
 // callback types -------------------------------------------------------------
-typedef void (*GameWinMsgBoxFunc)(); // used for the Message box callbacks.
+typedef void (*GameWinMsgBoxFunc)();    // used for the Message box callbacks.
 typedef void (*GameWinDrawFunc)(GameWindow*,
                                 WinInstanceData*);
 typedef void (*GameWinTooltipFunc)(GameWindow*,
@@ -107,7 +107,7 @@ enum
 	WIN_MAX_WINDOWS = 576,
 	CURSOR_MOVE_TOL_SQ = 4,
 	TOOLTIP_DELAY = 10,
-	WIN_TOOLTIP_LEN = 64, // max length of tooltip text
+	WIN_TOOLTIP_LEN = 64,    // max length of tooltip text
 };
 
 // macros for easier conversion -----------------------------------------------
@@ -171,33 +171,33 @@ enum
 {
 
 	// when you edit this, remember to edit WindowStatusNames[]
-	WIN_STATUS_NONE = 0x00000000,               // No status bits set at all
-	WIN_STATUS_ACTIVE = 0x00000001,             // At the top of the window list
-	WIN_STATUS_TOGGLE = 0x00000002,             // If set, click to toggle
-	WIN_STATUS_DRAGGABLE = 0x00000004,          // Window can be dragged
-	WIN_STATUS_ENABLED = 0x00000008,            // Window can receive input
-	WIN_STATUS_HIDDEN = 0x00000010,             // Window is hidden, no input
-	WIN_STATUS_ABOVE = 0x00000020,              // Window is always above others
-	WIN_STATUS_BELOW = 0x00000040,              // Window is always below others
-	WIN_STATUS_IMAGE = 0x00000080,              // Window is drawn with images
-	WIN_STATUS_TAB_STOP = 0x00000100,           // Window is a tab stop
-	WIN_STATUS_NO_INPUT = 0x00000200,           // Window does not take input
-	WIN_STATUS_NO_FOCUS = 0x00000400,           // Window does not take focus
-	WIN_STATUS_DESTROYED = 0x00000800,          // Window has been destroyed
-	WIN_STATUS_BORDER = 0x00001000,             // Window will be drawn with Borders & Corners
-	WIN_STATUS_SMOOTH_TEXT = 0x00002000,        // Window text will be drawn with smoothing
-	WIN_STATUS_ONE_LINE = 0x00004000,           // Window text will be drawn on only one line
-	WIN_STATUS_NO_FLUSH = 0x00008000,           // Window images will not be unloaded when window is hidden
-	WIN_STATUS_SEE_THRU = 0x00010000,           // Will not draw, but it NOT hidden ... does not apply to children
-	WIN_STATUS_RIGHT_CLICK = 0x00020000,        // Window pays attention to right clicks
-	WIN_STATUS_WRAP_CENTERED = 0x00040000,      // Text will be centered on each word wrap or \n
-	WIN_STATUS_CHECK_LIKE = 0x00080000,         // Make push buttons "check-like" with dual state
-	WIN_STATUS_HOTKEY_TEXT = 0x00100000,        // Make push buttons "check-like" with dual state
-	WIN_STATUS_USE_OVERLAY_STATES = 0x00200000, // Push buttons will use the global automatic rendering overlay for disabled, hilited, and pushed.
-	WIN_STATUS_NOT_READY = 0x00400000,          // A disabled button that is available -- but not yet (power charge, fire delay).
-	WIN_STATUS_FLASHING = 0x00800000,           // Used for buttons that do cameo flashes.
-	WIN_STATUS_ALWAYS_COLOR = 0x01000000,       // Never render these buttons using greyscale renderer when button disabled.
-	WIN_STATUS_ON_MOUSE_DOWN = 0x02000000,      // Pushbutton triggers on mouse down.
+	WIN_STATUS_NONE = 0x00000000,    // No status bits set at all
+	WIN_STATUS_ACTIVE = 0x00000001,    // At the top of the window list
+	WIN_STATUS_TOGGLE = 0x00000002,    // If set, click to toggle
+	WIN_STATUS_DRAGGABLE = 0x00000004,    // Window can be dragged
+	WIN_STATUS_ENABLED = 0x00000008,    // Window can receive input
+	WIN_STATUS_HIDDEN = 0x00000010,    // Window is hidden, no input
+	WIN_STATUS_ABOVE = 0x00000020,    // Window is always above others
+	WIN_STATUS_BELOW = 0x00000040,    // Window is always below others
+	WIN_STATUS_IMAGE = 0x00000080,    // Window is drawn with images
+	WIN_STATUS_TAB_STOP = 0x00000100,    // Window is a tab stop
+	WIN_STATUS_NO_INPUT = 0x00000200,    // Window does not take input
+	WIN_STATUS_NO_FOCUS = 0x00000400,    // Window does not take focus
+	WIN_STATUS_DESTROYED = 0x00000800,    // Window has been destroyed
+	WIN_STATUS_BORDER = 0x00001000,    // Window will be drawn with Borders & Corners
+	WIN_STATUS_SMOOTH_TEXT = 0x00002000,    // Window text will be drawn with smoothing
+	WIN_STATUS_ONE_LINE = 0x00004000,    // Window text will be drawn on only one line
+	WIN_STATUS_NO_FLUSH = 0x00008000,    // Window images will not be unloaded when window is hidden
+	WIN_STATUS_SEE_THRU = 0x00010000,    // Will not draw, but it NOT hidden ... does not apply to children
+	WIN_STATUS_RIGHT_CLICK = 0x00020000,    // Window pays attention to right clicks
+	WIN_STATUS_WRAP_CENTERED = 0x00040000,    // Text will be centered on each word wrap or \n
+	WIN_STATUS_CHECK_LIKE = 0x00080000,    // Make push buttons "check-like" with dual state
+	WIN_STATUS_HOTKEY_TEXT = 0x00100000,    // Make push buttons "check-like" with dual state
+	WIN_STATUS_USE_OVERLAY_STATES = 0x00200000,    // Push buttons will use the global automatic rendering overlay for disabled, hilited, and pushed.
+	WIN_STATUS_NOT_READY = 0x00400000,    // A disabled button that is available -- but not yet (power charge, fire delay).
+	WIN_STATUS_FLASHING = 0x00800000,    // Used for buttons that do cameo flashes.
+	WIN_STATUS_ALWAYS_COLOR = 0x01000000,    // Never render these buttons using greyscale renderer when button disabled.
+	WIN_STATUS_ON_MOUSE_DOWN = 0x02000000,    // Pushbutton triggers on mouse down.
 	WIN_STATUS_SHORTCUT_BUTTON = 0x04000000,    // Oh god... this is a total hack for shortcut buttons to handle rendering text top left corner...
 	                                            // when you edit this, remember to edit WindowStatusNames[]
 };
@@ -207,9 +207,9 @@ enum
 enum
 {
 	MSG_BOX_YES = 0x01,    // Display the yes button
-	MSG_BOX_NO = 0x02,     // Display the No button
-	MSG_BOX_OK = 0x08,     // Display the Ok button
-	MSG_BOX_CANCEL = 0x04, // Display the Cancel button
+	MSG_BOX_NO = 0x02,    // Display the No button
+	MSG_BOX_OK = 0x08,    // Display the Ok button
+	MSG_BOX_CANCEL = 0x04,    // Display the Cancel button
 };
 
 // WindowMessageBoxData ---------------------------------------------------------
@@ -218,9 +218,9 @@ enum
 struct WindowMessageBoxData
 {
 	GameWinMsgBoxFunc yesCallback;    ///< Function pointer to the Yes Button Callback
-	GameWinMsgBoxFunc noCallback;     ///< Function pointer to the No Button Callback
-	GameWinMsgBoxFunc okCallback;     ///< Function pointer to the Ok Button Callback
-	GameWinMsgBoxFunc cancelCallback; ///< Function pointer to the Cancel Button Callback
+	GameWinMsgBoxFunc noCallback;    ///< Function pointer to the No Button Callback
+	GameWinMsgBoxFunc okCallback;    ///< Function pointer to the Ok Button Callback
+	GameWinMsgBoxFunc cancelCallback;    ///< Function pointer to the Cancel Button Callback
 };
 
 // GameWindowEditData ---------------------------------------------------------
@@ -228,9 +228,9 @@ struct WindowMessageBoxData
 //-----------------------------------------------------------------------------
 struct GameWindowEditData
 {
-	AsciiString systemCallbackString;  ///< string for callback
-	AsciiString inputCallbackString;   ///< string for callback
-	AsciiString tooltipCallbackString; ///< string for callback
+	AsciiString systemCallbackString;    ///< string for callback
+	AsciiString inputCallbackString;    ///< string for callback
+	AsciiString tooltipCallbackString;    ///< string for callback
 	AsciiString drawCallbackString;    ///< string for callback
 };
 
@@ -241,7 +241,7 @@ struct GameWindowEditData
 //-----------------------------------------------------------------------------
 class GameWindow : public MemoryPoolObject
 {
-	MEMORY_POOL_GLUE_ABC(GameWindow) ///< this abstract class needs memory pool hooks
+	MEMORY_POOL_GLUE_ABC(GameWindow)    ///< this abstract class needs memory pool hooks
 
 	friend class GameWindowManager;
 
@@ -256,29 +256,29 @@ public:
 	void linkTransitionWindow(TransitionWindow* transitionWindow);
 	void unlinkTransitionWindow(TransitionWindow* transitionWindow);
 
-	Int winSetWindowId(Int id);                     ///< set id for this window
-	Int winGetWindowId();                           ///< return window id for this window
-	Int winSetSize(Int width, Int height);          ///< set size
-	Int winGetSize(Int* width, Int* height);        ///< return size
-	Int winActivate();                              ///< pop window to top of list and activate
-	Int winBringToTop();                            ///< bring this window to the top of the win list
-	Int winEnable(Bool enable);                     /**< enable/disable a window, a disbled
-	                                                window can be seen but accepts no input */
-	Bool winGetEnabled();                           ///< Is window enabled?
-	Int winHide(Bool hide);                         ///< hide/unhide a window
-	Bool winIsHidden();                             ///< is this window hidden/
-	UnsignedInt winSetStatus(UnsignedInt status);   ///< set status bits
-	UnsignedInt winClearStatus(UnsignedInt status); ///< clear status bits
-	UnsignedInt winGetStatus();                     ///< get status bits
-	UnsignedInt winGetStyle();                      ///< get style bits
-	Int winNextTab();                               ///< advance focus to next window
-	Int winPrevTab();                               ///< change focus to previous window
-	Int winSetPosition(Int x, Int y);               ///< set window position
-	Int winGetPosition(Int* x, Int* y);             ///< get window position
-	Int winGetScreenPosition(Int* x, Int* y);       ///< get screen coordinates
-	Int winGetRegion(IRegion2D* region);            ///< get window region
-	Int winSetCursorPosition(Int x, Int y);         ///< set window cursor position
-	Int winGetCursorPosition(Int* x, Int* y);       ///< get window cursor position
+	Int winSetWindowId(Int id);    ///< set id for this window
+	Int winGetWindowId();    ///< return window id for this window
+	Int winSetSize(Int width, Int height);    ///< set size
+	Int winGetSize(Int* width, Int* height);    ///< return size
+	Int winActivate();    ///< pop window to top of list and activate
+	Int winBringToTop();    ///< bring this window to the top of the win list
+	Int winEnable(Bool enable); /**< enable/disable a window, a disbled
+	                            window can be seen but accepts no input */
+	Bool winGetEnabled();    ///< Is window enabled?
+	Int winHide(Bool hide);    ///< hide/unhide a window
+	Bool winIsHidden();    ///< is this window hidden/
+	UnsignedInt winSetStatus(UnsignedInt status);    ///< set status bits
+	UnsignedInt winClearStatus(UnsignedInt status);    ///< clear status bits
+	UnsignedInt winGetStatus();    ///< get status bits
+	UnsignedInt winGetStyle();    ///< get style bits
+	Int winNextTab();    ///< advance focus to next window
+	Int winPrevTab();    ///< change focus to previous window
+	Int winSetPosition(Int x, Int y);    ///< set window position
+	Int winGetPosition(Int* x, Int* y);    ///< get window position
+	Int winGetScreenPosition(Int* x, Int* y);    ///< get screen coordinates
+	Int winGetRegion(IRegion2D* region);    ///< get window region
+	Int winSetCursorPosition(Int x, Int y);    ///< set window cursor position
+	Int winGetCursorPosition(Int* x, Int* y);    ///< get window cursor position
 
 	// --------------------------------------------------------------------------
 	// new methods for setting images
@@ -305,21 +305,21 @@ public:
 
 	// --------------------------------------------------------------------------
 	// draw methods and data
-	Int winDrawWindow();                                                   ///< draws the default background
-	void winSetDrawOffset(Int x, Int y);                                   ///< set offset for drawing background image data
-	void winGetDrawOffset(Int* x, Int* y);                                 ///< get draw offset
-	void winSetHiliteState(Bool state);                                    ///< set hilite state
-	void winSetTooltip(UnicodeString tip);                                 ///< set tooltip text
-	Int getTooltipDelay() { return m_instData.m_tooltipDelay; }            ///< get tooltip delay
-	void setTooltipDelay(Int delay) { m_instData.m_tooltipDelay = delay; } ///< set tooltip delay
+	Int winDrawWindow();    ///< draws the default background
+	void winSetDrawOffset(Int x, Int y);    ///< set offset for drawing background image data
+	void winGetDrawOffset(Int* x, Int* y);    ///< get draw offset
+	void winSetHiliteState(Bool state);    ///< set hilite state
+	void winSetTooltip(UnicodeString tip);    ///< set tooltip text
+	Int getTooltipDelay() { return m_instData.m_tooltipDelay; }    ///< get tooltip delay
+	void setTooltipDelay(Int delay) { m_instData.m_tooltipDelay = delay; }    ///< set tooltip delay
 
 	//-----------------------------------------------------------------------------
 	// text methods
-	virtual Int winSetText(UnicodeString newText); ///< set text string
-	UnicodeString winGetText();                    ///< get text string
-	Int winGetTextLength();                        ///< get number of chars in text string
-	GameFont* winGetFont();                        ///< get the font being used by this window
-	virtual void winSetFont(GameFont* font);       ///< set font for window
+	virtual Int winSetText(UnicodeString newText);    ///< set text string
+	UnicodeString winGetText();    ///< get text string
+	Int winGetTextLength();    ///< get number of chars in text string
+	GameFont* winGetFont();    ///< get the font being used by this window
+	virtual void winSetFont(GameFont* font);    ///< set font for window
 	void winSetEnabledTextColors(Color color, Color borderColor);
 	void winSetDisabledTextColors(Color color, Color borderColor);
 	void winSetIMECompositeTextColors(Color color, Color borderColor);
@@ -334,39 +334,39 @@ public:
 	Color winGetHiliteTextBorderColor();
 
 	// window instance data
-	Int winSetInstanceData(WinInstanceData* data); ///< copy over instance data
-	WinInstanceData* winGetInstanceData();         ///< get instance data
-	virtual void* winGetUserData();                ///< get the window user data
-	void winSetUserData(void* userData);           ///< set the user data
+	Int winSetInstanceData(WinInstanceData* data);    ///< copy over instance data
+	WinInstanceData* winGetInstanceData();    ///< get instance data
+	virtual void* winGetUserData();    ///< get the window user data
+	void winSetUserData(void* userData);    ///< set the user data
 
 	// hierarchy methods
-	Int winSetParent(GameWindow* parent); ///< set parent
-	GameWindow* winGetParent();           ///< get parent
-	Bool winIsChild(GameWindow* child);   ///< verifies parent
-	GameWindow* winGetChild();            ///< get the child window
-	Int winSetOwner(GameWindow* owner);   ///< set owner
-	GameWindow* winGetOwner();            ///< get window's owner
+	Int winSetParent(GameWindow* parent);    ///< set parent
+	GameWindow* winGetParent();    ///< get parent
+	Bool winIsChild(GameWindow* child);    ///< verifies parent
+	GameWindow* winGetChild();    ///< get the child window
+	Int winSetOwner(GameWindow* owner);    ///< set owner
+	GameWindow* winGetOwner();    ///< get window's owner
 	void winSetNext(GameWindow* next);    ///< set next pointer
 	void winSetPrev(GameWindow* prev);    ///< set prev pointer
-	GameWindow* winGetNext();             ///< get next window in window list
-	GameWindow* winGetPrev();             ///< get previous window in window list
+	GameWindow* winGetNext();    ///< get next window in window list
+	GameWindow* winGetPrev();    ///< get previous window in window list
 
 	// these are for interacting with a group of windows as a shell "screen"
-	void winSetNextInLayout(GameWindow* next); ///< set next in layout
-	void winSetPrevInLayout(GameWindow* prev); ///< set prev in layout
-	void winSetLayout(WindowLayout* layout);   ///< set layout
-	WindowLayout* winGetLayout();              ///< get layout layout
-	GameWindow* winGetNextInLayout();          ///< get next window in layout
-	GameWindow* winGetPrevInLayout();          ///< get prev window in layout
+	void winSetNextInLayout(GameWindow* next);    ///< set next in layout
+	void winSetPrevInLayout(GameWindow* prev);    ///< set prev in layout
+	void winSetLayout(WindowLayout* layout);    ///< set layout
+	WindowLayout* winGetLayout();    ///< get layout layout
+	GameWindow* winGetNextInLayout();    ///< get next window in layout
+	GameWindow* winGetPrevInLayout();    ///< get prev window in layout
 
 	// setting the callbacks ----------------------------------------------------
 	Int winSetSystemFunc(GameWinSystemFunc system);    ///< set system
-	Int winSetInputFunc(GameWinInputFunc input);       ///< set input
-	Int winSetDrawFunc(GameWinDrawFunc draw);          ///< set draw
-	Int winSetTooltipFunc(GameWinTooltipFunc tooltip); ///< set tooltip
+	Int winSetInputFunc(GameWinInputFunc input);    ///< set input
+	Int winSetDrawFunc(GameWinDrawFunc draw);    ///< set draw
+	Int winSetTooltipFunc(GameWinTooltipFunc tooltip);    ///< set tooltip
 	Int winSetCallbacks(GameWinInputFunc input,
 	                    GameWinDrawFunc draw,
-	                    GameWinTooltipFunc tooltip); ///< set draw, input, tooltip
+	                    GameWinTooltipFunc tooltip);    ///< set draw, input, tooltip
 
 	// pick correlation ---------------------------------------------------------
 	Bool winPointInWindow(Int x, Int y); /**is point inside this window?
@@ -393,48 +393,48 @@ public:
 protected:
 	/// 'images' should be taken care of when we hide ourselves or are destroyed
 	void freeImages() {}
-	Bool isEnabled(); ///< see if we and our parents are enabled
+	Bool isEnabled();    ///< see if we and our parents are enabled
 
 	void unlinkFromTransitionWindows();
 
-	void normalizeWindowRegion(); ///< put UL corner in window region.lo
+	void normalizeWindowRegion();    ///< put UL corner in window region.lo
 
-	GameWindow* findFirstLeaf(); ///< return first leaf of branch
-	GameWindow* findLastLeaf();  ///< return last leaf of branch
-	GameWindow* findPrevLeaf();  ///< return prev leav in tree
-	GameWindow* findNextLeaf();  ///< return next leaf in tree
+	GameWindow* findFirstLeaf();    ///< return first leaf of branch
+	GameWindow* findLastLeaf();    ///< return last leaf of branch
+	GameWindow* findPrevLeaf();    ///< return prev leav in tree
+	GameWindow* findNextLeaf();    ///< return next leaf in tree
 
 	// **************************************************************************
 
-	Int m_status;       // Status bits for this window
+	Int m_status;    // Status bits for this window
 	ICoord2D m_size;    // Width and height of the window
-	IRegion2D m_region; // Current region occupied by window.
-	                    // Low x,y is the window's origin
-	Int m_cursorX;      // window cursor X position if any
-	Int m_cursorY;      // window cursor Y position if any
+	IRegion2D m_region;    // Current region occupied by window.
+	                       // Low x,y is the window's origin
+	Int m_cursorX;    // window cursor X position if any
+	Int m_cursorY;    // window cursor Y position if any
 
-	void* m_userData;           // User defined data area
-	WinInstanceData m_instData; // Class data, varies by window type
-	void* m_inputData;          // Client data
+	void* m_userData;    // User defined data area
+	WinInstanceData m_instData;    // Class data, varies by window type
+	void* m_inputData;    // Client data
 
 	// user defined callbacks
-	GameWinInputFunc m_input;     ///< callback for input
-	GameWinSystemFunc m_system;   ///< callback for system messages
-	GameWinDrawFunc m_draw;       ///< callback for drawing
-	GameWinTooltipFunc m_tooltip; ///< callback for tooltip execution
+	GameWinInputFunc m_input;    ///< callback for input
+	GameWinSystemFunc m_system;    ///< callback for system messages
+	GameWinDrawFunc m_draw;    ///< callback for drawing
+	GameWinTooltipFunc m_tooltip;    ///< callback for tooltip execution
 
-	GameWindow *m_next, *m_prev; // List of sibling windows
-	GameWindow* m_parent;        // Window which contains this window
-	GameWindow* m_child;         // List of windows within this window
+	GameWindow *m_next, *m_prev;    // List of sibling windows
+	GameWindow* m_parent;    // Window which contains this window
+	GameWindow* m_child;    // List of windows within this window
 
 	//
 	// the following are for "layout screens" and ONLY apply to root/parent
 	// windows in a layout, any children of a window that is part of a layout
 	// does NOT have layout screen information
 	//
-	GameWindow* m_nextLayout; ///< next in layout
-	GameWindow* m_prevLayout; ///< prev in layout
-	WindowLayout* m_layout;   ///< layout this window is a part of
+	GameWindow* m_nextLayout;    ///< next in layout
+	GameWindow* m_prevLayout;    ///< prev in layout
+	WindowLayout* m_layout;    ///< layout this window is a part of
 
 	// game window edit data for the GUIEditor only
 	GameWindowEditData* m_editData;
@@ -459,8 +459,8 @@ class ModalWindow : public MemoryPoolObject
 {
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(ModalWindow, "ModalWindow")
 public:
-	GameWindow* window; // Pointer to Modal Window
-	ModalWindow* next;  // Next Window Pointer
+	GameWindow* window;    // Pointer to Modal Window
+	ModalWindow* next;    // Next Window Pointer
 };
 EMPTY_DTOR(ModalWindow)
 
@@ -468,13 +468,13 @@ EMPTY_DTOR(ModalWindow)
 enum
 {
 
-	WIN_ERR_OK = 0,                 // No Error
-	WIN_ERR_GENERAL_FAILURE = -1,   // General library failure
+	WIN_ERR_OK = 0,    // No Error
+	WIN_ERR_GENERAL_FAILURE = -1,    // General library failure
 	WIN_ERR_INVALID_WINDOW = -2,    // Window parameter was invalid
-	WIN_ERR_INVALID_PARAMETER = -3, // Parameter was invalid
+	WIN_ERR_INVALID_PARAMETER = -3,    // Parameter was invalid
 	WIN_ERR_MOUSE_CAPTURED = -4,    // Mouse already captured
-	WIN_ERR_KEYBOARD_CAPTURED = -5, // Keyboard already captured
-	WIN_ERR_OUT_OF_WINDOWS = -6     // Too many windows have been created
+	WIN_ERR_KEYBOARD_CAPTURED = -5,    // Keyboard already captured
+	WIN_ERR_OUT_OF_WINDOWS = -6    // Too many windows have been created
 };
 
 // Input capture/release flags
@@ -482,8 +482,8 @@ enum
 {
 
 	WIN_CAPTURE_MOUSE = 0x00000001,    // capture mouse
-	WIN_CAPTURE_KEYBOARD = 0x00000002, // capture keyboard
-	WIN_CAPTURE_ALL = 0xFFFFFFFF,      // capture keyboard and mouse
+	WIN_CAPTURE_KEYBOARD = 0x00000002,    // capture keyboard
+	WIN_CAPTURE_ALL = 0xFFFFFFFF,    // capture keyboard and mouse
 };
 
 // INLINING ///////////////////////////////////////////////////////////////////

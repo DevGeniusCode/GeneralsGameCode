@@ -94,7 +94,7 @@ private:
 		OVERRIDE_MAX_RANGE,
 		OVERRIDE_PRIORITY,
 
-		OVERRIDE_COUNT // Keep list
+		OVERRIDE_COUNT    // Keep list
 	};
 	// Warning: update xferNoName if you modify the enum list!
 

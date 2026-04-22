@@ -27,7 +27,7 @@
 // Author: Chris Huybregts, October 2001
 // Description: LAN API Callbacks
 ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "strtok_r.h"
 #include "Common/GameEngine.h"
@@ -266,15 +266,15 @@ void LANAPI::OnGameOptions(UnsignedInt playerIP, Int playerSlot, AsciiString opt
 		return;
 
 	if (m_currentGame->getIP(playerSlot) != playerIP)
-		return; // He's not in our game?!?
+		return;    // He's not in our game?!?
 
 	if (m_currentGame->isGameInProgress())
-		return; // we don't want to process any game options while in game.
+		return;    // we don't want to process any game options while in game.
 
 	if (playerSlot == 0 && !m_currentGame->amIHost())
 	{
 		m_currentGame->setLastHeard(timeGetTime());
-		AsciiString oldOptions = GameInfoToAsciiString(m_currentGame); // save these off for if we get booted
+		AsciiString oldOptions = GameInfoToAsciiString(m_currentGame);    // save these off for if we get booted
 		if (ParseGameOptionsString(m_currentGame, options))
 		{
 			lanUpdateSlotList();
@@ -514,7 +514,7 @@ void LANAPI::OnGameJoin(ReturnType ret, LANGameInfo* theGame)
 		RequestGameOptions(options, true);
 		options.format("Host=%s", m_hostName.str());
 		RequestGameOptions(options, true);
-		options.format("NAT=%d", FirewallHelperClass::FIREWALL_TYPE_SIMPLE); // BGC: This is a LAN game, so there is no firewall.
+		options.format("NAT=%d", FirewallHelperClass::FIREWALL_TYPE_SIMPLE);    // BGC: This is a LAN game, so there is no firewall.
 		RequestGameOptions(options, true);
 	}
 	else if (ret != RET_BUSY)

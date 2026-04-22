@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/networkutil.h"
 
@@ -72,7 +72,7 @@ void dumpBufferToLog(const void* vBuf, Int len, const char* fname, Int line)
 	DEBUG_LOG(("End of packet dump"));
 }
 
-#endif // DEBUG_LOGGING
+#endif    // DEBUG_LOGGING
 
 /**
  * ResolveIP turns a string ("games2.westwood.com", or "192.168.0.1") into

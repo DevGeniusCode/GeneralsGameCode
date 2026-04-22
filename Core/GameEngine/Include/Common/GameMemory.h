@@ -107,10 +107,10 @@ enum
 	// you must set at least one of the 'freed' bits.
 	_REPORT_CP_FREED_BEFORE = 0x0010,
 	_REPORT_CP_FREED_BETWEEN = 0x0020,
-	_REPORT_CP_FREED_NEVER = 0x0040, // ie, still in existence
+	_REPORT_CP_FREED_NEVER = 0x0040,    // ie, still in existence
 	_REPORT_CP_FREED_DONTCARE = (_REPORT_CP_FREED_BEFORE | _REPORT_CP_FREED_BETWEEN | _REPORT_CP_FREED_NEVER),
 		// ------------------------------------------------------
-	#endif // MEMORYPOOL_CHECKPOINTING
+	#endif    // MEMORYPOOL_CHECKPOINTING
 
 	#ifdef MEMORYPOOL_CHECKPOINTING
 	/** display the stacktrace for allocation location for all blocks found.
@@ -170,10 +170,10 @@ enum
 	  to debugResetCheckpoints)
 	*/
 	REPORT_CP_ALL = (_REPORT_CP_ALLOCATED_DONTCARE | _REPORT_CP_FREED_DONTCARE)
-	#endif // MEMORYPOOL_CHECKPOINTING
+	#endif    // MEMORYPOOL_CHECKPOINTING
 };
 
-#endif // MEMORYPOOL_DEBUG
+#endif    // MEMORYPOOL_DEBUG
 
 // TheSuperHackers @build xezon 30/03/2025 Define DISABLE_GAMEMEMORY to use a null implementations for Game Memory.
 // Useful for address sanitizer checks and other investigations.
@@ -234,15 +234,15 @@ class BlockCheckpointInfo;
 */
 struct PoolInitRec
 {
-	const char* poolName;        ///< name of the pool; by convention, "dmaPool_XXX" where XXX is allocationSize
-	Int allocationSize;          ///< size, in bytes, of the pool.
-	Int initialAllocationCount;  ///< initial number of blocks to allocate.
-	Int overflowAllocationCount; ///< when the pool runs out of space, allocate more blocks in this increment
+	const char* poolName;    ///< name of the pool; by convention, "dmaPool_XXX" where XXX is allocationSize
+	Int allocationSize;    ///< size, in bytes, of the pool.
+	Int initialAllocationCount;    ///< initial number of blocks to allocate.
+	Int overflowAllocationCount;    ///< when the pool runs out of space, allocate more blocks in this increment
 };
 
 enum
 {
-	MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS = 8 ///< The max number of subpools allowed in a DynamicMemoryAllocator
+	MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS = 8    ///< The max number of subpools allowed in a DynamicMemoryAllocator
 };
 
 	#ifdef MEMORYPOOL_CHECKPOINTING
@@ -255,8 +255,8 @@ enum
 class Checkpointable
 {
 private:
-	BlockCheckpointInfo* m_firstCheckpointInfo; ///< head of the linked list of checkpoint infos for this pool/dma
-	Bool m_cpiEverFailed;                       ///< flag to detect if we ran out of memory accumulating checkpoint info.
+	BlockCheckpointInfo* m_firstCheckpointInfo;    ///< head of the linked list of checkpoint infos for this pool/dma
+	Bool m_cpiEverFailed;    ///< flag to detect if we ran out of memory accumulating checkpoint info.
 
 protected:
 	Checkpointable();
@@ -290,18 +290,18 @@ class MemoryPool
 	#endif
 {
 private:
-	MemoryPoolFactory* m_factory;              ///< the factory that created us
-	MemoryPool* m_nextPoolInFactory;           ///< linked list node, managed by factory
-	const char* m_poolName;                    ///< name of this pool. (literal string; must not be freed)
-	Int m_allocationSize;                      ///< size of the blocks allocated by this pool, in bytes
-	Int m_initialAllocationCount;              ///< number of blocks to be allocated in initial blob
-	Int m_overflowAllocationCount;             ///< number of blocks to be allocated in any subsequent blob(s)
-	Int m_usedBlocksInPool;                    ///< total number of blocks in use in the pool.
-	Int m_totalBlocksInPool;                   ///< total number of blocks in all blobs of this pool (used or not).
-	Int m_peakUsedBlocksInPool;                ///< high-water mark of m_usedBlocksInPool
-	MemoryPoolBlob* m_firstBlob;               ///< head of linked list: first blob for this pool.
-	MemoryPoolBlob* m_lastBlob;                ///< tail of linked list: last blob for this pool. (needed for efficiency)
-	MemoryPoolBlob* m_firstBlobWithFreeBlocks; ///< first blob in this pool that has at least one unallocated block.
+	MemoryPoolFactory* m_factory;    ///< the factory that created us
+	MemoryPool* m_nextPoolInFactory;    ///< linked list node, managed by factory
+	const char* m_poolName;    ///< name of this pool. (literal string; must not be freed)
+	Int m_allocationSize;    ///< size of the blocks allocated by this pool, in bytes
+	Int m_initialAllocationCount;    ///< number of blocks to be allocated in initial blob
+	Int m_overflowAllocationCount;    ///< number of blocks to be allocated in any subsequent blob(s)
+	Int m_usedBlocksInPool;    ///< total number of blocks in use in the pool.
+	Int m_totalBlocksInPool;    ///< total number of blocks in all blobs of this pool (used or not).
+	Int m_peakUsedBlocksInPool;    ///< high-water mark of m_usedBlocksInPool
+	MemoryPoolBlob* m_firstBlob;    ///< head of linked list: first blob for this pool.
+	MemoryPoolBlob* m_lastBlob;    ///< tail of linked list: last blob for this pool. (needed for efficiency)
+	MemoryPoolBlob* m_firstBlobWithFreeBlocks;    ///< first blob in this pool that has at least one unallocated block.
 
 private:
 	/// create a new blob with the given number of blocks.
@@ -312,17 +312,17 @@ private:
 
 public:
 	// 'public' funcs that are really only for use by MemoryPoolFactory
-	MemoryPool* getNextPoolInList();         ///< return next pool in linked list
-	void addToList(MemoryPool** pHead);      ///< add this pool to head of the linked list
-	void removeFromList(MemoryPool** pHead); ///< remove this pool from the linked list
+	MemoryPool* getNextPoolInList();    ///< return next pool in linked list
+	void addToList(MemoryPool** pHead);    ///< add this pool to head of the linked list
+	void removeFromList(MemoryPool** pHead);    ///< remove this pool from the linked list
 	#ifdef MEMORYPOOL_DEBUG
-	static void debugPoolInfoReport(MemoryPool* pool, FILE* fp = nullptr); ///< dump a report about this pool to the logfile
-	const char* debugGetBlockTagString(void* pBlock);                      ///< return the tagstring for the given block (assumed to belong to this pool)
-	void debugMemoryVerifyPool();                                          ///< perform internal consistency check on this pool.
+	static void debugPoolInfoReport(MemoryPool* pool, FILE* fp = nullptr);    ///< dump a report about this pool to the logfile
+	const char* debugGetBlockTagString(void* pBlock);    ///< return the tagstring for the given block (assumed to belong to this pool)
+	void debugMemoryVerifyPool();    ///< perform internal consistency check on this pool.
 	Int debugPoolReportLeaks(const char* owner);
 	#endif
 	#ifdef MEMORYPOOL_CHECKPOINTING
-	void debugResetCheckpoints(); ///< throw away all checkpoint information for this pool.
+	void debugResetCheckpoints();    ///< throw away all checkpoint information for this pool.
 	#endif
 
 public:
@@ -394,12 +394,12 @@ class DynamicMemoryAllocator
 	#endif
 {
 private:
-	MemoryPoolFactory* m_factory;                             ///< the factory that created us
-	DynamicMemoryAllocator* m_nextDmaInFactory;               ///< linked list node, managed by factory
-	Int m_numPools;                                           ///< number of subpools (up to MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS)
-	Int m_usedBlocksInDma;                                    ///< total number of blocks allocated, from subpools and "raw"
-	MemoryPool* m_pools[MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS]; ///< the subpools
-	MemoryPoolSingleBlock* m_rawBlocks;                       ///< linked list of "raw" blocks allocated directly from system
+	MemoryPoolFactory* m_factory;    ///< the factory that created us
+	DynamicMemoryAllocator* m_nextDmaInFactory;    ///< linked list node, managed by factory
+	Int m_numPools;    ///< number of subpools (up to MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS)
+	Int m_usedBlocksInDma;    ///< total number of blocks allocated, from subpools and "raw"
+	MemoryPool* m_pools[MAX_DYNAMICMEMORYALLOCATOR_SUBPOOLS];    ///< the subpools
+	MemoryPoolSingleBlock* m_rawBlocks;    ///< linked list of "raw" blocks allocated directly from system
 
 	/// return the best pool for the given allocSize, or null if none are suitable
 	MemoryPool* findPoolForSize(Int allocSize);
@@ -407,18 +407,18 @@ private:
 public:
 	// 'public' funcs that are really only for use by MemoryPoolFactory
 
-	DynamicMemoryAllocator* getNextDmaInList();          ///< return next dma in linked list
-	void addToList(DynamicMemoryAllocator** pHead);      ///< add this dma to the list
-	void removeFromList(DynamicMemoryAllocator** pHead); ///< remove this dma from the list
+	DynamicMemoryAllocator* getNextDmaInList();    ///< return next dma in linked list
+	void addToList(DynamicMemoryAllocator** pHead);    ///< add this dma to the list
+	void removeFromList(DynamicMemoryAllocator** pHead);    ///< remove this dma from the list
 	#ifdef MEMORYPOOL_DEBUG
-	Int debugCalcRawBlockBytes(Int* numBlocks);       ///< calculate the number of bytes in "raw" (non-subpool) blocks
-	void debugMemoryVerifyDma();                      ///< perform internal consistency check
-	const char* debugGetBlockTagString(void* pBlock); ///< return the tagstring for the given block (assumed to belong to this dma)
-	void debugDmaInfoReport(FILE* fp = nullptr);      ///< dump a report about this pool to the logfile
+	Int debugCalcRawBlockBytes(Int* numBlocks);    ///< calculate the number of bytes in "raw" (non-subpool) blocks
+	void debugMemoryVerifyDma();    ///< perform internal consistency check
+	const char* debugGetBlockTagString(void* pBlock);    ///< return the tagstring for the given block (assumed to belong to this dma)
+	void debugDmaInfoReport(FILE* fp = nullptr);    ///< dump a report about this pool to the logfile
 	Int debugDmaReportLeaks();
 	#endif
 	#ifdef MEMORYPOOL_CHECKPOINTING
-	void debugResetCheckpoints(); ///< toss all checkpoint information
+	void debugResetCheckpoints();    ///< toss all checkpoint information
 	#endif
 
 public:
@@ -465,7 +465,7 @@ public:
 	/// return true iff the pool is a subpool of this dma
 	Bool debugIsPoolInDma(MemoryPool* pool);
 
-	#endif // MEMORYPOOL_DEBUG
+	#endif    // MEMORYPOOL_DEBUG
 };
 
 	// ----------------------------------------------------------------------------
@@ -485,16 +485,16 @@ enum
 class MemoryPoolFactory
 {
 private:
-	MemoryPool* m_firstPoolInFactory;            ///< linked list of pools
-	DynamicMemoryAllocator* m_firstDmaInFactory; ///< linked list of dmas
+	MemoryPool* m_firstPoolInFactory;    ///< linked list of pools
+	DynamicMemoryAllocator* m_firstDmaInFactory;    ///< linked list of dmas
 	#ifdef MEMORYPOOL_CHECKPOINTING
-	Int m_curCheckpoint; ///< most recent checkpoint value
+	Int m_curCheckpoint;    ///< most recent checkpoint value
 	#endif
 	#ifdef MEMORYPOOL_DEBUG
-	Int m_usedBytes;     ///< total bytes in use
-	Int m_physBytes;     ///< total bytes allocated to all pools (includes unused blocks)
-	Int m_peakUsedBytes; ///< high-water mark of m_usedBytes
-	Int m_peakPhysBytes; ///< high-water mark of m_physBytes
+	Int m_usedBytes;    ///< total bytes in use
+	Int m_physBytes;    ///< total bytes allocated to all pools (includes unused blocks)
+	Int m_peakUsedBytes;    ///< high-water mark of m_usedBytes
+	Int m_peakPhysBytes;    ///< high-water mark of m_physBytes
 	Int m_usedBytesSpecial[MAX_SPECIAL_USED];
 	Int m_usedBytesSpecialPeak[MAX_SPECIAL_USED];
 	Int m_physBytesSpecial[MAX_SPECIAL_USED];
@@ -761,8 +761,8 @@ public:
 	{
 		if (mpo)
 		{
-			MemoryPool* pool = mpo->getObjectMemoryPool(); // save this, since the dtor will nuke our vtbl
-			mpo->~MemoryPoolObject();                      // it's virtual, so the right one will be called.
+			MemoryPool* pool = mpo->getObjectMemoryPool();    // save this, since the dtor will nuke our vtbl
+			mpo->~MemoryPoolObject();    // it's virtual, so the right one will be called.
 			pool->freeBlock((void*)mpo);
 		}
 	}
@@ -894,7 +894,7 @@ public:
 	static void deallocate(void* __p, size_t);
 };
 
-#endif // DISABLE_GAMEMEMORY
+#endif    // DISABLE_GAMEMEMORY
 
 /**
   A simple utility class to ensure exception safety; this holds a MemoryPoolObject

@@ -47,7 +47,7 @@ static void changePlayerCommon(Player* player)
 	TheInGameUI->deselectAllDrawables();
 }
 
-} // namespace detail
+}    // namespace detail
 
 bool localPlayerHasRadar()
 {
@@ -130,4 +130,4 @@ void changeObservedPlayer(Player* player)
 	}
 }
 
-} // namespace rts
+}    // namespace rts

@@ -27,7 +27,7 @@
 // Desc:       Access to our representation for fonts
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/GameFont.h"
 
@@ -185,7 +185,7 @@ GameFont* FontLibrary::getFont(AsciiString name, Int pointSize, Bool bold)
 		if (font->pointSize == pointSize &&
 		    font->bold == bold &&
 		    font->nameString == name)
-			return font; // found
+			return font;    // found
 	}
 
 	// font not found, allocate a new font element

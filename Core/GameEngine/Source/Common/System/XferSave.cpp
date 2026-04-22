@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // USER INCLUDES //////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/XferSave.h"
 #include "Common/Snapshot.h"
 #include "Common/GameMemory.h"
@@ -39,8 +39,8 @@ class XferBlockData : public MemoryPoolObject
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(XferBlockData, "XferBlockData")
 
 public:
-	XferFilePos filePos; ///< the file position of this block
-	XferBlockData* next; ///< next block on the stack
+	XferFilePos filePos;    ///< the file position of this block
+	XferBlockData* next;    ///< next block on the stack
 };
 EMPTY_DTOR(XferBlockData)
 

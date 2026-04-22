@@ -36,7 +36,7 @@ FramePacer::FramePacer()
 
 	m_maxFPS = BaseFps;
 	m_logicTimeScaleFPS = LOGICFRAMES_PER_SECOND;
-	m_updateTime = 1.0f / (Real)BaseFps; // initialized to something to avoid division by zero on first use
+	m_updateTime = 1.0f / (Real)BaseFps;    // initialized to something to avoid division by zero on first use
 	m_enableFpsLimit = FALSE;
 	m_enableLogicTimeScale = FALSE;
 	m_isTimeFrozen = FALSE;
@@ -53,7 +53,7 @@ void FramePacer::update()
 {
 	// TheSuperHackers @bugfix xezon 05/08/2025 Re-implements the frame rate limiter
 	// with higher resolution counters to cap the frame rate more accurately to the desired limit.
-	const UnsignedInt maxFps = getActualFramesPerSecondLimit(); // allowFpsLimit ? getFramesPerSecondLimit() : RenderFpsPreset::UncappedFpsValue;
+	const UnsignedInt maxFps = getActualFramesPerSecondLimit();    // allowFpsLimit ? getFramesPerSecondLimit() : RenderFpsPreset::UncappedFpsValue;
 	m_updateTime = m_frameRateLimit.wait(maxFps);
 }
 
@@ -91,7 +91,7 @@ Bool FramePacer::isActualFramesPerSecondLimitEnabled() const
 	{
 #if defined(_ALLOW_DEBUG_CHEATS_IN_RELEASE)
 		allowFpsLimit &= !(!TheGameLogic->isGamePaused() && TheGlobalData->m_TiVOFastMode);
-#else // always allow this cheat key if we're in a replay game.
+#else    // always allow this cheat key if we're in a replay game.
 		allowFpsLimit &= !(!TheGameLogic->isGamePaused() && TheGlobalData->m_TiVOFastMode && TheGameLogic->isInReplayGame());
 #endif
 	}

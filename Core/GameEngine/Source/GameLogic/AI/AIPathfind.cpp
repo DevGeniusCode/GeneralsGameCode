@@ -25,7 +25,7 @@
 // AIPathfind.cpp
 // AI pathfinding system
 // Author: Michael S. Booth, October 2001
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameLogic/AIPathfind.h"
 
@@ -56,7 +56,7 @@
 	#include "Common/MiscAudio.h"
 #endif
 
-#include "Common/UnitTimings.h" //Contains the DO_UNIT_TIMINGS define jba.
+#include "Common/UnitTimings.h"    //Contains the DO_UNIT_TIMINGS define jba.
 
 #define no_INTENSE_DEBUG
 
@@ -123,7 +123,7 @@ constexpr const UnsignedInt MAX_CELL_COUNT = 500;
 constexpr const UnsignedInt MAX_ADJUSTMENT_CELL_COUNT = 400;
 constexpr const UnsignedInt MAX_SAFE_PATH_CELL_COUNT = 2000;
 
-constexpr const UnsignedInt PATHFIND_CELLS_PER_FRAME = 5000; // Number of cells we will search pathfinding per frame.
+constexpr const UnsignedInt PATHFIND_CELLS_PER_FRAME = 5000;    // Number of cells we will search pathfinding per frame.
 constexpr const UnsignedInt CELL_INFOS_TO_ALLOCATE = 30000;
 
 //-----------------------------------------------------------------------------------
@@ -305,7 +305,7 @@ void Path::xfer(Xfer* xfer)
 
 	if (xfer->getXferMode() == XFER_SAVE)
 	{
-		node = m_pathTail; // Write them out backwards.
+		node = m_pathTail;    // Write them out backwards.
 		while (node)
 		{
 			node->m_id = count;
@@ -384,7 +384,7 @@ void Path::xfer(Xfer* xfer)
 		color.blue = 0;
 		color.red = color.green = 1;
 		Coord3D pos;
-		addIcon(nullptr, 0, 0, color); // erase feedback.
+		addIcon(nullptr, 0, 0, color);    // erase feedback.
 		for (PathNode* node = getFirstNode(); node; node = node->getNext())
 		{
 
@@ -517,7 +517,7 @@ void Path::optimize(const Object* obj, LocomotorSurfaceTypeMask acceptableSurfac
 		PathfindLayerEnum layer = anchor->getLayer();
 		PathfindLayerEnum curLayer = anchor->getLayer();
 		Int count = 0;
-		const Int ALLOWED_STEPS = 3; // we can optimize 3 steps to or from a bridge.  Otherwise, we need to insert a point. jba.
+		const Int ALLOWED_STEPS = 3;    // we can optimize 3 steps to or from a bridge.  Otherwise, we need to insert a point. jba.
 		for (node = anchor->getNext(); node->getNext(); node = node->getNext())
 		{
 			count++;
@@ -666,7 +666,7 @@ void Path::optimizeGroundPath(Bool crusher, Int pathDiameter)
 		PathfindLayerEnum layer = anchor->getLayer();
 		PathfindLayerEnum curLayer = anchor->getLayer();
 		Int count = 0;
-		const Int ALLOWED_STEPS = 3; // we can optimize 3 steps to or from a bridge.  Otherwise, we need to insert a point. jba.
+		const Int ALLOWED_STEPS = 3;    // we can optimize 3 steps to or from a bridge.  Otherwise, we need to insert a point. jba.
 		for (node = anchor->getNext(); node->getNext(); node = node->getNext())
 		{
 			count++;
@@ -1012,11 +1012,11 @@ void Path::computePointOnPath(
 			Bool tryAhead = alongPathDist > segmentLength * 0.5;
 			if (closeNext->getCanOptimize() == false)
 			{
-				tryAhead = false; // don't go past no-opt nodes.
+				tryAhead = false;    // don't go past no-opt nodes.
 			}
 			if (closeNode->getLayer() != closeNext->getLayer())
 			{
-				tryAhead = false; // don't go past layers.
+				tryAhead = false;    // don't go past layers.
 			}
 			if (obj->getLayer() != LAYER_GROUND)
 			{
@@ -1240,7 +1240,7 @@ void Pathfinder::forceCleanCells()
 void PathfindCellInfo::allocateCellInfos()
 {
 	releaseCellInfos();
-	s_infoArray = MSGNEW("PathfindCellInfo") PathfindCellInfo[CELL_INFOS_TO_ALLOCATE]; // pool[]ify
+	s_infoArray = MSGNEW("PathfindCellInfo") PathfindCellInfo[CELL_INFOS_TO_ALLOCATE];    // pool[]ify
 	s_infoArray[CELL_INFOS_TO_ALLOCATE - 1].m_pathParent = nullptr;
 	s_infoArray[CELL_INFOS_TO_ALLOCATE - 1].m_isFree = true;
 	s_firstFree = s_infoArray;
@@ -1258,7 +1258,7 @@ void PathfindCellInfo::releaseCellInfos()
 {
 	if (s_infoArray == nullptr)
 	{
-		return; // haven't allocated any yet.
+		return;    // haven't allocated any yet.
 	}
 	Int count = 0;
 	while (s_firstFree)
@@ -1283,7 +1283,7 @@ PathfindCellInfo* PathfindCellInfo::getACellInfo(PathfindCell* cell, const ICoor
 	{
 		DEBUG_ASSERTCRASH(s_firstFree->m_isFree, ("Should be freed."));
 		s_firstFree = s_firstFree->m_pathParent;
-		info->m_isFree = false; // Just allocated it.
+		info->m_isFree = false;    // Just allocated it.
 		info->m_cell = cell;
 		info->m_pos = pos;
 
@@ -1389,7 +1389,7 @@ Bool PathfindCell::startPathfind(PathfindCell* goalCell)
 	m_info->m_nextOpen = nullptr;
 	m_info->m_prevOpen = nullptr;
 	m_info->m_pathParent = nullptr;
-	m_info->m_costSoFar = 0; // start node, no cost to get here
+	m_info->m_costSoFar = 0;    // start node, no cost to get here
 	m_info->m_totalCost = 0;
 	if (goalCell)
 	{
@@ -2269,7 +2269,7 @@ UnsignedInt PathfindCell::costToHierGoal(PathfindCell* goal)
 	if (!m_info)
 	{
 		DEBUG_CRASH(("Has to have info."));
-		return 100000; //...patch hack 1.01
+		return 100000;    //...patch hack 1.01
 	}
 	Int dx = m_info->m_pos.x - goal->getXIndex();
 	Int dy = m_info->m_pos.y - goal->getYIndex();
@@ -2326,11 +2326,11 @@ UnsignedInt PathfindCell::costSoFar(PathfindCell* parent)
 		{
 			Int dot = dir.x * prevDir.x + dir.y * prevDir.y;
 			if (dot > 0)
-				numTurns = 4; // 45 degree turn
+				numTurns = 4;    // 45 degree turn
 			else if (dot == 0)
-				numTurns = 8; // 90 degree turn
+				numTurns = 8;    // 90 degree turn
 			else
-				numTurns = 16; // 135 degree turn
+				numTurns = 16;    // 135 degree turn
 		}
 	}
 
@@ -2540,7 +2540,7 @@ inline void applyZone(PathfindCell& targetCell, const PathfindCell& sourceCell, 
 	}
 	if (targetZone == srcZone)
 	{
-		return; // already match.
+		return;    // already match.
 	}
 	resolveZones(srcZone, targetZone, zoneEquivalency, sizeOfZE);
 }
@@ -2554,7 +2554,7 @@ inline void applyBlockZone(PathfindCell& targetCell, const PathfindCell& sourceC
 	Int targetZone = zoneEquivalency[targetCell.getZone() - firstZone];
 	if (targetZone == srcZone)
 	{
-		return; // already match.
+		return;    // already match.
 	}
 	resolveBlockZones(srcZone, targetZone, zoneEquivalency, sizeOfZE);
 }
@@ -2623,7 +2623,7 @@ void ZoneBlock::blockCalculateZones(PathfindCell** map, PathfindLayer layers[], 
 	allocateZones();
 
 	if (m_numZones == 1)
-		return; // all zones are equivalent.
+		return;    // all zones are equivalent.
 
 	// Determine water/ground equivalent zones, and ground/cliff equivalent zones.
 	for (i = 0; i < m_zonesAllocated; i++)
@@ -2696,7 +2696,7 @@ zoneStorageType ZoneBlock::getEffectiveZone(LocomotorSurfaceTypeMask acceptableS
 #endif
 
 	if (acceptableSurfaces & LOCOMOTORSURFACE_AIR)
-		return 1; // air is all zone 1.
+		return 1;    // air is all zone 1.
 
 	if ((acceptableSurfaces & LOCOMOTORSURFACE_GROUND) &&
 	    (acceptableSurfaces & LOCOMOTORSURFACE_WATER) &&
@@ -2707,7 +2707,7 @@ zoneStorageType ZoneBlock::getEffectiveZone(LocomotorSurfaceTypeMask acceptableS
 	}
 	if (m_numZones < 2)
 	{
-		return m_firstZone; // if we only got 1 zone, it's all the same zone.
+		return m_firstZone;    // if we only got 1 zone, it's all the same zone.
 	}
 	DEBUG_ASSERTCRASH(zone >= m_firstZone && zone < m_firstZone + m_numZones, ("Invalid range."));
 	if (zone < m_firstZone || zone >= m_firstZone + m_numZones)
@@ -2770,7 +2770,7 @@ void ZoneBlock::allocateZones()
 
 	if (m_numZones == 1)
 	{
-		return; // we don't need any zone equivalency tables.
+		return;    // we don't need any zone equivalency tables.
 	}
 
 	if (m_zonesAllocated == 0)
@@ -2892,13 +2892,13 @@ void PathfindZoneManager::allocateBlocks(const IRegion2D& globalBounds)
 	}
 }
 
-void PathfindZoneManager::reset() ///< Called when the map is reset.
+void PathfindZoneManager::reset()    ///< Called when the map is reset.
 {
 	freeZones();
 	freeBlocks();
 }
 
-void PathfindZoneManager::markZonesDirty() ///< Called when the zones need to be recalculated.
+void PathfindZoneManager::markZonesDirty()    ///< Called when the zones need to be recalculated.
 {
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
 	m_nextFrameToCalculateZones = TheGameLogic->getFrame();
@@ -2933,7 +2933,7 @@ void PathfindZoneManager::calculateZones(PathfindCell** map, PathfindLayer layer
 	#endif
 #endif
 
-	m_maxZone = 1; // we start using zone 0 as a flag.
+	m_maxZone = 1;    // we start using zone 0 as a flag.
 	const Int maxZones = 24000;
 	zoneStorageType zoneEquivalency[maxZones];
 	Int i, j;
@@ -2957,8 +2957,8 @@ void PathfindZoneManager::calculateZones(PathfindCell** map, PathfindLayer layer
 			IRegion2D bounds;
 			bounds.lo.x = globalBounds.lo.x + xBlock * ZONE_BLOCK_SIZE;
 			bounds.lo.y = globalBounds.lo.y + yBlock * ZONE_BLOCK_SIZE;
-			bounds.hi.x = bounds.lo.x + ZONE_BLOCK_SIZE - 1; // bounds are inclusive.
-			bounds.hi.y = bounds.lo.y + ZONE_BLOCK_SIZE - 1; // bounds are inclusive.
+			bounds.hi.x = bounds.lo.x + ZONE_BLOCK_SIZE - 1;    // bounds are inclusive.
+			bounds.hi.y = bounds.lo.y + ZONE_BLOCK_SIZE - 1;    // bounds are inclusive.
 			if (bounds.hi.x > globalBounds.hi.x)
 			{
 				bounds.hi.x = globalBounds.hi.x;
@@ -3080,8 +3080,8 @@ void PathfindZoneManager::calculateZones(PathfindCell** map, PathfindLayer layer
 			IRegion2D bounds;
 			bounds.lo.x = globalBounds.lo.x + xBlock * ZONE_BLOCK_SIZE;
 			bounds.lo.y = globalBounds.lo.y + yBlock * ZONE_BLOCK_SIZE;
-			bounds.hi.x = bounds.lo.x + ZONE_BLOCK_SIZE - 1; // bounds are inclusive.
-			bounds.hi.y = bounds.lo.y + ZONE_BLOCK_SIZE - 1; // bounds are inclusive.
+			bounds.hi.x = bounds.lo.x + ZONE_BLOCK_SIZE - 1;    // bounds are inclusive.
+			bounds.hi.y = bounds.lo.y + ZONE_BLOCK_SIZE - 1;    // bounds are inclusive.
 
 			if (bounds.hi.x > globalBounds.hi.x)
 				bounds.hi.x = globalBounds.hi.x;
@@ -3158,7 +3158,7 @@ void PathfindZoneManager::calculateZones(PathfindCell** map, PathfindLayer layer
 					applyZone(r_thisCell, r_leftCell, m_hierarchicalZones, m_maxZone);
 				else
 				{
-					Bool notTerrainOrCrusher = TRUE; // if this is false, skip the if-else-ladder below
+					Bool notTerrainOrCrusher = TRUE;    // if this is false, skip the if-else-ladder below
 
 					if (terrain(r_thisCell, r_leftCell))
 					{
@@ -3220,7 +3220,7 @@ void PathfindZoneManager::calculateZones(PathfindCell** map, PathfindLayer layer
 					applyZone(r_thisCell, r_topCell, m_hierarchicalZones, m_maxZone);
 				else
 				{
-					Bool notTerrainOrCrusher = TRUE; // if this is false, skip the if-else-ladder below
+					Bool notTerrainOrCrusher = TRUE;    // if this is false, skip the if-else-ladder below
 
 					if (terrain(r_thisCell, r_topCell))
 					{
@@ -3350,8 +3350,8 @@ void PathfindZoneManager::updateZonesForModify(PathfindCell** map, PathfindLayer
 			IRegion2D blockBounds;
 			blockBounds.lo.x = globalBounds.lo.x + xBlock * ZONE_BLOCK_SIZE;
 			blockBounds.lo.y = globalBounds.lo.y + yBlock * ZONE_BLOCK_SIZE;
-			blockBounds.hi.x = blockBounds.lo.x + ZONE_BLOCK_SIZE - 1; // blockBounds are inclusive.
-			blockBounds.hi.y = blockBounds.lo.y + ZONE_BLOCK_SIZE - 1; // blockBounds are inclusive.
+			blockBounds.hi.x = blockBounds.lo.x + ZONE_BLOCK_SIZE - 1;    // blockBounds are inclusive.
+			blockBounds.hi.y = blockBounds.lo.y + ZONE_BLOCK_SIZE - 1;    // blockBounds are inclusive.
 			if (blockBounds.hi.x > bounds.hi.x)
 			{
 				blockBounds.hi.x = bounds.hi.x;
@@ -3683,7 +3683,7 @@ zoneStorageType PathfindZoneManager::getEffectiveZone(LocomotorSurfaceTypeMask a
 		return (0);
 	}
 	if (acceptableSurfaces & LOCOMOTORSURFACE_AIR)
-		return 1; // air is all zone 1.
+		return 1;    // air is all zone 1.
 
 	if ((acceptableSurfaces & LOCOMOTORSURFACE_GROUND) &&
 	    (acceptableSurfaces & LOCOMOTORSURFACE_WATER) &&
@@ -4140,7 +4140,7 @@ void PathfindLayer::classifyCells()
 					if (groundCell)
 					{
 						DEBUG_ASSERTCRASH(groundCell->getConnectLayer() == m_layer, ("Should connect to this layer.jba."));
-						groundCell->setConnectLayer(LAYER_INVALID); // disconnect it.
+						groundCell->setConnectLayer(LAYER_INVALID);    // disconnect it.
 					}
 				}
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
@@ -4191,7 +4191,7 @@ void PathfindLayer::classifyWallCells(ObjectID* wallPieces, Int numPieces)
 					if (groundCell)
 					{
 						DEBUG_ASSERTCRASH(groundCell->getConnectLayer() == m_layer, ("Should connect to this layer.jba."));
-						groundCell->setConnectLayer(LAYER_INVALID); // disconnect it.
+						groundCell->setConnectLayer(LAYER_INVALID);    // disconnect it.
 					}
 				}
 				cell->setType(PathfindCell::CELL_IMPASSABLE);
@@ -4290,7 +4290,7 @@ PathfindCell* PathfindLayer::getCell(Int x, Int y)
 	PathfindCell* cell = &m_layerCells[x][y];
 	if (cell->getType() == PathfindCell::CELL_IMPASSABLE)
 	{
-		return nullptr; // Impassable cells are ignored.
+		return nullptr;    // Impassable cells are ignored.
 	}
 	return cell;
 }
@@ -4342,9 +4342,9 @@ void PathfindLayer::classifyLayerMapCell(Int i, Int j, PathfindCell* cell, Bridg
 		if (bridgeCount != 0)
 		{
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
-			cell->setType(PathfindCell::CELL_CLIFF); // it's off the bridge.
+			cell->setType(PathfindCell::CELL_CLIFF);    // it's off the bridge.
 #else
-			cell->setType(PathfindCell::CELL_BRIDGE_IMPASSABLE); // it's off the bridge.
+			cell->setType(PathfindCell::CELL_BRIDGE_IMPASSABLE);    // it's off the bridge.
 #endif
 		}
 
@@ -4499,9 +4499,9 @@ void PathfindLayer::classifyWallMapCell(Int i, Int j, PathfindCell* cell, Object
 		if (bridgeCount != 0)
 		{
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
-			cell->setType(PathfindCell::CELL_CLIFF); // it's off the bridge.
+			cell->setType(PathfindCell::CELL_CLIFF);    // it's off the bridge.
 #else
-			cell->setType(PathfindCell::CELL_BRIDGE_IMPASSABLE); // it's off the bridge.
+			cell->setType(PathfindCell::CELL_BRIDGE_IMPASSABLE);    // it's off the bridge.
 #endif
 		}
 	}
@@ -4675,7 +4675,7 @@ PathfindLayerEnum Pathfinder::addBridge(Bridge* theBridge)
 				return (PathfindLayerEnum)layer;
 			}
 			DEBUG_LOG(("WARNING: Bridge failed to init in pathfinder"));
-			return LAYER_GROUND; // failed to init, usually cause off of the map.  jba.
+			return LAYER_GROUND;    // failed to init, usually cause off of the map.  jba.
 		}
 		layer++;
 	}
@@ -4720,7 +4720,7 @@ void Pathfinder::classifyFence(Object* obj, Bool insert)
 	Real c = (Real)Cos(angle);
 	Real s = (Real)Sin(angle);
 
-	const Real STEP_SIZE = PATHFIND_CELL_SIZE_F * 0.5f; // in theory, should be PATHFIND_CELL_SIZE_F exactly, but needs to be smaller to avoid aliasing problems
+	const Real STEP_SIZE = PATHFIND_CELL_SIZE_F * 0.5f;    // in theory, should be PATHFIND_CELL_SIZE_F exactly, but needs to be smaller to avoid aliasing problems
 	Real ydx = s * STEP_SIZE;
 	Real ydy = -c * STEP_SIZE;
 	Real xdx = c * STEP_SIZE;
@@ -4757,7 +4757,7 @@ void Pathfinder::classifyFence(Object* obj, Bool insert)
 	cellBounds.hi.y = REAL_TO_INT_CEIL((pos->y + 0.5f) / PATHFIND_CELL_SIZE_F);
 	#endif
 	Bool didAnything = false;
-#endif // !(RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING)
+#endif    // !(RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING)
 
 	for (Int iy = 0; iy < numStepsY; ++iy, tl_x += ydx, tl_y += ydy)
 	{
@@ -4829,17 +4829,17 @@ void Pathfinder::classifyObjectFootprint(Object* obj, Bool insert)
 {
 	if (obj->isKindOf(KINDOF_MINE))
 	{
-		return; // don't pathfind around mines.
+		return;    // don't pathfind around mines.
 	}
 
 	if (obj->isKindOf(KINDOF_PROJECTILE))
 	{
-		return; // don't care about projectiles.
+		return;    // don't care about projectiles.
 	}
 
 	if (obj->isKindOf(KINDOF_BRIDGE_TOWER))
 	{
-		return; // It is important to not abuse bridge towers.
+		return;    // It is important to not abuse bridge towers.
 	}
 
 	if (obj->getTemplate()->getFenceWidth() > 0.0f)
@@ -4858,7 +4858,7 @@ void Pathfinder::classifyObjectFootprint(Object* obj, Bool insert)
 		// lifeless immobile husks of debris, but we still need to remove them.  jba.
 
 #if !RTS_GENERALS
-		if (obj->isKindOf(KINDOF_BLAST_CRATER)) // since these footprints are permanent, never remove them
+		if (obj->isKindOf(KINDOF_BLAST_CRATER))    // since these footprints are permanent, never remove them
 			return;
 #endif
 
@@ -4902,11 +4902,11 @@ void Pathfinder::classifyObjectFootprint(Object* obj, Bool insert)
 	}
 	if (!obj->isKindOf(KINDOF_STRUCTURE))
 	{
-		return; // Only path around structures.
+		return;    // Only path around structures.
 	}
 	if (obj->isMobile())
 	{
-		return; // mobile aren't obstacles.
+		return;    // mobile aren't obstacles.
 	}
 	/// For now, all small objects will not be obstacles
 	if (obj->getGeometryInfo().getIsSmall())
@@ -4917,12 +4917,12 @@ void Pathfinder::classifyObjectFootprint(Object* obj, Bool insert)
 #if RTS_GENERALS
 	if (obj->getHeightAboveTerrain() > PATHFIND_CELL_SIZE_F)
 	{
-		return; // Don't add bounds that are up in the air.
+		return;    // Don't add bounds that are up in the air.
 	}
 #else
 	if (obj->getHeightAboveTerrain() > PATHFIND_CELL_SIZE_F && (!obj->isKindOf(KINDOF_BLAST_CRATER)))
 	{
-		return; // Don't add bounds that are up in the air.... unless a blast crater wants to do just that
+		return;    // Don't add bounds that are up in the air.... unless a blast crater wants to do just that
 	}
 #endif
 	internal_classifyObjectFootprint(obj, insert);
@@ -4952,7 +4952,7 @@ void Pathfinder::internal_classifyObjectFootprint(Object* obj, Bool insert)
 			Real c = (Real)Cos(angle);
 			Real s = (Real)Sin(angle);
 
-			const Real STEP_SIZE = PATHFIND_CELL_SIZE_F * 0.5f; // in theory, should be PATHFIND_CELL_SIZE_F exactly, but needs to be smaller to avoid aliasing problems
+			const Real STEP_SIZE = PATHFIND_CELL_SIZE_F * 0.5f;    // in theory, should be PATHFIND_CELL_SIZE_F exactly, but needs to be smaller to avoid aliasing problems
 			Real ydx = s * STEP_SIZE;
 			Real ydy = -c * STEP_SIZE;
 			Real xdx = c * STEP_SIZE;
@@ -5021,7 +5021,7 @@ void Pathfinder::internal_classifyObjectFootprint(Object* obj, Bool insert)
 		}
 		break;
 
-		case GEOMETRY_SPHERE: // not quite right, but close enough
+		case GEOMETRY_SPHERE:    // not quite right, but close enough
 		case GEOMETRY_CYLINDER:
 		{
 			m_zoneManager.markZonesDirty();
@@ -5299,7 +5299,7 @@ void Pathfinder::classifyMapCell(Int i, Int j, PathfindCell* cell)
  */
 void Pathfinder::newMap()
 {
-	m_wallHeight = TheAI->getAiData()->m_wallHeight; // may be updated by map.ini.
+	m_wallHeight = TheAI->getAiData()->m_wallHeight;    // may be updated by map.ini.
 	Region3D terrainExtent;
 	TheTerrainLogic->getMaximumPathfindExtent(&terrainExtent);
 	IRegion2D bounds;
@@ -5477,7 +5477,7 @@ void Pathfinder::debugShowSearch(Bool pathFound)
 	color.red = color.blue = color.green = 1;
 	if (!pathFound)
 	{
-		addIcon(nullptr, 0, 0, color); // erase.
+		addIcon(nullptr, 0, 0, color);    // erase.
 	}
 
 	for (s = m_openList.getHead(); s; s = s->getNextOpen())
@@ -5680,7 +5680,7 @@ Bool Pathfinder::checkDestination(const Object* obj, Int cellX, Int cellY, Pathf
 			PathfindCell* cell = getCell(layer, i, j);
 			if (!cell)
 			{
-				return false; // off the map, so can't place here.
+				return false;    // off the map, so can't place here.
 			}
 
 			if (checkForAircraft)
@@ -5712,18 +5712,18 @@ Bool Pathfinder::checkDestination(const Object* obj, Int cellX, Int cellY, Pathf
 
 			if (cell->getFlags() == PathfindCell::NO_UNITS)
 			{
-				continue; // Nobody is here, so it's ok.
+				continue;    // Nobody is here, so it's ok.
 			}
 
 			ObjectID goalUnitID = cell->getGoalUnit();
 			if (goalUnitID == objID)
 			{
-				continue; // we got it.
+				continue;    // we got it.
 			}
 
 			if (goalUnitID == ignoreId)
 			{
-				continue; // we are ignoring it.
+				continue;    // we are ignoring it.
 			}
 
 			if (goalUnitID == INVALID_ID)
@@ -5744,14 +5744,14 @@ Bool Pathfinder::checkDestination(const Object* obj, Int cellX, Int cellY, Pathf
 			// order matters: we want to know if I consider it to be an ally, not vice versa
 			if (obj->getRelationship(unit) == ALLIES)
 			{
-				return false; // Don't usurp your allies goals.  jba.
+				return false;    // Don't usurp your allies goals.  jba.
 			}
 			if (cell->getFlags() == PathfindCell::UNIT_PRESENT_FIXED)
 			{
 				Bool canCrush = obj->canCrushOrSquish(unit, TEST_CRUSH_OR_SQUISH);
 				if (!canCrush)
 				{
-					return false; // Don't move to an occupied cell.
+					return false;    // Don't move to an occupied cell.
 				}
 			}
 		}
@@ -5777,7 +5777,7 @@ Bool Pathfinder::checkForMovement(const Object* obj, TCheckMovementInfo& info)
 
 	if (!obj)
 	{
-		return true; // not object can move there.
+		return true;    // not object can move there.
 	}
 
 	ObjectID ignoreId = INVALID_ID;
@@ -5798,7 +5798,7 @@ Bool Pathfinder::checkForMovement(const Object* obj, TCheckMovementInfo& info)
 			PathfindCell* cell = getCell(info.layer, i, j);
 			if (!cell)
 			{
-				return false; // off the map, so can't move here.
+				return false;    // off the map, so can't move here.
 			}
 
 			PathfindCell::CellFlags flags = cell->getFlags();
@@ -5808,18 +5808,18 @@ Bool Pathfinder::checkForMovement(const Object* obj, TCheckMovementInfo& info)
 			}
 			else if (flags == PathfindCell::NO_UNITS)
 			{
-				continue; // Nobody is here, so it's ok.
+				continue;    // Nobody is here, so it's ok.
 			}
 
 			ObjectID posUnit = cell->getPosUnit();
 			if (posUnit == obj->getID())
 			{
-				continue; // we got it.
+				continue;    // we got it.
 			}
 
 			if (posUnit == ignoreId)
 			{
-				continue; // we are ignoring this one.
+				continue;    // we are ignoring this one.
 			}
 
 			Bool check = false;
@@ -5859,7 +5859,7 @@ Bool Pathfinder::checkForMovement(const Object* obj, TCheckMovementInfo& info)
 			if (obj->isKindOf(KINDOF_INFANTRY) && unit->isKindOf(KINDOF_INFANTRY))
 			{
 				// Infantry can run through infantry.
-				continue; //
+				continue;    //
 			}
 #endif
 			// See if it is an ally.
@@ -5868,12 +5868,12 @@ Bool Pathfinder::checkForMovement(const Object* obj, TCheckMovementInfo& info)
 			{
 				if (!unit->getAIUpdateInterface())
 				{
-					return false; // can't path through not-idle units.
+					return false;    // can't path through not-idle units.
 				}
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
 				if (!unit->getAIUpdateInterface()->isIdle())
 				{
-					return false; // can't path through not-idle units.
+					return false;    // can't path through not-idle units.
 				}
 #endif
 				Bool found = false;
@@ -6013,7 +6013,7 @@ Bool Pathfinder::goalPosition(Object* obj, Coord3D* pos)
 	Bool center;
 	AIUpdateInterface* ai = obj->getAIUpdateInterface();
 	if (!ai)
-		return false; // only consider ai objects.
+		return false;    // only consider ai objects.
 	getRadiusAndCenter(obj, iRadius, center);
 	ICoord2D cell = *ai->getPathfindGoalCell();
 	pos->zero();
@@ -6033,7 +6033,7 @@ Bool Pathfinder::checkForAdjust(Object* obj, const LocomotorSet& locomotorSet, B
 		return false;
 	if (cellP && cellP->getType() == PathfindCell::CELL_CLIFF)
 	{
-		return false; // no final destinations on cliffs.
+		return false;    // no final destinations on cliffs.
 	}
 	if (isHuman)
 	{
@@ -6099,7 +6099,7 @@ Bool Pathfinder::checkForLanding(Int cellX, Int cellY, PathfindLayerEnum layer,
 		case PathfindCell::CELL_CLIFF:
 		case PathfindCell::CELL_WATER:
 		case PathfindCell::CELL_IMPASSABLE:
-			return false; // no final destinations on cliffs, water, etc.
+			return false;    // no final destinations on cliffs, water, etc.
 	}
 	if (checkDestination(nullptr, cellX, cellY, layer, iRadius, center))
 	{
@@ -6205,13 +6205,13 @@ Bool Pathfinder::adjustDestination(Object* obj, const LocomotorSet& locomotorSet
 {
 	if (obj->isKindOf(KINDOF_PROJECTILE))
 	{
-		return true; // missiles can go wherever they want to. jba.
+		return true;    // missiles can go wherever they want to. jba.
 	}
 
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 	Int iRadius;
 	Bool center;
@@ -6326,7 +6326,7 @@ Bool Pathfinder::adjustTargetDestination(const Object* obj, const Object* target
 	}
 	if (worldToCell(&adjustDest, &cell))
 	{
-		return false; // outside of bounds.
+		return false;    // outside of bounds.
 	}
 
 	Int limit = MAX_ADJUSTMENT_CELL_COUNT;
@@ -6429,7 +6429,7 @@ Bool Pathfinder::adjustToPossibleDestination(Object* obj, const LocomotorSet& lo
 	}
 	if (worldToCell(&adjustDest, &goalCellNdx))
 	{
-		return false; // outside of bounds.
+		return false;    // outside of bounds.
 	}
 
 	// determine goal cell
@@ -6606,7 +6606,7 @@ void Pathfinder::doDebugIcons()
 
 	RGBColor color;
 	color.red = color.green = color.blue = 0;
-	addIcon(nullptr, 0, 0, color); // clear.
+	addIcon(nullptr, 0, 0, color);    // clear.
 	Coord3D topLeftCorner;
 	Bool showCells = TheGlobalData->m_debugAI == AI_DEBUG_CELLS;
 	Int i;
@@ -6839,7 +6839,7 @@ void Pathfinder::processPathfindQueue()
 	bounds.hi.y--;
 	m_logicalExtent = bounds;
 
-	m_cumulativeCellsAllocated = 0; // Number of pathfind cells examined.
+	m_cumulativeCellsAllocated = 0;    // Number of pathfind cells examined.
 #ifdef DEBUG_QPF
 	Int pathsFound = 0;
 #endif
@@ -6913,7 +6913,7 @@ void Pathfinder::checkChangeLayers(PathfindCell* parentCell)
 	// keep track of path we're building - point back to cell we moved here from
 	newCell->setParentCell(parentCell);
 	// store cost of this path
-	newCell->setCostSoFar(parentCell->getCostSoFar()); // same as parent cost
+	newCell->setCostSoFar(parentCell->getCostSoFar());    // same as parent cost
 	newCell->setTotalCost(parentCell->getTotalCost());
 	// insert newCell in open list such that open list is sorted, smallest total path cost first
 	newCell->putOnSortedOpenList(m_openList);
@@ -6943,7 +6943,7 @@ struct ExamineCellsStruct
 	ExamineCellsStruct* d = (ExamineCellsStruct*)userData;
 	Bool isCrusher = d->obj ? d->obj->getCrusherLevel() > 0 : false;
 	if (d->thePathfinder->m_isTunneling)
-		return 1; // abort.
+		return 1;    // abort.
 	if (from && to)
 	{
 		if (!d->thePathfinder->validMovementPosition(isCrusher, d->theLoco->getValidSurfaces(), to, from))
@@ -6957,19 +6957,19 @@ struct ExamineCellsStruct
 
 		if (to->getPinched())
 		{
-			return 1; // abort.
+			return 1;    // abort.
 		}
 		if (d->isHuman)
 		{
 			// check if new cell is in logical map.	(computer can move off logical map)
 			if (to_x < d->thePathfinder->m_logicalExtent.lo.x)
-				return 1; // abort
+				return 1;    // abort
 			if (to_y < d->thePathfinder->m_logicalExtent.lo.y)
-				return 1; // abort
+				return 1;    // abort
 			if (to_x > d->thePathfinder->m_logicalExtent.hi.x)
-				return 1; // abort
+				return 1;    // abort
 			if (to_y > d->thePathfinder->m_logicalExtent.hi.y)
-				return 1; // abort
+				return 1;    // abort
 		}
 		TCheckMovementInfo info;
 		info.cell.x = to_x;
@@ -6981,17 +6981,17 @@ struct ExamineCellsStruct
 		info.acceptableSurfaces = d->theLoco->getValidSurfaces();
 		if (!d->thePathfinder->checkForMovement(d->obj, info))
 		{
-			return 1; // abort.
+			return 1;    // abort.
 		}
 
 		if (info.enemyFixed)
 		{
-			return 1; // abort.
+			return 1;    // abort.
 		}
 
 		if (info.allyFixedCount)
 		{
-			return 1; // abort.
+			return 1;    // abort.
 		}
 
 		UnsignedInt newCostSoFar = from->getCostSoFar() + 0.5f * COST_ORTHOGONAL;
@@ -7020,7 +7020,7 @@ struct ExamineCellsStruct
 			// already on one of the lists - if existing costSoFar is less,
 			// the new cell is on a longer path, so skip it
 			if (to->getCostSoFar() <= newCostSoFar)
-				return 0; // keep going.
+				return 0;    // keep going.
 		}
 
 		to->setCostSoFar(newCostSoFar);
@@ -7040,7 +7040,7 @@ struct ExamineCellsStruct
 		to->putOnSortedOpenList(d->thePathfinder->m_openList);
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 Int Pathfinder::examineNeighboringCells(PathfindCell* parentCell, PathfindCell* goalCell, const LocomotorSet& locomotorSet,
@@ -7295,7 +7295,7 @@ Int Pathfinder::examineNeighboringCells(PathfindCell* parentCell, PathfindCell* 
 		newCell->setParentCell(parentCell);
 		if (m_isTunneling)
 		{
-			costRemaining = 0; // find the closest valid cell.
+			costRemaining = 0;    // find the closest valid cell.
 		}
 		newCell->setTotalCost(newCell->getCostSoFar() + costRemaining);
 
@@ -7327,7 +7327,7 @@ Path* Pathfinder::findPath(Object* obj, const LocomotorSet& locomotorSet, const 
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 
 	m_zoneManager.clearPassableFlags();
@@ -7374,7 +7374,7 @@ Path* Pathfinder::internalFindPath(Object* obj, const LocomotorSet& locomotorSet
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 
 	if (rawTo->x == 0.0f && rawTo->y == 0.0f)
@@ -7691,7 +7691,7 @@ Int Pathfinder::clearCellForDiameter(Bool crusher, Int cellX, Int cellY, Pathfin
 			Bool yMinOrMax = (j == cellY - radius) || (j == cellY + numCellsAbove - 1);
 			if (xMinOrMax && yMinOrMax && cutCorners)
 			{
-				continue; // this is an outside corner cell, and we are cutting corners. jba. :)
+				continue;    // this is an outside corner cell, and we are cutting corners. jba. :)
 			}
 			PathfindCell* cell = getCell(layer, i, j);
 			if (cell)
@@ -7741,7 +7741,7 @@ Int Pathfinder::clearCellForDiameter(Bool crusher, Int cellX, Int cellY, Pathfin
 			}
 			else
 			{
-				return false; // off the map.
+				return false;    // off the map.
 			}
 			if (!clear)
 				break;
@@ -7889,18 +7889,18 @@ struct MADStruct
 		}
 		if (to->getPosUnit() == d->obj->getID())
 		{
-			return 0; // It's us.
+			return 0;    // It's us.
 		}
 		if (to->getPosUnit() == d->ignoreID)
 		{
-			return 0; // It's the one we are ignoring.
+			return 0;    // It's the one we are ignoring.
 		}
 		Object* otherObj = TheGameLogic->findObjectByID(to->getPosUnit());
 		if (otherObj == nullptr)
 			return 0;
 		if (d->obj->getRelationship(otherObj) != ALLIES)
 		{
-			return 0; // Only move allies.
+			return 0;    // Only move allies.
 		}
 		if (otherObj && otherObj->getAI() && !otherObj->getAI()->isMoving())
 		{
@@ -7909,7 +7909,7 @@ struct MADStruct
 			// Black Lotus exploit fix -- moving while hacking.
 			if (otherObj->testStatus(OBJECT_STATUS_IS_USING_ABILITY) || otherObj->getAI()->isBusy())
 			{
-				return 0; // Packing or unpacking objects for example
+				return 0;    // Packing or unpacking objects for example
 			}
 #endif
 			// DEBUG_LOG(("Moving ally"));
@@ -7917,7 +7917,7 @@ struct MADStruct
 		}
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 void Pathfinder::moveAlliesAwayFromDestination(Object* obj, const Coord3D& destination)
@@ -7953,7 +7953,7 @@ struct GroundCellsStruct
 			if (to->getOpen() || to->getClosed())
 			{
 				// already on one of the lists
-				return 1; // abort.
+				return 1;    // abort.
 			}
 		}
 		// See how wide the cell is.
@@ -7985,7 +7985,7 @@ struct GroundCellsStruct
 		to->putOnSortedOpenList(d->thePathfinder->m_openList);
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 /**
@@ -8440,7 +8440,7 @@ void Pathfinder::processHierarchicalCell(const ICoord2D& scanCell, const ICoord2
 		PathfindCell* newCell = getCell(LAYER_GROUND, scanCell.x, scanCell.y);
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
 		if (newCell->hasInfo() && (newCell->getOpen() || newCell->getClosed()))
-			return; // already looked at this one.
+			return;    // already looked at this one.
 #else
 		if (!newCell->hasInfo())
 		{
@@ -8448,7 +8448,7 @@ void Pathfinder::processHierarchicalCell(const ICoord2D& scanCell, const ICoord2
 		}
 
 		if (newCell->getOpen() || newCell->getClosed())
-			return; // already looked at this one.
+			return;    // already looked at this one.
 #endif
 
 		ICoord2D adjacentCell = scanCell;
@@ -8464,7 +8464,7 @@ void Pathfinder::processHierarchicalCell(const ICoord2D& scanCell, const ICoord2
 		}
 		PathfindCell* adjNewCell = getCell(LAYER_GROUND, adjacentCell.x, adjacentCell.y);
 		if (adjNewCell->hasInfo() && (adjNewCell->getOpen() || adjNewCell->getClosed()))
-			return; // already looked at this one.
+			return;    // already looked at this one.
 		zoneStorageType parentGlobalZone = m_zoneManager.getEffectiveZone(LOCOMOTORSURFACE_GROUND, crusher, parentZone);
 
 		/// @todo - somehow out of bounds or bogus newZone.
@@ -8473,7 +8473,7 @@ void Pathfinder::processHierarchicalCell(const ICoord2D& scanCell, const ICoord2
 		zoneStorageType newGlobalZone = m_zoneManager.getEffectiveZone(LOCOMOTORSURFACE_GROUND, crusher, newZone);
 		if (newGlobalZone != parentGlobalZone)
 		{
-			return; // can't step over. jba.
+			return;    // can't step over. jba.
 		}
 		Int j;
 		Bool found = false;
@@ -8978,7 +8978,7 @@ Path* Pathfinder::internal_findHierarchicalPath(Bool isHuman, const LocomotorSur
 					offset = -offset;
 				scanCell.y += offset;
 				ICoord2D delta;
-				delta.x = -1; // left side moves -1.
+				delta.x = -1;    // left side moves -1.
 				delta.y = 0;
 
 				PathfindCell* cell = getCell(LAYER_GROUND, scanCell.x, scanCell.y);
@@ -9014,7 +9014,7 @@ Path* Pathfinder::internal_findHierarchicalPath(Bool isHuman, const LocomotorSur
 					offset = -offset;
 				scanCell.y += offset;
 				ICoord2D delta;
-				delta.x = 1; // right side moves +1.
+				delta.x = 1;    // right side moves +1.
 				delta.y = 0;
 
 				PathfindCell* cell = getCell(LAYER_GROUND, scanCell.x, scanCell.y);
@@ -9050,7 +9050,7 @@ Path* Pathfinder::internal_findHierarchicalPath(Bool isHuman, const LocomotorSur
 				scanCell.x += offset;
 				ICoord2D delta;
 				delta.x = 0;
-				delta.y = -1; // Top side moves -1.
+				delta.y = -1;    // Top side moves -1.
 
 				PathfindCell* cell = getCell(LAYER_GROUND, scanCell.x, scanCell.y);
 				if (!cell)
@@ -9086,7 +9086,7 @@ Path* Pathfinder::internal_findHierarchicalPath(Bool isHuman, const LocomotorSur
 				scanCell.x += offset;
 				ICoord2D delta;
 				delta.x = 0;
-				delta.y = 1; // Top side moves +1.
+				delta.y = 1;    // Top side moves +1.
 
 				PathfindCell* cell = getCell(LAYER_GROUND, scanCell.x, scanCell.y);
 				if (!cell)
@@ -9262,7 +9262,7 @@ Bool Pathfinder::clientSafeQuickDoesPathExist(const LocomotorSet& locomotorSet,
 	PathfindCell* goalCell = getClippedCell(destinationLayer, to);
 	if (goalCell->getType() == PathfindCell::CELL_CLIFF)
 	{
-		return false; // No goals on cliffs.
+		return false;    // No goals on cliffs.
 	}
 	Bool doingTerrainZone = false;
 	zone1 = m_zoneManager.getEffectiveZone(locomotorSet.getValidSurfaces(), false, parentCell->getZone());
@@ -9301,7 +9301,7 @@ Bool Pathfinder::clientSafeQuickDoesPathExist(const LocomotorSet& locomotorSet,
 		// There is not terrain blocking the from & to.
 		return true;
 	}
-	return FALSE; // no path exists
+	return FALSE;    // no path exists
 }
 
 /**
@@ -9324,7 +9324,7 @@ Bool Pathfinder::clientSafeQuickDoesPathExistForUI(const LocomotorSet& locomotor
 	PathfindCell* goalCell = getClippedCell(destinationLayer, to);
 	if (goalCell->getType() == PathfindCell::CELL_CLIFF)
 	{
-		return false; // No goals on cliffs.
+		return false;    // No goals on cliffs.
 	}
 
 	zone1 = m_zoneManager.getEffectiveZone(locomotorSet.getValidSurfaces(), false, parentCell->getZone());
@@ -9361,7 +9361,7 @@ Bool Pathfinder::clientSafeQuickDoesPathExistForUI(const LocomotorSet& locomotor
 		// There is not terrain blocking the from & to.
 		return true;
 	}
-	return FALSE; // no path exists
+	return FALSE;    // no path exists
 }
 
 /**
@@ -9432,10 +9432,10 @@ struct TightenPathStruct
 {
 	TightenPathStruct* d = (TightenPathStruct*)userData;
 	if (from == nullptr || to == nullptr)
-		return 0; // failure
+		return 0;    // failure
 	if (d->layer != to->getLayer())
 	{
-		return 0; // failure
+		return 0;    // failure
 	}
 
 #if RETAIL_COMPATIBLE_CRC
@@ -9449,12 +9449,12 @@ struct TightenPathStruct
 
 	if (!TheAI->pathfinder()->checkForAdjust(d->obj, *d->locomotorSet, true, to_x, to_y, to->getLayer(), d->radius, d->center, &pos, nullptr))
 	{
-		return 0; // failure
+		return 0;    // failure
 	}
 	d->foundNewDest = true;
 	d->newDestPos = pos;
 
-	return 0; // success but continue
+	return 0;    // success but continue
 }
 
 /* Returns the cost, which is in the same units as coord3d distance. */
@@ -9761,7 +9761,7 @@ Path* Pathfinder::findClosestPath(Object* obj, const LocomotorSet& locomotorSet,
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 
 	if (locomotorSet.getValidSurfaces() == 0)
@@ -9856,7 +9856,7 @@ Path* Pathfinder::findClosestPath(Object* obj, const LocomotorSet& locomotorSet,
 
 	if (validMovementPosition(isCrusher, locomotorSet.getValidSurfaces(), parentCell) == false)
 	{
-		m_isTunneling = true; // We can't move from our current location.  So relax the constraints.
+		m_isTunneling = true;    // We can't move from our current location.  So relax the constraints.
 	}
 	TCheckMovementInfo info;
 	info.cell = startCellNdx;
@@ -9867,13 +9867,13 @@ Path* Pathfinder::findClosestPath(Object* obj, const LocomotorSet& locomotorSet,
 	info.acceptableSurfaces = locomotorSet.getValidSurfaces();
 	if (!checkForMovement(obj, info) || info.enemyFixed)
 	{
-		m_isTunneling = true; // We can't move from our current location.  So relax the constraints.
+		m_isTunneling = true;    // We can't move from our current location.  So relax the constraints.
 	}
 
 	Bool gotHierarchicalPath = false;
 	if (m_isTunneling)
 	{
-		m_zoneManager.setAllPassable(); // can't optimize.
+		m_zoneManager.setAllPassable();    // can't optimize.
 	}
 	else
 	{
@@ -10350,30 +10350,30 @@ Int Pathfinder::iterateCellsAlongLine(const Coord3D& startWorld, const Coord3D& 
 Int Pathfinder::iterateCellsAlongLine(const ICoord2D& start, const ICoord2D& end,
                                       PathfindLayerEnum layer, CellAlongLineProc proc, void* userData)
 {
-	Int delta_x = abs(end.x - start.x); // The difference between the x's
-	Int delta_y = abs(end.y - start.y); // The difference between the y's
-	Int x = start.x;                    // Start x off at the first pixel
-	Int y = start.y;                    // Start y off at the first pixel
+	Int delta_x = abs(end.x - start.x);    // The difference between the x's
+	Int delta_y = abs(end.y - start.y);    // The difference between the y's
+	Int x = start.x;    // Start x off at the first pixel
+	Int y = start.y;    // Start y off at the first pixel
 
 	Int xinc1, xinc2;
-	if (end.x >= start.x) // The x-values are increasing
+	if (end.x >= start.x)    // The x-values are increasing
 	{
 		xinc1 = 1;
 		xinc2 = 1;
 	}
-	else // The x-values are decreasing
+	else    // The x-values are decreasing
 	{
 		xinc1 = -1;
 		xinc2 = -1;
 	}
 
 	Int yinc1, yinc2;
-	if (end.y >= start.y) // The y-values are increasing
+	if (end.y >= start.y)    // The y-values are increasing
 	{
 		yinc1 = 1;
 		yinc2 = 1;
 	}
-	else // The y-values are decreasing
+	else    // The y-values are decreasing
 	{
 		yinc1 = -1;
 		yinc2 = -1;
@@ -10381,24 +10381,24 @@ Int Pathfinder::iterateCellsAlongLine(const ICoord2D& start, const ICoord2D& end
 
 	Bool checkY = true;
 	Int den, num, numadd, numpixels;
-	if (delta_x >= delta_y) // There is at least one x-value for every y-value
+	if (delta_x >= delta_y)    // There is at least one x-value for every y-value
 	{
-		xinc1 = 0; // Don't change the x when numerator >= denominator
-		yinc2 = 0; // Don't change the y for every iteration
+		xinc1 = 0;    // Don't change the x when numerator >= denominator
+		yinc2 = 0;    // Don't change the y for every iteration
 		den = delta_x;
 		num = delta_x / 2;
 		numadd = delta_y;
-		numpixels = delta_x; // There are more x-values than y-values
+		numpixels = delta_x;    // There are more x-values than y-values
 	}
-	else // There is at least one y-value for every x-value
+	else    // There is at least one y-value for every x-value
 	{
 		checkY = false;
-		xinc2 = 0; // Don't change the x for every iteration
-		yinc1 = 0; // Don't change the y when numerator >= denominator
+		xinc2 = 0;    // Don't change the x for every iteration
+		yinc1 = 0;    // Don't change the y when numerator >= denominator
 		den = delta_y;
 		num = delta_y / 2;
 		numadd = delta_x;
-		numpixels = delta_y; // There are more y-values than x-values
+		numpixels = delta_y;    // There are more y-values than x-values
 	}
 
 	PathfindCell* from = nullptr;
@@ -10412,12 +10412,12 @@ Int Pathfinder::iterateCellsAlongLine(const ICoord2D& start, const ICoord2D& end
 		if (ret != 0)
 			return ret;
 
-		num += numadd;  // Increase the numerator by the top of the fraction
-		if (num >= den) // Check if numerator >= denominator
+		num += numadd;    // Increase the numerator by the top of the fraction
+		if (num >= den)    // Check if numerator >= denominator
 		{
-			num -= den; // Calculate the new numerator value
-			x += xinc1; // Change the x as appropriate
-			y += yinc1; // Change the y as appropriate
+			num -= den;    // Calculate the new numerator value
+			x += xinc1;    // Change the x as appropriate
+			y += yinc1;    // Change the y as appropriate
 			from = to;
 			to = getCell(layer, x, y);
 			if (to == nullptr)
@@ -10426,8 +10426,8 @@ Int Pathfinder::iterateCellsAlongLine(const ICoord2D& start, const ICoord2D& end
 			if (ret != 0)
 				return ret;
 		}
-		x += xinc2; // Change the x as appropriate
-		y += yinc2; // Change the y as appropriate
+		x += xinc2;    // Change the x as appropriate
+		y += yinc2;    // Change the y as appropriate
 
 		from = to;
 	}
@@ -10481,7 +10481,7 @@ struct segmentIntersectsStruct
 		}
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 struct ViewBlockedStruct
@@ -10523,10 +10523,10 @@ struct ViewBlockedStruct
 		if (to->isObstacleTransparent())
 			return 0;
 
-		return 1; // bail early
+		return 1;    // bail early
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 struct ViewAttackBlockedStruct
@@ -10583,10 +10583,10 @@ struct ViewAttackBlockedStruct
 			// as usually it is on the edge and it looks like we should be able to shoot it. jba.
 			return 0;
 		}
-		return 1; // bail early
+		return 1;    // bail early
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 //-----------------------------------------------------------------------------
@@ -10597,7 +10597,7 @@ Bool Pathfinder::isViewBlockedByObstacle(const Object* obj, const Object* objOth
 	info.objOther = objOther;
 	if (objOther && objOther->isSignificantlyAboveTerrain())
 	{
-		return false; // We don't check los to flying objects.  jba.
+		return false;    // We don't check los to flying objects.  jba.
 	}
 #if 1
 	return isAttackViewBlockedByObstacle(obj, *obj->getPosition(), objOther, *objOther->getPosition());
@@ -10674,10 +10674,10 @@ Bool Pathfinder::isAttackViewBlockedByObstacle(const Object* attacker, const Coo
 	info.skipCount = 0;
 	if (attacker->getLayer() != LAYER_GROUND)
 	{
-		info.skipCount = 3; /// srj -- someone wanna tell me what this magic number means?
-		                    /// jba - Yes, it means that if someone is on a bridge, or rooftop, they can see
-		                    ///      3 pathfind cells out of whatever they are standing on.
-		                    /// srj -- awesome! thank you very much :-)
+		info.skipCount = 3;    /// srj -- someone wanna tell me what this magic number means?
+		                       /// jba - Yes, it means that if someone is on a bridge, or rooftop, they can see
+		                       ///      3 pathfind cells out of whatever they are standing on.
+		                       /// srj -- awesome! thank you very much :-)
 		if (layer == LAYER_GROUND)
 		{
 			layer = attacker->getLayer();
@@ -10833,17 +10833,17 @@ struct LinePassableStruct
 	info.acceptableSurfaces = d->acceptableSurfaces;
 	if (!pathfinder->checkForMovement(d->obj, info))
 	{
-		return 1; // bail out
+		return 1;    // bail out
 	}
 
 	if (info.allyFixedCount || info.enemyFixed)
 	{
-		return 1; // bail out
+		return 1;    // bail out
 	}
 
 	if (!d->allowPinched && to->getPinched())
 	{
-		return 1; // bail out.
+		return 1;    // bail out.
 	}
 
 	if (from && to->getLayer() != LAYER_GROUND && from->getLayer() == to->getLayer())
@@ -10856,10 +10856,10 @@ struct LinePassableStruct
 
 	if (pathfinder->validMovementPosition(isCrusher, d->acceptableSurfaces, to, from) == false)
 	{
-		return 1; // bail out
+		return 1;    // bail out
 	}
 
-	return 0; // keep going
+	return 0;    // keep going
 }
 
 //-----------------------------------------------------------------------------
@@ -10876,13 +10876,13 @@ struct GroundPathPassableStruct
 
 	Int curDiameter = pathfinder->clearCellForDiameter(d->crusher, to_x, to_y, to->getLayer(), d->diameter);
 	if (curDiameter == d->diameter)
-		return 0; //  good to go.
+		return 0;    //  good to go.
 	if (from && to->getLayer() != LAYER_GROUND && from->getLayer() == to->getLayer())
 	{
 		return 0;
 	}
 
-	return 1; // failed.
+	return 1;    // failed.
 }
 
 //-----------------------------------------------------------------------------
@@ -10988,7 +10988,7 @@ void Pathfinder::updateGoal(Object* obj, const Coord3D* newGoalPos, PathfindLaye
 
 	AIUpdateInterface* ai = obj->getAIUpdateInterface();
 	if (!ai)
-		return; // only consider ai objects.
+		return;    // only consider ai objects.
 	if (!ai->isDoingGroundMovement())
 	{
 #if RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING
@@ -11106,10 +11106,10 @@ void Pathfinder::updateAircraftGoal(Object* obj, const Coord3D* newGoalPos)
 	removeGoal(obj);
 	AIUpdateInterface* ai = obj->getAIUpdateInterface();
 	if (!ai)
-		return; // only consider ai objects.
+		return;    // only consider ai objects.
 	if (ai->isDoingGroundMovement())
 	{
-		return; // shouldn't really happen, but just in case.
+		return;    // shouldn't really happen, but just in case.
 	}
 
 	// For now, we are only doing HOVER, and WINGS.
@@ -11174,7 +11174,7 @@ void Pathfinder::removeGoal(Object* obj)
 	}
 	AIUpdateInterface* ai = obj->getAIUpdateInterface();
 	if (!ai)
-		return; // only consider ai objects.
+		return;    // only consider ai objects.
 	ICoord2D goalCell = *ai->getPathfindGoalCell();
 
 	Bool centerInCell;
@@ -11251,7 +11251,7 @@ void Pathfinder::updatePos(Object* obj, const Coord3D* newPos)
 
 	AIUpdateInterface* ai = obj->getAIUpdateInterface();
 	if (!ai)
-		return; // only consider ai objects.
+		return;    // only consider ai objects.
 
 	ICoord2D curCell = *ai->getCurPathfindCell();
 	if (!ai->isDoingGroundMovement())
@@ -11290,14 +11290,14 @@ void Pathfinder::updatePos(Object* obj, const Coord3D* newPos)
 	Bool doLayer = false;
 	if (layer == LAYER_GROUND)
 	{
-		doGround = true; // just have to do ground
+		doGround = true;    // just have to do ground
 	}
 	else
 	{
-		doLayer = true; // have to do the layer
+		doLayer = true;    // have to do the layer
 		if (TheTerrainLogic->objectInteractsWithBridgeEnd(obj, layer))
 		{
-			doGround = true; // In this case, have to both layer & ground, as they overlap here.
+			doGround = true;    // In this case, have to both layer & ground, as they overlap here.
 		}
 	}
 
@@ -11377,7 +11377,7 @@ void Pathfinder::removePos(Object* obj)
 		return;
 	AIUpdateInterface* ai = obj->getAIUpdateInterface();
 	if (!ai)
-		return; // only consider ai objects.
+		return;    // only consider ai objects.
 	ICoord2D curCell = *ai->getCurPathfindCell();
 	Bool centerInCell;
 	Int radius;
@@ -11450,7 +11450,7 @@ Bool Pathfinder::moveAllies(Object* obj, Path* path)
 		// Harvesters & dozers want a clear path.
 		if (!path->getBlockedByAlly())
 		{
-			return FALSE; // Only move units if it is required.
+			return FALSE;    // Only move units if it is required.
 		}
 	}
 	LatchRestore<Int> recursiveDepth(m_moveAlliesDepth, m_moveAlliesDepth + 1);
@@ -11483,7 +11483,7 @@ Bool Pathfinder::moveAllies(Object* obj, Path* path)
 				PathfindCell* cell = getCell(node->getLayer(), i, j);
 				if (!cell)
 				{
-					continue; // Cell is not on the pathfinding grid
+					continue;    // Cell is not on the pathfinding grid
 				}
 
 				ObjectID unitId = cell->getPosUnit();
@@ -11494,12 +11494,12 @@ Bool Pathfinder::moveAllies(Object* obj, Path* path)
 
 				if (unitId == obj->getID())
 				{
-					continue; // It's us.
+					continue;    // It's us.
 				}
 
 				if (unitId == ignoreId)
 				{
-					continue; // It's the one we are ignoring.
+					continue;    // It's the one we are ignoring.
 				}
 
 				Object* otherObj = TheGameLogic->findObjectByID(unitId);
@@ -11510,12 +11510,12 @@ Bool Pathfinder::moveAllies(Object* obj, Path* path)
 
 				if (obj->getRelationship(otherObj) != ALLIES)
 				{
-					continue; // Only move allies.
+					continue;    // Only move allies.
 				}
 
 				if (obj->isKindOf(KINDOF_INFANTRY) && otherObj->isKindOf(KINDOF_INFANTRY))
 				{
-					continue; // infantry can walk through other infantry, so just let them.
+					continue;    // infantry can walk through other infantry, so just let them.
 				}
 				if (obj->isKindOf(KINDOF_INFANTRY) && !otherObj->isKindOf(KINDOF_INFANTRY))
 				{
@@ -11534,14 +11534,14 @@ Bool Pathfinder::moveAllies(Object* obj, Path* path)
 #if !(RTS_GENERALS && RETAIL_COMPATIBLE_PATHFINDING)
 				if (otherObj->getAI()->isAttacking())
 				{
-					continue; // Don't move units that are attacking. [8/14/2003]
+					continue;    // Don't move units that are attacking. [8/14/2003]
 				}
 
 				// Kris: Patch 1.01 November 3, 2003
 				// Black Lotus exploit fix -- moving while hacking.
 				if (otherObj->testStatus(OBJECT_STATUS_IS_USING_ABILITY) || otherObj->getAI()->isBusy())
 				{
-					continue; // Packing or unpacking objects for example
+					continue;    // Packing or unpacking objects for example
 				}
 #endif
 
@@ -11561,7 +11561,7 @@ Path* Pathfinder::getMoveAwayFromPath(Object* obj, Object* otherObj,
                                       Path* pathToAvoid, Object* otherObj2, Path* pathToAvoid2)
 {
 	if (!m_isMapReady)
-		return nullptr; // Should always be ok.
+		return nullptr;    // Should always be ok.
 
 #ifdef DEBUG_LOGGING
 	Int startTimeMS = ::GetTickCount();
@@ -11569,7 +11569,7 @@ Path* Pathfinder::getMoveAwayFromPath(Object* obj, Object* otherObj,
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 	Bool otherCenter;
 	Int otherRadius;
@@ -11598,7 +11598,7 @@ Path* Pathfinder::getMoveAwayFromPath(Object* obj, Object* otherObj,
 	if (!parentCell)
 		return nullptr;
 
-	if (!obj->getAIUpdateInterface()) // shouldn't happen, but can't move it without an ai.
+	if (!obj->getAIUpdateInterface())    // shouldn't happen, but can't move it without an ai.
 		return nullptr;
 
 	const LocomotorSet& locomotorSet = obj->getAIUpdateInterface()->getLocomotorSet();
@@ -11606,7 +11606,7 @@ Path* Pathfinder::getMoveAwayFromPath(Object* obj, Object* otherObj,
 	m_isTunneling = false;
 	if (validMovementPosition(isCrusher, locomotorSet.getValidSurfaces(), parentCell) == false)
 	{
-		m_isTunneling = true; // We can't move from our current location.  So relax the constraints.
+		m_isTunneling = true;    // We can't move from our current location.  So relax the constraints.
 	}
 
 	TCheckMovementInfo info;
@@ -11618,7 +11618,7 @@ Path* Pathfinder::getMoveAwayFromPath(Object* obj, Object* otherObj,
 	info.acceptableSurfaces = locomotorSet.getValidSurfaces();
 	if (!checkForMovement(obj, info) || info.enemyFixed)
 	{
-		m_isTunneling = true; // We can't move from our current location.  So relax the constraints.
+		m_isTunneling = true;    // We can't move from our current location.  So relax the constraints.
 	}
 
 	if (!parentCell->allocateInfo(startCellNdx))
@@ -11781,7 +11781,7 @@ Path* Pathfinder::patchPath(const Object* obj, const LocomotorSet& locomotorSet,
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 
 	m_zoneManager.setAllPassable();
@@ -11791,7 +11791,7 @@ Path* Pathfinder::patchPath(const Object* obj, const LocomotorSet& locomotorSet,
 	enum
 	{
 		CELL_LIMIT = 2000
-	}; // max cells to examine.
+	};    // max cells to examine.
 	Int cellCount = 0;
 
 	Coord3D currentPosition = *obj->getPosition();
@@ -11811,7 +11811,7 @@ Path* Pathfinder::patchPath(const Object* obj, const LocomotorSet& locomotorSet,
 		return nullptr;
 	if (!obj->getAIUpdateInterface())
 	{
-		return nullptr; // shouldn't happen, but can't move it without an ai.
+		return nullptr;    // shouldn't happen, but can't move it without an ai.
 	}
 
 	m_isTunneling = false;
@@ -11888,7 +11888,7 @@ Path* Pathfinder::patchPath(const Object* obj, const LocomotorSet& locomotorSet,
 		}
 		if (info.allyFixedCount || info.enemyFixed)
 		{
-			break; // Don't patch through cells that are occupied.
+			break;    // Don't patch through cells that are occupied.
 		}
 		Real curSqr = sqr(startNode->getPosition()->x - currentPosition.x) + sqr(startNode->getPosition()->y - currentPosition.y);
 		if (curSqr < goalDeltaSqr)
@@ -11909,10 +11909,10 @@ Path* Pathfinder::patchPath(const Object* obj, const LocomotorSet& locomotorSet,
 		{
 			parentCell->releaseInfo();
 		}
-		return nullptr; // no open nodes.
+		return nullptr;    // no open nodes.
 	}
 	PathfindCell* candidateGoal;
-	candidateGoal = getCell(LAYER_GROUND, &goalPos); // just using for cost estimates.
+	candidateGoal = getCell(LAYER_GROUND, &goalPos);    // just using for cost estimates.
 	ICoord2D goalCellNdx;
 	worldToCell(&goalPos, &goalCellNdx);
 	if (!candidateGoal->allocateInfo(goalCellNdx))
@@ -12024,7 +12024,7 @@ Path* Pathfinder::findAttackPath(const Object* obj, const LocomotorSet& locomoto
                                  const Object* victim, const Coord3D* victimPos, const Weapon* weapon)
 {
 	if (!m_isMapReady)
-		return nullptr; // Should always be ok.
+		return nullptr;    // Should always be ok.
 
 	Bool isCrusher = obj ? obj->getCrusherLevel() > 0 : false;
 	Int radius;
@@ -12078,12 +12078,12 @@ Path* Pathfinder::findAttackPath(const Object* obj, const LocomotorSet& locomoto
 		}
 	}
 
-	const Int ATTACK_CELL_LIMIT = 2500; // this is a rather expensive operation, so limit the search.
+	const Int ATTACK_CELL_LIMIT = 2500;    // this is a rather expensive operation, so limit the search.
 
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 	m_zoneManager.clearPassableFlags();
 	Path* hPat = findClosestHierarchicalPath(isHuman, locomotorSet, from, victimPos, isCrusher);
@@ -12113,7 +12113,7 @@ Path* Pathfinder::findAttackPath(const Object* obj, const LocomotorSet& locomoto
 		objPos.y += PATHFIND_CELL_SIZE_F / 2.0f;
 	}
 
-	if (!obj->getAIUpdateInterface()) // shouldn't happen, but can't move without an ai.
+	if (!obj->getAIUpdateInterface())    // shouldn't happen, but can't move without an ai.
 		return nullptr;
 
 	worldToCell(&objPos, &startCellNdx);
@@ -12253,7 +12253,7 @@ Path* Pathfinder::findAttackPath(const Object* obj, const LocomotorSet& locomoto
 					PathfindCell* lastBlocked = nullptr;
 					PathfindCell* cur = parentCell;
 					Bool useLargeRadius = false;
-					Int cellLimit = 12; // Magic number, yes I know - jba.   It is about 4 * size of an average vehicle width (3 cells) [8/15/2003]
+					Int cellLimit = 12;    // Magic number, yes I know - jba.   It is about 4 * size of an average vehicle width (3 cells) [8/15/2003]
 					while (cur)
 					{
 						cellLimit--;
@@ -12418,12 +12418,12 @@ Path* Pathfinder::findSafePath(const Object* obj, const LocomotorSet& locomotorS
 {
 	// CRCDEBUG_LOG(("Pathfinder::findSafePath()"));
 	if (m_isMapReady == false)
-		return nullptr; // Should always be ok.
+		return nullptr;    // Should always be ok.
 #if defined(RTS_DEBUG)
 //	Int startTimeMS = ::GetTickCount();
 #endif
 
-	const Int MAX_CELLS = MAX_SAFE_PATH_CELL_COUNT; // this is a rather expensive operation, so limit the search.
+	const Int MAX_CELLS = MAX_SAFE_PATH_CELL_COUNT;    // this is a rather expensive operation, so limit the search.
 
 	Bool centerInCell;
 	Int radius;
@@ -12433,7 +12433,7 @@ Path* Pathfinder::findSafePath(const Object* obj, const LocomotorSet& locomotorS
 	Bool isHuman = true;
 	if (obj && obj->getControllingPlayer() && (obj->getControllingPlayer()->getPlayerType() == PLAYER_COMPUTER))
 	{
-		isHuman = false; // computer gets to cheat.
+		isHuman = false;    // computer gets to cheat.
 	}
 
 	DEBUG_ASSERTCRASH(m_openList.empty() && m_closedList.empty(), ("Dangling lists."));
@@ -12448,7 +12448,7 @@ Path* Pathfinder::findSafePath(const Object* obj, const LocomotorSet& locomotorS
 		return nullptr;
 	if (!obj->getAIUpdateInterface())
 	{
-		return nullptr; // shouldn't happen, but can't move it without an ai.
+		return nullptr;    // shouldn't happen, but can't move it without an ai.
 	}
 	if (!parentCell->allocateInfo(startCellNdx))
 	{
@@ -12506,7 +12506,7 @@ Path* Pathfinder::findSafePath(const Object* obj, const LocomotorSet& locomotorS
 		}
 		if (m_openList.empty() && cellCount > 0)
 		{
-			ok = true; // exhausted the search space, just take the last cell.
+			ok = true;    // exhausted the search space, just take the last cell.
 		}
 		if (distSqr > farthestDistanceSqr)
 		{
@@ -12516,7 +12516,7 @@ Path* Pathfinder::findSafePath(const Object* obj, const LocomotorSet& locomotorS
 #ifdef INTENSE_DEBUG
 				DEBUG_LOG(("Took intermediate path, dist %f, goal dist %f", sqrt(farthestDistanceSqr), repulsorRadius));
 #endif
-				ok = true; // Already a big search, just take this one.
+				ok = true;    // Already a big search, just take this one.
 			}
 		}
 		if (ok &&

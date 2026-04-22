@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/Connection.h"
 #include "GameNetwork/networkutil.h"
@@ -31,7 +31,7 @@
 enum
 {
 	MaxQuitFlushTime = 30000
-}; // wait this many milliseconds at most to retry things before quitting
+};    // wait this many milliseconds at most to retry things before quitting
 
 /**
  * The constructor.
@@ -41,7 +41,7 @@ Connection::Connection()
 	m_transport = nullptr;
 	m_user = nullptr;
 	m_netCommandList = nullptr;
-	m_retryTime = 2000; // set retry time to 2 seconds.
+	m_retryTime = 2000;    // set retry time to 2 seconds.
 	m_lastTimeSent = 0;
 	m_frameGrouping = 1;
 	m_isQuitting = false;
@@ -166,7 +166,7 @@ void Connection::sendNetCommandMsg(NetCommandMsg* msg, UnsignedByte relay)
 		NetCommandRef* tempref = NEW_NETCOMMANDREF(msg);
 
 		Bool msgFits = packet->addCommand(tempref);
-		deleteInstance(tempref); // delete the temporary reference.
+		deleteInstance(tempref);    // delete the temporary reference.
 		tempref = nullptr;
 
 		if (!msgFits)
@@ -302,7 +302,7 @@ UnsignedInt Connection::doSend()
 		// add the command messages until either we run out of messages or the packet is full.
 		while ((msg != nullptr) && notDone)
 		{
-			NetCommandRef* next = msg->getNext(); // Need this since msg could be deleted
+			NetCommandRef* next = msg->getNext();    // Need this since msg could be deleted
 
 			time_t timeLastSent = msg->getTimeLastSent();
 
@@ -347,7 +347,7 @@ UnsignedInt Connection::doSend()
 			m_lastTimeSent = curtime;
 		}
 
-		deleteInstance(packet); // delete the packet now that we're done with it.
+		deleteInstance(packet);    // delete the packet now that we're done with it.
 	}
 
 	return numpackets;

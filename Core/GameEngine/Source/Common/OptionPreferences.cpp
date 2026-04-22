@@ -29,7 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/AudioSettings.h"
 #include "Common/GameAudio.h"
@@ -603,7 +603,7 @@ Bool OptionPreferences::getExtraAnimationsDisabled()
 
 	if (stricmp(it->second.str(), "yes") == 0)
 	{
-		return FALSE; // we are enabling extra animations, so disabled LOD
+		return FALSE;    // we are enabling extra animations, so disabled LOD
 	}
 	return TRUE;
 }
@@ -693,7 +693,7 @@ Int OptionPreferences::getParticleCap()
 		return TheGlobalData->m_maxParticleCount;
 
 	Int factor = (Int)atoi(it->second.str());
-	if (factor < 100) // clamp to at least 100 particles.
+	if (factor < 100)    // clamp to at least 100 particles.
 		factor = 100;
 
 	return factor;
@@ -703,10 +703,10 @@ Int OptionPreferences::getTextureReduction()
 {
 	OptionPreferences::const_iterator it = find("TextureReduction");
 	if (it == end())
-		return -1; // unknown texture reduction
+		return -1;    // unknown texture reduction
 
 	Int factor = (Int)atoi(it->second.str());
-	if (factor > 2) // clamp it.
+	if (factor > 2)    // clamp it.
 		factor = 2;
 	return factor;
 }

@@ -26,7 +26,7 @@
 // Pseudo-random number generators
 // Author: Michael S. Booth, January 1998
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Lib/BaseType.h"
 #include "Common/RandomValue.h"
@@ -77,19 +77,19 @@ static void seedRandom(UnsignedInt SEED, UnsignedInt (&seed)[6])
 {
 	UnsignedInt ax;
 
-	ax = SEED;                     /* mov     eax,SEED                     */
-	ax += 0xf22d0e56;              /* add     eax,0f22d0e56h               */
-	seed[0] = ax;                  /* mov     seed,eax                     */
+	ax = SEED; /* mov     eax,SEED                     */
+	ax += 0xf22d0e56; /* add     eax,0f22d0e56h               */
+	seed[0] = ax; /* mov     seed,eax                     */
 	ax += 0x883126e9 - 0xf22d0e56; /* add     eax,0883126e9h-0f22d0e56h    */
-	seed[1] = ax;                  /* mov     seed+4,eax                   */
+	seed[1] = ax; /* mov     seed+4,eax                   */
 	ax += 0xc624dd2f - 0x883126e9; /* add     eax,0c624dd2fh-0883126e9h    */
-	seed[2] = ax;                  /* mov     seed+8,eax                   */
+	seed[2] = ax; /* mov     seed+8,eax                   */
 	ax += 0x0702c49c - 0xc624dd2f; /* add     eax,00702c49ch-0c624dd2fh    */
-	seed[3] = ax;                  /* mov     seed+12,eax                  */
+	seed[3] = ax; /* mov     seed+12,eax                  */
 	ax += 0x9e353f7d - 0x0702c49c; /* add     eax,09e353f7dh-00702c49ch    */
-	seed[4] = ax;                  /* mov     seed+16,eax                  */
+	seed[4] = ax; /* mov     seed+16,eax                  */
 	ax += 0x6fdf3b64 - 0x9e353f7d; /* add     eax,06fdf3b64h-09e353f7dh    */
-	seed[5] = ax;                  /* mov     seed+20,eax                  */
+	seed[5] = ax; /* mov     seed+20,eax                  */
 }
 
 void InitRandom()
@@ -142,16 +142,16 @@ static UnsignedInt randomValue(UnsignedInt (&seed)[6])
 	seed[4] = ax; /*  mov     seed+8,ax   */
 
 	ADC(ax, ax, seed[3], c); /*  adc     ax,seed+12  */
-	seed[3] = ax;            /*  mov     seed+12,ax  */
+	seed[3] = ax; /*  mov     seed+12,ax  */
 
 	ADC(ax, ax, seed[2], c); /*  adc     ax,seed+8   */
-	seed[2] = ax;            /*  mov     seed+8,ax   */
+	seed[2] = ax; /*  mov     seed+8,ax   */
 
 	ADC(ax, ax, seed[1], c); /*  adc     ax,seed+4   */
-	seed[1] = ax;            /*  mov     seed+4,ax   */
+	seed[1] = ax; /*  mov     seed+4,ax   */
 
 	ADC(ax, ax, seed[0], c); /*  adc     ax,seed+0   */
-	seed[0] = ax;            /*  mov     seed+0,ax   */
+	seed[0] = ax; /*  mov     seed+0,ax   */
 
 	/* Increment seed array, bubbling up the carries. */
 	if (!++seed[5])

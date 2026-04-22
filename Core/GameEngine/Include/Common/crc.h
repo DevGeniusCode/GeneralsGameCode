@@ -39,9 +39,9 @@ class CRC
 public:
 	CRC() { crc = 0; }
 
-	void computeCRC(const void* buf, Int len); ///< Compute the CRC for a buffer, added into current CRC
-	void clear() { crc = 0; }                  ///< Clears the CRC to 0
-	                                           //	UnsignedInt get() { return htonl(crc); }	///< Get the combined CRC
+	void computeCRC(const void* buf, Int len);    ///< Compute the CRC for a buffer, added into current CRC
+	void clear() { crc = 0; }    ///< Clears the CRC to 0
+	                             //	UnsignedInt get() { return htonl(crc); }	///< Get the combined CRC
 	UnsignedInt get();
 
 	#if (defined(_MSC_VER) && _MSC_VER < 1300) && RETAIL_COMPATIBLE_CRC
@@ -52,7 +52,7 @@ public:
 	#endif
 
 private:
-	void addCRC(UnsignedByte val); ///< CRC a 4-byte block
+	void addCRC(UnsignedByte val);    ///< CRC a 4-byte block
 
 	UnsignedInt crc;
 };

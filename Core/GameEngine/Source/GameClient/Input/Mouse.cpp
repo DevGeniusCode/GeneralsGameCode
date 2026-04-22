@@ -27,7 +27,7 @@
 // Desc:      Basic mouse interactions
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/Debug.h"
 #include "Common/MessageStream.h"
@@ -412,7 +412,7 @@ CursorInfo::CursorInfo()
 	// Assume hotspot is at the center of a 32x32 image.
 	hotSpotPosition.x = 16;
 	hotSpotPosition.y = 16;
-	numFrames = 1; // assume no animation
+	numFrames = 1;    // assume no animation
 	fps = 20.0f;
 	numDirections = 1;
 }
@@ -435,7 +435,7 @@ Mouse::Mouse()
 	// m_tooltipString.clear();	// redundant
 	m_displayTooltip = FALSE;
 	m_tooltipDisplayString = nullptr;
-	m_tooltipDelay = -1; // default value
+	m_tooltipDelay = -1;    // default value
 	// initialize all the mouse io data
 	memset(m_mouseEvents, 0, sizeof(m_mouseEvents));
 	memset(&m_currMouse, 0, sizeof(m_currMouse));
@@ -453,7 +453,7 @@ Mouse::Mouse()
 	if (TheGlobalData && TheGlobalData->m_winCursors)
 		m_currentRedrawMode = RM_WINDOWS;
 	else
-		m_currentRedrawMode = RM_W3D; // RM_WINDOWS;
+		m_currentRedrawMode = RM_W3D;    // RM_WINDOWS;
 	m_visible = FALSE;
 	m_isCursorCaptured = FALSE;
 	m_tooltipFontName = "Times New Roman";
@@ -547,11 +547,11 @@ void Mouse::init()
 		m_currentRedrawMode = RM_WINDOWS;
 
 	// device info
-	m_numButtons = 2; // by default just have 2 buttons
+	m_numButtons = 2;    // by default just have 2 buttons
 	m_numAxes = 2;    // by default a normal mouse moves in a 2d plane
 	m_forceFeedback = FALSE;
 	onResolutionChanged();
-	m_tooltipString.clear(); // redundant
+	m_tooltipString.clear();    // redundant
 	m_displayTooltip = FALSE;
 
 	// initialize all the mouse io data
@@ -657,7 +657,7 @@ void Mouse::createStreamMessages()
 
 	// sanity
 	if (TheMessageStream == nullptr)
-		return; // no place to put messages
+		return;    // no place to put messages
 
 	GameMessage* msg = nullptr;
 	UnsignedInt now = timeGetTime();
@@ -1127,14 +1127,14 @@ void Mouse::drawTooltip()
 		Int height, yPos;
 		m_tooltipDisplayString->getSize(&width, &height);
 		xPos = m_currMouse.pos.x + 20;
-		yPos = m_currMouse.pos.y; // + 20;
+		yPos = m_currMouse.pos.y;    // + 20;
 
-		if (xPos + width + 4 > m_maxX) // +4 for spill
+		if (xPos + width + 4 > m_maxX)    // +4 for spill
 		{
 			// xPos = m_maxX - width;
 			xPos -= 20 + width;
 		}
-		if (yPos + height + 4 > m_maxY) // +4 for spill
+		if (yPos + height + 4 > m_maxY)    // +4 for spill
 		{
 			// yPos = m_maxY - height;
 			yPos -= /*40 +*/ height;
@@ -1144,8 +1144,8 @@ void Mouse::drawTooltip()
 
 #define GMC(x) GameMakeColor(x.red, x.green, x.blue, x.alpha)
 #define COLOR(x) GMC(m_tooltipColor##x)
-		TheDisplay->drawFillRect(xPos, yPos, boxWidth + 2, height + 2, GMC(m_tooltipBackColor)); // GameMakeColor(0,0,0,125));
-		TheDisplay->drawOpenRect(xPos, yPos, boxWidth + 2, height + 2, 1.0, COLOR(Border));      // GameMakeColor(20,20,20,255));
+		TheDisplay->drawFillRect(xPos, yPos, boxWidth + 2, height + 2, GMC(m_tooltipBackColor));    // GameMakeColor(0,0,0,125));
+		TheDisplay->drawOpenRect(xPos, yPos, boxWidth + 2, height + 2, 1.0, COLOR(Border));    // GameMakeColor(20,20,20,255));
 
 		// build clip rect
 		IRegion2D clipRegion;
@@ -1154,7 +1154,7 @@ void Mouse::drawTooltip()
 		clipRegion.hi.x = xPos + 2 + m_highlightPos;
 		clipRegion.hi.y = yPos + 1 + height;
 		m_tooltipDisplayString->setClipRegion(&clipRegion);
-		m_tooltipDisplayString->draw(xPos + 2, yPos + 1, GMC(m_tooltipTextColor), COLOR(Shadow)); // GameMakeColor(220,220,220,255),GameMakeColor(20,20,20,125));
+		m_tooltipDisplayString->draw(xPos + 2, yPos + 1, GMC(m_tooltipTextColor), COLOR(Shadow));    // GameMakeColor(220,220,220,255),GameMakeColor(20,20,20,125));
 
 		// highlight section
 		const Int HIGHLIGHT_WIDTH = 15;
@@ -1163,7 +1163,7 @@ void Mouse::drawTooltip()
 		clipRegion.hi.x = xPos + 2 + m_highlightPos;
 		clipRegion.hi.y = yPos + 1 + height;
 		m_tooltipDisplayString->setClipRegion(&clipRegion);
-		m_tooltipDisplayString->draw(xPos + 2, yPos + 1, COLOR(Highlight), COLOR(Shadow)); // GameMakeColor(255,255,0,255),GameMakeColor(20,20,20,125));
+		m_tooltipDisplayString->draw(xPos + 2, yPos + 1, COLOR(Highlight), COLOR(Shadow));    // GameMakeColor(255,255,0,255),GameMakeColor(20,20,20,125));
 
 		// get ready for the next part of the anim
 		if (m_highlightPos < width + HIGHLIGHT_WIDTH)

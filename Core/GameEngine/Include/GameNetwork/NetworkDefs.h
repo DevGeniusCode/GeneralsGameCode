@@ -44,16 +44,16 @@ extern Int FRAMES_TO_KEEP;
 // This is the connection numbering: 1-8 are for players
 enum ConnectionNumbers CPP_11( : Int)
 {
-	MAX_PLAYER = 7, // The index of the highest possible player number.  This is 0 based, so the most players allowed in a game is MAX_PLAYER+1.
+	MAX_PLAYER = 7,    // The index of the highest possible player number.  This is 0 based, so the most players allowed in a game is MAX_PLAYER+1.
 };
 
 #pragma pack(push, 1)
 struct TransportMessageHeader
 {
-	UnsignedInt crc;     ///< packet-level CRC (must be first in packet)
-	UnsignedShort magic; ///< Magic number identifying Generals packets
-	                     //	Int id;
-	                     //	NetMessageFlags flags;
+	UnsignedInt crc;    ///< packet-level CRC (must be first in packet)
+	UnsignedShort magic;    ///< Magic number identifying Generals packets
+	                        //	Int id;
+	                        //	NetMessageFlags flags;
 };
 #pragma pack(pop)
 
@@ -161,7 +161,7 @@ enum NetCommandType CPP_11( : Int)
 	NETCOMMANDTYPE_PROGRESS,
 	NETCOMMANDTYPE_LOADCOMPLETE,
 	NETCOMMANDTYPE_TIMEOUTSTART,
-	NETCOMMANDTYPE_WRAPPER, // A wrapper command that holds a command that's too big to fit in a single packet.
+	NETCOMMANDTYPE_WRAPPER,    // A wrapper command that holds a command that's too big to fit in a single packet.
 	NETCOMMANDTYPE_FILE,
 	NETCOMMANDTYPE_FILEANNOUNCE,
 	NETCOMMANDTYPE_FILEPROGRESS,

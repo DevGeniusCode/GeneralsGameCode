@@ -38,18 +38,18 @@ class BuddyRequest
 public:
 	enum
 	{
-		BUDDYREQUEST_LOGIN,   // attempt to login
-		BUDDYREQUEST_RELOGIN, // log in after being disconnected
-		BUDDYREQUEST_LOGOUT,  // log out if connected
+		BUDDYREQUEST_LOGIN,    // attempt to login
+		BUDDYREQUEST_RELOGIN,    // log in after being disconnected
+		BUDDYREQUEST_LOGOUT,    // log out if connected
 		BUDDYREQUEST_MESSAGE,
-		BUDDYREQUEST_LOGINNEW, // attempt to create a new nick and login
+		BUDDYREQUEST_LOGINNEW,    // attempt to create a new nick and login
 		// BUDDYREQUEST_DELETELOGIN,
-		BUDDYREQUEST_ADDBUDDY,   // add someone to your buddy list
-		BUDDYREQUEST_DELBUDDY,   // delete someone from your buddy list
-		BUDDYREQUEST_OKADD,      // allow someone to add you to their buddy list
+		BUDDYREQUEST_ADDBUDDY,    // add someone to your buddy list
+		BUDDYREQUEST_DELBUDDY,    // delete someone from your buddy list
+		BUDDYREQUEST_OKADD,    // allow someone to add you to their buddy list
 		BUDDYREQUEST_DENYADD,    // don't allow someone to add you to their buddy list
-		BUDDYREQUEST_SETSTATUS,  // Set our status
-		BUDDYREQUEST_DELETEACCT, // Delete our account
+		BUDDYREQUEST_SETSTATUS,    // Set our status
+		BUDDYREQUEST_DELETEACCT,    // Delete our account
 	} buddyRequestType;
 
 	union

@@ -25,7 +25,7 @@
 ////// NetCommandWrapperList.cpp ////////////////////////////////
 // Bryan Cleveland
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/NetCommandWrapperList.h"
 #include "GameNetwork/NetPacket.h"
@@ -38,7 +38,7 @@ NetCommandWrapperListNode::NetCommandWrapperListNode(NetWrapperCommandMsg* msg)
 {
 	m_next = nullptr;
 	m_numChunks = msg->getNumChunks();
-	m_chunksPresent = NEW Bool[m_numChunks]; // pool[]ify
+	m_chunksPresent = NEW Bool[m_numChunks];    // pool[]ify
 	m_numChunksPresent = 0;
 
 	for (UnsignedInt i = 0; i < m_numChunks; ++i)
@@ -47,7 +47,7 @@ NetCommandWrapperListNode::NetCommandWrapperListNode(NetWrapperCommandMsg* msg)
 	}
 
 	m_totalDataLength = msg->getTotalDataLength();
-	m_data = NEW UnsignedByte[m_totalDataLength]; // pool[]ify
+	m_data = NEW UnsignedByte[m_totalDataLength];    // pool[]ify
 
 	m_commandID = msg->getWrappedCommandID();
 }

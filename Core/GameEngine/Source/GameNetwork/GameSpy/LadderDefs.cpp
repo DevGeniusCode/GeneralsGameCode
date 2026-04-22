@@ -26,7 +26,7 @@
 // Generals ladder code
 // Author: Matthew D. Campbell, August 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/GameSpy/ThreadUtils.h"
 #include "GameNetwork/GameSpy/LadderDefs.h"
@@ -63,7 +63,7 @@ static LadderInfo* parseLadder(AsciiString raw)
 	while (raw.nextToken(&line, "\n"))
 	{
 		if (line.getCharAt(line.getLength() - 1) == '\r')
-			line.removeLastChar(); // there is a trailing '\r'
+			line.removeLastChar();    // there is a trailing '\r'
 
 		line.trim();
 
@@ -79,14 +79,14 @@ static LadderInfo* parseLadder(AsciiString raw)
 
 			// fill in some info
 			AsciiString tokenName, tokenAddr, tokenPort, tokenHomepage;
-			line.removeLastChar(); // the '>'
-			line = line.str() + 7; // the "<Ladder "
+			line.removeLastChar();    // the '>'
+			line = line.str() + 7;    // the "<Ladder "
 			line.nextToken(&tokenAddr, "\" ");
 			line.nextToken(&tokenPort, " ");
 			line.nextToken(&tokenHomepage, " ");
 
 			lad->name = MultiByteToWideCharSingleLine(tokenName.str()).c_str();
-			lad->name.truncateTo(20); // Per Harvard's request, ladder names are limited to 20 chars
+			lad->name.truncateTo(20);    // Per Harvard's request, ladder names are limited to 20 chars
 			lad->address = tokenAddr;
 			lad->port = atoi(tokenPort.str());
 			lad->homepageURL = tokenHomepage;
@@ -263,7 +263,7 @@ LadderList::LadderList()
 	while (rawMotd.nextToken(&line, "\n"))
 	{
 		if (line.getCharAt(line.getLength() - 1) == '\r')
-			line.removeLastChar(); // there is a trailing '\r'
+			line.removeLastChar();    // there is a trailing '\r'
 
 		line.trim();
 
@@ -512,7 +512,7 @@ void LadderList::checkLadder(AsciiString fname, Int index)
 	li->index = index;
 
 	// ladders are QM-only at this point, which kinda invalidates the whole concept of local ladders.  Oh well.
-	li->validQM = FALSE; // no local ladders in QM
+	li->validQM = FALSE;    // no local ladders in QM
 	li->validCustom = FALSE;
 
 	// for (Int i=0; i<4; ++i)

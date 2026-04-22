@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Compression.h"
 #include "strtok_r.h"
@@ -297,7 +297,7 @@ void ConnectionManager::init()
 #ifdef MEMORYPOOL_DEBUG
 	TheMemoryPoolFactory->debugSetInitFillerIndex(m_localSlot);
 #endif
-	m_packetRouterSlot = 0; /// @todo The LAN/WOL interface should be telling us who the packet router is based on machine specs passed around through game options.
+	m_packetRouterSlot = 0;    /// @todo The LAN/WOL interface should be telling us who the packet router is based on machine specs passed around through game options.
 	for (i = 0; i < MAX_SLOTS; ++i)
 	{
 		m_packetRouterFallback[i] = -1;
@@ -318,7 +318,7 @@ void ConnectionManager::init()
 	}
 	for (i = 0; i < MAX_SLOTS; ++i)
 	{
-		m_latencyAverages[i] = 0.0; // using zero since all floating point standards should be able to specify 0.0 accurately.
+		m_latencyAverages[i] = 0.0;    // using zero since all floating point standards should be able to specify 0.0 accurately.
 	}
 	m_smallestPacketArrivalCushion = -1;
 
@@ -593,7 +593,7 @@ Bool ConnectionManager::processNetCommand(NetCommandRef* ref)
 	// Handle WRAPPER commands (before second connection validation)
 	if (cmdType == NETCOMMANDTYPE_WRAPPER)
 	{
-		processWrapper(ref); // need to send the NetCommandRef since we have to construct the relay for the wrapped command.
+		processWrapper(ref);    // need to send the NetCommandRef since we have to construct the relay for the wrapped command.
 		return FALSE;
 	}
 
@@ -806,7 +806,7 @@ void ConnectionManager::processDisconnectChat(NetDisconnectChatCommandMsg* msg)
 	}
 	unitext.format(L"[%ls] %ls", name.str(), msg->getText().str());
 	//	DEBUG_LOG(("ConnectionManager::processDisconnectChat - got message from player %d, message is %ls", playerID, unitext.str()));
-	TheDisconnectMenu->showChat(unitext); // <-- need to implement this
+	TheDisconnectMenu->showChat(unitext);    // <-- need to implement this
 }
 
 void ConnectionManager::processChat(NetChatCommandMsg* msg)
@@ -909,10 +909,10 @@ void ConnectionManager::processFile(NetFileCommandMsg* msg)
 		else
 		{
 			DEBUG_LOG(("Failed to uncompress Targa after map transfer"));
-			delete[] uncompBuffer; // failed to decompress, so just use the source
+			delete[] uncompBuffer;    // failed to decompress, so just use the source
 		}
 	}
-#endif // COMPRESS_TARGAS
+#endif    // COMPRESS_TARGAS
 
 	// TheSuperHackers @security bobtista 12/02/2026 Validate file content in memory before writing to disk
 	if (!hasValidTransferFileContent(realFileName, buf, len))
@@ -924,7 +924,7 @@ void ConnectionManager::processFile(NetFileCommandMsg* msg)
 			delete[] buf;
 			buf = nullptr;
 		}
-#endif // COMPRESS_TARGAS
+#endif    // COMPRESS_TARGAS
 		return;
 	}
 
@@ -968,7 +968,7 @@ void ConnectionManager::processFile(NetFileCommandMsg* msg)
 		delete[] buf;
 		buf = nullptr;
 	}
-#endif // COMPRESS_TARGAS
+#endif    // COMPRESS_TARGAS
 }
 
 void ConnectionManager::processFileAnnounce(NetFileAnnounceCommandMsg* msg)
@@ -984,7 +984,7 @@ void ConnectionManager::processFileAnnounce(NetFileAnnounceCommandMsg* msg)
 		}
 		else
 		{
-			s_fileProgressMap[i][msg->getFileID()] = 100; // they don't need to get it, so they're already done.
+			s_fileProgressMap[i][msg->getFileID()] = 100;    // they don't need to get it, so they're already done.
 		}
 	}
 }
@@ -1322,7 +1322,7 @@ void ConnectionManager::ackCommand(NetCommandRef* ref, UnsignedInt localSlot)
 #endif
 	}
 
-	ackmsg->setPlayerID(localSlot); // Tell the player who this ack is coming from.
+	ackmsg->setPlayerID(localSlot);    // Tell the player who this ack is coming from.
 
 	if (CommandRequiresDirectSend(msg) && CommandRequiresAck(msg))
 	{
@@ -1592,7 +1592,7 @@ void ConnectionManager::updateRunAhead(Int oldRunAhead, Int frameRate, Bool didS
 			msg->setRunAhead(newRunAhead);
 			msg->setFrameRate(minFps);
 			// DEBUG_LOG(("ConnectionManager::updateRunAhead - new run ahead = %d, new frame rate = %d, execution frame %d", newRunAhead, minFps, msg->getExecutionFrame()));
-			sendLocalCommand(msg, 0xff ^ (1 << minFpsPlayer)); // Send the packet to everyone but the lowest FPS player.
+			sendLocalCommand(msg, 0xff ^ (1 << minFpsPlayer));    // Send the packet to everyone but the lowest FPS player.
 
 			NetRunAheadCommandMsg* msg2 = newInstance(NetRunAheadCommandMsg);
 			msg2->setPlayerID(m_localSlot);
@@ -1634,7 +1634,7 @@ void ConnectionManager::updateRunAhead(Int oldRunAhead, Int frameRate, Bool didS
 			}
 			if (newMinFps > 30)
 			{
-				newMinFps = 30; // Cap FPS to 30.
+				newMinFps = 30;    // Cap FPS to 30.
 			}
 			msg2->setRunAhead(newRunAhead);
 			msg2->setFrameRate(newMinFps);
@@ -1841,18 +1841,18 @@ void ConnectionManager::sendLocalCommand(NetCommandMsg* msg, UnsignedByte relay 
 			{
 				// Set the relay mask to only go to this player so he knows not to relay it to anyone else.
 				UnsignedByte temprelay = 1 << i;
-				m_connections[i]->sendNetCommandMsg(msg, temprelay); // This will create a new copy of netmsg for this connection.
+				m_connections[i]->sendNetCommandMsg(msg, temprelay);    // This will create a new copy of netmsg for this connection.
 			}
 		}
 	}
 	else
 	{
 		// Send the command to everyone else via the packet router.
-		UnsignedByte temprelay = relay & ~(1 << m_localSlot); // Tell the packet router to relay the message to everyone but myself.
-		                                                      // Hopefully the packet router is smart enough to not send it
-		                                                      // to slots that are not in the game.
+		UnsignedByte temprelay = relay & ~(1 << m_localSlot);    // Tell the packet router to relay the message to everyone but myself.
+		                                                         // Hopefully the packet router is smart enough to not send it
+		                                                         // to slots that are not in the game.
 
-		m_connections[m_packetRouterSlot]->sendNetCommandMsg(msg, temprelay); // This will create a new copy of netmsg for this connection.
+		m_connections[m_packetRouterSlot]->sendNetCommandMsg(msg, temprelay);    // This will create a new copy of netmsg for this connection.
 
 		if (CommandRequiresAck(msg))
 		{
@@ -1865,7 +1865,7 @@ void ConnectionManager::sendLocalCommand(NetCommandMsg* msg, UnsignedByte relay 
 		}
 	}
 
-	msg->detach(); // detach from the command msg.
+	msg->detach();    // detach from the command msg.
 }
 
 /**
@@ -1956,8 +1956,8 @@ Bool ConnectionManager::allCommandsReady(UnsignedInt frame, Bool justTesting /* 
 	if ((retval == TRUE) && (justTesting == FALSE))
 	{
 		m_disconnectManager->allCommandsReady(TheGameLogic->getFrame(), this);
-		retval = m_disconnectManager->allowedToContinue(); // allow the disconnect manager to keep us on this frame
-		                                                   // in case we are waiting for a new packet router or something.
+		retval = m_disconnectManager->allowedToContinue();    // allow the disconnect manager to keep us on this frame
+		                                                      // in case we are waiting for a new packet router or something.
 	}
 
 	return retval;
@@ -1989,15 +1989,15 @@ NetCommandList* ConnectionManager::getFrameCommandList(UnsignedInt frame)
 			retlist->appendList(m_frameData[i]->getFrameCommandList(frame));
 			if (frame > FRAMES_TO_KEEP)
 			{
-				m_frameData[i]->resetFrame(frame - FRAMES_TO_KEEP); // After getting the commands for that frame from this
-				                                                    // FrameDataManager object, we need to tell it that we're
-				                                                    // done with the messages for that frame.
+				m_frameData[i]->resetFrame(frame - FRAMES_TO_KEEP);    // After getting the commands for that frame from this
+				                                                       // FrameDataManager object, we need to tell it that we're
+				                                                       // done with the messages for that frame.
 				DEBUG_LOG_LEVEL(DEBUG_LEVEL_NET, ("getFrameCommandList - called reset frame on player %d for frame %d", i, frame - FRAMES_TO_KEEP));
 			}
 		}
 	}
 
-	return retlist; // retlist deallocated by calling function.
+	return retlist;    // retlist deallocated by calling function.
 }
 
 void ConnectionManager::setFrameGrouping(time_t frameGrouping)
@@ -2174,7 +2174,7 @@ void ConnectionManager::quitGame()
 	sendLocalCommandDirect(disconnectMsg, 0xff ^ (1 << m_localSlot));
 
 	// DEBUG_LOG(("ConnectionManager::disconnectLocalPlayer - about to flush connections"));
-	flushConnections(); // need to do this so our packet actually gets sent before the connections are deleted.
+	flushConnections();    // need to do this so our packet actually gets sent before the connections are deleted.
 	// DEBUG_LOG(("ConnectionManager::disconnectLocalPlayer - done flushing connections"));
 
 	disconnectMsg->detach();
@@ -2287,7 +2287,7 @@ void ConnectionManager::parseUserList(const GameInfo* game)
 	DEBUG_LOG(("Local slot is %d", game->getLocalSlotNum()));
 	for (i = 0; i < MAX_SLOTS; ++i)
 	{
-		const GameSlot* slot = game->getConstSlot(i); // badness, but since we cast right back to const, we should be ok
+		const GameSlot* slot = game->getConstSlot(i);    // badness, but since we cast right back to const, we should be ok
 		if (slot->isHuman())
 		{
 			if (game->getLocalSlotNum() == i)
@@ -2556,7 +2556,7 @@ UnsignedShort ConnectionManager::sendFileAnnounce(AsciiString path, UnsignedByte
 	                                  announceMsg->getID(), announceMsg->getPlayerID(), announceMask, announceMsg->getRealFilename().str(),
 	                                  announceMsg->getPlayerMask(), announceMsg->getFileID()));
 
-	processFileAnnounce(announceMsg); // set up things for the host
+	processFileAnnounce(announceMsg);    // set up things for the host
 
 	DEBUG_LOG_LEVEL(DEBUG_LEVEL_NET, ("Sending file announce to %X", announceMask));
 	sendLocalCommand(announceMsg, announceMask);
@@ -2595,7 +2595,7 @@ void ConnectionManager::sendFile(AsciiString path, UnsignedByte playerMask, Unsi
 		delete[] compressedBuf;
 		compressedBuf = nullptr;
 	}
-#endif // COMPRESS_TARGAS
+#endif    // COMPRESS_TARGAS
 
 	NetFileCommandMsg* fileMsg = newInstance(NetFileCommandMsg);
 	fileMsg->setPlayerID(m_localSlot);
@@ -2609,7 +2609,7 @@ void ConnectionManager::sendFile(AsciiString path, UnsignedByte playerMask, Unsi
 		fileMsg->setFileData((unsigned char*)compressedBuf, compressedSize);
 	}
 	else
-#endif // COMPRESS_TARGAS
+#endif    // COMPRESS_TARGAS
 	{
 		fileMsg->setFileData((unsigned char*)buf, len);
 	}
@@ -2622,7 +2622,7 @@ void ConnectionManager::sendFile(AsciiString path, UnsignedByte playerMask, Unsi
 #ifdef COMPRESS_TARGAS
 	delete[] compressedBuf;
 	compressedBuf = nullptr;
-#endif // COMPRESS_TARGAS
+#endif    // COMPRESS_TARGAS
 
 	DEBUG_LOG_LEVEL(DEBUG_LEVEL_NET, ("Sending file: '%s', len %d, to %X", path.str(), len, playerMask));
 
@@ -2825,7 +2825,7 @@ void ConnectionManager::sendSingleFrameToPlayer(UnsignedInt playerID, UnsignedIn
 	for (Int i = 0; i < MAX_SLOTS; ++i)
 	{
 		if ((m_frameData[i] != nullptr) && (i != playerID))
-		{ // no need to send his own commands to him.
+		{    // no need to send his own commands to him.
 			NetCommandList* list = m_frameData[i]->getFrameCommandList(frame);
 			if (list != nullptr)
 			{

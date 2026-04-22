@@ -74,24 +74,24 @@ enum XferStatus CPP_11( : Int)
 {
 	XFER_STATUS_INVALID = 0,
 
-	XFER_OK,                 ///< all is green and good
-	XFER_EOF,                ///< end of file encountered
-	XFER_FILE_NOT_FOUND,     ///< requested file does not exist
-	XFER_FILE_NOT_OPEN,      ///< file was not open
-	XFER_FILE_ALREADY_OPEN,  ///< this xfer is already open
-	XFER_READ_ERROR,         ///< error reading from file
-	XFER_WRITE_ERROR,        ///< error writing to file
-	XFER_MODE_UNKNOWN,       ///< unknown xfer mode
-	XFER_SKIP_ERROR,         ///< error skipping file
-	XFER_BEGIN_END_MISMATCH, ///< mismatched pair calls of begin/end block
-	XFER_OUT_OF_MEMORY,      ///< out of memory
-	XFER_STRING_ERROR,       ///< error with strings
+	XFER_OK,    ///< all is green and good
+	XFER_EOF,    ///< end of file encountered
+	XFER_FILE_NOT_FOUND,    ///< requested file does not exist
+	XFER_FILE_NOT_OPEN,    ///< file was not open
+	XFER_FILE_ALREADY_OPEN,    ///< this xfer is already open
+	XFER_READ_ERROR,    ///< error reading from file
+	XFER_WRITE_ERROR,    ///< error writing to file
+	XFER_MODE_UNKNOWN,    ///< unknown xfer mode
+	XFER_SKIP_ERROR,    ///< error skipping file
+	XFER_BEGIN_END_MISMATCH,    ///< mismatched pair calls of begin/end block
+	XFER_OUT_OF_MEMORY,    ///< out of memory
+	XFER_STRING_ERROR,    ///< error with strings
 	XFER_INVALID_VERSION,    ///< invalid version encountered
-	XFER_INVALID_PARAMETERS, ///< invalid parameters
-	XFER_LIST_NOT_EMPTY,     ///< trying to xfer into a list that should be empty, but isn't
-	XFER_UNKNOWN_STRING,     ///< unrecognized string value
+	XFER_INVALID_PARAMETERS,    ///< invalid parameters
+	XFER_LIST_NOT_EMPTY,    ///< trying to xfer into a list that should be empty, but isn't
+	XFER_UNKNOWN_STRING,    ///< unrecognized string value
 
-	XFER_ERROR_UNKNOWN, ///< unknown error (isn't that useful!)
+	XFER_ERROR_UNKNOWN,    ///< unknown error (isn't that useful!)
 
 	NUM_XFER_STATUS
 };
@@ -125,13 +125,13 @@ public:
 	virtual void setOptions(UnsignedInt options) { BitSet(m_options, options); }
 	virtual void clearOptions(UnsignedInt options) { BitClear(m_options, options); }
 	virtual UnsignedInt getOptions() { return m_options; }
-	virtual void open(AsciiString identifier) = 0; ///< xfer open event
-	virtual void close() = 0;                      ///< xfer close event
-	virtual Int beginBlock() = 0;                  ///< xfer begin block event
-	virtual void endBlock() = 0;                   ///< xfer end block event
-	virtual void skip(Int dataSize) = 0;           ///< xfer skip data
+	virtual void open(AsciiString identifier) = 0;    ///< xfer open event
+	virtual void close() = 0;    ///< xfer close event
+	virtual Int beginBlock() = 0;    ///< xfer begin block event
+	virtual void endBlock() = 0;    ///< xfer end block event
+	virtual void skip(Int dataSize) = 0;    ///< xfer skip data
 
-	virtual void xferSnapshot(Snapshot* snapshot) = 0; ///< entry point for xfering a snapshot
+	virtual void xferSnapshot(Snapshot* snapshot) = 0;    ///< entry point for xfering a snapshot
 
 	//
 	// default transfer methods, these call the implementation method with the data
@@ -148,7 +148,7 @@ public:
 	virtual void xferShort(Short* shortData);
 	virtual void xferUnsignedShort(UnsignedShort* unsignedShortData);
 	virtual void xferReal(Real* realData);
-	virtual void xferMarkerLabel(AsciiString asciiStringData); // This is purely for readability purposes - it is explicitly discarded on load.
+	virtual void xferMarkerLabel(AsciiString asciiStringData);    // This is purely for readability purposes - it is explicitly discarded on load.
 	virtual void xferAsciiString(AsciiString* asciiStringData);
 	virtual void xferUnicodeString(UnicodeString* unicodeStringData);
 	virtual void xferCoord3D(Coord3D* coord3D);
@@ -182,6 +182,6 @@ protected:
 	virtual void xferImplementation(void* data, Int dataSize) = 0;
 
 	UnsignedInt m_options;    ///< xfer options
-	XferMode m_xferMode;      ///< the current xfer mode
-	AsciiString m_identifier; ///< the string identifier
+	XferMode m_xferMode;    ///< the current xfer mode
+	AsciiString m_identifier;    ///< the string identifier
 };

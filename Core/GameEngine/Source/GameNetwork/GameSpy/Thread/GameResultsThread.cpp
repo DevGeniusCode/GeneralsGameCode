@@ -26,9 +26,9 @@
 // Ping thread
 // Author: Matthew D. Campbell, August 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
-#include <winsock.h> // This one has to be here. Prevents collisions with winsock2.h
+#include <winsock.h>    // This one has to be here. Prevents collisions with winsock2.h
 
 #include "GameNetwork/GameSpy/GameResultsThread.h"
 #include "mutex.h"
@@ -244,7 +244,7 @@ void GameResultsThreadClass::Thread_Function()
 
 						// Even though this failed to resolve IP, still need to send a
 						//   callback.
-						IP = 0xFFFFFFFF; // flag for IP resolve failed
+						IP = 0xFFFFFFFF;    // flag for IP resolve failed
 					}
 					else
 					{

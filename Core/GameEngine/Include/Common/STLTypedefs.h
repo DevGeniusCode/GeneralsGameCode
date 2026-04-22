@@ -192,7 +192,7 @@ struct hash<ParticleSystemID>
 		return tmp((UnsignedInt)nkt);
 	}
 };
-#endif // USING_STLPORT
+#endif    // USING_STLPORT
 
 template <>
 struct hash<const Char*>
@@ -320,4 +320,4 @@ struct string_key_equal
 	}
 };
 
-} // namespace rts
+}    // namespace rts

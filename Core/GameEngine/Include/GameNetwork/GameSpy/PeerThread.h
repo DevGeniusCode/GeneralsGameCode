@@ -45,8 +45,8 @@ class PeerRequest
 public:
 	enum
 	{
-		PEERREQUEST_LOGIN,  // attempt to login
-		PEERREQUEST_LOGOUT, // log out if connected
+		PEERREQUEST_LOGIN,    // attempt to login
+		PEERREQUEST_LOGOUT,    // log out if connected
 		PEERREQUEST_MESSAGEPLAYER,
 		PEERREQUEST_MESSAGEROOM,
 		PEERREQUEST_JOINGROUPROOM,
@@ -68,14 +68,14 @@ public:
 		PEERREQUEST_MAX
 	} peerRequestType;
 
-	std::string nick;  // only used by login, but must be outside the union b/c of copy constructor
-	std::wstring text; // can't be in a union
+	std::string nick;    // only used by login, but must be outside the union b/c of copy constructor
+	std::wstring text;    // can't be in a union
 	std::string password;
 	std::string email;
 	std::string id;
 
 	// gameopts
-	std::string options; // full string for UTMs
+	std::string options;    // full string for UTMs
 	std::string ladderIP;
 	std::string hostPingStr;
 	std::string gameOptsMapName;
@@ -147,7 +147,7 @@ public:
 			UnsignedInt ladderPassCRC;
 			Int maxPing;
 			Int maxDiscons, discons;
-			char pings[17]; // 8 servers (0-ff), 1 null terminator
+			char pings[17];    // 8 servers (0-ff), 1 null terminator
 			Int numPlayers;
 			Int botID;
 			Int roomID;
@@ -243,14 +243,14 @@ public:
 		PEERRESPONSE_MAX
 	} peerResponseType;
 
-	std::string groupRoomName; // can't be in union
+	std::string groupRoomName;    // can't be in union
 
 	std::string nick;    // can't be in a union
-	std::string oldNick; // can't be in a union
-	std::wstring text;   // can't be in a union
-	std::string locale;  // can't be in a union
+	std::string oldNick;    // can't be in a union
+	std::wstring text;    // can't be in a union
+	std::string locale;    // can't be in a union
 
-	std::string stagingServerGameOptions; // full string from UTMs
+	std::string stagingServerGameOptions;    // full string from UTMs
 
 	// game opts sent with PEERRESPONSE_STAGINGROOM
 	std::wstring stagingServerName;
@@ -296,7 +296,7 @@ public:
 			Int id;
 			Bool ok;
 			Bool isHostPresent;
-			Int result; // for failures
+			Int result;    // for failures
 		} joinStagingRoom;
 
 		struct
@@ -317,8 +317,8 @@ public:
 			Int rankPoints;
 			Int side;
 			Int preorder;
-			UnsignedInt internalIP; // for us, on connection
-			UnsignedInt externalIP; // for us, on connection
+			UnsignedInt internalIP;    // for us, on connection
+			UnsignedInt externalIP;    // for us, on connection
 		} player;
 
 		struct
@@ -348,11 +348,11 @@ public:
 		{
 			QMStatus status;
 			Int poolSize;
-			Int mapIdx;                // when matched
-			Int seed;                  // when matched
-			UnsignedInt IP[MAX_SLOTS]; // when matched
-			Int side[MAX_SLOTS];       // when matched
-			Int color[MAX_SLOTS];      // when matched
+			Int mapIdx;    // when matched
+			Int seed;    // when matched
+			UnsignedInt IP[MAX_SLOTS];    // when matched
+			Int side[MAX_SLOTS];    // when matched
+			Int color[MAX_SLOTS];    // when matched
 			Int nat[MAX_SLOTS];
 		} qmStatus;
 	};

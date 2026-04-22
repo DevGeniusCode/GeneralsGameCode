@@ -42,7 +42,7 @@
 //
 //-----------------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/CriticalSection.h"
 
@@ -104,7 +104,7 @@ void UnicodeString::ensureUniqueBufferOfSize(int numCharsNeeded, Bool preserveDa
 	newData->m_refCount = 1;
 	newData->m_numCharsAllocated = (actualBytes - sizeof(UnicodeStringData)) / sizeof(WideChar);
 #if defined(RTS_DEBUG)
-	newData->m_debugptr = newData->peek(); // just makes it easier to read in the debugger
+	newData->m_debugptr = newData->peek();    // just makes it easier to read in the debugger
 #endif
 
 	if (m_data && preserveData)
@@ -237,7 +237,7 @@ void UnicodeString::concat(const WideChar* s)
 	validate();
 	int addlen = wcslen(s);
 	if (addlen == 0)
-		return; // my, that was easy
+		return;    // my, that was easy
 
 	if (m_data)
 	{

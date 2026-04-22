@@ -37,18 +37,18 @@ class WeatherSetting : public Overridable
 
 public:
 	AsciiString m_snowTexture;
-	Real m_snowFrequencyScaleX; ///< used to adjust snow position.
-	Real m_snowFrequencyScaleY; ///< used to adjust snow position.
-	Real m_snowAmplitude;       ///< used to adjust amount of of snow movement. (in world units)
-	Real m_snowPointSize;       ///< used to control hardware point-sprite size. (in arbitrary units - see DX SDK Docs).
+	Real m_snowFrequencyScaleX;    ///< used to adjust snow position.
+	Real m_snowFrequencyScaleY;    ///< used to adjust snow position.
+	Real m_snowAmplitude;    ///< used to adjust amount of of snow movement. (in world units)
+	Real m_snowPointSize;    ///< used to control hardware point-sprite size. (in arbitrary units - see DX SDK Docs).
 	Real m_snowMaxPointSize;    ///< used to control maximum size (in pixels) of point sprite.
 	Real m_snowMinPointSize;    ///< used to control the minimum size (in piexels) of point sprite.
-	Real m_snowQuadSize;        ///< used to control quad size when no hardware point sprites. (world width/height of quad)
-	Real m_snowBoxDimensions;   ///< used to set dimensions of box surrounding camera. (world units)
-	Real m_snowBoxDensity;      ///< used to control how many emitters are present per world unit
-	Real m_snowVelocity;        ///< used to set speed at which snow falls (world units/sec).
-	Bool m_usePointSprites;     ///< used to disable hardware point-sprite support.
-	Bool m_snowEnabled;         ///< enable/disable snow on the map.
+	Real m_snowQuadSize;    ///< used to control quad size when no hardware point sprites. (world width/height of quad)
+	Real m_snowBoxDimensions;    ///< used to set dimensions of box surrounding camera. (world units)
+	Real m_snowBoxDensity;    ///< used to control how many emitters are present per world unit
+	Real m_snowVelocity;    ///< used to set speed at which snow falls (world units/sec).
+	Bool m_usePointSprites;    ///< used to disable hardware point-sprite support.
+	Bool m_snowEnabled;    ///< enable/disable snow on the map.
 
 public:
 	WeatherSetting()
@@ -68,7 +68,7 @@ public:
 		m_snowMinPointSize = 0.0f;
 	}
 
-	static const FieldParse m_weatherSettingFieldParseTable[]; ///< the parse table for INI definition
+	static const FieldParse m_weatherSettingFieldParseTable[];    ///< the parse table for INI definition
 
 	/// Get the INI parsing table for loading
 	const FieldParse* getFieldParse() const { return m_weatherSettingFieldParseTable; }
@@ -83,8 +83,8 @@ class SnowManager : public SubsystemInterface
 public:
 	enum
 	{
-		SNOW_NOISE_X = 64, // dimensions table holding noise function used for initial snow positions.
-		SNOW_NOISE_Y = 64, // dimensions table holding noise function used for initial snow positions.
+		SNOW_NOISE_X = 64,    // dimensions table holding noise function used for initial snow positions.
+		SNOW_NOISE_Y = 64,    // dimensions table holding noise function used for initial snow positions.
 	};
 
 	SnowManager();
@@ -93,23 +93,23 @@ public:
 	virtual void init() override;
 	virtual void reset() override;
 	virtual void updateIniSettings();
-	void setVisible(Bool showWeather); ///< enable/disable rendering of weather - assuming it's available on map.
+	void setVisible(Bool showWeather);    ///< enable/disable rendering of weather - assuming it's available on map.
 
 protected:
 	Real* m_startingHeights;
-	Real m_time;            ///< time elapsed since it started snowing.
-	Real m_velocity;        ///< positive velocity of falling snow
-	Real m_fullTimePeriod;  ///< time for snow to complete a full animation cycle.
-	Real m_frequencyScaleX; ///< used to adjust snow position.
-	Real m_frequencyScaleY; ///< used to adjust snow position.
-	Real m_amplitude;       ///< used to adjust amount of of snow movement.
-	Real m_pointSize;       ///< used to control hardware point-sprite size.
+	Real m_time;    ///< time elapsed since it started snowing.
+	Real m_velocity;    ///< positive velocity of falling snow
+	Real m_fullTimePeriod;    ///< time for snow to complete a full animation cycle.
+	Real m_frequencyScaleX;    ///< used to adjust snow position.
+	Real m_frequencyScaleY;    ///< used to adjust snow position.
+	Real m_amplitude;    ///< used to adjust amount of of snow movement.
+	Real m_pointSize;    ///< used to control hardware point-sprite size.
 	Real m_maxPointSize;    ///< used to control maximum pixel size of sprites.
 	Real m_minPointSize;    ///< used to control minimum pixel size of sprites.
-	Real m_quadSize;        ///< used to control quad size when no hardware point sprites.
-	Real m_boxDimensions;   ///< used to set dimensions of box surrounding camera.
-	Real m_emitterSpacing;  ///< used to control how many emitters are present per world unit
-	Bool m_isVisible;       ///< used to prevent map weather (if defined) from rendering.
+	Real m_quadSize;    ///< used to control quad size when no hardware point sprites.
+	Real m_boxDimensions;    ///< used to set dimensions of box surrounding camera.
+	Real m_emitterSpacing;    ///< used to control how many emitters are present per world unit
+	Bool m_isVisible;    ///< used to prevent map weather (if defined) from rendering.
 };
 
-extern SnowManager* TheSnowManager; ///< the ray effects singleton external
+extern SnowManager* TheSnowManager;    ///< the ray effects singleton external

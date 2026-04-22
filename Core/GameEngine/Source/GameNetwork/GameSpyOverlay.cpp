@@ -26,7 +26,7 @@
 // Westwood Online screen setup/teardown
 // Author: Matthew D. Campbell, November 2001
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/AudioEventRTS.h"
 
 #include "GameClient/GadgetListBox.h"
@@ -159,15 +159,15 @@ void RaiseGSMessageBox()
  */
 static const char* gsOverlays[GSOVERLAY_MAX] =
 	{
-		"Menus/PopupPlayerInfo.wnd",   // Player info (right-click)
-		"Menus/WOLMapSelectMenu.wnd",  // Map select
-		"Menus/WOLBuddyOverlay.wnd",   // Buddy list
+		"Menus/PopupPlayerInfo.wnd",    // Player info (right-click)
+		"Menus/WOLMapSelectMenu.wnd",    // Map select
+		"Menus/WOLBuddyOverlay.wnd",    // Buddy list
 		"Menus/WOLPageOverlay.wnd",    // Find/page
-		"Menus/PopupHostGame.wnd",     // Hosting options (game name, password, etc)
-		"Menus/PopupJoinGame.wnd",     // Joining options (password, etc)
-		"Menus/PopupLadderSelect.wnd", // LadderSelect
-		"Menus/PopupLocaleSelect.wnd", // Prompt for user's locale
-		"Menus/OptionsMenu.wnd",       // popup options
+		"Menus/PopupHostGame.wnd",    // Hosting options (game name, password, etc)
+		"Menus/PopupJoinGame.wnd",    // Joining options (password, etc)
+		"Menus/PopupLadderSelect.wnd",    // LadderSelect
+		"Menus/PopupLocaleSelect.wnd",    // Prompt for user's locale
+		"Menus/OptionsMenu.wnd",    // popup options
 };
 
 static WindowLayout* overlayLayouts[GSOVERLAY_MAX] =

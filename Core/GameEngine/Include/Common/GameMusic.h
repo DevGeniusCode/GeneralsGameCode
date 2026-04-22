@@ -80,16 +80,16 @@ public:
 
 	const FieldParse* getFieldParse() const { return m_musicTrackFieldParseTable; }
 
-	Int index;            ///< Track index
-	AsciiString name;     ///< Logical name of track
-	AsciiString filename; ///< Filename with extension of music track
-	Real volume;          ///< Mixing level for this track
-	Bool ambient;         ///< Game info about this track(public)
+	Int index;    ///< Track index
+	AsciiString name;    ///< Logical name of track
+	AsciiString filename;    ///< Filename with extension of music track
+	Real volume;    ///< Mixing level for this track
+	Bool ambient;    ///< Game info about this track(public)
 
 	MusicTrack* next;
 	MusicTrack* prev;
 
-	static const FieldParse m_musicTrackFieldParseTable[]; ///< the parse table for INI definition
+	static const FieldParse m_musicTrackFieldParseTable[];    ///< the parse table for INI definition
 };
 
 class MusicManager
@@ -101,7 +101,7 @@ public:
 	void playTrack(AudioEventRTS* eventToUse);
 	void stopTrack(AudioHandle eventToRemove);
 
-	virtual void addAudioEvent(AudioEventRTS* eventToAdd); // pre-copied
+	virtual void addAudioEvent(AudioEventRTS* eventToAdd);    // pre-copied
 	virtual void removeAudioEvent(AudioHandle eventToRemove);
 
 	void setVolume(Real m_volume);

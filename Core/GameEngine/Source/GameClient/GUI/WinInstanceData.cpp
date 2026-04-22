@@ -44,7 +44,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 // USER INCLUDES //////////////////////////////////////////////////////////////
 #include "GameClient/WinInstanceData.h"
@@ -91,7 +91,7 @@ WinInstanceData::~WinInstanceData()
 	if (m_tooltip)
 		TheDisplayStringManager->freeDisplayString(m_tooltip);
 
-	m_videoBuffer = nullptr; // Video Buffer needs to be clean up by the control that is in charge of the video.
+	m_videoBuffer = nullptr;    // Video Buffer needs to be clean up by the control that is in charge of the video.
 }
 
 // WinInstanceData::init ======================================================
@@ -133,7 +133,7 @@ void WinInstanceData::init()
 	m_owner = nullptr;
 	m_textLabelString.clear();
 	m_tooltipString.clear();
-	m_tooltipDelay = -1; ///< default value
+	m_tooltipDelay = -1;    ///< default value
 	m_decoratedNameString.clear();
 
 	m_imageOffset.x = 0;

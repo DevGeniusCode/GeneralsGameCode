@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/WindowLayout.h"
 #include "GameClient/Shell.h"
@@ -236,7 +236,7 @@ Bool WindowLayout::load(AsciiString filename)
 	setUpdate(info.update);
 	setShutdown(info.shutdown);
 
-	return TRUE; // success
+	return TRUE;    // success
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -278,5 +278,5 @@ GameWindow* WindowLayout::findWindow(GameWindow* window)
 		if (win == window)
 			return win;
 
-	return nullptr; // window not found
+	return nullptr;    // window not found
 }

@@ -44,7 +44,7 @@ public:
 	Int id;
 	PerGeneralMap wins;
 	PerGeneralMap losses;
-	PerGeneralMap games; // first: playerTemplate #,  second: #games played (see also gamesAsRandom)
+	PerGeneralMap games;    // first: playerTemplate #,  second: #games played (see also gamesAsRandom)
 	PerGeneralMap duration;
 	PerGeneralMap unitsKilled;
 	PerGeneralMap unitsLost;
@@ -104,11 +104,11 @@ public:
 	PSRequest();
 	enum
 	{
-		PSREQUEST_READPLAYERSTATS,      // read stats for a player
+		PSREQUEST_READPLAYERSTATS,    // read stats for a player
 		PSREQUEST_UPDATEPLAYERSTATS,    // update stats on the server
-		PSREQUEST_UPDATEPLAYERLOCALE,   // update locale on the server
-		PSREQUEST_READCDKEYSTATS,       // read stats for a cdkey
-		PSREQUEST_SENDGAMERESTOGAMESPY, // report game results to GameSpy
+		PSREQUEST_UPDATEPLAYERLOCALE,    // update locale on the server
+		PSREQUEST_READCDKEYSTATS,    // read stats for a cdkey
+		PSREQUEST_SENDGAMERESTOGAMESPY,    // report game results to GameSpy
 		PSREQUEST_MAX
 	} requestType;
 

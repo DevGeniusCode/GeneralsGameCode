@@ -84,10 +84,10 @@ private:
 	struct UnicodeStringData
 	{
 #if defined(RTS_DEBUG)
-		const WideChar* m_debugptr; // just makes it easier to read in the debugger
+		const WideChar* m_debugptr;    // just makes it easier to read in the debugger
 #endif
-		unsigned short m_refCount;          // reference count
-		unsigned short m_numCharsAllocated; // length of data allocated
+		unsigned short m_refCount;    // reference count
+		unsigned short m_numCharsAllocated;    // length of data allocated
 		// WideChar m_stringdata[];
 
 		WideChar* peek() { return (WideChar*)(this + 1); }
@@ -100,7 +100,7 @@ private:
 #endif
 
 protected:
-	UnicodeStringData* m_data; // pointer to ref counted string data
+	UnicodeStringData* m_data;    // pointer to ref counted string data
 
 	WideChar* peek() const;
 	void releaseBuffer();
@@ -113,8 +113,8 @@ public:
 
 	enum
 	{
-		MAX_FORMAT_BUF_LEN = 2048, ///< max total len of string created by format/format_va
-		MAX_LEN = 32767            ///< max total len of any UnicodeString, in chars
+		MAX_FORMAT_BUF_LEN = 2048,    ///< max total len of string created by format/format_va
+		MAX_LEN = 32767    ///< max total len of any UnicodeString, in chars
 	};
 
 	/**
@@ -347,8 +347,8 @@ public:
 	//	operator const WideChar*() const { return str(); }
 	//
 
-	UnicodeString& operator=(const UnicodeString& stringSrc); ///< the same as set()
-	UnicodeString& operator=(const WideChar* s);              ///< the same as set()
+	UnicodeString& operator=(const UnicodeString& stringSrc);    ///< the same as set()
+	UnicodeString& operator=(const WideChar* s);    ///< the same as set()
 };
 
 // -----------------------------------------------------

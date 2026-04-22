@@ -70,8 +70,8 @@ class GameTextInterface : public SubsystemInterface
 public:
 	virtual ~GameTextInterface() override {};
 
-	virtual UnicodeString fetch(const Char* label, Bool* exists = nullptr) = 0; ///< Returns the associated labeled unicode text
-	virtual UnicodeString fetch(AsciiString label, Bool* exists = nullptr) = 0; ///< Returns the associated labeled unicode text ; TheSuperHackers @todo Remove
+	virtual UnicodeString fetch(const Char* label, Bool* exists = nullptr) = 0;    ///< Returns the associated labeled unicode text
+	virtual UnicodeString fetch(AsciiString label, Bool* exists = nullptr) = 0;    ///< Returns the associated labeled unicode text ; TheSuperHackers @todo Remove
 	virtual UnicodeString fetchFormat(const Char* label, ...) = 0;
 
 	// Do not call this directly, but use the FETCH_OR_SUBSTITUTE macro
@@ -84,7 +84,7 @@ public:
 
 	virtual void initMapStringFile(const AsciiString& filename) = 0;
 
-#if __cplusplus < 201103L // TheSuperHackers @todo Remove function when abandoning VC6
+#if __cplusplus < 201103L    // TheSuperHackers @todo Remove function when abandoning VC6
 	inline UnicodeString FETCH_OR_SUBSTITUTE_FORMAT(const Char* label, const WideChar* substituteFormat, ...)
 	{
 		va_list args;
@@ -116,15 +116,15 @@ extern GameTextInterface* CreateGameTextInterface();
 #if ENABLE_GAMETEXT_SUBSTITUTES
 
 	#define FETCH_OR_SUBSTITUTE(labelA, substituteTextW) fetchOrSubstitute(labelA, substituteTextW)
-	#if __cplusplus >= 201103L // TheSuperHackers @todo Remove condition when abandoning VC6
+	#if __cplusplus >= 201103L    // TheSuperHackers @todo Remove condition when abandoning VC6
 		#define FETCH_OR_SUBSTITUTE_FORMAT(labelA, substituteFormatW, ...) fetchOrSubstituteFormat(labelA, substituteFormatW, ##__VA_ARGS__)
 	#endif
 
 #else
 
 	#define FETCH_OR_SUBSTITUTE(labelA, substituteTextW) fetch(labelA)
-	#if __cplusplus >= 201103L // TheSuperHackers @todo Remove condition when abandoning VC6
+	#if __cplusplus >= 201103L    // TheSuperHackers @todo Remove condition when abandoning VC6
 		#define FETCH_OR_SUBSTITUTE_FORMAT(labelA, substituteFormatW, ...) fetchFormat(labelA, ##__VA_ARGS__)
 	#endif
 
-#endif // ENABLE_GAMETEXT_SUBSTITUTES
+#endif    // ENABLE_GAMETEXT_SUBSTITUTES

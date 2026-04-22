@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #define DEFINE_DEATH_NAMES
 
 #include "Common/INI.h"
@@ -81,7 +81,7 @@ static Xfer* s_xfer = nullptr;
 /** This is the table of data types we can have in INI files.  To add a new data type
  * block make a new entry in this table and add an appropriate parsing function */
 //-------------------------------------------------------------------------------------------------
-extern void parseReallyLowMHz(INI* ini); // yeah, so sue me (srj)
+extern void parseReallyLowMHz(INI* ini);    // yeah, so sue me (srj)
 struct BlockParse
 {
 	const char* token;
@@ -365,7 +365,7 @@ static INIFieldParseProc findFieldParse(const FieldParse* parseTable, const char
 //-------------------------------------------------------------------------------------------------
 UnsignedInt INI::load(AsciiString filename, INILoadType loadType, Xfer* pXfer)
 {
-	setFPMode(); // so we have consistent Real values for GameLogic -MDC
+	setFPMode();    // so we have consistent Real values for GameLogic -MDC
 
 	s_xfer = pXfer;
 	prepFile(filename, loadType);
@@ -658,7 +658,7 @@ void INI::parseBitInInt32(INI* ini, void* instance, void* store, const void* use
 	{
 		DEBUG_CRASH(("invalid boolean token %s -- expected Yes or No", token));
 		throw INI_INVALID_DATA;
-		return false; // keep compiler happy
+		return false;    // keep compiler happy
 	}
 }
 
@@ -733,13 +733,13 @@ AsciiString INI::getNextQuotedAsciiString()
 	char buff[INI_MAX_CHARS_PER_LINE];
 	buff[0] = '\0';
 
-	const char* token = getNextTokenOrNull(); // if null, just leave an empty string
+	const char* token = getNextTokenOrNull();    // if null, just leave an empty string
 	if (token != nullptr)
 	{
 		if (token[0] != '\"')
 		{
 			// if token is simply "
-			result.set(token); // Start following the "
+			result.set(token);    // Start following the "
 		}
 		else
 		{
@@ -747,9 +747,9 @@ AsciiString INI::getNextQuotedAsciiString()
 			Bool done = FALSE;
 			if ((strLen = strlen(token)) > 1)
 			{
-				strlcpy(buff, &token[1], ARRAY_SIZE(buff)); // skip the starting quote
+				strlcpy(buff, &token[1], ARRAY_SIZE(buff));    // skip the starting quote
 				// Check for end of quoted string.  Checking here fixes cases where quoted string on same line with other data.
-				if (buff[strLen - 2] == '"') // skip ending quote if present
+				if (buff[strLen - 2] == '"')    // skip ending quote if present
 				{
 					buff[strLen - 2] = '\0';
 					done = TRUE;
@@ -784,13 +784,13 @@ AsciiString INI::getNextAsciiString()
 {
 	AsciiString result;
 
-	const char* token = getNextTokenOrNull(); // if null, just leave an empty string
+	const char* token = getNextTokenOrNull();    // if null, just leave an empty string
 	if (token != nullptr)
 	{
 		if (token[0] != '\"')
 		{
 			// if token is simply "
-			result.set(token); // Start following the "
+			result.set(token);    // Start following the "
 		}
 		else
 		{
@@ -815,7 +815,7 @@ AsciiString INI::getNextAsciiString()
 			{
 				Int len = strlen(buff);
 				if (len && buff[len - 1] == '"')
-				{ // strip off trailing quote jba. [2/12/2003]
+				{    // strip off trailing quote jba. [2/12/2003]
 					buff[len - 1] = 0;
 				}
 				result.set(buff);
@@ -953,7 +953,7 @@ void INI::parseBitString32(INI* ini, void* /*instance*/, void* store, const void
 				DEBUG_CRASH(("you may not mix normal and +- ops in bitstring lists"));
 				throw INI_INVALID_NAME_LIST;
 			}
-			Int bitIndex = INI::scanIndexList(token + 1, flagList); // this throws if the token is not found
+			Int bitIndex = INI::scanIndexList(token + 1, flagList);    // this throws if the token is not found
 			*bits |= (1 << bitIndex);
 			foundAddOrSub = true;
 		}
@@ -964,7 +964,7 @@ void INI::parseBitString32(INI* ini, void* /*instance*/, void* store, const void
 				DEBUG_CRASH(("you may not mix normal and +- ops in bitstring lists"));
 				throw INI_INVALID_NAME_LIST;
 			}
-			Int bitIndex = INI::scanIndexList(token + 1, flagList); // this throws if the token is not found
+			Int bitIndex = INI::scanIndexList(token + 1, flagList);    // this throws if the token is not found
 			*bits &= ~(1 << bitIndex);
 			foundAddOrSub = true;
 		}
@@ -979,7 +979,7 @@ void INI::parseBitString32(INI* ini, void* /*instance*/, void* store, const void
 			if (!foundNormal)
 				*bits = 0;
 
-			Int bitIndex = INI::scanIndexList(token, flagList); // this throws if the token is not found
+			Int bitIndex = INI::scanIndexList(token, flagList);    // this throws if the token is not found
 			*bits |= (1 << bitIndex);
 			foundNormal = true;
 		}
@@ -1213,7 +1213,7 @@ void INI::parseThingTemplate(INI* ini, void* /*instance*/, void* store, const vo
 	}
 	else
 	{
-		const ThingTemplate* tt = TheThingFactory->findTemplate(token); // could be null!
+		const ThingTemplate* tt = TheThingFactory->findTemplate(token);    // could be null!
 		DEBUG_ASSERTCRASH(tt, ("ThingTemplate %s not found!", token));
 		// assign it, even if null!
 		*theThingTemplate = tt;
@@ -1236,7 +1236,7 @@ void INI::parseArmorTemplate(INI* ini, void* /*instance*/, void* store, const vo
 	}
 	else
 	{
-		const ArmorTemplate* tt = TheArmorStore->findArmorTemplate(token); // could be null!
+		const ArmorTemplate* tt = TheArmorStore->findArmorTemplate(token);    // could be null!
 		DEBUG_ASSERTCRASH(tt, ("ArmorTemplate %s not found!", token));
 		// assign it, even if null!
 		*theArmorTemplate = tt;
@@ -1253,7 +1253,7 @@ void INI::parseWeaponTemplate(INI* ini, void* /*instance*/, void* store, const v
 	typedef const WeaponTemplate* ConstWeaponTemplatePtr;
 	ConstWeaponTemplatePtr* theWeaponTemplate = (ConstWeaponTemplatePtr*)store;
 
-	const WeaponTemplate* tt = TheWeaponStore->findWeaponTemplate(token); // could be null!
+	const WeaponTemplate* tt = TheWeaponStore->findWeaponTemplate(token);    // could be null!
 	DEBUG_ASSERTCRASH(tt || stricmp(token, "None") == 0, ("WeaponTemplate %s not found!", token));
 	// assign it, even if null!
 	*theWeaponTemplate = tt;
@@ -1269,7 +1269,7 @@ void INI::parseFXList(INI* ini, void* /*instance*/, void* store, const void* /*u
 	typedef const FXList* ConstFXListPtr;
 	ConstFXListPtr* theFXList = (ConstFXListPtr*)store;
 
-	const FXList* fxl = TheFXListStore->findFXList(token); // could be null!
+	const FXList* fxl = TheFXListStore->findFXList(token);    // could be null!
 	DEBUG_ASSERTCRASH(fxl != nullptr || stricmp(token, "None") == 0, ("FXList %s not found!", token));
 	// assign it, even if null!
 	*theFXList = fxl;
@@ -1307,7 +1307,7 @@ void INI::parseDamageFX(INI* ini, void* /*instance*/, void* store, const void* /
 	}
 	else
 	{
-		const DamageFX* fxl = TheDamageFXStore->findDamageFX(token); // could be null!
+		const DamageFX* fxl = TheDamageFXStore->findDamageFX(token);    // could be null!
 		DEBUG_ASSERTCRASH(fxl, ("DamageFX %s not found!", token));
 		// assign it, even if null!
 		*theDamageFX = fxl;
@@ -1324,7 +1324,7 @@ void INI::parseObjectCreationList(INI* ini, void* /*instance*/, void* store, con
 	typedef const ObjectCreationList* ConstObjectCreationListPtr;
 	ConstObjectCreationListPtr* theObjectCreationList = (ConstObjectCreationListPtr*)store;
 
-	const ObjectCreationList* ocl = TheObjectCreationListStore->findObjectCreationList(token); // could be null!
+	const ObjectCreationList* ocl = TheObjectCreationListStore->findObjectCreationList(token);    // could be null!
 	DEBUG_ASSERTCRASH(ocl || stricmp(token, "None") == 0, ("ObjectCreationList %s not found!", token));
 	// assign it, even if null!
 	*theObjectCreationList = ocl;
@@ -1627,7 +1627,7 @@ Type scanType(std::string_view token)
 	return scanType<UnsignedInt>(token);
 #else
 	UnsignedInt value;
-	if (sscanf(token, "%u", &value) != 1) // unsigned int is %u, not %d
+	if (sscanf(token, "%u", &value) != 1)    // unsigned int is %u, not %d
 		throw INI_INVALID_DATA;
 
 	#if USE_STD_FROM_CHARS_PARSING == -1
@@ -1686,7 +1686,7 @@ Type scanType(std::string_view token)
 
 	DEBUG_CRASH(("token %s is not a valid member of the index list", token));
 	throw INI_INVALID_DATA;
-	return 0; // never executed, but keeps compiler happy
+	return 0;    // never executed, but keeps compiler happy
 }
 //-------------------------------------------------------------------------------------------------
 /*static*/ Int INI::scanLookupList(const char* token, ConstLookupListRecArray lookupList)
@@ -1708,7 +1708,7 @@ Type scanType(std::string_view token)
 
 	DEBUG_CRASH(("token %s is not a valid member of the lookup list", token));
 	throw INI_INVALID_DATA;
-	return 0; // never executed, but keeps compiler happy
+	return 0;    // never executed, but keeps compiler happy
 }
 
 //-------------------------------------------------------------------------------------------------

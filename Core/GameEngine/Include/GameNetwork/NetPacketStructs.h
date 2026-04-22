@@ -96,7 +96,7 @@ inline size_t writeStringWithNull(UnsignedByte* dest, const AsciiString& value)
 	return static_cast<size_t>(value.getByteCount() + 1);
 }
 
-} // namespace network
+}    // namespace network
 
 // Ensure structs are packed to 1-byte alignment for network protocol compatibility
 #pragma pack(push, 1)
@@ -116,7 +116,7 @@ constexpr const NetPacketFieldType PlayerId = 'P';
 constexpr const NetPacketFieldType CommandId = 'C';
 constexpr const NetPacketFieldType Data = 'D';
 constexpr const NetPacketFieldType Repeat = 'Z';
-} // namespace NetPacketFieldTypes
+}    // namespace NetPacketFieldTypes
 
 ////////////////////////////////////////////////////////////////////////////////
 // Common packet field structures
@@ -312,8 +312,8 @@ struct NetPacketAckCommandData
 
 	struct FixedData
 	{
-		UnsignedShort commandId;       // Command ID being acknowledged
-		UnsignedByte originalPlayerId; // Original player who sent the command
+		UnsignedShort commandId;    // Command ID being acknowledged
+		UnsignedByte originalPlayerId;    // Original player who sent the command
 	};
 
 	static size_t getSize(const NetCommandMsg& msg) { return sizeof(FixedData); }

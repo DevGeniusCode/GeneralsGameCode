@@ -65,7 +65,7 @@ protected:
 	NetCommandMsg* m_msg;
 	NetCommandRef* m_next;
 	NetCommandRef* m_prev;
-	UnsignedByte m_relay; ///< Need this in the command reference since the relay value will be different depending on where this particular reference is being sent.
+	UnsignedByte m_relay;    ///< Need this in the command reference since the relay value will be different depending on where this particular reference is being sent.
 	time_t m_timeLastSent;
 
 #ifdef DEBUG_NETCOMMANDREF

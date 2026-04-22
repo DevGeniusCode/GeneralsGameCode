@@ -43,7 +43,7 @@
 //         Includes
 //----------------------------------------------------------------------------
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameClient/GameText.h"
 #include "Common/Language.h"
@@ -133,13 +133,13 @@ public:
 	GameTextManager();
 	virtual ~GameTextManager() override;
 
-	virtual void init() override;      ///< Initializes the text system
-	virtual void deinit();             ///< Shuts down the text system
-	virtual void update() override {}; ///< update text manager
-	virtual void reset() override;     ///< Resets the text system
+	virtual void init() override;    ///< Initializes the text system
+	virtual void deinit();    ///< Shuts down the text system
+	virtual void update() override {};    ///< update text manager
+	virtual void reset() override;    ///< Resets the text system
 
-	virtual UnicodeString fetch(const Char* label, Bool* exists = nullptr) override; ///< Returns the associated labeled unicode text
-	virtual UnicodeString fetch(AsciiString label, Bool* exists = nullptr) override; ///< Returns the associated labeled unicode text
+	virtual UnicodeString fetch(const Char* label, Bool* exists = nullptr) override;    ///< Returns the associated labeled unicode text
+	virtual UnicodeString fetch(AsciiString label, Bool* exists = nullptr) override;    ///< Returns the associated labeled unicode text
 	virtual UnicodeString fetchFormat(const Char* label, ...) override;
 	virtual UnicodeString fetchOrSubstitute(const Char* label, const WideChar* substituteText) override;
 	virtual UnicodeString fetchOrSubstituteFormat(const Char* label, const WideChar* substituteFormat, ...) override;
@@ -432,7 +432,7 @@ void GameTextManager::stripSpaces(WideChar* string)
 				str--;
 			}
 
-			skipall = TRUE; // skip all spaces
+			skipall = TRUE;    // skip all spaces
 			last = *str++ = ch;
 			continue;
 		}
@@ -501,7 +501,7 @@ void GameTextManager::readToEndOfQuote(File* file, Char* in, Char* out, Char* wa
 		{
 			if ((ch = *in++) == 0)
 			{
-				in = nullptr; // have exhausted the input m_buffer
+				in = nullptr;    // have exhausted the input m_buffer
 				ch = readChar(file);
 			}
 		}
@@ -532,7 +532,7 @@ void GameTextManager::readToEndOfQuote(File* file, Char* in, Char* out, Char* wa
 		}
 		else if (ch == '"' && !slash)
 		{
-			break; // done
+			break;    // done
 		}
 		else
 		{
@@ -558,7 +558,7 @@ void GameTextManager::readToEndOfQuote(File* file, Char* in, Char* out, Char* wa
 		{
 			if ((ch = *in++) == 0)
 			{
-				in = nullptr; // have exhausted the input m_buffer
+				in = nullptr;    // have exhausted the input m_buffer
 				ch = readChar(file);
 			}
 		}
@@ -1007,7 +1007,7 @@ Bool GameTextManager::parseStringFile(const char* filename)
 
 		removeLeadingAndTrailing(m_buffer);
 
-		if ((*(unsigned short*)m_buffer == 0x2F2F) || !m_buffer[0]) //	0x2F2F is Hex for //
+		if ((*(unsigned short*)m_buffer == 0x2F2F) || !m_buffer[0])    //	0x2F2F is Hex for //
 			continue;
 
 		// make sure label is unique
@@ -1136,7 +1136,7 @@ Bool GameTextManager::parseMapStringFile(const char* filename)
 
 		removeLeadingAndTrailing(m_buffer);
 
-		if ((*(unsigned short*)m_buffer == 0x2F2F) || !m_buffer[0]) //	0x2F2F is Hex for //
+		if ((*(unsigned short*)m_buffer == 0x2F2F) || !m_buffer[0])    //	0x2F2F is Hex for //
 			continue;
 
 		// make sure label is unique

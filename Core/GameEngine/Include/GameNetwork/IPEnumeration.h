@@ -69,8 +69,8 @@ public:
 	IPEnumeration();
 	~IPEnumeration();
 
-	EnumeratedIP* getAddresses(); ///< Return a linked list of local IP addresses
-	AsciiString getMachineName(); ///< Return the Network Neighborhood machine name
+	EnumeratedIP* getAddresses();    ///< Return a linked list of local IP addresses
+	AsciiString getMachineName();    ///< Return the Network Neighborhood machine name
 
 protected:
 	void addNewIP(UnsignedByte a, UnsignedByte b, UnsignedByte c, UnsignedByte d);

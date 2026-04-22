@@ -123,7 +123,7 @@ Bool RAMFile::open(const Char* filename, Int access, size_t bufferSize)
 {
 	// USE_PERF_TIMER(RAMFile)
 
-	bufferSize = 0; // RAM File needs no file buffer because it is read in one go.
+	bufferSize = 0;    // RAM File needs no file buffer because it is read in one go.
 
 	File* file = TheFileSystem->openFile(filename, access, bufferSize);
 
@@ -160,7 +160,7 @@ Bool RAMFile::open(File* file)
 
 	// read whole file in to memory
 	m_size = file->size();
-	m_data = MSGNEW("RAMFILE") char[m_size]; // pool[]ify
+	m_data = MSGNEW("RAMFILE") char[m_size];    // pool[]ify
 
 	if (m_data == nullptr)
 	{
@@ -198,7 +198,7 @@ Bool RAMFile::openFromArchive(File* archiveFile, const AsciiString& filename, In
 	}
 
 	delete[] m_data;
-	m_data = MSGNEW("RAMFILE") Char[size]; // pool[]ify
+	m_data = MSGNEW("RAMFILE") Char[size];    // pool[]ify
 	m_size = size;
 
 	if (archiveFile->seek(offset, File::START) != offset)
@@ -559,11 +559,11 @@ char* RAMFile::readEntireAndClose()
 	if (m_data == nullptr)
 	{
 		DEBUG_CRASH(("m_data is null in RAMFile::readEntireAndClose -- should not happen!"));
-		return NEW char[1]; // just to avoid crashing...
+		return NEW char[1];    // just to avoid crashing...
 	}
 
 	char* tmp = m_data;
-	m_data = nullptr; // will belong to our caller!
+	m_data = nullptr;    // will belong to our caller!
 
 	close();
 

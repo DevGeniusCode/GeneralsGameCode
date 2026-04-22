@@ -29,7 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/GameState.h"
 #include "GameClient/MapUtil.h"
@@ -102,7 +102,7 @@ protected:
 
 	Bool m_restrictGamesToLobby;
 
-	std::set<Int> m_vip; // VIP people
+	std::set<Int> m_vip;    // VIP people
 
 	Int m_rankPoints[MAX_RANKS];
 
@@ -189,7 +189,7 @@ GameSpyConfig::GameSpyConfig(AsciiString config)
 	while (config.nextToken(&line, "\n"))
 	{
 		if (line.getCharAt(line.getLength() - 1) == '\r')
-			line.removeLastChar(); // there is a trailing '\r'
+			line.removeLastChar();    // there is a trailing '\r'
 
 		line.trim();
 

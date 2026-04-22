@@ -55,16 +55,16 @@ public:
 	LoadScreen();
 	virtual ~LoadScreen();
 
-	virtual void init(GameInfo* game) = 0; ///< Init the loadscreen
-	virtual void reset() = 0;              ///< Reset the system
-	virtual void update() = 0;             ///< Update the state of the slider bars
-	virtual void update(Int percent);      ///< Update the state of the slider bars
+	virtual void init(GameInfo* game) = 0;    ///< Init the loadscreen
+	virtual void reset() = 0;    ///< Reset the system
+	virtual void update() = 0;    ///< Update the state of the slider bars
+	virtual void update(Int percent);    ///< Update the state of the slider bars
 	virtual void processProgress(Int playerId, Int percentage) = 0;
 	virtual void setProgressRange(Int min, Int max) = 0;
 
 protected:
 	void setLoadScreen(GameWindow* g) { m_loadScreen = g; }
-	GameWindow* m_loadScreen; ///< The GameWindow that is our loadscreen
+	GameWindow* m_loadScreen;    ///< The GameWindow that is our loadscreen
 
 private:
 };
@@ -78,13 +78,13 @@ public:
 	SinglePlayerLoadScreen();
 	virtual ~SinglePlayerLoadScreen() override;
 
-	virtual void init(GameInfo* game) override; ///< Init the loadscreen
-	virtual void reset() override;              ///< Reset the system
+	virtual void init(GameInfo* game) override;    ///< Init the loadscreen
+	virtual void reset() override;    ///< Reset the system
 	virtual void update()
 	{
 		DEBUG_CRASH(("Call update(Int) instead.  This update isn't supported"));
 	};
-	virtual void update(Int percent) override; ///< Update the state of the progress bar
+	virtual void update(Int percent) override;    ///< Update the state of the progress bar
 	virtual void processProgress(Int playerId, Int percentage) override
 	{
 		DEBUG_CRASH(("We Got to a single player load screen throw the Network..."));
@@ -93,7 +93,7 @@ public:
 	virtual void setProgressRange(Int min, Int max) override;
 
 private:
-	GameWindow* m_progressBar; ///< Pointer to the Progress Bar on the window
+	GameWindow* m_progressBar;    ///< Pointer to the Progress Bar on the window
 	GameWindow* m_percent;
 
 	GameWindow* m_objectiveWin;
@@ -126,13 +126,13 @@ public:
 	ChallengeLoadScreen();
 	virtual ~ChallengeLoadScreen() override;
 
-	virtual void init(GameInfo* game) override; ///< Init the loadscreen
-	virtual void reset() override;              ///< Reset the system
+	virtual void init(GameInfo* game) override;    ///< Init the loadscreen
+	virtual void reset() override;    ///< Reset the system
 	virtual void update()
 	{
 		DEBUG_CRASH(("Call update(Int) instead.  This update isn't supported"));
 	};
-	virtual void update(Int percent) override; ///< Update the state of the progress bar
+	virtual void update(Int percent) override;    ///< Update the state of the progress bar
 	virtual void processProgress(Int playerId, Int percentage) override
 	{
 		DEBUG_CRASH(("We Got to a single player load screen throw the Network..."));
@@ -141,7 +141,7 @@ public:
 	virtual void setProgressRange(Int min, Int max) override;
 
 private:
-	GameWindow* m_progressBar; ///< Pointer to the Progress Bar on the window
+	GameWindow* m_progressBar;    ///< Pointer to the Progress Bar on the window
 
 	VideoBuffer* m_videoBuffer;
 	VideoStreamInterface* m_videoStream;
@@ -196,13 +196,13 @@ public:
 	ShellGameLoadScreen();
 	virtual ~ShellGameLoadScreen() override;
 
-	virtual void init(GameInfo* game) override; ///< Init the loadscreen
-	virtual void reset() override;              ///< Reset the system
+	virtual void init(GameInfo* game) override;    ///< Init the loadscreen
+	virtual void reset() override;    ///< Reset the system
 	virtual void update()
 	{
 		DEBUG_CRASH(("Call update(Int) instead.  This update isn't supported"));
 	};
-	virtual void update(Int percent) override; ///< Update the state of the progress bar
+	virtual void update(Int percent) override;    ///< Update the state of the progress bar
 	virtual void processProgress(Int playerId, Int percentage) override
 	{
 		DEBUG_CRASH(("We Got to a single player load screen throw the Network..."));
@@ -210,7 +210,7 @@ public:
 	virtual void setProgressRange(Int min, Int max) override {}
 
 private:
-	GameWindow* m_progressBar; ///< Pointer to the Progress Bar on the window
+	GameWindow* m_progressBar;    ///< Pointer to the Progress Bar on the window
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,21 +222,21 @@ public:
 	MultiPlayerLoadScreen();
 	virtual ~MultiPlayerLoadScreen() override;
 
-	virtual void init(GameInfo* game) override; ///< Init the loadscreen
-	virtual void reset() override;              ///< Reset the system
+	virtual void init(GameInfo* game) override;    ///< Init the loadscreen
+	virtual void reset() override;    ///< Reset the system
 	virtual void update()
 	{
 		DEBUG_CRASH(("Call update(Int) instead.  This update isn't supported"));
 	};
-	virtual void update(Int percent) override; ///< Update the state of the progress bar
+	virtual void update(Int percent) override;    ///< Update the state of the progress bar
 	virtual void processProgress(Int playerId, Int percentage) override;
 	virtual void setProgressRange(Int min, Int max) override {}
 
 private:
-	GameWindow* m_progressBars[MAX_SLOTS]; ///< pointer array to all the progress bars on the window
-	GameWindow* m_playerNames[MAX_SLOTS];  ///< pointer array to all the static text player names on the window
-	GameWindow* m_playerSide[MAX_SLOTS];   ///< pointer array to all the static text player sides
-	Int m_playerLookup[MAX_SLOTS];         ///< lookup table to translate network slot info screen slot (to account for holes in the slot list)
+	GameWindow* m_progressBars[MAX_SLOTS];    ///< pointer array to all the progress bars on the window
+	GameWindow* m_playerNames[MAX_SLOTS];    ///< pointer array to all the static text player names on the window
+	GameWindow* m_playerSide[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	Int m_playerLookup[MAX_SLOTS];    ///< lookup table to translate network slot info screen slot (to account for holes in the slot list)
 	GameWindow* m_mapPreview;
 	GameWindow* m_buttonMapStartPosition[MAX_SLOTS];
 	GameWindow* m_portraitLocalGeneral;
@@ -253,30 +253,30 @@ public:
 	GameSpyLoadScreen();
 	virtual ~GameSpyLoadScreen() override;
 
-	virtual void init(GameInfo* game) override; ///< Init the loadscreen
-	virtual void reset() override;              ///< Reset the system
+	virtual void init(GameInfo* game) override;    ///< Init the loadscreen
+	virtual void reset() override;    ///< Reset the system
 	virtual void update()
 	{
 		DEBUG_CRASH(("Call update(Int) instead.  This update isn't supported"));
 	};
-	virtual void update(Int percent) override; ///< Update the state of the progress bar
+	virtual void update(Int percent) override;    ///< Update the state of the progress bar
 	virtual void processProgress(Int playerId, Int percentage) override;
 	virtual void setProgressRange(Int min, Int max) override {}
 
 private:
-	GameWindow* m_progressBars[MAX_SLOTS];           ///< pointer array to all the progress bars on the window
-	GameWindow* m_playerNames[MAX_SLOTS];            ///< pointer array to all the static text player names on the window
-	GameWindow* m_playerSide[MAX_SLOTS];             ///< pointer array to all the static text player sides
-	GameWindow* m_playerFavoriteFactions[MAX_SLOTS]; ///< pointer array to all the static text player sides
-	GameWindow* m_playerTotalDisconnects[MAX_SLOTS]; ///< pointer array to all the static text player sides
-	GameWindow* m_playerWin[MAX_SLOTS];              ///< pointer array to all the static text player sides
-	GameWindow* m_playerWinLosses[MAX_SLOTS];        ///< pointer array to all the static text player sides
-	GameWindow* m_playerRank[MAX_SLOTS];             ///< pointer array to all the static text player sides
-	GameWindow* m_playerOfficerMedal[MAX_SLOTS];     ///< pointer array to all the static text player munkees
+	GameWindow* m_progressBars[MAX_SLOTS];    ///< pointer array to all the progress bars on the window
+	GameWindow* m_playerNames[MAX_SLOTS];    ///< pointer array to all the static text player names on the window
+	GameWindow* m_playerSide[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	GameWindow* m_playerFavoriteFactions[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	GameWindow* m_playerTotalDisconnects[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	GameWindow* m_playerWin[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	GameWindow* m_playerWinLosses[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	GameWindow* m_playerRank[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	GameWindow* m_playerOfficerMedal[MAX_SLOTS];    ///< pointer array to all the static text player munkees
 	GameWindow* m_mapPreview;
 	GameWindow* m_buttonMapStartPosition[MAX_SLOTS];
 
-	Int m_playerLookup[MAX_SLOTS]; ///< lookup table to translate network slot info screen slot (to account for holes in the slot list)
+	Int m_playerLookup[MAX_SLOTS];    ///< lookup table to translate network slot info screen slot (to account for holes in the slot list)
 
 	GameWindow* m_portraitLocalGeneral;
 	GameWindow* m_featuresLocalGeneral;
@@ -292,13 +292,13 @@ public:
 	MapTransferLoadScreen();
 	virtual ~MapTransferLoadScreen() override;
 
-	virtual void init(GameInfo* game) override; ///< Init the loadscreen
-	virtual void reset() override;              ///< Reset the system
+	virtual void init(GameInfo* game) override;    ///< Init the loadscreen
+	virtual void reset() override;    ///< Reset the system
 	virtual void update()
 	{
 		DEBUG_CRASH(("Call update(Int) instead.  This update isn't supported"));
 	};
-	virtual void update(Int percent) override; ///< Update the state of the progress bar
+	virtual void update(Int percent) override;    ///< Update the state of the progress bar
 	virtual void processProgress(Int playerId, Int percentage) override
 	{
 		DEBUG_CRASH(("Call processProgress(Int, Int, AsciiString) instead."));
@@ -309,12 +309,12 @@ public:
 	void setCurrentFilename(AsciiString filename);
 
 private:
-	GameWindow* m_progressBars[MAX_SLOTS]; ///< pointer array to all the progress bars on the window
-	GameWindow* m_playerNames[MAX_SLOTS];  ///< pointer array to all the static text player names on the window
-	GameWindow* m_progressText[MAX_SLOTS]; ///< pointer array to all the static text player sides
-	Int m_playerLookup[MAX_SLOTS];         ///< lookup table to translate network slot info screen slot (to account for holes in the slot list)
-	Int m_oldProgress[MAX_SLOTS];          ///< old vals, so we can call processProgress() every frame and not touch the GUI
+	GameWindow* m_progressBars[MAX_SLOTS];    ///< pointer array to all the progress bars on the window
+	GameWindow* m_playerNames[MAX_SLOTS];    ///< pointer array to all the static text player names on the window
+	GameWindow* m_progressText[MAX_SLOTS];    ///< pointer array to all the static text player sides
+	Int m_playerLookup[MAX_SLOTS];    ///< lookup table to translate network slot info screen slot (to account for holes in the slot list)
+	Int m_oldProgress[MAX_SLOTS];    ///< old vals, so we can call processProgress() every frame and not touch the GUI
 	GameWindow* m_fileNameText;
 	GameWindow* m_timeoutText;
-	Int m_oldTimeout; ///< old val, so we can call processTimeout() every frame and not touch the GUI
+	Int m_oldTimeout;    ///< old val, so we can call processTimeout() every frame and not touch the GUI
 };

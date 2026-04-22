@@ -30,7 +30,7 @@
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
 
 // USER INCLUDES //////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/GameEngine.h"
 #include "Common/MessageStream.h"
@@ -79,7 +79,7 @@ struct ConnectionMessage
 };
 #pragma pack(pop)
 
-static const int CmdMsgLen = 6; //< Minimum size of a command packet (Int + Unsigned Short)
+static const int CmdMsgLen = 6;    //< Minimum size of a command packet (Int + Unsigned Short)
 
 // PRIVATE DATA ///////////////////////////////////////////////////////////////
 
@@ -101,20 +101,20 @@ public:
 	// Setup / Teardown functions
 	Network();
 	virtual ~Network() override;
-	virtual void init() override;       ///< Initialize or re-initialize the instance
-	virtual void reset() override;      ///< Reinitialize the network
-	virtual void update() override;     ///< Process command list
-	virtual void liteupdate() override; ///< Do a lightweight update to send packets and pass messages.
-	Bool deinit();                      ///< Shutdown connections, release memory
+	virtual void init() override;    ///< Initialize or re-initialize the instance
+	virtual void reset() override;    ///< Reinitialize the network
+	virtual void update() override;    ///< Process command list
+	virtual void liteupdate() override;    ///< Do a lightweight update to send packets and pass messages.
+	Bool deinit();    ///< Shutdown connections, release memory
 
 	virtual void setLocalAddress(UnsignedInt ip, UnsignedInt port) override;
 	virtual UnsignedInt getRunAhead() override { return m_runAhead; }
 	virtual UnsignedInt getFrameRate() override { return m_frameRate; }
-	virtual UnsignedInt getPacketArrivalCushion() override; ///< Returns the smallest packet arrival cushion since this was last called.
+	virtual UnsignedInt getPacketArrivalCushion() override;    ///< Returns the smallest packet arrival cushion since this was last called.
 	virtual Bool isFrameDataReady() override;
 	virtual Bool isStalling() override;
 	virtual void parseUserList(const GameInfo* game) override;
-	virtual void startGame() override; ///< Sets the network game frame counter to -1
+	virtual void startGame() override;    ///< Sets the network game frame counter to -1
 
 	virtual void sendChat(UnicodeString text, Int playerMask) override;
 	virtual void sendDisconnectChat(UnicodeString text) override;
@@ -163,10 +163,10 @@ public:
 	virtual Bool sawCRCMismatch() override { return m_sawCRCMismatch; }
 	virtual Bool isPlayerConnected(Int playerID) override;
 
-	virtual void notifyOthersOfCurrentFrame() override;              ///< Tells all the other players what frame we are on.
-	virtual void notifyOthersOfNewFrame(UnsignedInt frame) override; ///< Tells all the other players that we are on a new frame.
+	virtual void notifyOthersOfCurrentFrame() override;    ///< Tells all the other players what frame we are on.
+	virtual void notifyOthersOfNewFrame(UnsignedInt frame) override;    ///< Tells all the other players that we are on a new frame.
 
-	virtual Int getExecutionFrame() override; ///< Returns the next valid frame for simultaneous command execution.
+	virtual Int getExecutionFrame() override;    ///< Returns the next valid frame for simultaneous command execution.
 
 	// For disconnect blame assignment
 	virtual UnsignedInt getPingFrame() override;
@@ -174,34 +174,34 @@ public:
 	virtual Int getPingsReceived() override;
 
 protected:
-	void GetCommandsFromCommandList();                                 ///< Remove commands from TheCommandList and put them on the Network command list.
-	void SendCommandsToConnectionManager();                            ///< Send the new commands to the ConnectionManager
-	Bool AllCommandsReady(UnsignedInt frame);                          ///< Do we have all the commands for the given frame?
-	void RelayCommandsToCommandList(UnsignedInt frame);                ///< Put the commands for the given frame onto TheCommandList.
-	Bool isTransferCommand(GameMessage* msg);                          ///< Is this a command that needs to be transfered to the other clients?
-	Bool processCommand(GameMessage* msg);                             ///< Whatever needs to be done as a result of this command, do it now.
-	void processFrameSynchronizedNetCommand(NetCommandRef* msg);       ///< If there is a network command that needs to be executed at the same frame number on all clients, it happens here.
-	void processRunAheadCommand(NetRunAheadCommandMsg* msg);           ///< Do what needs to be done when we get a new run ahead command.
-	void processDestroyPlayerCommand(NetDestroyPlayerCommandMsg* msg); ///< Do what needs to be done when we need to destroy a player.
-	void endOfGameCheck();                                             ///< Checks to see if its ok to leave this game.  If it is, send the apropriate command to the game logic.
+	void GetCommandsFromCommandList();    ///< Remove commands from TheCommandList and put them on the Network command list.
+	void SendCommandsToConnectionManager();    ///< Send the new commands to the ConnectionManager
+	Bool AllCommandsReady(UnsignedInt frame);    ///< Do we have all the commands for the given frame?
+	void RelayCommandsToCommandList(UnsignedInt frame);    ///< Put the commands for the given frame onto TheCommandList.
+	Bool isTransferCommand(GameMessage* msg);    ///< Is this a command that needs to be transfered to the other clients?
+	Bool processCommand(GameMessage* msg);    ///< Whatever needs to be done as a result of this command, do it now.
+	void processFrameSynchronizedNetCommand(NetCommandRef* msg);    ///< If there is a network command that needs to be executed at the same frame number on all clients, it happens here.
+	void processRunAheadCommand(NetRunAheadCommandMsg* msg);    ///< Do what needs to be done when we get a new run ahead command.
+	void processDestroyPlayerCommand(NetDestroyPlayerCommandMsg* msg);    ///< Do what needs to be done when we need to destroy a player.
+	void endOfGameCheck();    ///< Checks to see if its ok to leave this game.  If it is, send the apropriate command to the game logic.
 	Bool timeForNewFrame();
 
-	ConnectionManager* m_conMgr; ///< The connection manager object
+	ConnectionManager* m_conMgr;    ///< The connection manager object
 
-	UnsignedInt m_lastFrame; ///< The last game logic frame that was processed.
+	UnsignedInt m_lastFrame;    ///< The last game logic frame that was processed.
 
-	NetLocalStatus m_localStatus; ///< My local status as a player in this game.
+	NetLocalStatus m_localStatus;    ///< My local status as a player in this game.
 
-	Int m_runAhead; ///< The current run ahead of the game.
+	Int m_runAhead;    ///< The current run ahead of the game.
 	Int m_frameRate;
-	Int m_lastExecutionFrame; ///< The highest frame number that a command could have been executed on.
+	Int m_lastExecutionFrame;    ///< The highest frame number that a command could have been executed on.
 	Int m_lastFrameCompleted;
 	Bool m_didSelfSlug;
-	__int64 m_perfCountFreq; ///< The frequency of the performance counter.
+	__int64 m_perfCountFreq;    ///< The frequency of the performance counter.
 
-	__int64 m_nextFrameTime; ///< When did we execute the last frame?  For slugging the GameLogic...
+	__int64 m_nextFrameTime;    ///< When did we execute the last frame?  For slugging the GameLogic...
 
-	Bool m_frameDataReady; ///< Is the frame data for the next frame ready to be executed by TheGameLogic?
+	Bool m_frameDataReady;    ///< Is the frame data for the next frame ready to be executed by TheGameLogic?
 	Bool m_isStalling;
 
 	// CRC info
@@ -325,10 +325,10 @@ void Network::init()
 	m_conMgr->init();
 
 	m_lastFrame = 0;
-	m_runAhead = min(max(30, MIN_RUNAHEAD), MAX_FRAMES_AHEAD / 2); ///< @todo: don't hard-code the run-ahead.
+	m_runAhead = min(max(30, MIN_RUNAHEAD), MAX_FRAMES_AHEAD / 2);    ///< @todo: don't hard-code the run-ahead.
 	m_frameRate = 30;
-	m_lastExecutionFrame = m_runAhead - 1; // subtract 1 since we're starting on frame 0
-	m_lastFrameCompleted = m_runAhead - 1; // subtract 1 since we're starting on frame 0
+	m_lastExecutionFrame = m_runAhead - 1;    // subtract 1 since we're starting on frame 0
+	m_lastFrameCompleted = m_runAhead - 1;    // subtract 1 since we're starting on frame 0
 	m_frameDataReady = FALSE;
 	m_isStalling = FALSE;
 	m_didSelfSlug = FALSE;
@@ -406,7 +406,7 @@ void Network::parseUserList(const GameInfo* game)
 
 	// Now that we have the players in this game, we need to reset the FrameData stuff.
 	m_conMgr->destroyGameMessages();
-	m_conMgr->zeroFrames(1, m_runAhead - 1); ///< we zero out m_runAhead frames +1 because the game actually starts at frame 1.
+	m_conMgr->zeroFrames(1, m_runAhead - 1);    ///< we zero out m_runAhead frames +1 because the game actually starts at frame 1.
 }
 
 /**
@@ -473,12 +473,12 @@ void Network::GetCommandsFromCommandList()
 	{
 		next = msg->next();
 		if (isTransferCommand(msg))
-		{ // Is this something we should be sending to the other players?
+		{    // Is this something we should be sending to the other players?
 			if (m_localStatus == NETLOCALSTATUS_INGAME)
 			{
 				m_conMgr->sendLocalGameMessage(msg, getExecutionFrame());
 			}
-			TheCommandList->removeMessage(msg); // This does not destroy msg's prev and next pointers, so they should still be valid.
+			TheCommandList->removeMessage(msg);    // This does not destroy msg's prev and next pointers, so they should still be valid.
 			deleteInstance(msg);
 		}
 		else
@@ -524,7 +524,7 @@ Bool Network::processCommand(GameMessage* msg)
 			if (TheGameLogic->getFrame() == 1)
 			{
 				m_localStatus = NETLOCALSTATUS_INGAME;
-				NetCommandList* netcmdlist = m_conMgr->getFrameCommandList(0); // clear out frame 0 since we skipped it
+				NetCommandList* netcmdlist = m_conMgr->getFrameCommandList(0);    // clear out frame 0 since we skipped it
 				deleteInstance(netcmdlist);
 			}
 			else
@@ -563,11 +563,11 @@ Bool Network::processCommand(GameMessage* msg)
 		DEBUG_LOG(("Network::processCommand - local player leaving, executionFrame = %d, player leaving on frame %d", executionFrame, executionFrame + 1));
 
 		m_conMgr->handleLocalPlayerLeaving(executionFrame + 1);
-		m_conMgr->processFrameTick(executionFrame);     // This is the last command we will execute, so send the command count.
-		                                                // Also, we are guaranteed not to send any more commands for this frame
-		                                                // since the local status will change to "Leaving" so we don't have to
-		                                                // worry about messing up the other players.
-		m_conMgr->processFrameTick(executionFrame + 1); // since we send it for executionFrame+1, we need to process both ticks
+		m_conMgr->processFrameTick(executionFrame);    // This is the last command we will execute, so send the command count.
+		                                               // Also, we are guaranteed not to send any more commands for this frame
+		                                               // since the local status will change to "Leaving" so we don't have to
+		                                               // worry about messing up the other players.
+		m_conMgr->processFrameTick(executionFrame + 1);    // since we send it for executionFrame+1, we need to process both ticks
 		m_lastFrameCompleted = executionFrame;
 		DEBUG_LOG(("Network::processCommand - player leaving on frame %d", executionFrame));
 		m_localStatus = NETLOCALSTATUS_LEAVING;
@@ -596,7 +596,7 @@ Bool Network::AllCommandsReady(UnsignedInt frame)
 		return TRUE;
 	}
 
-	return m_conMgr->allCommandsReady(frame); // && m_conMgr->allCRCsReady(frame);
+	return m_conMgr->allCommandsReady(frame);    // && m_conMgr->allCRCsReady(frame);
 }
 
 /**
@@ -681,16 +681,16 @@ void Network::processRunAheadCommand(NetRunAheadCommandMsg* msg)
 {
 	m_runAhead = msg->getRunAhead();
 	m_frameRate = msg->getFrameRate();
-	time_t frameGrouping = (1000 * m_runAhead) / m_frameRate; // number of miliseconds between packet sends
-	frameGrouping = frameGrouping / 2;                        // since we only want the latency for one way to be a factor.
-	                                                          //	DEBUG_LOG(("Network::processRunAheadCommand - trying to set frame grouping to %d.  run ahead = %d, m_frameRate = %d", frameGrouping, m_runAhead, m_frameRate));
+	time_t frameGrouping = (1000 * m_runAhead) / m_frameRate;    // number of miliseconds between packet sends
+	frameGrouping = frameGrouping / 2;    // since we only want the latency for one way to be a factor.
+	                                      //	DEBUG_LOG(("Network::processRunAheadCommand - trying to set frame grouping to %d.  run ahead = %d, m_frameRate = %d", frameGrouping, m_runAhead, m_frameRate));
 	if (frameGrouping < 1)
 	{
-		frameGrouping = 1; // Having a value less than 1 doesn't make sense.
+		frameGrouping = 1;    // Having a value less than 1 doesn't make sense.
 	}
 	if (frameGrouping > 500)
 	{
-		frameGrouping = 500; // Max of a half a second.
+		frameGrouping = 500;    // Max of a half a second.
 	}
 	m_conMgr->setFrameGrouping(frameGrouping);
 }
@@ -743,7 +743,7 @@ void Network::update()
 	}
 #endif
 
-	GetCommandsFromCommandList(); // Remove commands from TheCommandList and send them to the connection manager.
+	GetCommandsFromCommandList();    // Remove commands from TheCommandList and send them to the connection manager.
 	if (m_conMgr != nullptr)
 	{
 		if (m_localStatus == NETLOCALSTATUS_INGAME)
@@ -758,18 +758,18 @@ void Network::update()
 	liteupdate();
 
 	if (m_localStatus == NETLOCALSTATUS_LEFT)
-	{ // || (m_localStatus == NETLOCALSTATUS_LEAVING)) {
+	{    // || (m_localStatus == NETLOCALSTATUS_LEAVING)) {
 		endOfGameCheck();
 	}
 
 	if (AllCommandsReady(TheGameLogic->getFrame()))
-	{ // If all the commands are ready for the next frame...
+	{    // If all the commands are ready for the next frame...
 		m_conMgr->handleAllCommandsReady();
 		//		DEBUG_LOG(("Network::update - frame %d is ready", TheGameLogic->getFrame()));
 		if (timeForNewFrame())
-		{                                                       // This needs to come after any other pre-frame execution checks as this changes the timing variables.
-			RelayCommandsToCommandList(TheGameLogic->getFrame()); // Put the commands for the next frame on TheCommandList.
-			m_frameDataReady = TRUE;                              // Tell the GameEngine to run the commands for the new frame.
+		{    // This needs to come after any other pre-frame execution checks as this changes the timing variables.
+			RelayCommandsToCommandList(TheGameLogic->getFrame());    // Put the commands for the next frame on TheCommandList.
+			m_frameDataReady = TRUE;    // Tell the GameEngine to run the commands for the new frame.
 		}
 	}
 	else
@@ -838,12 +838,12 @@ Bool Network::timeForNewFrame()
 	if (m_conMgr != nullptr)
 	{
 		Real cushion = m_conMgr->getMinimumCushion();
-		Real runAheadPercentage = m_runAhead * (TheGlobalData->m_networkRunAheadSlack / (Real)100.0); // If we are at least 50% into our slack, we need to slow down.
+		Real runAheadPercentage = m_runAhead * (TheGlobalData->m_networkRunAheadSlack / (Real)100.0);    // If we are at least 50% into our slack, we need to slow down.
 		if (cushion < runAheadPercentage)
 		{
 			__int64 oldFrameDelay = frameDelay;
-			frameDelay += oldFrameDelay / 10; // temporarily decrease the frame rate by 20%.
-			                                  //			DEBUG_LOG(("Average cushion = %f, run ahead percentage = %f.  Adjusting frameDelay from %I64d to %I64d", cushion, runAheadPercentage, oldFrameDelay, frameDelay));
+			frameDelay += oldFrameDelay / 10;    // temporarily decrease the frame rate by 20%.
+			                                     //			DEBUG_LOG(("Average cushion = %f, run ahead percentage = %f.  Adjusting frameDelay from %I64d to %I64d", cushion, runAheadPercentage, oldFrameDelay, frameDelay));
 			m_didSelfSlug = TRUE;
 			//		} else {
 			//			DEBUG_LOG(("Average cushion = %f, run ahead percentage = %f", cushion, runAheadPercentage));

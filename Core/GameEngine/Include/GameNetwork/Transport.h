@@ -37,7 +37,7 @@
  */
 // we only ever allocate one of there, and it is quite large, so we really DON'T want
 // it to be a MemoryPoolObject (srj)
-class Transport //: public MemoryPoolObject
+class Transport    //: public MemoryPoolObject
 {
 	// MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(Transport, "Transport")
 public:
@@ -47,14 +47,14 @@ public:
 	Bool init(AsciiString ip, UnsignedShort port);
 	Bool init(UnsignedInt ip, UnsignedShort port);
 	void reset();
-	Bool update(); ///< Call this once a GameEngine tick, regardless of whether the frame advances.
+	Bool update();    ///< Call this once a GameEngine tick, regardless of whether the frame advances.
 
-	Bool doRecv(); ///< call this to service the receive packets
-	Bool doSend(); ///< call this to service the send queue.
+	Bool doRecv();    ///< call this to service the receive packets
+	Bool doSend();    ///< call this to service the send queue.
 
 	Bool queueSend(UnsignedInt addr, UnsignedShort port, const UnsignedByte* buf, Int len /*,
 	  NetMessageFlags flags, Int id */
-	);                                                                                    ///< Queue a packet for sending to the specified address and port.  This will be sent on the next update() call.
+	);    ///< Queue a packet for sending to the specified address and port.  This will be sent on the next update() call.
 
 	Bool allowBroadcasts(Bool val)
 	{

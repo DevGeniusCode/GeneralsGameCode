@@ -46,7 +46,7 @@
 //-----------------------------------------------------------------------------
 // SYSTEM INCLUDES ////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 //-----------------------------------------------------------------------------
 // USER INCLUDES //////////////////////////////////////////////////////////////
@@ -268,7 +268,7 @@ void TransitionGroup::init()
 
 void TransitionGroup::update()
 {
-	m_currentFrame += m_directionMultiplier; // we go forward or backwards depending.
+	m_currentFrame += m_directionMultiplier;    // we go forward or backwards depending.
 	TransitionWindowList::iterator it = m_transitionWindowList.begin();
 	while (it != m_transitionWindowList.end())
 	{

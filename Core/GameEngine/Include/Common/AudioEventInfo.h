@@ -89,46 +89,46 @@ struct AudioEventInfo : public MemoryPoolObject
 	MEMORY_POOL_GLUE_WITH_USERLOOKUP_CREATE(AudioEventInfo, "AudioEventInfo")
 
 public:
-	AsciiString m_audioName; // This name matches the name of the AudioEventRTS
-	AsciiString m_filename;  // For music tracks, this is the filename of the track
+	AsciiString m_audioName;    // This name matches the name of the AudioEventRTS
+	AsciiString m_filename;    // For music tracks, this is the filename of the track
 
-	Real m_volume;        // Desired volume of this audio
-	Real m_volumeShift;   // Desired volume shift of the audio
-	Real m_minVolume;     // Clamped minimum value, useful when muting sound effects
-	Real m_pitchShiftMin; // minimum pitch shift value
-	Real m_pitchShiftMax; // maximum pitch shift value
-	Int m_delayMin;       // minimum delay before we'll fire up another one of these
-	Int m_delayMax;       // maximum delay before we'll fire up another one of these
-	Int m_limit;          // Limit to the number of these sounds that can be fired up simultaneously
-	Int m_loopCount;      // number of times to loop this sound
+	Real m_volume;    // Desired volume of this audio
+	Real m_volumeShift;    // Desired volume shift of the audio
+	Real m_minVolume;    // Clamped minimum value, useful when muting sound effects
+	Real m_pitchShiftMin;    // minimum pitch shift value
+	Real m_pitchShiftMax;    // maximum pitch shift value
+	Int m_delayMin;    // minimum delay before we'll fire up another one of these
+	Int m_delayMax;    // maximum delay before we'll fire up another one of these
+	Int m_limit;    // Limit to the number of these sounds that can be fired up simultaneously
+	Int m_loopCount;    // number of times to loop this sound
 
-	AudioPriority m_priority; // Priority of this sound
-	UnsignedInt m_type;       // Type of sound
+	AudioPriority m_priority;    // Priority of this sound
+	UnsignedInt m_type;    // Type of sound
 	UnsignedInt m_control;    // control of sound
 
-	std::vector<AsciiString> m_soundsMorning; // Sounds to play in the wee hours of the morning
-	std::vector<AsciiString> m_sounds;        // Default sounds to play
-	std::vector<AsciiString> m_soundsNight;   // Sounds to play at night
-	std::vector<AsciiString> m_soundsEvening; // Sounds to play in the evening
+	std::vector<AsciiString> m_soundsMorning;    // Sounds to play in the wee hours of the morning
+	std::vector<AsciiString> m_sounds;    // Default sounds to play
+	std::vector<AsciiString> m_soundsNight;    // Sounds to play at night
+	std::vector<AsciiString> m_soundsEvening;    // Sounds to play in the evening
 
 	std::vector<AsciiString> m_attackSounds;
 	std::vector<AsciiString> m_decaySounds;
 
-	Real m_lowPassFreq; // When performing low pass filters, what is the maximum frequency heard, expressed as a percentage?
-	Real m_minDistance; // less than this distance and the sound behaves as though it is at minDistance
-	Real m_maxDistance; // greater than this distance and the sound behaves as though it is muted
+	Real m_lowPassFreq;    // When performing low pass filters, what is the maximum frequency heard, expressed as a percentage?
+	Real m_minDistance;    // less than this distance and the sound behaves as though it is at minDistance
+	Real m_maxDistance;    // greater than this distance and the sound behaves as though it is muted
 
-	AudioType m_soundType; // This should be either Music, Streaming or SoundEffect
+	AudioType m_soundType;    // This should be either Music, Streaming or SoundEffect
 
 	// DynamicAudioEventInfo interfacing functions
-	virtual Bool isLevelSpecific() const { return false; }                                    ///< If true, this sound is only defined on the current level and can be deleted when that level ends
-	virtual DynamicAudioEventInfo* getDynamicAudioEventInfo() { return nullptr; }             ///< If this object is REALLY a DynamicAudioEventInfo, return a pointer to the derived class
-	virtual const DynamicAudioEventInfo* getDynamicAudioEventInfo() const { return nullptr; } ///< If this object is REALLY a DynamicAudioEventInfo, return a pointer to the derived class
+	virtual Bool isLevelSpecific() const { return false; }    ///< If true, this sound is only defined on the current level and can be deleted when that level ends
+	virtual DynamicAudioEventInfo* getDynamicAudioEventInfo() { return nullptr; }    ///< If this object is REALLY a DynamicAudioEventInfo, return a pointer to the derived class
+	virtual const DynamicAudioEventInfo* getDynamicAudioEventInfo() const { return nullptr; }    ///< If this object is REALLY a DynamicAudioEventInfo, return a pointer to the derived class
 
 	/// Is this a permanent sound? That is, if I start this sound up, will it ever end
 	/// "on its own" or only if I explicitly kill it?
 	Bool isPermanentSound() const { return BitIsSet(m_control, AC_LOOP) && (m_loopCount == 0); }
 
-	static const FieldParse m_audioEventInfo[]; ///< the parse table for INI definition
+	static const FieldParse m_audioEventInfo[];    ///< the parse table for INI definition
 	const FieldParse* getFieldParse() const { return m_audioEventInfo; }
 };

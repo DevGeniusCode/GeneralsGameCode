@@ -46,7 +46,7 @@ struct SeismicSimulationNode;
 class SeismicSimulationFilterBase;
 
 #define DEFAULT_SEISMIC_SIMULATION_MAGNITUDE (20.0f)
-struct SeismicSimulationNode; // just a forward declaration folks, no cause for alarm
+struct SeismicSimulationNode;    // just a forward declaration folks, no cause for alarm
 class SeismicSimulationFilterBase
 {
 public:
@@ -122,7 +122,7 @@ struct SeismicSimulationNode
 		DEBUG_ASSERTCRASH(callbackFilter, ("SeismicSimulationNode::applyGravity() has no callback filter!"));
 
 		if (callbackFilter == nullptr)
-			return velocityIn; // oops, we have no callback!
+			return velocityIn;    // oops, we have no callback!
 
 		return callbackFilter->applyGravityCallback(velocityIn);
 	}
@@ -151,13 +151,13 @@ class DomeStyleSeismicFilter : public SeismicSimulationFilterBase
 typedef enum _TerrainLOD CPP_11( : Int)
 {
 	TERRAIN_LOD_INVALID,
-	TERRAIN_LOD_MIN, // note that this is less than max
+	TERRAIN_LOD_MIN,    // note that this is less than max
 	TERRAIN_LOD_STRETCH_NO_CLOUDS,
 	TERRAIN_LOD_HALF_CLOUDS,
 	TERRAIN_LOD_NO_CLOUDS,
 	TERRAIN_LOD_STRETCH_CLOUDS,
 	TERRAIN_LOD_NO_WATER,
-	TERRAIN_LOD_MAX, // note that this is larger than min
+	TERRAIN_LOD_MAX,    // note that this is larger than min
 	TERRAIN_LOD_AUTOMATIC,
 	TERRAIN_LOD_DISABLE,
 
@@ -180,7 +180,7 @@ static const char* const TerrainLODNames[] =
 
 		nullptr};
 static_assert(ARRAY_SIZE(TerrainLODNames) == TERRAIN_LOD_NUM_TYPES + 1, "Incorrect array size");
-#endif // end DEFINE_TERRAIN_LOD_NAMES
+#endif    // end DEFINE_TERRAIN_LOD_NAMES
 
 //-------------------------------------------------------------------------------------------------
 /** Device independent implementation for visual terrain */
@@ -273,7 +273,7 @@ public:
 	////////////////////////////////////////////////////
 	////////////////////////////////////////////////////
 #ifdef DO_SEISMIC_SIMULATIONS
-	virtual void updateSeismicSimulations() = 0; /// walk the SeismicSimulationList and, well, do it.
+	virtual void updateSeismicSimulations() = 0;    /// walk the SeismicSimulationList and, well, do it.
 	virtual void addSeismicSimulation(const SeismicSimulationNode& sim) = 0;
 #endif
 	virtual WorldHeightMap* getLogicHeightMap() { return nullptr; };
@@ -291,8 +291,8 @@ protected:
 	virtual void xfer(Xfer* xfer) override;
 	virtual void loadPostProcess() override;
 
-	AsciiString m_filenameString; ///< file with terrain data
+	AsciiString m_filenameString;    ///< file with terrain data
 };
 
 // EXTERNALS //////////////////////////////////////////////////////////////////////////////////////
-extern TerrainVisual* TheTerrainVisual; ///< singleton extern
+extern TerrainVisual* TheTerrainVisual;    ///< singleton extern

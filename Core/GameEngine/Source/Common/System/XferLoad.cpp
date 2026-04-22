@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // USER INCLUDES //////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/Debug.h"
 #include "Common/GameState.h"
 #include "Common/Snapshot.h"
@@ -193,7 +193,7 @@ void XferLoad::xferAsciiString(AsciiString* asciiStringData)
 
 	if (len > 0)
 		xferUser(buffer, sizeof(Byte) * len);
-	buffer[len] = 0; // terminate
+	buffer[len] = 0;    // terminate
 
 	// save into ascii string
 	asciiStringData->set(buffer);
@@ -215,7 +215,7 @@ void XferLoad::xferUnicodeString(UnicodeString* unicodeStringData)
 
 	if (len > 0)
 		xferUser(buffer, sizeof(WideChar) * len);
-	buffer[len] = 0; // terminate
+	buffer[len] = 0;    // terminate
 
 	// save into unicode string
 	unicodeStringData->set(buffer);

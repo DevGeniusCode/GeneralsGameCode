@@ -61,9 +61,9 @@ public:
 
 protected:
 	UnicodeString m_name;    ///< Player name
-	UnicodeString m_login;   ///< login name
+	UnicodeString m_login;    ///< login name
 	UnicodeString m_host;    ///< machine name
-	UnsignedInt m_lastHeard; ///< The last time we heard from this player (for timeout purposes)
-	LANPlayer* m_next;       ///< Linked list pointer
-	UnsignedInt m_IP;        ///< Player's IP
+	UnsignedInt m_lastHeard;    ///< The last time we heard from this player (for timeout purposes)
+	LANPlayer* m_next;    ///< Linked list pointer
+	UnsignedInt m_IP;    ///< Player's IP
 };

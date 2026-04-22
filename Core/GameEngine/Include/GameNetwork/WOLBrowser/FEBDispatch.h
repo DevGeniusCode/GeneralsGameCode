@@ -37,7 +37,7 @@
 #include <atlbase.h>
 extern CComModule _Module;
 #include <atlcom.h>
-#include <comutil.h> // For _bstr_t.
+#include <comutil.h>    // For _bstr_t.
 
 #include "oleauto.h"
 

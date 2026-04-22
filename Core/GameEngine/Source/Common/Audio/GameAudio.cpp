@@ -42,7 +42,7 @@
 //         Includes
 //----------------------------------------------------------------------------
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/GameAudio.h"
 
 #include "Common/AudioAffect.h"
@@ -438,11 +438,11 @@ AudioHandle AudioManager::addAudioEvent(const AudioEventRTS* eventToAdd)
 		return AHSV_NotForLocal;
 	}
 
-	AudioEventRTS* audioEvent = MSGNEW("AudioEventRTS") AudioEventRTS(*eventToAdd); // poolify
+	AudioEventRTS* audioEvent = MSGNEW("AudioEventRTS") AudioEventRTS(*eventToAdd);    // poolify
 	audioEvent->setPlayingHandle(allocateNewHandle());
-	audioEvent->generateFilename(); // which file are we actually going to play?
+	audioEvent->generateFilename();    // which file are we actually going to play?
 	eventToAdd->setPlayingAudioIndex(audioEvent->getPlayingAudioIndex());
-	audioEvent->generatePlayInfo(); // generate pitch shift and volume shift now as well
+	audioEvent->generatePlayInfo();    // generate pitch shift and volume shift now as well
 
 	// clang-format off: [LEGACY_VC6] - preserve space in nested templates (> >)
 	std::list<std::pair<AsciiString, Real> >::iterator it;
@@ -937,7 +937,7 @@ void AudioManager::removeLevelSpecificAudioEventInfos()
 
 	while (it != m_allAudioEventInfo.end())
 	{
-		AudioEventInfoHash::iterator next = it; // Make sure erase doesn't cause problems
+		AudioEventInfoHash::iterator next = it;    // Make sure erase doesn't cause problems
 		next++;
 
 		if (it->second->isLevelSpecific())

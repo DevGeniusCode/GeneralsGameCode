@@ -126,15 +126,15 @@ public:
 	//===============================================================================================
 
 	void playMovie(GameWindow* win, AsciiString movieName, WindowVideoPlayType playType);
-	void hideMovie(GameWindow* win);          ///< If the window becomes hidden while we're playing, stop the movie but test to see if we should resume
-	void pauseMovie(GameWindow* win);         ///< Pause a movie and display it's current frame
-	void resumeMovie(GameWindow* win);        ///< If a movie has been stopped, resume it.
-	void stopMovie(GameWindow* win);          ///< Stop a movie
-	void stopAndRemoveMovie(GameWindow* win); ///< Stop a movie, and remove it from the manager
-	void stopAllMovies();                     ///< Stop all playing movies
-	void pauseAllMovies();                    ///< Pauses all movies on their current frame
-	void resumeAllMovies();                   ///< Resume Playing all movies
-	Int getWinState(GameWindow* win);         ///< return the current state of the window.
+	void hideMovie(GameWindow* win);    ///< If the window becomes hidden while we're playing, stop the movie but test to see if we should resume
+	void pauseMovie(GameWindow* win);    ///< Pause a movie and display it's current frame
+	void resumeMovie(GameWindow* win);    ///< If a movie has been stopped, resume it.
+	void stopMovie(GameWindow* win);    ///< Stop a movie
+	void stopAndRemoveMovie(GameWindow* win);    ///< Stop a movie, and remove it from the manager
+	void stopAllMovies();    ///< Stop all playing movies
+	void pauseAllMovies();    ///< Pauses all movies on their current frame
+	void resumeAllMovies();    ///< Resume Playing all movies
+	Int getWinState(GameWindow* win);    ///< return the current state of the window.
 
 private:
 	typedef const GameWindow* ConstGameWindowPtr;
@@ -152,10 +152,10 @@ private:
 	typedef std::hash_map<ConstGameWindowPtr, WindowVideo*, hashConstGameWindowPtr, std::equal_to<ConstGameWindowPtr> > WindowVideoMap;
 	// clang-format on
 
-	WindowVideoMap m_playingVideos; ///< List of currently playin Videos
+	WindowVideoMap m_playingVideos;    ///< List of currently playin Videos
 	// WindowVideoMap m_pausedVideos;									///< List of currently paused Videos
-	Bool m_stopAllMovies;  ///< Maintains is we're in a stop all Movies State
-	Bool m_pauseAllMovies; ///< Maintains if we're in a pause all movies state
+	Bool m_stopAllMovies;    ///< Maintains is we're in a stop all Movies State
+	Bool m_pauseAllMovies;    ///< Maintains if we're in a pause all movies state
 };
 
 //-----------------------------------------------------------------------------

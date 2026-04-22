@@ -67,7 +67,7 @@ public:
 
 	WebBrowserURL* m_next;
 
-	static const FieldParse m_URLFieldParseTable[]; ///< the parse table for INI definition
+	static const FieldParse m_URLFieldParseTable[];    ///< the parse table for INI definition
 };
 
 class WebBrowser : public FEBDispatch<WebBrowser, IBrowserDispatch, &IID_IBrowserDispatch>,

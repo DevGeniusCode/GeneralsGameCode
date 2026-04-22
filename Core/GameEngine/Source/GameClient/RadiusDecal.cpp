@@ -25,7 +25,7 @@
 // RadiusDecal.cpp ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #define DEFINE_SHADOW_NAMES
 
@@ -69,12 +69,12 @@ void RadiusDecalTemplate::createRadiusDecal(const Coord3D& pos, Real radius, con
 	    owningPlayer->getPlayerIndex() == ThePlayerList->getLocalPlayer()->getPlayerIndex())
 	{
 		Shadow::ShadowTypeInfo decalInfo;
-		decalInfo.allowUpdates = FALSE;   // shadow texture will never update
-		decalInfo.allowWorldAlign = TRUE; // shadow image will wrap around world objects
+		decalInfo.allowUpdates = FALSE;    // shadow texture will never update
+		decalInfo.allowWorldAlign = TRUE;    // shadow image will wrap around world objects
 		decalInfo.m_type = m_shadowType;
-		strlcpy(decalInfo.m_ShadowName, m_name.str(), ARRAY_SIZE(decalInfo.m_ShadowName)); // name of your texture
-		decalInfo.m_sizeX = radius * 2;                                                    // world space dimensions
-		decalInfo.m_sizeY = radius * 2;                                                    // world space dimensions
+		strlcpy(decalInfo.m_ShadowName, m_name.str(), ARRAY_SIZE(decalInfo.m_ShadowName));    // name of your texture
+		decalInfo.m_sizeX = radius * 2;    // world space dimensions
+		decalInfo.m_sizeY = radius * 2;    // world space dimensions
 
 		result.m_decal = TheProjectedShadowManager->addDecal(&decalInfo);
 		if (result.m_decal)
@@ -220,6 +220,6 @@ void RadiusDecal::setPosition(const Coord3D& pos)
 {
 	if (m_decal)
 	{
-		m_decal->setPosition(pos.x, pos.y, pos.z); // world space position of center of decal
+		m_decal->setPosition(pos.x, pos.y, pos.z);    // world space position of center of decal
 	}
 }

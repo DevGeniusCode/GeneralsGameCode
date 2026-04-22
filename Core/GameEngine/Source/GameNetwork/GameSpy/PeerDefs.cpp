@@ -20,7 +20,7 @@
 // Generals GameSpy Peer (chat) definitions
 // Author: Matthew D. Campbell, June 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include <set>
 
 #include "Common/GameState.h"
@@ -239,7 +239,7 @@ void GameSpyInfo::setGameOptions()
 						playerName = "CH";
 						break;
 				}
-				req.gameOptsPlayerNames[i] = playerName.str(); // name is unused - we go off of the profileID
+				req.gameOptsPlayerNames[i] = playerName.str();    // name is unused - we go off of the profileID
 				req.gameOptions.wins[req.gameOptions.numObservers + req.gameOptions.numPlayers] = 0;
 				req.gameOptions.losses[req.gameOptions.numObservers + req.gameOptions.numPlayers] = 0;
 				req.gameOptions.profileID[req.gameOptions.numObservers + req.gameOptions.numPlayers] = slot->getState();
@@ -314,7 +314,7 @@ void GameSpyInfo::addGroupRoom(GameSpyGroupRoom room)
 		{
 			// didn't get all names.  fix up
 			Int nameIndex = 0;
-			Int timesThrough = 1; // start with USA Lobby 1
+			Int timesThrough = 1;    // start with USA Lobby 1
 			for (iter = TheGameSpyInfo->getGroupRoomList()->begin(); iter != TheGameSpyInfo->getGroupRoomList()->end(); ++iter)
 			{
 				GameSpyGroupRoom room = iter->second;
@@ -544,7 +544,7 @@ void GameSpyInfo::markAsStagingRoomHost()
 
 	TheMapCache->updateCache();
 	m_localStagingRoom.setMap(getDefaultMap(TRUE));
-	m_localStagingRoom.adjustSlotsForMap(); // close slots that the map can't hold. BGC
+	m_localStagingRoom.adjustSlotsForMap();    // close slots that the map can't hold. BGC
 }
 
 void GameSpyInfo::markAsStagingRoomJoiner(Int game)
@@ -879,9 +879,9 @@ void GameSpyInfo::updateAdditionalGameSpyDisconnections(Int count)
 		if (disCons < 0)
 		{
 			DEBUG_LOG(("updateAdditionalGameSpyDisconnections() - disconnection count below zero"));
-			return; // something is wrong here
+			return;    // something is wrong here
 		}
-		stats.discons[ptIdx] = disCons; // add an additional disconnection to their stats.
+		stats.discons[ptIdx] = disCons;    // add an additional disconnection to their stats.
 
 		// Add an additional disconnection to player stats.
 		PSRequest req;

@@ -22,7 +22,7 @@
 //																																						//
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/CRCDebug.h"
 #include "Common/Debug.h"
@@ -319,4 +319,4 @@ void dumpReal(Real r, AsciiString name, AsciiString fname, Int line)
 	                fname.str(), line, name.str(), AS_INT(r), r);
 }
 
-#endif // DEBUG_CRC
+#endif    // DEBUG_CRC

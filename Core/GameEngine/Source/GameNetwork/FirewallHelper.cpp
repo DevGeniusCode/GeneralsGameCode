@@ -45,7 +45,7 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/crc.h"
 #include "Common/OptionPreferences.h"
@@ -106,9 +106,9 @@ FirewallHelperClass::FirewallHelperClass()
 
 	m_currentState = DETECTIONSTATE_IDLE;
 
-	m_sourcePortPool = 4096 + ((timeGetTime() / 1000) % 1000); // do this to make sure we don't use the same source
-	                                                           // port before a previous connection has had a chance
-	                                                           // to time out.
+	m_sourcePortPool = 4096 + ((timeGetTime() / 1000) % 1000);    // do this to make sure we don't use the same source
+	                                                              // port before a previous connection has had a chance
+	                                                              // to time out.
 }
 
 /***********************************************************************************************
@@ -317,7 +317,7 @@ Bool FirewallHelperClass::sendToManglerFromPort(UnsignedInt address, UnsignedSho
 	*/
 	ManglerMessage packet;
 	memset(&(packet.data), 0x44, sizeof(ManglerData));
-	packet.data.NetCommandType = 12; // mangler request.
+	packet.data.NetCommandType = 12;    // mangler request.
 	packet.data.PacketID = packetID;
 	if (blitzme)
 	{
@@ -578,7 +578,7 @@ void FirewallHelperClass::readFirewallBehavior()
 #if (0)
 	m_lastBehavior = (FirewallBehaviorType)ConfigINI.Get_Int("MultiPlayer", "FirewallSettings", FIREWALL_UNKNOWN);
 	m_lastSourcePortAllocationDelta = ConfigINI.Get_Int("MultiPlayer", "FirewallDelta", 1);
-#endif //(0)
+#endif    //(0)
 }
 
 /***********************************************************************************************
@@ -1280,7 +1280,7 @@ Bool FirewallHelperClass::detectionTest5Update()
 	{
 		DEBUG_LOG(("FirewallHelperClass::detectionTest5Update - Netgear bug not specified"));
 	}
-#endif // #if (0)
+#endif    // #if (0)
 
 	DEBUG_LOG_RAW(("FirewallHelperClass::detectionTest5Update - All done, behavior is: "));
 

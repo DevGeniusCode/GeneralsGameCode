@@ -76,39 +76,39 @@ public:
 	DisplayString();
 	// virtual ~DisplayString();  // destructor defined by memory pool
 
-	virtual void setText(UnicodeString text); ///< set text for this string
-	virtual UnicodeString getText();          ///< get text for this string
-	virtual Int getTextLength();              ///< return number of chars in string
-	virtual void notifyTextChanged();         ///< called when text has changed
-	virtual void reset();                     ///< reset all contents of string
+	virtual void setText(UnicodeString text);    ///< set text for this string
+	virtual UnicodeString getText();    ///< get text for this string
+	virtual Int getTextLength();    ///< return number of chars in string
+	virtual void notifyTextChanged();    ///< called when text has changed
+	virtual void reset();    ///< reset all contents of string
 
-	virtual void setFont(GameFont* font);                                                    ///< set a font for display
-	virtual GameFont* getFont();                                                             ///< return font in string
-	virtual void setWordWrap(Int wordWrap) = 0;                                              ///< Set the width that we want to start wrapping text
-	virtual void setWordWrapCentered(Bool isCentered) = 0;                                   ///< If this is set to true, the text on a new line is centered
-	virtual void draw(Int x, Int y, Color color, Color dropColor) = 0;                       ///< render text
-	virtual void draw(Int x, Int y, Color color, Color dropColor, Int xDrop, Int yDrop) = 0; ///< render text with the drop shadow being at the offsets passed in
-	virtual void getSize(Int* width, Int* height) = 0;                                       ///< get render size
-	virtual Int getWidth(Int charPos = -1) = 0;                                              ///< get text with up to charPos characters, 1- = all characters
+	virtual void setFont(GameFont* font);    ///< set a font for display
+	virtual GameFont* getFont();    ///< return font in string
+	virtual void setWordWrap(Int wordWrap) = 0;    ///< Set the width that we want to start wrapping text
+	virtual void setWordWrapCentered(Bool isCentered) = 0;    ///< If this is set to true, the text on a new line is centered
+	virtual void draw(Int x, Int y, Color color, Color dropColor) = 0;    ///< render text
+	virtual void draw(Int x, Int y, Color color, Color dropColor, Int xDrop, Int yDrop) = 0;    ///< render text with the drop shadow being at the offsets passed in
+	virtual void getSize(Int* width, Int* height) = 0;    ///< get render size
+	virtual Int getWidth(Int charPos = -1) = 0;    ///< get text with up to charPos characters, 1- = all characters
 
 	virtual void setUseHotkey(Bool useHotkey, Color hotKeyColor) = 0;
 
-	virtual void setClipRegion(IRegion2D* region); ///< clip text in this region
+	virtual void setClipRegion(IRegion2D* region);    ///< clip text in this region
 
-	virtual void removeLastChar();                ///< remove the last character
-	virtual void truncateBy(const Int charCount); ///< remove the last charCount characters
-	virtual void truncateTo(const Int maxLength); ///< remove characters, if needed, until the string is maxLength long excluding null terminator
+	virtual void removeLastChar();    ///< remove the last character
+	virtual void truncateBy(const Int charCount);    ///< remove the last charCount characters
+	virtual void truncateTo(const Int maxLength);    ///< remove characters, if needed, until the string is maxLength long excluding null terminator
 
-	virtual void appendChar(WideChar c); ///< append character to end
+	virtual void appendChar(WideChar c);    ///< append character to end
 
-	DisplayString* next(); ///< return next string
+	DisplayString* next();    ///< return next string
 
 protected:
 	UnicodeString m_textString;
-	GameFont* m_font; ///< font to display this string with
+	GameFont* m_font;    ///< font to display this string with
 
-	DisplayString* m_next; ///< for the display string factory list ONLY
-	DisplayString* m_prev; ///< for the display string factory list ONLY
+	DisplayString* m_next;    ///< for the display string factory list ONLY
+	DisplayString* m_prev;    ///< for the display string factory list ONLY
 };
 
 ///////////////////////////////////////////////////////////////////////////////

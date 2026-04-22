@@ -45,7 +45,7 @@
 //         Includes
 //----------------------------------------------------------------------------
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "mbstring.h"
 
@@ -65,7 +65,7 @@
 //         Externals
 //----------------------------------------------------------------------------
 
-extern HWND ApplicationHWnd; ///< our application window handle
+extern HWND ApplicationHWnd;    ///< our application window handle
 extern Int IMECandidateWindowLineSpacing;
 
 //----------------------------------------------------------------------------
@@ -93,30 +93,30 @@ public:
 	virtual void reset();
 	virtual void update();
 
-	virtual void attach(GameWindow* window);                  ///< attach IME to specified window
-	virtual void detach();                                    ///< detach IME from current window
-	virtual void enable();                                    ///< Enable IME
-	virtual void disable();                                   ///< Disable IME
-	virtual Bool isEnabled();                                 ///< Is IME enabled
-	virtual Bool isAttachedTo(GameWindow* window);            ///< Is the manager attached toa window
-	virtual GameWindow* getWindow();                          ///< Returns the window we are currently attached to
-	virtual Bool isComposing();                               ///< Manager is currently composing new input string
-	virtual void getCompositionString(UnicodeString& string); ///< Return the current composition string
-	virtual Int getCompositionCursorPosition();               ///< Returns the composition cursor position
-	virtual Int getIndexBase();                               ///< Get index base for candidate list
+	virtual void attach(GameWindow* window);    ///< attach IME to specified window
+	virtual void detach();    ///< detach IME from current window
+	virtual void enable();    ///< Enable IME
+	virtual void disable();    ///< Disable IME
+	virtual Bool isEnabled();    ///< Is IME enabled
+	virtual Bool isAttachedTo(GameWindow* window);    ///< Is the manager attached toa window
+	virtual GameWindow* getWindow();    ///< Returns the window we are currently attached to
+	virtual Bool isComposing();    ///< Manager is currently composing new input string
+	virtual void getCompositionString(UnicodeString& string);    ///< Return the current composition string
+	virtual Int getCompositionCursorPosition();    ///< Returns the composition cursor position
+	virtual Int getIndexBase();    ///< Get index base for candidate list
 
-	virtual Int getCandidateCount();                      ///< Returns the total number of candidates
-	virtual const UnicodeString* getCandidate(Int index); ///< Returns the candidate string
-	virtual Int getSelectedCandidateIndex();              ///< Returns the indexed of the currently selected candidate
-	virtual Int getCandidatePageSize();                   ///< Returns the page size for the candidates list
-	virtual Int getCandidatePageStart();                  ///< Returns the index of the first visibel candidate
+	virtual Int getCandidateCount();    ///< Returns the total number of candidates
+	virtual const UnicodeString* getCandidate(Int index);    ///< Returns the candidate string
+	virtual Int getSelectedCandidateIndex();    ///< Returns the indexed of the currently selected candidate
+	virtual Int getCandidatePageSize();    ///< Returns the page size for the candidates list
+	virtual Int getCandidatePageStart();    ///< Returns the index of the first visibel candidate
 
 	/// Checks for and services IME messages. Returns TRUE if message serviced
 	virtual Bool serviceIMEMessage(void* windowsHandle,
 	                               UnsignedInt message,
 	                               Int wParam,
 	                               Int lParam);
-	virtual Int result(); ///< result return value of last serviced IME message
+	virtual Int result();    ///< result return value of last serviced IME message
 
 protected:
 	enum
@@ -130,34 +130,34 @@ protected:
 		Int value;
 	};
 
-	Int m_result;         ///< last IME message's winProc return code
-	GameWindow* m_window; ///< window we are accepting input for
-	HIMC m_context;       ///< Input Manager Context
+	Int m_result;    ///< last IME message's winProc return code
+	GameWindow* m_window;    ///< window we are accepting input for
+	HIMC m_context;    ///< Input Manager Context
 	HIMC m_oldContext;    ///< Previous IME comtext
-	Int m_disabled;       ///< IME disable count 0 = enabled
-	Bool m_composing;     ///< Are we currently composing a new string
+	Int m_disabled;    ///< IME disable count 0 = enabled
+	Bool m_composing;    ///< Are we currently composing a new string
 	WideChar m_compositionString[MAX_COMPSTRINGLEN + 1];
 	WideChar m_resultsString[MAX_COMPSTRINGLEN + 1];
 	Int m_compositionCursorPos;
 	Int m_compositionStringLength;
 	Int m_indexBase;
 
-	Int m_pageStart;                  ///< index of first visible candidate
-	Int m_pageSize;                   ///< Number of candidate per page
-	Int m_selectedIndex;              ///< Index of the currently selected candidate
-	Int m_candidateCount;             ///< Total number of candidate strings
-	UnicodeString* m_candidateString; ///< table of candidate strings
-	Bool m_unicodeIME;                ///< Is this an unicode IME
-	Int m_compositionCharsDisplayed;  ///< number of temporary composition characters displayed that need to be replaced with result string.
+	Int m_pageStart;    ///< index of first visible candidate
+	Int m_pageSize;    ///< Number of candidate per page
+	Int m_selectedIndex;    ///< Index of the currently selected candidate
+	Int m_candidateCount;    ///< Total number of candidate strings
+	UnicodeString* m_candidateString;    ///< table of candidate strings
+	Bool m_unicodeIME;    ///< Is this an unicode IME
+	Int m_compositionCharsDisplayed;    ///< number of temporary composition characters displayed that need to be replaced with result string.
 
-	WideChar convertCharToWide(WPARAM mbchar);        ///< Convert multibyte character to wide
-	void updateCompositionString();                   ///< Update the context of the composition string from the IMM
-	void getResultsString();                          ///< Get the final composition string result
-	void updateProperties();                          ///< Read the current IME properties
-	void openCandidateList(Int candidateFlags);       ///< open candidate window
-	void closeCandidateList(Int candidateFlags);      ///< Close candidate window
-	void updateCandidateList(Int candidateFlags);     ///< Update candidate window
-	void updateListBox(CANDIDATELIST* candidateList); ///< Update candidate list box gadget
+	WideChar convertCharToWide(WPARAM mbchar);    ///< Convert multibyte character to wide
+	void updateCompositionString();    ///< Update the context of the composition string from the IMM
+	void getResultsString();    ///< Get the final composition string result
+	void updateProperties();    ///< Read the current IME properties
+	void openCandidateList(Int candidateFlags);    ///< open candidate window
+	void closeCandidateList(Int candidateFlags);    ///< Close candidate window
+	void updateCandidateList(Int candidateFlags);    ///< Update candidate window
+	void updateListBox(CANDIDATELIST* candidateList);    ///< Update candidate list box gadget
 	void convertToUnicode(Char* mbcs, UnicodeString& unicode);
 	void resizeCandidateWindow(Int pageSize);
 
@@ -166,10 +166,10 @@ protected:
 	void updateStatusWindow();
 
 	GameWindow* m_candidateWindow;    ///< IME candidate window interface
-	GameWindow* m_statusWindow;       ///< IME status window interface
-	GameWindow* m_candidateTextArea;  ///< list box area
-	GameWindow* m_candidateUpArrow;   ///< up arrow
-	GameWindow* m_candidateDownArrow; ///< down arrow
+	GameWindow* m_statusWindow;    ///< IME status window interface
+	GameWindow* m_candidateTextArea;    ///< list box area
+	GameWindow* m_candidateUpArrow;    ///< up arrow
+	GameWindow* m_candidateDownArrow;    ///< down arrow
 
 #ifdef DEBUG_IME
 	static MessageInfo m_mainMessageInfo[];
@@ -453,7 +453,7 @@ void IMEManager::printSentenceStatus()
 		DEBUG_LOG(("IMM: Sentence mode = (%s)", flags.str()));
 	}
 }
-#endif // DEBUG_IME
+#endif    // DEBUG_IME
 
 //----------------------------------------------------------------------------
 //         Public Functions
@@ -700,7 +700,7 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 			// First remove the composition characters
 			m_composing = FALSE;
 			while (m_compositionCharsDisplayed > 0)
-			{ // if cursor has moved since start of composition, we need to move it back using backspace message
+			{    // if cursor has moved since start of composition, we need to move it back using backspace message
 				TheWindowManager->winSendInputMsg(m_window, GWM_CHAR, KEY_BACKSPACE, KEY_STATE_DOWN);
 				m_compositionCharsDisplayed--;
 			}
@@ -717,7 +717,7 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 			// which will pass the message to  the default IME window.
 			//
 
-			m_composing = FALSE; // reset this flag before calling GWM_IME_CHAR
+			m_composing = FALSE;    // reset this flag before calling GWM_IME_CHAR
 
 			if (m_window)
 			{
@@ -749,14 +749,14 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 			// has no return value. wParam = DBCS character. lParam = change indicator.
 			//
 
-			if (lParam & GCS_RESULTSTR) // added to show instant updates as soon as a character is translated. -MW
+			if (lParam & GCS_RESULTSTR)    // added to show instant updates as soon as a character is translated. -MW
 			{
 				if (m_window)
 				{
-					m_composing = FALSE; // reset this flag before calling GWM_IME_CHAR
+					m_composing = FALSE;    // reset this flag before calling GWM_IME_CHAR
 
 					while (m_compositionCharsDisplayed > 0)
-					{ // if cursor has moved since start of composition, we need to move it back using backspace message
+					{    // if cursor has moved since start of composition, we need to move it back using backspace message
 						TheWindowManager->winSendInputMsg(m_window, GWM_CHAR, KEY_BACKSPACE, KEY_STATE_DOWN);
 						m_compositionCharsDisplayed--;
 					}
@@ -772,13 +772,13 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 				m_compositionCharsDisplayed = 0;
 			}
 			else if (lParam & CS_INSERTCHAR && lParam & CS_NOMOVECARET)
-			{ // we are supposed to display the composition character without moving the cursor. (it's a candidate).
+			{    // we are supposed to display the composition character without moving the cursor. (it's a candidate).
 				if (m_window)
 				{
-					m_composing = FALSE; // reset this flag before calling GWM_IME_CHAR
+					m_composing = FALSE;    // reset this flag before calling GWM_IME_CHAR
 
 					while (m_compositionCharsDisplayed > 0)
-					{ // if cursor has moved since start of composition, we need to move it back using backspace message
+					{    // if cursor has moved since start of composition, we need to move it back using backspace message
 						TheWindowManager->winSendInputMsg(m_window, GWM_CHAR, KEY_BACKSPACE, KEY_STATE_DOWN);
 						m_compositionCharsDisplayed--;
 					}
@@ -791,17 +791,17 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 						ch++;
 						m_compositionCharsDisplayed++;
 					}
-					m_composing = TRUE; // reset this flag before calling GWM_IME_CHAR
+					m_composing = TRUE;    // reset this flag before calling GWM_IME_CHAR
 				}
 			}
 			else if (lParam & GCS_COMPSTR)
-			{ // we are supposed to display the composition character without moving the cursor. (it's a candidate).
+			{    // we are supposed to display the composition character without moving the cursor. (it's a candidate).
 				if (m_window)
 				{
-					m_composing = FALSE; // reset this flag before calling GWM_IME_CHAR
+					m_composing = FALSE;    // reset this flag before calling GWM_IME_CHAR
 
 					while (m_compositionCharsDisplayed > 0)
-					{ // if cursor has moved since start of composition, we need to move it back using backspace message
+					{    // if cursor has moved since start of composition, we need to move it back using backspace message
 						TheWindowManager->winSendInputMsg(m_window, GWM_CHAR, KEY_BACKSPACE, KEY_STATE_DOWN);
 						m_compositionCharsDisplayed--;
 					}
@@ -814,7 +814,7 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 						ch++;
 						m_compositionCharsDisplayed++;
 					}
-					m_composing = TRUE; // reset this flag before calling GWM_IME_CHAR
+					m_composing = TRUE;    // reset this flag before calling GWM_IME_CHAR
 				}
 			}
 
@@ -882,14 +882,14 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 					m_result = 1;
 					return TRUE;
 				}
-				case IMN_GUIDELINE: // This message is sent when an IME is about to show an error message or other data.
+				case IMN_GUIDELINE:    // This message is sent when an IME is about to show an error message or other data.
 				{
 					// display error message
 					m_result = 1;
 					return FALSE;
 				}
 
-				case IMN_SETCONVERSIONMODE: // This message is sent when the conversion mode of the input context is updated.
+				case IMN_SETCONVERSIONMODE:    // This message is sent when the conversion mode of the input context is updated.
 				{
 #ifdef DEBUG_IME
 					printConversionStatus();
@@ -897,7 +897,7 @@ Bool IMEManager::serviceIMEMessage(void* windowsHandle, UnsignedInt message, Int
 					return FALSE;
 				}
 
-				case IMN_SETSENTENCEMODE: // This message is sent when the sentence mode of the input context is updated.
+				case IMN_SETSENTENCEMODE:    // This message is sent when the sentence mode of the input context is updated.
 				{
 #ifdef DEBUG_IME
 					printSentenceStatus();
@@ -1053,7 +1053,7 @@ void IMEManager::getCompositionString(UnicodeString& string)
 
 Int IMEManager::getCompositionCursorPosition()
 {
-	return 0; // m_compositionCursorPos;
+	return 0;    // m_compositionCursorPos;
 }
 
 //============================================================================

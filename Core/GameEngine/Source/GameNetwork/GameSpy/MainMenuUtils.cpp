@@ -29,7 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include <fcntl.h>
 
@@ -58,7 +58,7 @@
 
 static Bool checkingForPatchBeforeGameSpy = FALSE;
 static Int checksLeftBeforeOnline = 0;
-static Int timeThroughOnline = 0; // used to avoid having old callbacks cause problems
+static Int timeThroughOnline = 0;    // used to avoid having old callbacks cause problems
 static Bool mustDownloadPatch = FALSE;
 static Bool cantConnectBeforeOnline = FALSE;
 static std::list<QueuedDownload> queuedDownloads;
@@ -232,12 +232,12 @@ static void startOnline()
 	pref.load("GameSpyLogin.ini");
 	UserPreferences::const_iterator it = pref.find("useProfiles");
 	if (it != pref.end() && it->second.compareNoCase("yes") == 0)
-#endif // ALLOW_NON_PROFILED_LOGIN
+#endif    // ALLOW_NON_PROFILED_LOGIN
 		TheShell->push("Menus/GameSpyLoginProfile.wnd");
 #ifdef ALLOW_NON_PROFILED_LOGIN
 	else
 		TheShell->push("Menus/GameSpyLoginQuick.wnd");
-#endif // ALLOW_NON_PROFILED_LOGIN
+#endif    // ALLOW_NON_PROFILED_LOGIN
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -266,7 +266,7 @@ static void queuePatch(Bool mandatory, AsciiString downloadURL)
 	{
 		// no user/pass combo - move the file into it's proper place
 		filePath = user;
-		user = ""; // LFeenanEA - Credentials removed as per Security requirements
+		user = "";    // LFeenanEA - Credentials removed as per Security requirements
 		pass = "";
 		success = TRUE;
 	}
@@ -297,7 +297,7 @@ static void queuePatch(Bool mandatory, AsciiString downloadURL)
 	while (it != queuedDownloads.end())
 	{
 		if (it->localFile == q.localFile)
-			return; // don't add it if it exists already (because we can check multiple times)
+			return;    // don't add it if it exists already (because we can check multiple times)
 		++it;
 	}
 
@@ -555,7 +555,7 @@ void CancelPatchCheckCallbackAndReopenDropdown()
 void CancelPatchCheckCallback()
 {
 	s_asyncDNSLookupInProgress = FALSE;
-	HandleCanceledDownload(FALSE); // don't dropdown
+	HandleCanceledDownload(FALSE);    // don't dropdown
 	checkingForPatchBeforeGameSpy = FALSE;
 	checksLeftBeforeOnline = 0;
 	if (onlineCancelWindow)
@@ -586,7 +586,7 @@ static GHTTPBool overallStatsCallback(GHTTPRequest request, GHTTPResult result, 
 	OverallStats USA, China, GLA;
 	AsciiString message = buffer;
 
-	Int state = STATS_MAX; // STATS_MAX == none
+	Int state = STATS_MAX;    // STATS_MAX == none
 	AsciiString line;
 	OverallStats* stats = nullptr;
 	while (message.nextToken(&line, "\n"))
@@ -795,9 +795,9 @@ void HTTPThinkWrapper()
 		}
 		catch (...)
 		{
-			isHttpOk = FALSE; // we can't abort the login, since we might be done with the
-			                  // required checks and are fetching extras.  If it is a required
-			                  // check, we'll time out normally.
+			isHttpOk = FALSE;    // we can't abort the login, since we might be done with the
+			                     // required checks and are fetching extras.  If it is a required
+			                     // check, we'll time out normally.
 		}
 	}
 }
@@ -812,7 +812,7 @@ void StopAsyncDNSCheck()
 		Int res =
 #endif
 			TerminateThread(s_asyncDNSThreadHandle, 0);
-		DEBUG_ASSERTCRASH(res, ("Could not terminate the Async DNS Lookup thread!")); // Thread still not killed!
+		DEBUG_ASSERTCRASH(res, ("Could not terminate the Async DNS Lookup thread!"));    // Thread still not killed!
 	}
 	s_asyncDNSThreadHandle = nullptr;
 	s_asyncDNSLookupInProgress = FALSE;

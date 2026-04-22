@@ -84,10 +84,10 @@ private:
 	struct AsciiStringData
 	{
 #if defined(RTS_DEBUG)
-		const char* m_debugptr; // just makes it easier to read in the debugger
+		const char* m_debugptr;    // just makes it easier to read in the debugger
 #endif
-		unsigned short m_refCount;          // reference count
-		unsigned short m_numCharsAllocated; // length of data allocated
+		unsigned short m_refCount;    // reference count
+		unsigned short m_numCharsAllocated;    // length of data allocated
 		// char m_stringdata[];
 
 		char* peek() { return (char*)(this + 1); }
@@ -100,7 +100,7 @@ private:
 #endif
 
 protected:
-	AsciiStringData* m_data; // pointer to ref counted string data
+	AsciiStringData* m_data;    // pointer to ref counted string data
 
 	char* peek() const;
 	void releaseBuffer();
@@ -113,8 +113,8 @@ public:
 
 	enum
 	{
-		MAX_FORMAT_BUF_LEN = 2048, ///< max total len of string created by format/format_va
-		MAX_LEN = 32767            ///< max total len of any AsciiString, in chars
+		MAX_FORMAT_BUF_LEN = 2048,    ///< max total len of string created by format/format_va
+		MAX_LEN = 32767    ///< max total len of any AsciiString, in chars
 	};
 
 	/**
@@ -371,8 +371,8 @@ public:
 	//	operator const char*() const { return str(); }
 	//
 
-	AsciiString& operator=(const AsciiString& stringSrc); ///< the same as set()
-	AsciiString& operator=(const char* s);                ///< the same as set()
+	AsciiString& operator=(const AsciiString& stringSrc);    ///< the same as set()
+	AsciiString& operator=(const char* s);    ///< the same as set()
 
 	void debugIgnoreLeaks();
 };

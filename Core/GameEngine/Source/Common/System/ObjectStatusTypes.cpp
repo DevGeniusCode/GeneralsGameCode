@@ -84,4 +84,4 @@ const char* const ObjectStatusMaskType::s_bitNameList[] =
 		nullptr};
 static_assert(ARRAY_SIZE(ObjectStatusMaskType::s_bitNameList) == ObjectStatusMaskType::NumBits + 1, "Incorrect array size");
 
-ObjectStatusMaskType OBJECT_STATUS_MASK_NONE; // inits to all zeroes
+ObjectStatusMaskType OBJECT_STATUS_MASK_NONE;    // inits to all zeroes

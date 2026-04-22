@@ -28,7 +28,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/GameAudio.h"
 #include "Common/GameState.h"
@@ -55,7 +55,7 @@
 #include "GameLogic/Module/StealthUpdate.h"
 
 // GLOBALS ////////////////////////////////////////////////////////////////////////////////////////
-Radar* TheRadar = nullptr; ///< the radar global singleton
+Radar* TheRadar = nullptr;    ///< the radar global singleton
 
 // PRIVATE ////////////////////////////////////////////////////////////////////////////////////////
 #define RADAR_QUEUE_TERRAIN_REFRESH_DELAY (LOGICFRAMES_PER_SECOND * 3.0f)
@@ -420,7 +420,7 @@ Bool Radar::deleteFromList(Object* obj, RadarObject** list)
 
 			// unlink the object from list
 			if (prevObject == nullptr)
-				*list = radarObject->friend_getNext(); // removing head of list
+				*list = radarObject->friend_getNext();    // removing head of list
 			else
 				prevObject->friend_setNext(radarObject->friend_getNext());
 
@@ -512,7 +512,7 @@ Bool Radar::radarToWorld(const ICoord2D* radar, Coord3D* world)
 	// find the terrain height here
 	world->z = TheTerrainLogic->getGroundHeight(world->x, world->y);
 
-	return TRUE; // valid translation
+	return TRUE;    // valid translation
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -551,7 +551,7 @@ Bool Radar::worldToRadar(const Coord3D* world, ICoord2D* radar)
 	if (radar->y >= RADAR_CELL_HEIGHT)
 		radar->y = RADAR_CELL_HEIGHT - 1;
 
-	return TRUE; // valid translation
+	return TRUE;    // valid translation
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -936,7 +936,7 @@ void Radar::createPlayerEvent(Player* player, const Coord3D* world,
 void Radar::internalCreateEvent(const Coord3D* world, RadarEventType type, Real secondsToLive,
                                 const RGBAColorInt* color1, const RGBAColorInt* color2)
 {
-	static Real secondsBeforeDieToFade = 0.5f; ///< this many seconds before we hit the die frame we start to fade away
+	static Real secondsBeforeDieToFade = 0.5f;    ///< this many seconds before we hit the die frame we start to fade away
 
 	// sanity
 	if (world == nullptr || color1 == nullptr || color2 == nullptr)
@@ -988,7 +988,7 @@ Bool Radar::getLastEventLoc(Coord3D* eventPos)
 		return TRUE;
 	}
 
-	return FALSE; // no last event
+	return FALSE;    // no last event
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -1152,7 +1152,7 @@ Bool Radar::tryEvent(RadarEventType event, const Coord3D* pos)
 
 				// finally only reject making a new event of this existing one is "recent enough"
 				if (currentFrame - m_event[i].createFrame < framesBetweenEvents)
-					return FALSE; // reject it
+					return FALSE;    // reject it
 			}
 		}
 	}

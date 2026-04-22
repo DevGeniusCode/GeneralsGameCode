@@ -24,7 +24,7 @@
 
 // FILE: SubsystemInterface.cpp
 // ----------------------------------------------------------------------------
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/SubsystemInterface.h"
 #include "Common/Xfer.h"
@@ -62,7 +62,7 @@ SubsystemInterface::~SubsystemInterface()
 }
 
 #ifdef DUMP_PERF_STATS
-static const Real MIN_TIME_THRESHOLD = 0.0002f; // .2 msec. [8/13/2003]
+static const Real MIN_TIME_THRESHOLD = 0.0002f;    // .2 msec. [8/13/2003]
 void SubsystemInterface::UPDATE()
 {
 	__int64 startTime64;

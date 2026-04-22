@@ -24,7 +24,7 @@
 
 ////////// NetPacket.cpp ///////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "GameNetwork/NetPacket.h"
 #include "GameNetwork/NetCommandMsg.h"
@@ -206,7 +206,7 @@ NetPacketList NetPacket::ConstructBigCommandPacketList(NetCommandRef* ref)
 		return NetPacketList();
 	}
 
-	UnsignedInt bufferSize = GetBufferSizeNeededForCommand(msg); // need to implement.  I have a drinking problem.
+	UnsignedInt bufferSize = GetBufferSizeNeededForCommand(msg);    // need to implement.  I have a drinking problem.
 	UnsignedByte* bigPacketData = nullptr;
 
 	NetPacketList packetList;
@@ -261,7 +261,7 @@ NetPacketList NetPacket::ConstructBigCommandPacketList(NetCommandRef* ref)
 
 		if (packet->addCommand(ref) == FALSE)
 		{
-			DEBUG_LOG_LEVEL(DEBUG_LEVEL_NET, ("NetPacket::BeginBigCommandPacketList - failed to add a wrapper command to the packet")); // I still have a drinking problem.
+			DEBUG_LOG_LEVEL(DEBUG_LEVEL_NET, ("NetPacket::BeginBigCommandPacketList - failed to add a wrapper command to the packet"));    // I still have a drinking problem.
 		}
 
 		packetList.push_back(packet);
@@ -286,7 +286,7 @@ UnsignedInt NetPacket::GetBufferSizeNeededForCommand(NetCommandMsg* msg)
 
 	if (msg == nullptr)
 	{
-		return 0; // There was nothing to add.
+		return 0;    // There was nothing to add.
 	}
 	// Use the virtual function for all command message types
 	return msg->getSizeForNetPacket();
@@ -369,7 +369,7 @@ Bool NetPacket::addCommand(NetCommandRef* msg)
 
 	if (msg == nullptr)
 	{
-		return TRUE; // There was nothing to add, so it was successful.
+		return TRUE;    // There was nothing to add, so it was successful.
 	}
 
 	NetCommandMsg* cmdMsg = msg->getCommand();
@@ -402,7 +402,7 @@ Bool NetPacket::addCommand(NetCommandRef* msg)
 		if (frameRepeat)
 		{
 			m_lastCommandID = cmdMsg->getID();
-			++m_lastFrame; // Need this cause we're actually advancing to the next frame by adding this command.
+			++m_lastFrame;    // Need this cause we're actually advancing to the next frame by adding this command.
 		}
 
 		m_packetLen += NetPacketRepeatCommand::copyBytes(m_packet + m_packetLen);
@@ -578,7 +578,7 @@ NetCommandList* NetPacket::getCommandList()
 	// These need to be the same as the default values for m_lastPlayerID, m_lastFrame, etc.
 	UnsignedByte playerID = 0;
 	UnsignedInt frame = 0;
-	UnsignedShort commandID = 1; // The first command is going to be
+	UnsignedShort commandID = 1;    // The first command is going to be
 	UnsignedByte commandType = 0;
 	UnsignedByte relay = 0;
 	NetCommandRef* lastCommand = nullptr;
@@ -768,7 +768,7 @@ NetCommandList* NetPacket::getCommandList()
 				deleteInstance(lastCommand);
 				lastCommand = newInstance(NetCommandRef)(msg);
 
-				msg->detach(); // Need to detach from new NetCommandMsg created by the "readXMessage" above.
+				msg->detach();    // Need to detach from new NetCommandMsg created by the "readXMessage" above.
 
 				// since the message is part of the list now, we don't have to keep track of it.  So we'll just set it to null.
 				msg = nullptr;
@@ -817,7 +817,7 @@ NetCommandList* NetPacket::getCommandList()
 					case NETCOMMANDTYPE_FRAMEINFO:
 					{
 						msg = newInstance(NetFrameCommandMsg)();
-						++frame; // this is set below.
+						++frame;    // this is set below.
 						((NetFrameCommandMsg*)msg)->setCommandCount(0);
 						DEBUG_LOG_LEVEL(DEBUG_LEVEL_NET, ("Read a repeated frame command, frame = %d, player = %d, commandID = %d", frame, playerID, commandID));
 						break;
@@ -851,7 +851,7 @@ NetCommandList* NetPacket::getCommandList()
 				//			lastCommand = newInstance(NetCommandRef)(msg);
 				lastCommand = NEW_NETCOMMANDREF(msg);
 
-				msg->detach(); // Need to detach from new NetCommandMsg created by the "readXMessage" above.
+				msg->detach();    // Need to detach from new NetCommandMsg created by the "readXMessage" above.
 
 				// since the message is part of the list now, we don't have to keep track of it.  So we'll just set it to null.
 				msg = nullptr;
@@ -1425,8 +1425,8 @@ NetCommandMsg* NetPacket::readFileMessage(UnsignedByte* data, Int& i)
 
 	// TheSuperHackers @security Mauller/Jbremer/SkyAero 11/12/2025 Prevent buffer overflow when copying filepath string
 	i += strlcpy(filename, reinterpret_cast<const char*>(data + i), ARRAY_SIZE(filename));
-	++i;                                             // Increment for null terminator
-	msg->setPortableFilename(AsciiString(filename)); // it's transferred as a portable filename
+	++i;    // Increment for null terminator
+	msg->setPortableFilename(AsciiString(filename));    // it's transferred as a portable filename
 
 	UnsignedInt dataLength = 0;
 	memcpy(&dataLength, data + i, sizeof(dataLength));
@@ -1448,8 +1448,8 @@ NetCommandMsg* NetPacket::readFileAnnounceMessage(UnsignedByte* data, Int& i)
 
 	// TheSuperHackers @security Mauller/Jbremer/SkyAero 11/12/2025 Prevent buffer overflow when copying filepath string
 	i += strlcpy(filename, reinterpret_cast<const char*>(data + i), ARRAY_SIZE(filename));
-	++i;                                             // Increment for null terminator
-	msg->setPortableFilename(AsciiString(filename)); // it's transferred as a portable filename
+	++i;    // Increment for null terminator
+	msg->setPortableFilename(AsciiString(filename));    // it's transferred as a portable filename
 
 	UnsignedShort fileID = 0;
 	memcpy(&fileID, data + i, sizeof(fileID));

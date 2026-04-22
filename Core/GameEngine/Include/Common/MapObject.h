@@ -49,23 +49,23 @@ class ThingTemplate;
 class Shadow;
 enum WaypointID CPP_11( : Int);
 
-#define MAP_XY_FACTOR (10.0f)                    // How wide and tall each height map square is in world space.
-#define MAP_HEIGHT_SCALE (MAP_XY_FACTOR / 16.0f) // divide all map heights by 8.
+#define MAP_XY_FACTOR (10.0f)    // How wide and tall each height map square is in world space.
+#define MAP_HEIGHT_SCALE (MAP_XY_FACTOR / 16.0f)    // divide all map heights by 8.
 
 // m_flags bit values.
 enum
 {
-	FLAG_DRAWS_IN_MIRROR = 0x00000001,                             ///< If set, draws in water mirror.
-	FLAG_ROAD_POINT1 = 0x00000002,                                 ///< If set, is the first point in a road segment.
-	FLAG_ROAD_POINT2 = 0x00000004,                                 ///< If set, is the second point in a road segment.
-	FLAG_ROAD_FLAGS = (FLAG_ROAD_POINT1 | FLAG_ROAD_POINT2),       ///< If nonzero, object is a road piece.
-	FLAG_ROAD_CORNER_ANGLED = 0x00000008,                          ///< If set, the road corner is angled rather than curved.
-	FLAG_BRIDGE_POINT1 = 0x00000010,                               ///< If set, is the first point in a bridge.
-	FLAG_BRIDGE_POINT2 = 0x00000020,                               ///< If set, is the second point in a bridge.
-	FLAG_BRIDGE_FLAGS = (FLAG_BRIDGE_POINT1 | FLAG_BRIDGE_POINT2), ///< If nonzero, object is a bridge piece.
+	FLAG_DRAWS_IN_MIRROR = 0x00000001,    ///< If set, draws in water mirror.
+	FLAG_ROAD_POINT1 = 0x00000002,    ///< If set, is the first point in a road segment.
+	FLAG_ROAD_POINT2 = 0x00000004,    ///< If set, is the second point in a road segment.
+	FLAG_ROAD_FLAGS = (FLAG_ROAD_POINT1 | FLAG_ROAD_POINT2),    ///< If nonzero, object is a road piece.
+	FLAG_ROAD_CORNER_ANGLED = 0x00000008,    ///< If set, the road corner is angled rather than curved.
+	FLAG_BRIDGE_POINT1 = 0x00000010,    ///< If set, is the first point in a bridge.
+	FLAG_BRIDGE_POINT2 = 0x00000020,    ///< If set, is the second point in a bridge.
+	FLAG_BRIDGE_FLAGS = (FLAG_BRIDGE_POINT1 | FLAG_BRIDGE_POINT2),    ///< If nonzero, object is a bridge piece.
 	FLAG_ROAD_CORNER_TIGHT = 0x00000040,
-	FLAG_ROAD_JOIN = 0x00000080,  ///< If set, this road end does a generic alpha join.
-	FLAG_DONT_RENDER = 0x00000100 ///< If set, do not render this object. Only WB pays attention to this. (Right now, anyways)
+	FLAG_ROAD_JOIN = 0x00000080,    ///< If set, this road end does a generic alpha join.
+	FLAG_DONT_RENDER = 0x00000100    ///< If set, do not render this object. Only WB pays attention to this. (Right now, anyways)
 };
 
 class MapObject : public MemoryPoolObject
@@ -87,19 +87,19 @@ class MapObject : public MemoryPoolObject
 	};
 
 	// This data is currently written out into the map data file.
-	Coord3D m_location;                   ///< Location of the center of the object.
-	AsciiString m_objectName;             ///< The object name.
-	const ThingTemplate* m_thingTemplate; ///< thing template for map object
-	Real m_angle;                         ///< positive x is 0 degrees, angle is counterclockwise in degrees.
-	MapObject* m_nextMapObject;           ///< linked list.
-	Int m_flags;                          ///< Bit flags.
-	Dict m_properties;                    ///< general property sheet.
+	Coord3D m_location;    ///< Location of the center of the object.
+	AsciiString m_objectName;    ///< The object name.
+	const ThingTemplate* m_thingTemplate;    ///< thing template for map object
+	Real m_angle;    ///< positive x is 0 degrees, angle is counterclockwise in degrees.
+	MapObject* m_nextMapObject;    ///< linked list.
+	Int m_flags;    ///< Bit flags.
+	Dict m_properties;    ///< general property sheet.
 	// This data is runtime data that is used by the worldbuider editor, but
 	// not saved in the map file.
-	Int m_color;                                       ///< Display color.
-	RenderObjClass* m_renderObj;                       ///< object that renders in the 3d scene.
-	Shadow* m_shadowObj;                               ///< object that renders shadow in the 3d scene.
-	RenderObjClass* m_bridgeTowers[BRIDGE_MAX_TOWERS]; ///< for bridge towers
+	Int m_color;    ///< Display color.
+	RenderObjClass* m_renderObj;    ///< object that renders in the 3d scene.
+	Shadow* m_shadowObj;    ///< object that renders shadow in the 3d scene.
+	RenderObjClass* m_bridgeTowers[BRIDGE_MAX_TOWERS];    ///< for bridge towers
 	Int m_runtimeFlags;
 
 public:
@@ -112,19 +112,19 @@ public:
 	//~MapObject();		///< Note that deleting the head of a list deletes all linked objects in the list.
 
 public:
-	Dict* getProperties() { return &m_properties; } ///< return the object's property sheet.
+	Dict* getProperties() { return &m_properties; }    ///< return the object's property sheet.
 
-	void setNextMap(MapObject* nextMap) { m_nextMapObject = nextMap; } ///< Link the next map object.
-	const Coord3D* getLocation() const { return &m_location; }         ///< Get the center point.
-	Real getAngle() const { return m_angle; }                          ///< Get the angle.
-	Int getColor() const { return m_color; }                           ///< Gets whatever ui color we set.
-	void setColor(Int color) { m_color = color; }                      ///< Sets the ui color.
-	AsciiString getName() const { return m_objectName; }               ///< Gets the object name
-	void setName(AsciiString name);                                    ///< Sets the object name
-	void setThingTemplate(const ThingTemplate* thing);                 ///< set template
+	void setNextMap(MapObject* nextMap) { m_nextMapObject = nextMap; }    ///< Link the next map object.
+	const Coord3D* getLocation() const { return &m_location; }    ///< Get the center point.
+	Real getAngle() const { return m_angle; }    ///< Get the angle.
+	Int getColor() const { return m_color; }    ///< Gets whatever ui color we set.
+	void setColor(Int color) { m_color = color; }    ///< Sets the ui color.
+	AsciiString getName() const { return m_objectName; }    ///< Gets the object name
+	void setName(AsciiString name);    ///< Sets the object name
+	void setThingTemplate(const ThingTemplate* thing);    ///< set template
 	const ThingTemplate* getThingTemplate() const;
-	MapObject* getNext() const { return m_nextMapObject; } ///< Next map object in the list.  Not a copy, don't delete it.
-	MapObject* duplicate();                                ///< Allocates a copy.  Caller is responsible for delete-ing this when done with it.
+	MapObject* getNext() const { return m_nextMapObject; }    ///< Next map object in the list.  Not a copy, don't delete it.
+	MapObject* duplicate();    ///< Allocates a copy.  Caller is responsible for delete-ing this when done with it.
 
 	void setAngle(Real angle) { m_angle = normalizeAngle(angle); }
 	void setLocation(Coord3D* pLoc) { m_location = *pLoc; }

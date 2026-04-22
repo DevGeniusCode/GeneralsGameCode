@@ -26,7 +26,7 @@
 // Generals GameSpy chat-related code
 // Author: Matthew D. Campbell, July 2002
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 
 #include "Common/AudioEventRTS.h"
 #include "Common/INI.h"
@@ -82,46 +82,46 @@ void INI::parseOnlineChatColorDefinition(INI* ini)
 
 Color GameSpyColor[GSCOLOR_MAX] =
 	{
-		GameMakeColor(255, 255, 255, 255), // GSCOLOR_DEFAULT
-		GameMakeColor(255, 255, 0, 255),   // GSCOLOR_CURRENTROOM
-		GameMakeColor(255, 255, 255, 255), // GSCOLOR_ROOM
-		GameMakeColor(128, 128, 0, 255),   // GSCOLOR_GAME
-		GameMakeColor(128, 128, 128, 255), // GSCOLOR_GAME_FULL
-		GameMakeColor(128, 128, 128, 255), // GSCOLOR_GAME_CRCMISMATCH
+		GameMakeColor(255, 255, 255, 255),    // GSCOLOR_DEFAULT
+		GameMakeColor(255, 255, 0, 255),    // GSCOLOR_CURRENTROOM
+		GameMakeColor(255, 255, 255, 255),    // GSCOLOR_ROOM
+		GameMakeColor(128, 128, 0, 255),    // GSCOLOR_GAME
+		GameMakeColor(128, 128, 128, 255),    // GSCOLOR_GAME_FULL
+		GameMakeColor(128, 128, 128, 255),    // GSCOLOR_GAME_CRCMISMATCH
 #if RTS_GENERALS
-		GameMakeColor(255, 0, 0, 255), // GSCOLOR_PLAYER_NORMAL
+		GameMakeColor(255, 0, 0, 255),    // GSCOLOR_PLAYER_NORMAL
 #else
-		GameMakeColor(255, 255, 255, 255), // GSCOLOR_PLAYER_NORMAL
+		GameMakeColor(255, 255, 255, 255),    // GSCOLOR_PLAYER_NORMAL
 #endif
-		GameMakeColor(255, 0, 255, 255),   // GSCOLOR_PLAYER_OWNER
-		GameMakeColor(255, 0, 128, 255),   // GSCOLOR_PLAYER_BUDDY
-		GameMakeColor(255, 0, 0, 255),     // GSCOLOR_PLAYER_SELF
-		GameMakeColor(128, 128, 128, 255), // GSCOLOR_PLAYER_IGNORED
+		GameMakeColor(255, 0, 255, 255),    // GSCOLOR_PLAYER_OWNER
+		GameMakeColor(255, 0, 128, 255),    // GSCOLOR_PLAYER_BUDDY
+		GameMakeColor(255, 0, 0, 255),    // GSCOLOR_PLAYER_SELF
+		GameMakeColor(128, 128, 128, 255),    // GSCOLOR_PLAYER_IGNORED
 #if RTS_GENERALS
-		GameMakeColor(255, 0, 0, 255), // GSCOLOR_CHAT_NORMAL
+		GameMakeColor(255, 0, 0, 255),    // GSCOLOR_CHAT_NORMAL
 #else
-		GameMakeColor(255, 255, 255, 255), // GSCOLOR_CHAT_NORMAL
+		GameMakeColor(255, 255, 255, 255),    // GSCOLOR_CHAT_NORMAL
 #endif
-		GameMakeColor(255, 128, 0, 255),   // GSCOLOR_CHAT_EMOTE,
-		GameMakeColor(255, 255, 0, 255),   // GSCOLOR_CHAT_OWNER,
-		GameMakeColor(128, 255, 0, 255),   // GSCOLOR_CHAT_OWNER_EMOTE,
-		GameMakeColor(0, 0, 255, 255),     // GSCOLOR_CHAT_PRIVATE,
-		GameMakeColor(0, 255, 255, 255),   // GSCOLOR_CHAT_PRIVATE_EMOTE,
-		GameMakeColor(255, 0, 255, 255),   // GSCOLOR_CHAT_PRIVATE_OWNER,
-		GameMakeColor(255, 128, 255, 255), // GSCOLOR_CHAT_PRIVATE_OWNER_EMOTE,
-		GameMakeColor(255, 0, 255, 255),   // GSCOLOR_CHAT_BUDDY,
-		GameMakeColor(255, 0, 128, 255),   // GSCOLOR_CHAT_SELF,
-		GameMakeColor(0, 255, 0, 255),     // GSCOLOR_ACCEPT_TRUE,
-		GameMakeColor(255, 0, 0, 255),     // GSCOLOR_ACCEPT_FALSE,
-		GameMakeColor(255, 255, 0, 255),   // GSCOLOR_MAP_SELECTED,
-		GameMakeColor(255, 255, 255, 255), // GSCOLOR_MAP_UNSELECTED,
-		GameMakeColor(255, 255, 255, 255), // GSCOLOR_MOTD,
-		GameMakeColor(255, 255, 0, 255),   // GSCOLOR_MOTD_HEADING,
+		GameMakeColor(255, 128, 0, 255),    // GSCOLOR_CHAT_EMOTE,
+		GameMakeColor(255, 255, 0, 255),    // GSCOLOR_CHAT_OWNER,
+		GameMakeColor(128, 255, 0, 255),    // GSCOLOR_CHAT_OWNER_EMOTE,
+		GameMakeColor(0, 0, 255, 255),    // GSCOLOR_CHAT_PRIVATE,
+		GameMakeColor(0, 255, 255, 255),    // GSCOLOR_CHAT_PRIVATE_EMOTE,
+		GameMakeColor(255, 0, 255, 255),    // GSCOLOR_CHAT_PRIVATE_OWNER,
+		GameMakeColor(255, 128, 255, 255),    // GSCOLOR_CHAT_PRIVATE_OWNER_EMOTE,
+		GameMakeColor(255, 0, 255, 255),    // GSCOLOR_CHAT_BUDDY,
+		GameMakeColor(255, 0, 128, 255),    // GSCOLOR_CHAT_SELF,
+		GameMakeColor(0, 255, 0, 255),    // GSCOLOR_ACCEPT_TRUE,
+		GameMakeColor(255, 0, 0, 255),    // GSCOLOR_ACCEPT_FALSE,
+		GameMakeColor(255, 255, 0, 255),    // GSCOLOR_MAP_SELECTED,
+		GameMakeColor(255, 255, 255, 255),    // GSCOLOR_MAP_UNSELECTED,
+		GameMakeColor(255, 255, 255, 255),    // GSCOLOR_MOTD,
+		GameMakeColor(255, 255, 0, 255),    // GSCOLOR_MOTD_HEADING,
 };
 
 Bool GameSpyInfo::sendChat(UnicodeString message, Bool isAction, GameWindow* playerListbox)
 {
-	static UnicodeString s_prevMsg = UnicodeString::TheEmptyString; // stop spam before it happens
+	static UnicodeString s_prevMsg = UnicodeString::TheEmptyString;    // stop spam before it happens
 
 	RoomType roomType = StagingRoom;
 	if (getCurrentGroupRoom())
@@ -135,8 +135,8 @@ Bool GameSpyInfo::sendChat(UnicodeString message, Bool isAction, GameWindow* pla
 	if (!message.isEmpty())
 	{
 		if (!playerListbox)
-		{                                                  // Public message
-			if (isAction || message.compare(s_prevMsg) != 0) // don't send duplicate messages
+		{    // Public message
+			if (isAction || message.compare(s_prevMsg) != 0)    // don't send duplicate messages
 			{
 				req.message.isAction = isAction;
 				req.peerRequestType = PeerRequest::PEERREQUEST_MESSAGEROOM;
@@ -152,8 +152,8 @@ Bool GameSpyInfo::sendChat(UnicodeString message, Bool isAction, GameWindow* pla
 		GadgetListBoxGetSelected(playerListbox, (Int*)&selections);
 
 		if (selections[0] == -1)
-		{                                                  // Public message
-			if (isAction || message.compare(s_prevMsg) != 0) // don't send duplicate messages
+		{    // Public message
+			if (isAction || message.compare(s_prevMsg) != 0)    // don't send duplicate messages
 			{
 				req.message.isAction = isAction;
 				req.peerRequestType = PeerRequest::PEERREQUEST_MESSAGEROOM;
@@ -169,7 +169,7 @@ Bool GameSpyInfo::sendChat(UnicodeString message, Bool isAction, GameWindow* pla
 			// Construct a list
 			AsciiString names = AsciiString::TheEmptyString;
 			AsciiString tmp = AsciiString::TheEmptyString;
-			AsciiString aStr; // AsciiString buf for translating Unicode entries
+			AsciiString aStr;    // AsciiString buf for translating Unicode entries
 			names.format("%s", TheGameSpyInfo->getLocalName().str());
 			for (int i = 0; i < maxSel; i++)
 			{

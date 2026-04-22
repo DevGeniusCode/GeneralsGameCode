@@ -95,7 +95,7 @@ public:
 	const AsciiString& getPortraitMovieLeftName() const { return m_strPortraitMovieLeftName; }
 	const AsciiString& getPortraitMovieRightName() const { return m_strPortraitMovieRightName; }
 	const AsciiString& getCampaign() const { return m_strCampaign; }
-	const AsciiString& getPlayerTemplateName() const { return m_strPlayerTemplateName; } // template name, as parsed in from ini
+	const AsciiString& getPlayerTemplateName() const { return m_strPlayerTemplateName; }    // template name, as parsed in from ini
 	const Image* getImageDefeated() const { return m_imageDefeated; }
 	const Image* getImageVictorious() const { return m_imageVictorious; }
 	const AsciiString& getStringDefeated() const { return m_strDefeated; }
@@ -103,7 +103,7 @@ public:
 	const AsciiString& getSelectionSound() const { return m_strSelectionSound; }
 	const AsciiString& getRandomTauntSound() const
 	{
-		switch (rand() % 3) // don't care about distribution or exactly how random this is
+		switch (rand() % 3)    // don't care about distribution or exactly how random this is
 		{
 			case 0:
 				return m_strTauntSound1;
@@ -123,8 +123,8 @@ class ChallengeGenerals
 
 private:
 	/*const*/ GeneralPersona m_position[NUM_GENERALS];
-	Int m_PlayerTemplateNum;            // the template number as ThePlayerTemplateStore has it
-	GameDifficulty m_currentDifficulty; // the last selected game difficulty for the challenge generals
+	Int m_PlayerTemplateNum;    // the template number as ThePlayerTemplateStore has it
+	GameDifficulty m_currentDifficulty;    // the last selected game difficulty for the challenge generals
 
 	static void parseGeneralPersona(INI* ini, void* instance, void* store, const void* userData);
 
@@ -134,7 +134,7 @@ public:
 
 	void init();
 	const GeneralPersona* getChallengeGenerals() const { return m_position; }
-	const FieldParse* getFieldParse() const { return s_fieldParseTable; } // for INI file parsing
+	const FieldParse* getFieldParse() const { return s_fieldParseTable; }    // for INI file parsing
 	const GeneralPersona* getPlayerGeneralByCampaignName(AsciiString name) const;
 	const GeneralPersona* getGeneralByGeneralName(AsciiString name) const;
 	const GeneralPersona* getGeneralByTemplateName(AsciiString name) const;

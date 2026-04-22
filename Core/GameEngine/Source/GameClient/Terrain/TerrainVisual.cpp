@@ -27,7 +27,7 @@
 // Author: Colin Day, April 2001
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the GameEngine
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the GameEngine
 #include "Common/Xfer.h"
 #include "GameClient/TerrainVisual.h"
 
@@ -86,7 +86,7 @@ Bool TerrainVisual::load(AsciiString filename)
 
 	m_filenameString = filename;
 
-	return TRUE; // success
+	return TRUE;    // success
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ SeismicSimulationFilterBase::SeismicSimStatusCode DomeStyleSeismicFilter::filter
 
 		Real magnitude = node->m_magnitude;
 
-		Real offsScalar = magnitude / (Real)life; // real-life, get it?
+		Real offsScalar = magnitude / (Real)life;    // real-life, get it?
 		Int radius = node->m_radius;
 		Int border = heightMap->getBorderSize();
 		Int centerX = node->m_center.x + border;
@@ -144,7 +144,7 @@ SeismicSimulationFilterBase::SeismicSimStatusCode DomeStyleSeismicFilter::filter
 		Real* workspaceEnd = workspace + sqr(workspaceWidth);
 
 		for (Real* t = workspace; t < workspaceEnd; ++t)
-			*t = 0.0f; // clear the workspace
+			*t = 0.0f;    // clear the workspace
 
 		Int x, y;
 		for (x = 0; x < radius; ++x)
@@ -152,16 +152,16 @@ SeismicSimulationFilterBase::SeismicSimStatusCode DomeStyleSeismicFilter::filter
 			for (y = 0; y < radius; ++y)
 			{
 
-				Real distance = sqrt(sqr(x) + sqr(y)); // Pythagoras
+				Real distance = sqrt(sqr(x) + sqr(y));    // Pythagoras
 
 				if (distance < radius)
 				{
 					Real distScalar = cos((distance / radius * (PI / 2)));
 					Real height = (offsScalar * distScalar);
 
-					workspace[(radius + x) + workspaceWidth * (radius + y)] = height + heightMap->getBilinearSampleSeismicZVelocity(centerX + x, centerY + y); // kaleidoscope
+					workspace[(radius + x) + workspaceWidth * (radius + y)] = height + heightMap->getBilinearSampleSeismicZVelocity(centerX + x, centerY + y);    // kaleidoscope
 
-					if (x != 0) // non-zero test prevents cross-shaped double stamp
+					if (x != 0)    // non-zero test prevents cross-shaped double stamp
 					{
 						workspace[(radius - x) + workspaceWidth * (radius + y)] = height + heightMap->getBilinearSampleSeismicZVelocity(centerX - x, centerY + y);
 						if (y != 0)

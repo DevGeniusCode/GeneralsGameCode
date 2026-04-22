@@ -64,7 +64,7 @@
 // ----------------------------------------------------------------------------------------------
 enum
 {
-	BaseFps = 30, // The historic base frame rate for this game. This value must never change.
+	BaseFps = 30,    // The historic base frame rate for this game. This value must never change.
 	LOGICFRAMES_PER_SECOND = WWSyncPerSecond,
 	MSEC_PER_SECOND = 1000
 };
@@ -106,7 +106,7 @@ inline Real ConvertAngularVelocityInDegreesPerSecToRadsPerFrame(Real degPerSec)
 // ----------------------------------------------------------------------------------------------
 enum
 {
-	MAX_PLAYER_COUNT = 16 ///< max number of Players.
+	MAX_PLAYER_COUNT = 16    ///< max number of Players.
 };
 
 // ----------------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ const PlayerMaskType PLAYERMASK_NONE = 0x0;
 // ----------------------------------------------------------------------------------------------
 enum
 {
-	MAX_GLOBAL_GENERAL_TYPES = 9, ///< number of playable General Types, not including the boss)
+	MAX_GLOBAL_GENERAL_TYPES = 9,    ///< number of playable General Types, not including the boss)
 
 	/// The start of the playable global generals playertemplates
 	GLOBAL_GENERAL_BEGIN = 5,
@@ -147,7 +147,7 @@ enum GameDifficulty CPP_11( : Int)
 enum PlayerType CPP_11( : Int)
 {
 	PLAYER_HUMAN,    ///< player is human-controlled
-	PLAYER_COMPUTER, ///< player is computer-controlled
+	PLAYER_COMPUTER,    ///< player is computer-controlled
 
 	PLAYERTYPE_COUNT
 };
@@ -165,28 +165,28 @@ enum CellShroudStatus CPP_11( : Int)
 /// Since an object can take up more than a single PartitionCell, this is a status that applies to the whole Object
 enum ObjectShroudStatus CPP_11( : Int)
 {
-	OBJECTSHROUD_INVALID,                    ///< indeterminate state, will recompute
-	OBJECTSHROUD_CLEAR,                      ///< object is not shrouded at all (ie, completely visible)
-	OBJECTSHROUD_PARTIAL_CLEAR,              ///< object is partly clear (rest is shroud or fog)
-	OBJECTSHROUD_FOGGED,                     ///< object is completely fogged
-	OBJECTSHROUD_SHROUDED,                   ///< object is completely shrouded
-	OBJECTSHROUD_INVALID_BUT_PREVIOUS_VALID, ///< indeterminate state, will recompute, BUT previous status is valid, don't reset (used for save/load)
+	OBJECTSHROUD_INVALID,    ///< indeterminate state, will recompute
+	OBJECTSHROUD_CLEAR,    ///< object is not shrouded at all (ie, completely visible)
+	OBJECTSHROUD_PARTIAL_CLEAR,    ///< object is partly clear (rest is shroud or fog)
+	OBJECTSHROUD_FOGGED,    ///< object is completely fogged
+	OBJECTSHROUD_SHROUDED,    ///< object is completely shrouded
+	OBJECTSHROUD_INVALID_BUT_PREVIOUS_VALID,    ///< indeterminate state, will recompute, BUT previous status is valid, don't reset (used for save/load)
 };
 
 //-------------------------------------------------------------------------------------------------
 enum GuardMode CPP_11( : Int)
 {
 	GUARDMODE_NORMAL,
-	GUARDMODE_GUARD_WITHOUT_PURSUIT,  // no pursuit out of guard area
-	GUARDMODE_GUARD_FLYING_UNITS_ONLY // ignore nonflyers
+	GUARDMODE_GUARD_WITHOUT_PURSUIT,    // no pursuit out of guard area
+	GUARDMODE_GUARD_FLYING_UNITS_ONLY    // ignore nonflyers
 };
 
 // ---------------------------------------------------
 enum
 {
 	NEVER = 0,
-	FOREVER = 0x3fffffff // (we use 0x3fffffff so that we can add offsets and not overflow...
-	                     //		at 30fps we're still pretty safe!)
+	FOREVER = 0x3fffffff    // (we use 0x3fffffff so that we can add offsets and not overflow...
+	                        //		at 30fps we're still pretty safe!)
 };
 
 //-------------------------------------------------------------------------------------------------
@@ -220,8 +220,8 @@ enum CommandSourceType CPP_11( : Int)
 	CMD_FROM_PLAYER = 0,
 	CMD_FROM_SCRIPT,
 	CMD_FROM_AI,
-	CMD_FROM_DOZER,            // Special rare command when the dozer originates a command to attack a mine. Mines are not ai-attackable, and it seems deceitful for the dozer to generate a player or script command. jba.
-	CMD_DEFAULT_SWITCH_WEAPON, // Special case: A weapon that can be chosen -- this is the default case (machine gun vs flashbang).
+	CMD_FROM_DOZER,    // Special rare command when the dozer originates a command to attack a mine. Mines are not ai-attackable, and it seems deceitful for the dozer to generate a player or script command. jba.
+	CMD_DEFAULT_SWITCH_WEAPON,    // Special case: A weapon that can be chosen -- this is the default case (machine gun vs flashbang).
 
 	COMMAND_SOURCE_TYPE_COUNT
 };
@@ -445,7 +445,7 @@ public:
 
 private:
 	OBJCLASS* m_cur;
-	GetNextFunc m_getNextFunc; // this is the weird C++ syntax for "pointer-to-member-function"
+	GetNextFunc m_getNextFunc;    // this is the weird C++ syntax for "pointer-to-member-function"
 public:
 	DLINK_ITERATOR(OBJCLASS* cur, GetNextFunc getNextFunc)
 		: m_cur(cur)

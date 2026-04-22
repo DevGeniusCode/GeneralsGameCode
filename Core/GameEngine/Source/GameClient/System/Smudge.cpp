@@ -27,10 +27,10 @@
 // Author: Mark Wilczynski, June 2003
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "PreRTS.h" // This must go first in EVERY cpp file in the Game
+#include "PreRTS.h"    // This must go first in EVERY cpp file in the Game
 #include "GameClient/Smudge.h"
 
-DLListClass<Smudge> SmudgeSet::m_freeSmudgeList; ///< list of unused smudges for use by SmudgeSets.
+DLListClass<Smudge> SmudgeSet::m_freeSmudgeList;    ///< list of unused smudges for use by SmudgeSets.
 
 SmudgeManager::SmudgeManager()
 {
@@ -40,7 +40,7 @@ SmudgeManager::SmudgeManager()
 
 SmudgeManager::~SmudgeManager()
 {
-	reset(); // release all smudge sets and smudges to free pool.
+	reset();    // release all smudge sets and smudges to free pool.
 
 	SmudgeSet* head;
 
@@ -72,7 +72,7 @@ void SmudgeManager::reset()
 	while ((head = m_usedSmudgeSetList.Head()) != nullptr)
 	{
 		m_usedSmudgeSetList.Remove_Head();
-		head->reset(); // free all smudges.
+		head->reset();    // free all smudges.
 		m_freeSmudgeSetList.Add_Tail(head);
 	}
 }
@@ -91,19 +91,19 @@ SmudgeSet* SmudgeManager::addSmudgeSet()
 	SmudgeSet* set = m_freeSmudgeSetList.Head();
 	if (set)
 	{
-		set->Remove();                     // remove from free list
-		m_usedSmudgeSetList.Add_Tail(set); // add to used list.
+		set->Remove();    // remove from free list
+		m_usedSmudgeSetList.Add_Tail(set);    // add to used list.
 		return set;
 	}
 	set = W3DNEW SmudgeSet();
-	m_usedSmudgeSetList.Add_Tail(set); // add to used list.
+	m_usedSmudgeSetList.Add_Tail(set);    // add to used list.
 	return set;
 }
 
 void SmudgeManager::removeSmudgeSet(SmudgeSet*& smudgeSet)
 {
-	smudgeSet->Remove();                     // remove from used list
-	m_freeSmudgeSetList.Add_Head(smudgeSet); // add to free list.
+	smudgeSet->Remove();    // remove from used list
+	m_freeSmudgeSetList.Add_Head(smudgeSet);    // add to free list.
 	smudgeSet = nullptr;
 }
 
@@ -137,7 +137,7 @@ void SmudgeSet::reset()
 	while ((head = m_usedSmudgeList.Head()) != nullptr)
 	{
 		m_usedSmudgeList.Remove_Head();
-		m_freeSmudgeList.Add_Head(head); // add to free list
+		m_freeSmudgeList.Add_Head(head);    // add to free list
 	}
 
 	m_usedSmudgeMap.clear();
@@ -161,14 +161,14 @@ Smudge* SmudgeSet::addSmudgeToSet(Smudge::Identifier identifier)
 	Smudge* smudge = m_freeSmudgeList.Head();
 	if (smudge)
 	{
-		smudge->Remove(); // remove from free list
+		smudge->Remove();    // remove from free list
 	}
 	else
 	{
 		smudge = W3DNEW Smudge();
 	}
 	smudge->m_identifier = identifier;
-	m_usedSmudgeList.Add_Tail(smudge); // add to used list.
+	m_usedSmudgeList.Add_Tail(smudge);    // add to used list.
 	m_usedSmudgeMap[identifier] = smudge;
 	m_usedSmudgeCount++;
 	return smudge;
@@ -177,8 +177,8 @@ Smudge* SmudgeSet::addSmudgeToSet(Smudge::Identifier identifier)
 void SmudgeSet::removeSmudgeFromSet(Smudge*& smudge)
 {
 	m_usedSmudgeMap.erase(smudge->m_identifier);
-	smudge->Remove();                  // remove from used list.
-	m_freeSmudgeList.Add_Head(smudge); // add to free list
+	smudge->Remove();    // remove from used list.
+	m_freeSmudgeList.Add_Head(smudge);    // add to free list
 	smudge = nullptr;
 	m_usedSmudgeCount--;
 }
