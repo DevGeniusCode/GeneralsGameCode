@@ -2013,15 +2013,14 @@ DynamicMemoryAllocator::DynamicMemoryAllocator()
 */
 void DynamicMemoryAllocator::init(MemoryPoolFactory* factory, Int numSubPools, const PoolInitRec pParms[])
 {
-	const PoolInitRec defaultDMA[7] =
-		{
-			{"dmaPool_16", 16, 64, 64},
-			{"dmaPool_32", 32, 64, 64},
-			{"dmaPool_64", 64, 64, 64},
-			{"dmaPool_128", 128, 64, 64},
-			{"dmaPool_256", 256, 64, 64},
-			{"dmaPool_512", 512, 64, 64},
-			{"dmaPool_1024", 1024, 64, 64}};
+	const PoolInitRec defaultDMA[7] = {
+		{"dmaPool_16", 16, 64, 64},
+		{"dmaPool_32", 32, 64, 64},
+		{"dmaPool_64", 64, 64, 64},
+		{"dmaPool_128", 128, 64, 64},
+		{"dmaPool_256", 256, 64, 64},
+		{"dmaPool_512", 512, 64, 64},
+		{"dmaPool_1024", 1024, 64, 64}};
 
 	if (numSubPools == 0 || pParms == nullptr)
 	{
@@ -2774,14 +2773,13 @@ void MemoryPoolFactory::reset()
 
 //-----------------------------------------------------------------------------
 #ifdef MEMORYPOOL_DEBUG
-static const char* s_specialPrefixes[MAX_SPECIAL_USED] =
-	{
-		"Misc",    // the catchall for stuff that doesn't match others
-		"W3D_",
-		"W3A_",
-		"STL_",
-		"STR_",
-		nullptr};
+static const char* s_specialPrefixes[MAX_SPECIAL_USED] = {
+	"Misc",    // the catchall for stuff that doesn't match others
+	"W3D_",
+	"W3A_",
+	"STL_",
+	"STR_",
+	nullptr};
 
 #endif
 
