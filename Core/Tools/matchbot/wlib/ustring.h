@@ -32,8 +32,18 @@
 #define MAX_BYTES_PER_CHAR 1
 
 template <class charT>
-class UstringT : public basic_string<charT, string_char_traits<charT> >
+struct UstringHelper
 {
+	typedef string_char_traits<charT> CharTraits;
+	typedef basic_string<charT, CharTraits> BaseString;
+};
+
+template <class charT>
+class UstringT : public UstringHelper<charT>::BaseString
+{
+ private:
+	typedef typename UstringHelper<charT>::BaseString BaseString;
+
  public:
 		explicit UstringT(int max_charlength) {
 			set_max_bytelength(max_charlength*MAX_BYTES_PER_CHAR);
@@ -46,13 +56,14 @@ class UstringT : public basic_string<charT, string_char_traits<charT> >
 
       bool     operator==(const UstringT<charT> &other)
       {
-        const basic_string<charT, string_char_traits<charT> > *other_basic=&other;
-        const basic_string<charT, string_char_traits<charT> > *this_basic=this;
+        const BaseString *other_basic=&other;
+        const BaseString *this_basic=this;
         return((*other_basic)==(*this_basic));
       }
 
  private:
 		size_t   max_bytelength;
 };
+
 
 typedef UstringT<char> Ustring;

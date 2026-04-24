@@ -156,7 +156,9 @@ public:
 
 private:
 
-	typedef std::hash_map< NameKeyType, DamageFX, rts::hash<NameKeyType>, rts::equal_to<NameKeyType> > DamageFXMap;
+	typedef rts::hash<NameKeyType> NameKeyTypeHash;
+	typedef rts::equal_to<NameKeyType> NameKeyTypeEqual;
+	typedef std::hash_map<NameKeyType, DamageFX, NameKeyTypeHash, NameKeyTypeEqual> DamageFXMap;
 	DamageFXMap m_dfxmap;
 
 };

@@ -141,12 +141,22 @@ struct AUDIO_CALLBACK_STRUCT
 //	Protected structures
 /////////////////////////////////////////////////////////////////////////////////
 template <class T>
-class AudioCallbackListClass : public SimpleDynVecClass< AUDIO_CALLBACK_STRUCT<T> >
+struct AudioCallbackHelper
 {
-	using SimpleDynVecClass< AUDIO_CALLBACK_STRUCT<T> >::Vector;
-	using SimpleDynVecClass< AUDIO_CALLBACK_STRUCT<T> >::ActiveCount;
-	using SimpleDynVecClass< AUDIO_CALLBACK_STRUCT<T> >::Delete;
-	using SimpleDynVecClass< AUDIO_CALLBACK_STRUCT<T> >::Add;
+	typedef AUDIO_CALLBACK_STRUCT<T> CallbackStruct;
+	typedef SimpleDynVecClass<CallbackStruct> CallbackVec;
+};
+
+template <class T>
+class AudioCallbackListClass : public AudioCallbackHelper<T>::CallbackVec
+{
+	typedef typename AudioCallbackHelper<T>::CallbackStruct CallbackStruct;
+	typedef typename AudioCallbackHelper<T>::CallbackVec BaseVec;
+
+	using BaseVec::Vector;
+	using BaseVec::ActiveCount;
+	using BaseVec::Delete;
+	using BaseVec::Add;
 
 public:
 
@@ -171,7 +181,7 @@ public:
 template <class T> void
 AudioCallbackListClass<T>::Add_Callback (T pointer, uint32 user_data)
 {
-	Add ( AUDIO_CALLBACK_STRUCT<T> (pointer, user_data));
+	Add (CallbackStruct(pointer, user_data));
 }
 
 

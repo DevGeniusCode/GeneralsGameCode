@@ -443,7 +443,9 @@ AudioHandle AudioManager::addAudioEvent(const AudioEventRTS *eventToAdd)
 	eventToAdd->setPlayingAudioIndex( audioEvent->getPlayingAudioIndex() );
 	audioEvent->generatePlayInfo();	// generate pitch shift and volume shift now as well
 
-	std::list<std::pair<AsciiString, Real> >::iterator it;
+	typedef std::pair<AsciiString, Real> AdjustedVolumeEntry;
+	typedef std::list<AdjustedVolumeEntry>::iterator AdjustedVolumeListIt;
+	AdjustedVolumeListIt it;
 	for (it = m_adjustedVolumes.begin(); it != m_adjustedVolumes.end(); ++it) {
 		if (it->first == audioEvent->getEventName()) {
 			audioEvent->setVolume(it->second);
@@ -601,7 +603,9 @@ void AudioManager::setAudioEventVolumeOverride( AsciiString eventToAffect, Real 
 		adjustVolumeOfPlayingAudio(eventToAffect, newVolume);
 	}
 
-	std::list<std::pair<AsciiString, Real> >::iterator it;
+	typedef std::pair<AsciiString, Real> AdjustedVolumeEntry;
+	typedef std::list<AdjustedVolumeEntry>::iterator AdjustedVolumeListIt;
+	AdjustedVolumeListIt it;
 	for (it = m_adjustedVolumes.begin(); it != m_adjustedVolumes.end(); ++it) {
 		if (it->first == eventToAffect) {
 			if (newVolume == -1.0f) {

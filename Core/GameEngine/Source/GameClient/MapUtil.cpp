@@ -722,7 +722,8 @@ Bool WouldMapTransfer( const AsciiString& mapName )
 }
 
 //-------------------------------------------------------------------------------------------------
-typedef std::set<UnicodeString, rts::less_than_nocase<UnicodeString> > MapNameList;
+typedef rts::less_than_nocase<UnicodeString> UnicodeStringLessNoCase;
+typedef std::set<UnicodeString, UnicodeStringLessNoCase> MapNameList;
 typedef std::map<UnicodeString, AsciiString> MapDisplayToFileNameList;
 
 static void buildMapListForNumPlayers(MapNameList &outMapNames, MapDisplayToFileNameList &outFileNames, Int numPlayers)

@@ -209,8 +209,9 @@ public:
 private:
 
 	// use the hashing function for Ints.
-	typedef std::hash_map< NameKeyType, FXList, rts::hash<NameKeyType>, rts::equal_to<NameKeyType> > FXListMap;
-
+	typedef rts::hash<NameKeyType> NameKeyTypeHash;
+	typedef rts::equal_to<NameKeyType> NameKeyTypeEqual;
+	typedef std::hash_map<NameKeyType, FXList, NameKeyTypeHash, NameKeyTypeEqual> FXListMap;
 	FXListMap m_fxmap;
 
 };

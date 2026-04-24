@@ -153,7 +153,8 @@ private:
 	}
 	};
 
-	typedef std::hash_map< ConstGameWindowPtr, WindowVideo *, hashConstGameWindowPtr, std::equal_to<ConstGameWindowPtr> > WindowVideoMap;
+	typedef std::equal_to<ConstGameWindowPtr> ConstGameWindowPtrEqual;
+	typedef std::hash_map<ConstGameWindowPtr, WindowVideo *, hashConstGameWindowPtr, ConstGameWindowPtrEqual> WindowVideoMap;
 
 	WindowVideoMap m_playingVideos;								///< List of currently playin Videos
 	//WindowVideoMap m_pausedVideos;									///< List of currently paused Videos

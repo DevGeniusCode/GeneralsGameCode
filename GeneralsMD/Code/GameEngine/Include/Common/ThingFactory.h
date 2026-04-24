@@ -44,7 +44,9 @@ class Object;
 class Drawable;
 class INI;
 
-typedef std::hash_map<AsciiString, ThingTemplate*, rts::hash<AsciiString>, rts::equal_to<AsciiString> > ThingTemplateHashMap;
+typedef rts::hash<AsciiString> AsciiStringHash;
+typedef rts::equal_to<AsciiString> AsciiStringEqual;
+typedef std::hash_map<AsciiString, ThingTemplate*, AsciiStringHash, AsciiStringEqual> ThingTemplateHashMap;
 typedef ThingTemplateHashMap::iterator ThingTemplateHashMapIt;
 //-------------------------------------------------------------------------------------------------
 /** Implementation of the thing manager interface singleton */

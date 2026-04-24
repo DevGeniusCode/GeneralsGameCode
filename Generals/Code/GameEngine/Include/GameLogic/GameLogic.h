@@ -88,7 +88,9 @@ enum
 
 /// Function pointers for use by GameLogic callback functions.
 typedef void (*GameLogicFuncPtr)( Object *obj, void *userData );
-typedef std::hash_map<ObjectID, Object *, rts::hash<ObjectID>, rts::equal_to<ObjectID> > ObjectPtrHash;
+typedef rts::hash<ObjectID> ObjectIDHash;
+typedef rts::equal_to<ObjectID> ObjectIDEqual;
+typedef std::hash_map<ObjectID, Object *, ObjectIDHash, ObjectIDEqual> ObjectPtrHash;
 typedef ObjectPtrHash::const_iterator ObjectPtrIter;
 
 typedef std::vector<Object*> ObjectPtrVector;
@@ -287,13 +289,15 @@ private:
 		overrides to thing template buildable status. doesn't really belong here,
 		but has to go somewhere. (srj)
 	*/
-	typedef std::hash_map< AsciiString, BuildableStatus, rts::hash<AsciiString>, rts::equal_to<AsciiString> > BuildableMap;
+	typedef rts::hash<AsciiString> AsciiStringHash;
+	typedef rts::equal_to<AsciiString> AsciiStringEqual;
+	typedef std::hash_map<AsciiString, BuildableStatus, AsciiStringHash, AsciiStringEqual> BuildableMap;
 	BuildableMap m_thingTemplateBuildableOverrides;
 
 	/**
 		overrides to control bars. doesn't really belong here, but has to go somewhere. (srj)
 	*/
-	typedef std::hash_map< AsciiString, ConstCommandButtonPtr, rts::hash<AsciiString>, rts::equal_to<AsciiString> > ControlBarOverrideMap;
+	typedef std::hash_map<AsciiString, ConstCommandButtonPtr, AsciiStringHash, AsciiStringEqual> ControlBarOverrideMap;
 	ControlBarOverrideMap m_controlBarOverrides;
 
 	Real m_width, m_height;																	///< Dimensions of the world

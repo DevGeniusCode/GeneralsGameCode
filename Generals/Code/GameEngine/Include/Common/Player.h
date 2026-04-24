@@ -147,7 +147,9 @@ struct SpecialPowerReadyTimerType
 
 
 // ------------------------------------------------------------------------------------------------
-typedef std::hash_map< PlayerIndex, Relationship, std::hash<PlayerIndex>, std::equal_to<PlayerIndex> > PlayerRelationMapType;
+typedef std::hash<PlayerIndex> PlayerIndexHash;
+typedef std::equal_to<PlayerIndex> PlayerIndexEqual;
+typedef std::hash_map<PlayerIndex, Relationship, PlayerIndexHash, PlayerIndexEqual> PlayerRelationMapType;
 class PlayerRelationMap : public MemoryPoolObject,
 													public Snapshot
 {

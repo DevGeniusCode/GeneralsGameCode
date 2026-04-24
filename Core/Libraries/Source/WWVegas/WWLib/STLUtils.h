@@ -124,21 +124,35 @@ Iter advance_in_range(Iter first, Iter last, ptrdiff_t n)
 }
 
 template <typename Key, typename Val>
-range<std::multimap<Key, Val> > get_range(std::multimap<Key, Val>& mm, const Key& key, ptrdiff_t n = 0)
+struct RangeHelper
 {
-	typedef typename std::multimap<Key, Val>::iterator Iter;
+	typedef std::multimap<Key, Val> MultiMapType;
+	typedef range<MultiMapType> RangeType;
+	typedef const_range<MultiMapType> ConstRangeType;
+};
+
+template <typename Key, typename Val>
+typename RangeHelper<Key, Val>::RangeType get_range(std::multimap<Key, Val>& mm, const Key& key, ptrdiff_t n = 0)
+{
+	typedef typename RangeHelper<Key, Val>::MultiMapType MultiMapType;
+	typedef typename RangeHelper<Key, Val>::RangeType RangeType;
+	typedef typename MultiMapType::iterator Iter;
+
 	const std::pair<Iter, Iter> pair = mm.equal_range(key);
 	const Iter it = advance_in_range(pair.first, pair.second, n);
-	return range<std::multimap<Key, Val> >(it, pair.second);
+	return RangeType(it, pair.second);
 }
 
 template <typename Key, typename Val>
-const_range<std::multimap<Key, Val> > get_range(const std::multimap<Key, Val>& mm, const Key& key, ptrdiff_t n = 0)
+typename RangeHelper<Key, Val>::ConstRangeType get_range(const std::multimap<Key, Val>& mm, const Key& key, ptrdiff_t n = 0)
 {
-	typedef typename std::multimap<Key, Val>::const_iterator Iter;
+	typedef typename RangeHelper<Key, Val>::MultiMapType MultiMapType;
+	typedef typename RangeHelper<Key, Val>::ConstRangeType ConstRangeType;
+	typedef typename MultiMapType::const_iterator Iter;
+
 	const std::pair<Iter, Iter> pair = mm.equal_range(key);
 	const Iter it = advance_in_range(pair.first, pair.second, n);
-	return const_range<std::multimap<Key, Val> >(it, pair.second);
+	return ConstRangeType(it, pair.second);
 }
 
 } // namespace stl

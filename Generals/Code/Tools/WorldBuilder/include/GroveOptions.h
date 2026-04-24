@@ -39,7 +39,8 @@ UnicodeString GetDisplayNameFromPair(const PairNameDisplayName *pNamePair);
 class GroveOptions : public COptionsPanel
 {
 	protected:
-		std::vector<std::pair<Int, Int> >	mVecGroup;
+		typedef std::pair<Int, Int> GroupPair;
+		std::vector<GroupPair> mVecGroup;
 		VecPairNameDisplayName mVecDisplayNames;
 
 		Int	mNumTrees;
