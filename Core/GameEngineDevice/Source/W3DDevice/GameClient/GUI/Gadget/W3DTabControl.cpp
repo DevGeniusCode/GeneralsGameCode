@@ -418,235 +418,99 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 		tabDeltaY = tabHeight;
 	}
 
-	const Image *image = nullptr;
-
-	if( tabData->tabCount >= 1 )//Does exist
+	// TheSuperHackers @refactor: Replaced legacy unrolled rendering with dynamic 3-slice pane logic.
+	// Added support for 9-slice/tiled backgrounds, and NUM_TAB_PANES tab counts.
+	for( Int i = 0; i < tabData->tabCount && i < NUM_TAB_PANES; i++ )
 	{
-		if( tabData->subPaneDisabled[0] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabZero( tabControl );
-		}
-		else if( tabData->activeTab == 0 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabZero( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabZero( tabControl );
-		}
+		const Image *leftImage = nullptr;
+		const Image *rightImage = nullptr;
+		const Image *centerImage = nullptr;
 
-		if( image != nullptr )
+		GameWindow *pane = tabData->subPanes[i];
+		if( pane )
 		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
+			// Query the child TABPANE's instance data instead of the parent TABCONTROL
+			WinInstanceData *paneInstData = pane->winGetInstanceData();
+			WinDrawData *drawData = nullptr;
 
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
+			if( tabData->subPaneDisabled[i] )
+			{
+				drawData = paneInstData->m_disabledDrawData;
+			}
+			else if( tabData->activeTab == i )
+			{
+				// Active tab serves as our "Hilited" or "Selected" state
+				drawData = paneInstData->m_hiliteDrawData;
+			}
+			else
+			{
+				drawData = paneInstData->m_enabledDrawData;
+			}
 
-	if( tabData->tabCount >= 2 )//Does exist
-	{
-		if( tabData->subPaneDisabled[1] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabOne( tabControl );
-		}
-		else if( tabData->activeTab == 1 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabOne( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabOne( tabControl );
+			// Engine standard: Index 0 = Left, 1 = Right, 2 = Center
+			if( drawData )
+			{
+				leftImage   = drawData[0].image;
+				rightImage  = drawData[1].image;
+				centerImage = drawData[2].image;
+			}
 		}
 
-		if( image != nullptr )
+		// Render the Tab Button Background
+		if( leftImage && rightImage && centerImage )
 		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
+			// 3-Slice Rendering
+			Int leftWidth = leftImage->getImageWidth();
+			Int rightWidth = rightImage->getImageWidth();
 
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
+			// Draw Left
+			TheWindowManager->winDrawImage( leftImage, tabX, tabY, tabX + leftWidth, tabY + tabHeight );
 
-	if( tabData->tabCount >= 3 )//Does exist
-	{
-		if( tabData->subPaneDisabled[2] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabTwo( tabControl );
-		}
-		else if( tabData->activeTab == 2 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabTwo( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabTwo( tabControl );
-		}
+			// Draw Right
+			TheWindowManager->winDrawImage( rightImage, tabX + tabWidth - rightWidth, tabY, tabX + tabWidth, tabY + tabHeight );
 
-		if( image != nullptr )
+			// Draw Center (Tiled & Clipped to match W3DPushButton behavior exactly)
+			Int centerStartX = tabX + leftWidth;
+			Int centerEndX = tabX + tabWidth - rightWidth;
+			Int centerWidth = centerEndX - centerStartX;
+
+			if( centerWidth > 0 )
+			{
+				Int imgWidth = centerImage->getImageWidth();
+				Int pieces = centerWidth / imgWidth;
+				Int currentX = centerStartX;
+
+				// Tile whole pieces
+				for( Int p = 0; p < pieces; p++ )
+				{
+					TheWindowManager->winDrawImage( centerImage, currentX, tabY, currentX + imgWidth, tabY + tabHeight );
+					currentX += imgWidth;
+				}
+
+				// Clip remainder
+				Int remainder = centerEndX - currentX;
+				if( remainder > 0 )
+				{
+					IRegion2D reg;
+					reg.lo.x = currentX;
+					reg.lo.y = tabY;
+					reg.hi.x = centerEndX;
+					reg.hi.y = tabY + tabHeight;
+
+					TheDisplay->setClipRegion( &reg );
+					TheWindowManager->winDrawImage( centerImage, currentX, tabY, currentX + imgWidth, tabY + tabHeight );
+					TheDisplay->enableClipping( FALSE );
+				}
+			}
+		}
+		else if( leftImage )
 		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
+			// Fallback: 1-Slice Stretched (If the .wnd file only provides 1 image)
+			TheWindowManager->winDrawImage( leftImage, tabX, tabY, tabX + tabWidth, tabY + tabHeight );
 		}
+
+		// Advance position for next tab
+		tabX += tabDeltaX;
+		tabY += tabDeltaY;
 	}
-
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
-
-	if( tabData->tabCount >= 4 )//Does exist
-	{
-		if( tabData->subPaneDisabled[3] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabThree( tabControl );
-		}
-		else if( tabData->activeTab == 3 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabThree( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabThree( tabControl );
-		}
-
-		if( image != nullptr )
-		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
-
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
-
-	if( tabData->tabCount >= 5 )//Does exist
-	{
-		if( tabData->subPaneDisabled[4] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabFour( tabControl );
-		}
-		else if( tabData->activeTab == 4 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabFour( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabFour( tabControl );
-		}
-
-		if( image != nullptr )
-		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
-
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
-
-	if( tabData->tabCount >= 6 )//Does exist
-	{
-		if( tabData->subPaneDisabled[5] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabFive( tabControl );
-		}
-		else if( tabData->activeTab == 5 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabFive( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabFive( tabControl );
-		}
-
-		if( image != nullptr )
-		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
-
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
-
-	if( tabData->tabCount >= 7 )//Doesn't exist
-	{
-		if( tabData->subPaneDisabled[6] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabSix( tabControl );
-		}
-		else if( tabData->activeTab == 6 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabSix( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabSix( tabControl );
-		}
-
-		if( image != nullptr )
-		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
-
-	tabX += tabDeltaX;
-	tabY += tabDeltaY;
-
-	if( tabData->tabCount >= 8 )//Doesn't exist
-	{
-		if( tabData->subPaneDisabled[7] )
-		{//Disabled
-			image			= GadgetTabControlGetDisabledImageTabSeven( tabControl );
-		}
-		else if( tabData->activeTab == 7 )
-		{//Hilited/Active
-			image			= GadgetTabControlGetHiliteImageTabSeven( tabControl );
-		}
-		else
-		{//Just enabled
-			image			= GadgetTabControlGetEnabledImageTabSeven( tabControl );
-		}
-
-		if( image != nullptr )
-		{
-			TheWindowManager->winDrawImage( image,
-																			tabX,
-																			tabY,
-																			tabX + tabWidth,
-																			tabY + tabHeight
-																			);
-		}
-	}
-
 }
