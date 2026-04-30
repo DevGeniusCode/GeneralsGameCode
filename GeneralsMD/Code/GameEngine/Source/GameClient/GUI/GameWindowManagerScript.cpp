@@ -158,6 +158,9 @@ const char *const WindowStyleNames[] = { "PUSHBUTTON",	"RADIOBUTTON",	"CHECKBOX"
 static GameWindow *windowStack[ WIN_STACK_DEPTH ];
 static GameWindow **stackPtr;
 
+static Real s_currentXScale = 1.0f;
+static Real s_currentYScale = 1.0f;
+
 // for parsing
 static const char *seps = " =;\n\r\t";
 WinDrawData enabledDropDownButtonDrawData[ MAX_DRAW_DATA ];  ///< for combo boxes
@@ -527,6 +530,10 @@ static Bool parseScreenRect( const char *token, char *buffer,
 	//
 	Real xScale = (Real)TheDisplay->getWidth() / (Real)createRes.x;
 	Real yScale = (Real)TheDisplay->getHeight() / (Real)createRes.y;
+
+	s_currentXScale = xScale;
+	s_currentYScale = yScale;
+
 	screenRegion.lo.x = (Int)((Real)screenRegion.lo.x * xScale);
 	screenRegion.lo.y = (Int)((Real)screenRegion.lo.y * yScale);
 	screenRegion.hi.x = (Int)((Real)screenRegion.hi.x * xScale);
@@ -1209,11 +1216,14 @@ static Bool parseTabControlData( const char *token, WinInstanceData *instData,
 	c = strtok( nullptr, seps );  // label
 	c = strtok( nullptr, seps );  // value
 	scanInt( c, tabControlData->tabWidth );
+	// TheSuperHackers @bugfix fix dynamic scaling for tab control dimensions
+	tabControlData->tabWidth = (Int)(tabControlData->tabWidth * s_currentXScale);
 
 	//TABHEIGHT
 	c = strtok( nullptr, seps );  // label
 	c = strtok( nullptr, seps );  // value
 	scanInt( c, tabControlData->tabHeight );
+	tabControlData->tabHeight = (Int)(tabControlData->tabHeight * s_currentYScale);
 
 	//TABCOUNT
 	c = strtok( nullptr, seps );  // label
@@ -2322,6 +2332,10 @@ static GameWindow *parseWindow( File *inFile, char *buffer )
 	void *data = nullptr;
 	ICoord2D parentSize;
 	AsciiString asciibuf;
+
+	// Reset current scales to default before parsing
+	s_currentXScale = 1.0f;
+	s_currentYScale = 1.0f;
 
 	//
 	// reset our 'static globals' that house the current parsed window callback
