@@ -418,19 +418,23 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 		tabDeltaY = tabHeight;
 	}
 
-	// TheSuperHackers @refactor: Replaced legacy unrolled rendering with dynamic 3-slice pane logic.
+	// TheSuperHackers @refactor TheSuperHackers 30/04/2026 Replaces unrolled tab rendering with dynamic 3-slice logic.
 	// Added support for 9-slice/tiled backgrounds, and NUM_TAB_PANES tab counts.
+	WinInstanceData *parentInstData = tabControl->winGetInstanceData();
 	for( Int i = 0; i < tabData->tabCount && i < NUM_TAB_PANES; i++ )
 	{
 		const Image *leftImage = nullptr;
 		const Image *rightImage = nullptr;
 		const Image *centerImage = nullptr;
+		const Image *fallbackImage = nullptr;
 
 		GameWindow *pane = tabData->subPanes[i];
+		WinInstanceData *paneInstData = nullptr;
+
 		if( pane )
 		{
-			// Query the child TABPANE's instance data instead of the parent TABCONTROL
-			WinInstanceData *paneInstData = pane->winGetInstanceData();
+			// Query the child TABPANE's instance data
+			paneInstData = pane->winGetInstanceData();
 			WinDrawData *drawData = nullptr;
 
 			if( tabData->subPaneDisabled[i] )
@@ -439,7 +443,6 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 			}
 			else if( tabData->activeTab == i )
 			{
-				// Active tab serves as our "Hilited" or "Selected" state
 				drawData = paneInstData->m_hiliteDrawData;
 			}
 			else
@@ -447,29 +450,43 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 				drawData = paneInstData->m_enabledDrawData;
 			}
 
-			// Engine standard: Index 0 = Left, 1 = Right, 2 = Center
+			// Shifted Indices: [0] reserved for Pane Background. [1]=Left, [2]=Right, [3]=Center.
 			if( drawData )
 			{
-				leftImage   = drawData[0].image;
-				rightImage  = drawData[1].image;
-				centerImage = drawData[2].image;
+				leftImage   = drawData[1].image;
+				rightImage  = drawData[2].image;
+				centerImage = drawData[3].image;
 			}
 		}
 
-		// Render the Tab Button Background
+		// Determine legacy fallback image from parent TABCONTROL (uses index i for tab i)
+		if( tabData->subPaneDisabled[i] )
+		{
+			fallbackImage = parentInstData->m_disabledDrawData[i].image;
+		}
+		else if( tabData->activeTab == i )
+		{
+			fallbackImage = parentInstData->m_hiliteDrawData[i].image;
+		}
+		else
+		{
+			fallbackImage = parentInstData->m_enabledDrawData[i].image;
+		}
+
+		// Render the tab button background.
 		if( leftImage && rightImage && centerImage )
 		{
-			// 3-Slice Rendering
+			// 3-Slice Rendering using Child Pane Data
 			Int leftWidth = leftImage->getImageWidth();
 			Int rightWidth = rightImage->getImageWidth();
 
-			// Draw Left
+			// Draw left slice.
 			TheWindowManager->winDrawImage( leftImage, tabX, tabY, tabX + leftWidth, tabY + tabHeight );
 
-			// Draw Right
+			// Draw right slice.
 			TheWindowManager->winDrawImage( rightImage, tabX + tabWidth - rightWidth, tabY, tabX + tabWidth, tabY + tabHeight );
 
-			// Draw Center (Tiled & Clipped to match W3DPushButton behavior exactly)
+			// Draw center slice (tiled and clipped).
 			Int centerStartX = tabX + leftWidth;
 			Int centerEndX = tabX + tabWidth - rightWidth;
 			Int centerWidth = centerEndX - centerStartX;
@@ -503,10 +520,58 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 				}
 			}
 		}
-		else if( leftImage )
+		else if( fallbackImage )
 		{
-			// Fallback: 1-Slice Stretched (If the .wnd file only provides 1 image)
-			TheWindowManager->winDrawImage( leftImage, tabX, tabY, tabX + tabWidth, tabY + tabHeight );
+			// Legacy fallback: single stretched image from parent TABCONTROL data.
+			TheWindowManager->winDrawImage( fallbackImage, tabX, tabY, tabX + tabWidth, tabY + tabHeight );
+		}
+
+		// TheSuperHackers @feature TheSuperHackers 30/04/2026 Adds native tab text rendering with state-driven colors.
+		if( pane && paneInstData && paneInstData->getTextLength() > 0 )
+		{
+			DisplayString *text = paneInstData->getTextDisplayString();
+			if( text )
+			{
+				Color textColor, dropColor;
+
+				// Determine text color based on Tab state
+				if( tabData->subPaneDisabled[i] )
+				{
+					textColor = pane->winGetDisabledTextColor();
+					dropColor = pane->winGetDisabledTextBorderColor();
+				}
+				else if( tabData->activeTab == i )
+				{
+					// Active tab text is rendered using Hilite colors
+					textColor = pane->winGetHiliteTextColor();
+					dropColor = pane->winGetHiliteTextBorderColor();
+				}
+				else
+				{
+					textColor = pane->winGetEnabledTextColor();
+					dropColor = pane->winGetEnabledTextBorderColor();
+				}
+
+				// Sync font with pane settings
+				if( text->getFont() != pane->winGetFont() )
+				{
+					text->setFont( pane->winGetFont() );
+				}
+
+				// Handle Wrapping (Mimicking PushButton logic)
+				text->setWordWrapCentered( BitIsSet( paneInstData->getStatus(), WIN_STATUS_WRAP_CENTERED ) );
+				text->setWordWrap( tabWidth );
+
+				// Calculate Centered Position
+				Int textWidth, textHeight;
+				text->getSize( &textWidth, &textHeight );
+
+				Int textPosX = tabX + (tabWidth / 2) - (textWidth / 2);
+				Int textPosY = tabY + (tabHeight / 2) - (textHeight / 2);
+
+				// Draw the text
+				text->draw( textPosX, textPosY, textColor, dropColor );
+			}
 		}
 
 		// Advance position for next tab
