@@ -383,6 +383,9 @@ void W3DGadgetTabControlDraw( GameWindow *tabControl, WinInstanceData *instData 
 // W3DGadgetRadioButtonImageDraw ==============================================
 /** Draw tabs with user supplied images */
 //=============================================================================
+// TheSuperHackers @feature TheSuperHackers 30/04/2026 Adds native tab text rendering with state-driven colors.
+// TheSuperHackers @refactor TheSuperHackers 30/04/2026 Replaces unrolled tab rendering with dynamic 3-slice logic.
+// Added support for 9-slice/tiled backgrounds, and NUM_TAB_PANES tab counts.
 void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 																	WinInstanceData *instData )
 {
@@ -392,11 +395,11 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 	tabControl->winGetScreenPosition( &origin.x, &origin.y );
 	tabControl->winGetSize( &size.x, &size.y );
 
-	W3DGameWinDefaultDraw(tabControl, instData);//draw the background
+	W3DGameWinDefaultDraw( tabControl, instData ); // draw the background
 
 	if( BitIsSet( tabControl->winGetStatus(), WIN_STATUS_BORDER ) == TRUE &&
 			!BitIsSet( tabControl->winGetStatus(), WIN_STATUS_SEE_THRU ) )
-	{//draw border if desired
+	{
 		tabControl->winDrawBorder();
 	}
 
@@ -407,7 +410,7 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 	tabY = origin.y + tabData->tabsTopLimit;
 	tabWidth = tabData->tabWidth;
 	tabHeight = tabData->tabHeight;
-	if( (tabData->tabEdge == TP_TOP_SIDE)  ||  (tabData->tabEdge == TP_BOTTOM_SIDE) )
+	if( (tabData->tabEdge == TP_TOP_SIDE) || (tabData->tabEdge == TP_BOTTOM_SIDE) )
 	{
 		tabDeltaX = tabWidth;
 		tabDeltaY = 0;
@@ -418,75 +421,101 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 		tabDeltaY = tabHeight;
 	}
 
-	// TheSuperHackers @refactor TheSuperHackers 30/04/2026 Replaces unrolled tab rendering with dynamic 3-slice logic.
-	// Added support for 9-slice/tiled backgrounds, and NUM_TAB_PANES tab counts.
-	WinInstanceData *parentInstData = tabControl->winGetInstanceData();
+	// Draw active pane background from slot 0 of the active TABPANE.
+	{
+		Int paneWidth, paneHeight, paneX, paneY;
+		GadgetTabControlComputeSubPaneSize( tabControl, &paneWidth, &paneHeight, &paneX, &paneY );
+
+		Int activeIndex = tabData->activeTab;
+		if( activeIndex < 0 || activeIndex >= tabData->tabCount )
+		{
+			activeIndex = 0;
+		}
+
+		GameWindow *activePane = tabData->subPanes[ activeIndex ];
+		if( activePane )
+		{
+			WinInstanceData *paneInstData = activePane->winGetInstanceData();
+			WinDrawData *paneDrawData = nullptr;
+
+			if( paneInstData )
+			{
+				if( tabData->subPaneDisabled[ activeIndex ] )
+					paneDrawData = paneInstData->m_disabledDrawData;
+				else if( tabData->activeTab == activeIndex )
+					paneDrawData = paneInstData->m_hiliteDrawData;
+				else
+					paneDrawData = paneInstData->m_enabledDrawData;
+
+				if( paneDrawData )
+				{
+					const WinDrawData &paneBg = paneDrawData[ 0 ];
+					Int paneLeft = origin.x + paneX;
+					Int paneTop = origin.y + paneY;
+					Int paneRight = paneLeft + paneWidth;
+					Int paneBottom = paneTop + paneHeight;
+
+					if( paneBg.borderColor != WIN_COLOR_UNDEFINED )
+					{
+						TheWindowManager->winOpenRect( paneBg.borderColor, WIN_DRAW_LINE_WIDTH,
+																			 paneLeft, paneTop, paneRight, paneBottom );
+					}
+					if( paneBg.color != WIN_COLOR_UNDEFINED )
+					{
+						TheWindowManager->winFillRect( paneBg.color, WIN_DRAW_LINE_WIDTH,
+																			 paneLeft + 1, paneTop + 1, paneRight - 1, paneBottom - 1 );
+					}
+					if( paneBg.image )
+					{
+						TheWindowManager->winDrawImage( paneBg.image, paneLeft, paneTop, paneRight, paneBottom );
+					}
+				}
+			}
+		}
+	}
+
+	// Render tab buttons strictly from the TABPANE's slots [1..3].
 	for( Int i = 0; i < tabData->tabCount && i < NUM_TAB_PANES; i++ )
 	{
 		const Image *leftImage = nullptr;
 		const Image *rightImage = nullptr;
 		const Image *centerImage = nullptr;
-		const Image *fallbackImage = nullptr;
 
-		GameWindow *pane = tabData->subPanes[i];
+		GameWindow *pane = tabData->subPanes[ i ];
 		WinInstanceData *paneInstData = nullptr;
+		WinDrawData *drawData = nullptr;
 
 		if( pane )
 		{
-			// Query the child TABPANE's instance data
 			paneInstData = pane->winGetInstanceData();
-			WinDrawData *drawData = nullptr;
+			if( paneInstData )
+			{
+				if( tabData->subPaneDisabled[ i ] )
+					drawData = paneInstData->m_disabledDrawData;
+				else if( tabData->activeTab == i )
+					drawData = paneInstData->m_hiliteDrawData;
+				else
+					drawData = paneInstData->m_enabledDrawData;
 
-			if( tabData->subPaneDisabled[i] )
-			{
-				drawData = paneInstData->m_disabledDrawData;
+				// Safety guard: only access slots [1..3] if we have at least 4 draw slots.
+				if( drawData && MAX_DRAW_DATA >= 4 )
+				{
+					leftImage = drawData[ 1 ].image;
+					rightImage = drawData[ 2 ].image;
+					centerImage = drawData[ 3 ].image;
+				}
 			}
-			else if( tabData->activeTab == i )
-			{
-				drawData = paneInstData->m_hiliteDrawData;
-			}
-			else
-			{
-				drawData = paneInstData->m_enabledDrawData;
-			}
-
-			// Shifted Indices: [0] reserved for Pane Background. [1]=Left, [2]=Right, [3]=Center.
-			if( drawData )
-			{
-				leftImage   = drawData[1].image;
-				rightImage  = drawData[2].image;
-				centerImage = drawData[3].image;
-			}
-		}
-
-		// Determine legacy fallback image from parent TABCONTROL (uses index i for tab i)
-		if( tabData->subPaneDisabled[i] )
-		{
-			fallbackImage = parentInstData->m_disabledDrawData[i].image;
-		}
-		else if( tabData->activeTab == i )
-		{
-			fallbackImage = parentInstData->m_hiliteDrawData[i].image;
-		}
-		else
-		{
-			fallbackImage = parentInstData->m_enabledDrawData[i].image;
 		}
 
 		// Render the tab button background.
 		if( leftImage && rightImage && centerImage )
 		{
-			// 3-Slice Rendering using Child Pane Data
 			Int leftWidth = leftImage->getImageWidth();
 			Int rightWidth = rightImage->getImageWidth();
 
-			// Draw left slice.
 			TheWindowManager->winDrawImage( leftImage, tabX, tabY, tabX + leftWidth, tabY + tabHeight );
-
-			// Draw right slice.
 			TheWindowManager->winDrawImage( rightImage, tabX + tabWidth - rightWidth, tabY, tabX + tabWidth, tabY + tabHeight );
 
-			// Draw center slice (tiled and clipped).
 			Int centerStartX = tabX + leftWidth;
 			Int centerEndX = tabX + tabWidth - rightWidth;
 			Int centerWidth = centerEndX - centerStartX;
@@ -494,39 +523,35 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 			if( centerWidth > 0 )
 			{
 				Int imgWidth = centerImage->getImageWidth();
-				Int pieces = centerWidth / imgWidth;
-				Int currentX = centerStartX;
-
-				// Tile whole pieces
-				for( Int p = 0; p < pieces; p++ )
+				if( imgWidth > 0 )
 				{
-					TheWindowManager->winDrawImage( centerImage, currentX, tabY, currentX + imgWidth, tabY + tabHeight );
-					currentX += imgWidth;
-				}
+					Int pieces = centerWidth / imgWidth;
+					Int currentX = centerStartX;
 
-				// Clip remainder
-				Int remainder = centerEndX - currentX;
-				if( remainder > 0 )
-				{
-					IRegion2D reg;
-					reg.lo.x = currentX;
-					reg.lo.y = tabY;
-					reg.hi.x = centerEndX;
-					reg.hi.y = tabY + tabHeight;
+					for( Int p = 0; p < pieces; p++ )
+					{
+						TheWindowManager->winDrawImage( centerImage, currentX, tabY, currentX + imgWidth, tabY + tabHeight );
+						currentX += imgWidth;
+					}
 
-					TheDisplay->setClipRegion( &reg );
-					TheWindowManager->winDrawImage( centerImage, currentX, tabY, currentX + imgWidth, tabY + tabHeight );
-					TheDisplay->enableClipping( FALSE );
+					Int remainder = centerEndX - currentX;
+					if( remainder > 0 )
+					{
+						IRegion2D reg;
+						reg.lo.x = currentX;
+						reg.lo.y = tabY;
+						reg.hi.x = centerEndX;
+						reg.hi.y = tabY + tabHeight;
+
+						TheDisplay->setClipRegion( &reg );
+						TheWindowManager->winDrawImage( centerImage, currentX, tabY, currentX + imgWidth, tabY + tabHeight );
+						TheDisplay->enableClipping( FALSE );
+					}
 				}
 			}
 		}
-		else if( fallbackImage )
-		{
-			// Legacy fallback: single stretched image from parent TABCONTROL data.
-			TheWindowManager->winDrawImage( fallbackImage, tabX, tabY, tabX + tabWidth, tabY + tabHeight );
-		}
 
-		// TheSuperHackers @feature TheSuperHackers 30/04/2026 Adds native tab text rendering with state-driven colors.
+		// Draw tab text last, after all images, with clipping disabled.
 		if( pane && paneInstData && paneInstData->getTextLength() > 0 )
 		{
 			DisplayString *text = paneInstData->getTextDisplayString();
@@ -552,24 +577,22 @@ void W3DGadgetTabControlImageDraw( GameWindow *tabControl,
 					dropColor = pane->winGetEnabledTextBorderColor();
 				}
 
-				// Sync font with pane settings
-				if( text->getFont() != pane->winGetFont() )
+				GameFont *activeFont = pane->winGetFont() ? pane->winGetFont() : tabControl->winGetFont();
+				if( text->getFont() != activeFont )
 				{
-					text->setFont( pane->winGetFont() );
+					text->setFont( activeFont );
 				}
 
-				// Handle Wrapping (Mimicking PushButton logic)
 				text->setWordWrapCentered( BitIsSet( paneInstData->getStatus(), WIN_STATUS_WRAP_CENTERED ) );
 				text->setWordWrap( tabWidth );
 
-				// Calculate Centered Position
 				Int textWidth, textHeight;
 				text->getSize( &textWidth, &textHeight );
 
 				Int textPosX = tabX + (tabWidth / 2) - (textWidth / 2);
 				Int textPosY = tabY + (tabHeight / 2) - (textHeight / 2);
 
-				// Draw the text
+				TheDisplay->enableClipping( FALSE );
 				text->draw( textPosX, textPosY, textColor, dropColor );
 			}
 		}
